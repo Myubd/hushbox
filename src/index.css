@@ -1,0 +1,54 @@
+/* Google Fontsは使わない: 「この端末の外へは何も出ない」という
+   プロジェクトの前提と矛盾するため、OS標準の日本語フォントに委ねる */
+
+:root {
+  --color-paper: #fbf6ee;
+  --color-paper-raised: #ffffff;
+  --color-ink: #2b2a28;
+  --color-ink-soft: #6b675f;
+  --color-border: #e6ddc9;
+  --color-indigo: #3a5a78;
+  --color-indigo-soft: #eaf0f4;
+  --color-moss: #6b8f71;
+  --color-moss-soft: #e9f1ea;
+  --color-coral: #e2775b;
+  --color-coral-soft: #fbeae3;
+
+  --font-display: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "Meiryo", sans-serif;
+  --font-body: "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", Consolas, monospace;
+
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

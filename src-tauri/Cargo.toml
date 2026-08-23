@@ -1,0 +1,50 @@
+[package]
+name = "hushbox"
+version = "0.1.0"
+description = "生徒向け・完全ローカル動作のプライバシー重視AI学習パートナー"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "hushbox_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+regex = "1"
+once_cell = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
+thiserror = "1"
+
+# ── ローカルLLM推論(すべてこの端末内で完結) ──
+# バージョンは2026年8月時点でcrates.ioから解決される最新安定版に合わせている。
+# ビルド時にズレがあれば `cargo update` で追従すること。
+candle-core = "0.11"
+candle-transformers = "0.11"
+tokenizers = "0.23"
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "stream"] }
+futures-util = "0.3"
+
+[features]
+# tauri-cli(`npm run tauri build` / `npm run tauri dev`)が自動で有効化するフィーチャー。
+# 本番ビルド時はフロントエンドの静的アセットを埋め込み、開発用サーバー(localhost)を
+# 参照しないようにする、Tauriの標準的な仕組み。
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+# Apple Silicon: Metalアクセラレーションを使う場合
+metal = ["candle-core/metal", "candle-transformers/metal"]
+# NVIDIA GPU: CUDAアクセラレーションを使う場合
+cuda = ["candle-core/cuda", "candle-transformers/cuda"]
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+# Candleの行列演算はCPUバウンドなので、バイナリサイズより実行速度を優先する
+opt-level = 3

@@ -1,0 +1,19 @@
+# フロントエンド
+node_modules
+dist
+dist-ssr
+*.local
+
+# Rust / Tauri
+src-tauri/target
+# Cargo.lockはアプリケーションなので意図的にコミットする(ライブラリでは除外するのが定石だが、
+# 今回は「動作確認済みの依存バージョン」を固定するためあえて追跡する)
+
+# OS/エディタ
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 作業用の元画像など(アイコンは既にsrc-tauri/icons/に生成済み)
+app-icon-source.png
