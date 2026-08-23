@@ -2,7 +2,7 @@
 
 生徒(小中学生)向けの、**完全ローカル動作のAI学習パートナー**。
 [Tauri](https://tauri.app/) + [Candle](https://github.com/huggingface/candle)によるRust製デスクトップアプリ。
-ブラウザ版([privacy-ai-buddy](../privacy-ai-buddy))からの移植で、Rust学習を兼ねて書き直したもの。
+ブラウザ版([privacy-ai-buddy](../privacy-ai-buddy))からの移植版。
 
 **Windows 11 + `npm run tauri build`のリリースビルドで、実際にモデルダウンロード→ローカル推論→PII匿名化まで一通り動作確認済みです。**
 
@@ -139,17 +139,6 @@ hushbox/
 │       └── llm_engine.rs      # Candleによるローカル推論 + reqwestでのモデルダウンロード
 └── README.md
 ```
-
-## Rust学習ポイント(このプロジェクトで触れる主な概念)
-
-- 所有権・借用(`&`, `&mut`)と、`Arc<Mutex<T>>`によるスレッド間共有状態
-- `Result`/`?`演算子によるエラーハンドリング、`thiserror`でのカスタムエラー型
-- トレイト(`Serialize`/`Deserialize`)とマクロ(`#[derive(...)]`)
-- 非同期Rust(`async`/`await`、`tokio::spawn`、`spawn_blocking`でのCPUバウンド処理の隔離)
-- `regex`クレートによるパターンマッチングと、UTF-8のバイト境界を意識した文字列操作
-- Tauriの `#[tauri::command]` によるRust⇔JavaScriptの型安全なブリッジと、`capabilities`による権限モデル
-- `reqwest`によるストリーミングHTTPダウンロード(`bytes_stream`での逐次書き込み)
-- Cargoのプロファイル設定(`opt-level`・`lto`・`codegen-units`)とビルド速度/実行速度のトレードオフ
 
 ## 既知の制約
 
