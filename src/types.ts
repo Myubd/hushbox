@@ -60,12 +60,72 @@ export const PII_LABELS: Record<PiiType, string> = {
   postal: "郵便番号",
 };
 
+// SNS/AIリテラシー訓練(Rust側 safety_drill.rs と対応)
+export interface DrillScenario {
+  id: string;
+  category: PiiType;
+  aiMessage: string;
+}
+
+export interface DrillResult {
+  sharedPii: boolean;
+  matches: PiiMatch[];
+  feedbackTitle: string;
+  feedbackBody: string;
+}
+
 // モデルの読み込み状態(Rust側 llm_engine::LoadProgress の stage と対応)
 export type ModelStatus = "idle" | "downloading" | "loading" | "ready" | "error";
 
 export interface ModelProgress {
   status: ModelStatus;
   detail: string;
+}
+
+// 切り替え可能なモデルの定義(Rust側 llm_engine::ModelSpec と対応)
+export interface ModelSpec {
+  id: string;
+  label: string;
+  repo: string;
+  file: string;
+  tokenizerRepo: string;
+  tokenizerFile: string;
+  approxSizeMb: number;
+  note: string;
+}
+
+// 学習ドリル(国語・算数・理科・社会・英語・情報。AI不使用、Rust側で確定的に生成・採点)
+export type DrillSubject = "arithmetic" | "kanji" | "science" | "social" | "english" | "info";
+
+export interface SubjectInfo {
+  id: DrillSubject;
+  label: string;
+  icon: string;
+}
+
+export const DRILL_SUBJECTS: SubjectInfo[] = [
+  { id: "arithmetic", label: "算数", icon: "🔢" },
+  { id: "kanji", label: "国語(漢字)", icon: "📖" },
+  { id: "science", label: "理科", icon: "🔬" },
+  { id: "social", label: "社会", icon: "🗾" },
+  { id: "english", label: "英語", icon: "🔤" },
+  { id: "info", label: "情報", icon: "💻" },
+];
+
+export type LearningProblem =
+  | { kind: "arithmetic"; id: string; question: string }
+  | { kind: "choice"; id: string; subject: string; question: string; choices: string[] };
+
+export interface LearningCheckResult {
+  correct: boolean;
+  correctAnswer: string;
+  explanation: string;
+}
+
+// 単元(例: 算数 → 足し算/引き算/掛け算/割り算)。先頭は必ず id="mixed"(すべて)。
+export interface DrillUnit {
+  id: string;
+  label: string;
 }
 
 // プライバシーログ(すべてこの端末内で完結。外部送信は一切なし)

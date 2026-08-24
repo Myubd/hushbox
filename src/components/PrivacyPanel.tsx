@@ -1,11 +1,17 @@
 import { PII_LABELS, type PrivacySessionStats } from "../types";
 
+interface DrillStats {
+  attempts: number;
+  sharedPii: number;
+}
+
 interface Props {
   stats: PrivacySessionStats;
+  drillStats?: DrillStats;
   modelName: string;
 }
 
-export function PrivacyPanel({ stats, modelName }: Props) {
+export function PrivacyPanel({ stats, drillStats, modelName }: Props) {
   const elapsedMin = Math.max(
     0,
     Math.round((Date.now() - stats.sessionStartedAt) / 60000)
@@ -54,6 +60,28 @@ export function PrivacyPanel({ stats, modelName }: Props) {
                 </li>
               ))}
           </ul>
+        </div>
+      )}
+
+      {drillStats && drillStats.attempts > 0 && (
+        <div className="privacy-panel__breakdown">
+          <p className="privacy-panel__breakdown-title">🛡️ SNS・AI安全チェック</p>
+          <dl className="privacy-panel__list">
+            <div>
+              <dt>今日の練習回数</dt>
+              <dd>{drillStats.attempts}回</dd>
+            </div>
+            <div>
+              <dt>断れた回数</dt>
+              <dd>
+                {drillStats.attempts - drillStats.sharedPii}/{drillStats.attempts}
+              </dd>
+            </div>
+          </dl>
+          <p className="privacy-panel__note">
+            会話の中で、AIが個人情報を聞き出そうとする「練習」を時々はさんでいます。
+            本物のSNSやAIチャットでも同じ場面が起きたときの備えです。
+          </p>
         </div>
       )}
 

@@ -32,11 +32,73 @@ use tokenizers::Tokenizer;
 use tokio::io::AsyncWriteExt;
 use tokio::sync::mpsc;
 
-// 配布するモデル(Hugging Face Hub上のGGUF量子化リポジトリ)
+// デフォルトモデル(既存ユーザー向けの後方互換用。available_models()の"qwen1_5b"と一致させる)
 const MODEL_REPO: &str = "Qwen/Qwen2.5-1.5B-Instruct-GGUF";
 const MODEL_FILE: &str = "qwen2.5-1.5b-instruct-q4_k_m.gguf";
 const TOKENIZER_REPO: &str = "Qwen/Qwen2.5-1.5B-Instruct";
 const TOKENIZER_FILE: &str = "tokenizer.json";
+
+/// 切り替え可能なモデルの定義。
+/// Candle(GGUF量子化推論)はモデル全体を1つのデバイス(CPU/GPU)に載せる方式のため、
+/// 「VRAM/RAMに完全に収まるか」で選択肢を絞っている。
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ModelSpec {
+    pub id: String,
+    pub label: String,
+    pub repo: String,
+    pub file: String,
+    pub tokenizer_repo: String,
+    pub tokenizer_file: String,
+    /// Q4_K_M量子化後のおおよそのファイルサイズ(MB)。UIの目安表示用。
+    pub approx_size_mb: u32,
+    pub note: String,
+}
+
+/// 選択可能なモデルの一覧(表示順)。
+pub fn available_models() -> Vec<ModelSpec> {
+    vec![
+        ModelSpec {
+            id: "qwen1_5b".to_string(),
+            label: "Qwen2.5 1.5B(標準・高速)".to_string(),
+            repo: MODEL_REPO.to_string(),
+            file: MODEL_FILE.to_string(),
+            tokenizer_repo: TOKENIZER_REPO.to_string(),
+            tokenizer_file: TOKENIZER_FILE.to_string(),
+            approx_size_mb: 1100,
+            note: "どの端末でも快適に動く軽量モデル。回答の精度は控えめ。".to_string(),
+        },
+        ModelSpec {
+            id: "qwen3b".to_string(),
+            label: "Qwen2.5 3B(バランス)".to_string(),
+            repo: "Qwen/Qwen2.5-3B-Instruct-GGUF".to_string(),
+            file: "qwen2.5-3b-instruct-q4_k_m.gguf".to_string(),
+            tokenizer_repo: "Qwen/Qwen2.5-3B-Instruct".to_string(),
+            tokenizer_file: TOKENIZER_FILE.to_string(),
+            approx_size_mb: 2100,
+            note: "精度と速度のバランス型。16GB RAM・CPU推論でも実用範囲。".to_string(),
+        },
+        ModelSpec {
+            id: "qwen7b".to_string(),
+            label: "Qwen2.5 7B(高精度)".to_string(),
+            repo: "bartowski/Qwen2.5-7B-Instruct-GGUF".to_string(),
+            file: "Qwen2.5-7B-Instruct-Q4_K_M.gguf".to_string(),
+            tokenizer_repo: "Qwen/Qwen2.5-7B-Instruct".to_string(),
+            tokenizer_file: TOKENIZER_FILE.to_string(),
+            approx_size_mb: 4700,
+            note: "8GB以上のVRAM(NVIDIA/Apple Silicon)推奨。CPUのみだと遅い場合あり。"
+                .to_string(),
+        },
+    ]
+}
+
+pub fn default_model_id() -> &'static str {
+    "qwen1_5b"
+}
+
+pub fn find_model(id: &str) -> Option<ModelSpec> {
+    available_models().into_iter().find(|m| m.id == id)
+}
 
 #[derive(Debug, Error)]
 pub enum EngineError {
@@ -175,19 +237,21 @@ async fn download_plain(
 impl LlmEngine {
     /// 初回はHugging Face Hubからモデルをダウンロード(以降はローカルキャッシュから読込)。
     /// キャッシュ先はOS標準のキャッシュディレクトリ(例: ~/.cache/huggingface/hub-simple)。
+    /// `spec`で指定されたモデルを読み込む(モデル切り替え機能に対応)。
     pub async fn load(
+        spec: &ModelSpec,
         progress_tx: mpsc::UnboundedSender<LoadProgress>,
     ) -> Result<Self, EngineError> {
-        eprintln!("[llm_engine] LlmEngine::load() 開始");
+        eprintln!("[llm_engine] LlmEngine::load() 開始: {}", spec.id);
         let _ = progress_tx.send(LoadProgress {
             stage: "downloading".into(),
-            detail: "モデルファイルを確認しています…".into(),
+            detail: format!("{}を確認しています…", spec.label),
         });
 
-        let model_dir = cache_dir().join(MODEL_REPO.replace('/', "--"));
+        let model_dir = cache_dir().join(spec.repo.replace('/', "--"));
         let model_path = download_plain(
-            MODEL_REPO,
-            MODEL_FILE,
+            &spec.repo,
+            &spec.file,
             &model_dir,
             "モデルファイル",
             &progress_tx,
@@ -199,10 +263,10 @@ impl LlmEngine {
             detail: "トークナイザを確認しています…".into(),
         });
 
-        let tokenizer_dir = cache_dir().join(TOKENIZER_REPO.replace('/', "--"));
+        let tokenizer_dir = cache_dir().join(spec.tokenizer_repo.replace('/', "--"));
         let tokenizer_path = download_plain(
-            TOKENIZER_REPO,
-            TOKENIZER_FILE,
+            &spec.tokenizer_repo,
+            &spec.tokenizer_file,
             &tokenizer_dir,
             "トークナイザ",
             &progress_tx,
@@ -290,7 +354,10 @@ impl LlmEngine {
             .token_to_id("<|im_end|>")
             .unwrap_or(u32::MAX);
 
-        let mut logits_processor = LogitsProcessor::new(299792458, Some(0.7), Some(0.9));
+        // temperatureとtop_pは、学習サポート用途として「多少単調でも正確さ優先」に
+        // 寄せている。デフォルトの0.7/0.9だと、小規模モデル(1.5B)では
+        // 支離滅裂な回答(例:「サマスの漢字」に対する意味不明な返答)が増えやすい。
+        let mut logits_processor = LogitsProcessor::new(299792458, Some(0.4), Some(0.85));
 
         for index in 0..max_tokens {
             let context_size = if index == 0 { tokens.len() } else { 1 };
@@ -345,3 +412,5 @@ impl LlmEngine {
 }
 
 pub type SharedEngine = Arc<tokio::sync::Mutex<Option<LlmEngine>>>;
+/// 現在ロードされているモデルのid(未ロード時はNone)。モデル切り替え機能用。
+pub type SharedModelId = Arc<tokio::sync::Mutex<Option<String>>>;

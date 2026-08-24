@@ -189,6 +189,326 @@
   outline-offset: 2px;
 }
 
+.btn--small {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── モデル設定パネル ───────────────────────── */
+.model-settings {
+  margin: 0 24px 12px;
+  padding: 14px 18px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-paper-raised);
+}
+
+.model-settings__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.model-settings__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.model-settings__note {
+  margin: 6px 0 12px;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+}
+
+.model-settings__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.model-settings__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.model-settings__item.is-current {
+  border-color: var(--color-indigo);
+  background: var(--color-indigo-soft);
+}
+
+.model-settings__item-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.model-settings__badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-indigo);
+  background: white;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.model-settings__item-note {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.model-settings__item-size {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: var(--color-ink-soft);
+}
+
+/* ── メインタブ(自由に質問 / 学習ドリル) ─────────────── */
+.main-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 0 24px 12px;
+}
+
+.main-tabs__item {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper-raised);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.main-tabs__item.is-active {
+  border-color: var(--color-indigo);
+  background: var(--color-indigo-soft);
+  color: var(--color-ink);
+}
+
+/* ── 学習ドリル(AI不使用) ───────────────────────── */
+.learning-drill {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.learning-drill__tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.learning-drill__tab {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper-raised);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.learning-drill__tab.is-active {
+  border-color: var(--color-moss);
+  background: var(--color-moss-soft, var(--color-indigo-soft));
+  font-weight: 600;
+}
+
+.learning-drill__units {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.learning-drill__unit {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper-raised);
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.learning-drill__unit.is-active {
+  border-color: var(--color-indigo);
+  background: var(--color-indigo-soft);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.learning-drill__badge {
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-moss);
+}
+
+.learning-drill__score {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
+.learning-drill__loading {
+  color: var(--color-ink-soft);
+  font-size: 13px;
+}
+
+.learning-drill__card {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-paper-raised);
+}
+
+.learning-drill__question {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+  text-align: center;
+}
+
+.learning-drill__answer-form {
+  display: flex;
+  gap: 8px;
+}
+
+.learning-drill__input {
+  width: 120px;
+  padding: 10px 12px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-indigo);
+  background: #ffffff;
+  color: var(--color-ink);
+}
+
+.learning-drill__input:focus {
+  outline: 2px solid var(--color-indigo);
+  outline-offset: 2px;
+}
+
+.learning-drill__input:disabled {
+  background: var(--color-paper-raised);
+  color: var(--color-ink-soft);
+  border-color: var(--color-border);
+}
+
+.learning-drill__choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.learning-drill__choice {
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: #ffffff;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.learning-drill__choice:hover:not(:disabled) {
+  border-color: var(--color-indigo);
+  background: var(--color-indigo-soft);
+}
+
+.learning-drill__choice:disabled {
+  cursor: not-allowed;
+}
+
+/* 採点後: 選ばれなかった選択肢は薄く(ただし文字が読めなくなるほどではない濃さに) */
+.learning-drill__choice:disabled.is-neutral {
+  opacity: 0.55;
+}
+
+/* 採点後: 正解の選択肢はどれを選んでも常にはっきり緑で示す */
+.learning-drill__choice:disabled.is-correct-choice {
+  border-color: var(--color-moss);
+  background: var(--color-moss-soft);
+  color: #1f3a24;
+  opacity: 1;
+}
+
+/* 採点後: 自分が選んだ不正解の選択肢は赤系ではっきり示す */
+.learning-drill__choice:disabled.is-wrong-choice {
+  border-color: var(--color-coral);
+  background: var(--color-coral-soft);
+  color: #6b2a1a;
+  opacity: 1;
+}
+
+.learning-drill__feedback {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.learning-drill__feedback.is-correct {
+  background: rgba(107, 142, 90, 0.12);
+  border: 1px solid rgba(107, 142, 90, 0.35);
+}
+
+.learning-drill__feedback.is-wrong {
+  background: rgba(226, 119, 91, 0.1);
+  border: 1px solid rgba(226, 119, 91, 0.3);
+}
+
+.learning-drill__feedback-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.learning-drill__feedback-body {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
 /* ── メインレイアウト ───────────────────────── */
 .app-main {
   flex: 1;
@@ -288,8 +608,27 @@
 
 .chat-notice {
   align-self: center;
-  font-size: 12px;
+  max-width: 88%;
+  margin: 4px 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(226, 119, 91, 0.1);
+  border: 1px solid rgba(226, 119, 91, 0.3);
+}
+
+.chat-notice__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.chat-notice__body {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
   color: var(--color-ink-soft);
+  white-space: pre-wrap;
 }
 
 .pii-mark {

@@ -17,3 +17,4 @@ Thumbs.db
 
 # 作業用の元画像など(アイコンは既にsrc-tauri/icons/に生成済み)
 app-icon-source.png
+*.zip

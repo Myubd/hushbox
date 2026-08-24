@@ -43,7 +43,13 @@ function renderWithHighlights(text: string, matches: PiiMatch[] | undefined) {
 
 export function ChatBubble({ message }: Props) {
   if (message.role === "system-notice") {
-    return <div className="chat-notice">{message.content}</div>;
+    const [title, ...rest] = message.content.split("\n");
+    return (
+      <div className="chat-notice">
+        <p className="chat-notice__title">{title}</p>
+        {rest.length > 0 && <p className="chat-notice__body">{rest.join("\n")}</p>}
+      </div>
+    );
   }
 
   const isUser = message.role === "user";

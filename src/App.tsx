@@ -3,12 +3,15 @@ import { AgeGate } from "./components/AgeGate";
 import { ModelLoader } from "./components/ModelLoader";
 import { ChatBubble } from "./components/ChatBubble";
 import { ChatInput } from "./components/ChatInput";
+import { LearningDrill } from "./components/LearningDrill";
+import { ModelSettings } from "./components/ModelSettings";
 import { PrivacyPanel } from "./components/PrivacyPanel";
 import { useChatEngine } from "./hooks/useChatEngine";
 import { AGE_MODES, type AgeMode } from "./types";
 import "./App.css";
 
 const MODEL_DISPLAY_NAME = "Qwen2.5-1.5B-Instruct (Candle / GGUF)";
+type MainTab = "chat" | "drill";
 
 export default function App() {
   const [mode, setMode] = useState<AgeMode | null>(null);
@@ -34,13 +37,19 @@ function ChatApp({
     modelProgress,
     isGenerating,
     stats,
+    drillStats,
+    availableModels,
+    currentModelId,
     initModel,
+    switchModel,
     previewPii,
     sendMessage,
     clearSession,
   } = useChatEngine(mode);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [showModelSettings, setShowModelSettings] = useState(false);
+  const [tab, setTab] = useState<MainTab>("chat");
   const modeInfo = AGE_MODES.find((m) => m.id === mode)!;
 
   useEffect(() => {
@@ -66,6 +75,13 @@ function ChatApp({
           </div>
         </div>
         <div className="app-header__actions">
+          <button
+            className="btn btn--ghost"
+            onClick={() => setShowModelSettings((v) => !v)}
+            disabled={isGenerating}
+          >
+            モデル設定
+          </button>
           <button className="btn btn--ghost" onClick={clearSession}>
             会話をリセット
           </button>
@@ -75,29 +91,71 @@ function ChatApp({
         </div>
       </header>
 
-      <main className="app-main">
-        <section className="chat-panel">
-          {!isReady ? (
-            <ModelLoader progress={modelProgress} onRetry={initModel} />
-          ) : (
-            <>
-              <div className="chat-scroll" ref={scrollRef}>
-                {messages.length === 0 && <EmptyState mode={mode} />}
-                {messages.map((m) => (
-                  <ChatBubble key={m.id} message={m} />
-                ))}
-              </div>
-              <ChatInput
-                mode={mode}
-                disabled={isGenerating}
-                previewPii={previewPii}
-                onSend={sendMessage}
-              />
-            </>
-          )}
-        </section>
+      {showModelSettings && (
+        <ModelSettings
+          models={availableModels}
+          currentModelId={currentModelId}
+          disabled={isGenerating || modelProgress.status === "downloading" || modelProgress.status === "loading"}
+          onSelect={(id) => {
+            switchModel(id);
+            setShowModelSettings(false);
+          }}
+          onClose={() => setShowModelSettings(false)}
+        />
+      )}
 
-        <PrivacyPanel stats={stats} modelName={MODEL_DISPLAY_NAME} />
+      <div className="main-tabs">
+        <button
+          className={`main-tabs__item${tab === "chat" ? " is-active" : ""}`}
+          onClick={() => setTab("chat")}
+        >
+          💬 自由に質問(AI)
+        </button>
+        <button
+          className={`main-tabs__item${tab === "drill" ? " is-active" : ""}`}
+          onClick={() => setTab("drill")}
+        >
+          ✏️ 学習ドリル(AI不使用)
+        </button>
+      </div>
+
+      <main className="app-main">
+        {tab === "chat" ? (
+          <>
+            <section className="chat-panel">
+              {!isReady ? (
+                <ModelLoader progress={modelProgress} onRetry={initModel} />
+              ) : (
+                <>
+                  <div className="chat-scroll" ref={scrollRef}>
+                    {messages.length === 0 && <EmptyState mode={mode} />}
+                    {messages.map((m) => (
+                      <ChatBubble key={m.id} message={m} />
+                    ))}
+                  </div>
+                  <ChatInput
+                    mode={mode}
+                    disabled={isGenerating}
+                    previewPii={previewPii}
+                    onSend={sendMessage}
+                  />
+                </>
+              )}
+            </section>
+
+            <PrivacyPanel
+              stats={stats}
+              drillStats={drillStats}
+              modelName={
+                availableModels.find((m) => m.id === currentModelId)?.label ?? MODEL_DISPLAY_NAME
+              }
+            />
+          </>
+        ) : (
+          <section className="chat-panel">
+            <LearningDrill mode={mode} />
+          </section>
+        )}
       </main>
     </div>
   );
