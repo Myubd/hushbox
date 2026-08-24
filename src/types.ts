@@ -120,6 +120,10 @@ export interface LearningCheckResult {
   correct: boolean;
   correctAnswer: string;
   explanation: string;
+  /** 4択問題のみ。選ばなかった選択肢も含めた、選択肢ごとの解説一覧。 */
+  choiceNotes: { choice: string; correct: boolean; note: string }[];
+  /** 算数のみ。演算の種類に応じた「解き方のコツ」。4択問題ではnull。 */
+  tip: string | null;
 }
 
 // 単元(例: 算数 → 足し算/引き算/掛け算/割り算)。先頭は必ず id="mixed"(すべて)。

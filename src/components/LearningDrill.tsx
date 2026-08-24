@@ -190,6 +190,37 @@ export function LearningDrill({ mode }: Props) {
                 {result.correct ? "🎉 せいかい!" : "❌ おしい!"}
               </p>
               <p className="learning-drill__feedback-body">{result.explanation}</p>
+
+              {result.tip && (
+                <div className="learning-drill__tip">
+                  <p className="learning-drill__tip-title">💡 とき方のコツ</p>
+                  <p className="learning-drill__tip-body">{result.tip}</p>
+                </div>
+              )}
+
+              {result.choiceNotes.length > 0 && (
+                <ul className="learning-drill__notes">
+                  {result.choiceNotes.map((cn) => {
+                    const wasSelected = cn.choice === selectedChoice;
+                    return (
+                      <li
+                        key={cn.choice}
+                        className={`learning-drill__note${cn.correct ? " is-correct" : ""}${
+                          wasSelected && !cn.correct ? " is-wrong" : ""
+                        }`}
+                      >
+                        <span className="learning-drill__note-icon">
+                          {cn.correct ? "⭕" : wasSelected ? "❌" : "・"}
+                        </span>
+                        <span className="learning-drill__note-text">
+                          <strong>{cn.choice}</strong> — {cn.note}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+
               <button className="btn btn--primary" onClick={() => void loadNext(subject, unit)}>
                 つぎの問題へ
               </button>
