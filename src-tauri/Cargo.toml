@@ -3,7 +3,13 @@ name = "hushbox"
 version = "0.1.0"
 description = "生徒向け・完全ローカル動作のプライバシー重視AI学習パートナー"
 edition = "2021"
-rust-version = "1.77"
+# 以前は"1.77"と記載していたが、Candle/tokenizers/reqwestなど比較的新しい
+# クレートを使っている実態と合っていなかった(指摘を受けて修正)。
+# crates.ioで各依存クレートの正確な最小要求バージョンを検証する手段が無いため、
+# 「少なくともこのバージョンで実際にビルド・全テスト通過を確認済み」という
+# 誠実な値(2026年8月時点の動作確認: rustc 1.96.0)を設定している。
+# これより古いバージョンでも動く可能性はあるが未検証。
+rust-version = "1.96"
 
 [lib]
 name = "hushbox_lib"
@@ -31,6 +37,7 @@ candle-transformers = "0.11"
 tokenizers = "0.23"
 reqwest = { version = "0.13", default-features = false, features = ["rustls", "stream"] }
 futures-util = "0.3"
+sha2 = "0.10"
 
 [features]
 # tauri-cli(`npm run tauri build` / `npm run tauri dev`)が自動で有効化するフィーチャー。

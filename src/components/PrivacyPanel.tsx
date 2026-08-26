@@ -2,7 +2,7 @@ import { PII_LABELS, type PrivacySessionStats } from "../types";
 
 interface DrillStats {
   attempts: number;
-  sharedPii: number;
+  unsafeCount: number;
 }
 
 interface Props {
@@ -74,7 +74,7 @@ export function PrivacyPanel({ stats, drillStats, modelName }: Props) {
             <div>
               <dt>断れた回数</dt>
               <dd>
-                {drillStats.attempts - drillStats.sharedPii}/{drillStats.attempts}
+                {drillStats.attempts - drillStats.unsafeCount}/{drillStats.attempts}
               </dd>
             </div>
           </dl>

@@ -66,17 +66,48 @@ struct RangeMatch {
     end: usize,
 }
 
-static POSTAL_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"〒?\d{3}-\d{4}").unwrap());
-static PHONE_RE: Lazy<Regex> =
-    Lazy::new(|| Regex::new(r"0\d{1,4}-\d{1,4}-\d{3,4}|0\d{9,10}").unwrap());
+// 電話番号・郵便番号は、タブレット/スマホのIME変換で全角数字になっているケースが多い
+// (例:「０９０－１２３４－５６７８」)。半角\dだけでは見逃すため、
+// 全角数字(U+FF10-FF19)・全角ハイフン(－ U+FF0D)・長音記号の誤用(ー)も許容する。
+static POSTAL_RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(r"〒?[0-9\x{FF10}-\x{FF19}]{3}[-－ー][0-9\x{FF10}-\x{FF19}]{4}").unwrap()
+});
+static PHONE_RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(
+        r"[0\x{FF10}][0-9\x{FF10}-\x{FF19}]{1,4}[-－ー][0-9\x{FF10}-\x{FF19}]{1,4}[-－ー][0-9\x{FF10}-\x{FF19}]{3,4}|[0\x{FF10}][0-9\x{FF10}-\x{FF19}]{9,10}",
+    )
+    .unwrap()
+});
 static EMAIL_RE: Lazy<Regex> =
     Lazy::new(|| Regex::new(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+").unwrap());
+// 高校(高等学校)を見逃していたため追加。小中学生モードが主対象だが、
+// 兄姉の高校名や将来の進学先など、会話中に高校名が出るケースはある。
 static SCHOOL_RE: Lazy<Regex> = Lazy::new(|| {
-    Regex::new(r"[一-龠ぁ-んァ-ヶー]{2,10}(立)?(小学校|中学校)").unwrap()
+    Regex::new(r"[一-龠ぁ-んァ-ヶー]{2,10}(立)?(小学校|中学校|高等学校|高校)").unwrap()
 });
+// 自己紹介パターン: 「私は/僕はXXです」に加え、
+// 「僕の名前はXXです」「私はXXって言います」のような、間に語が挟まる/末尾が
+// 「って(言います|いいます)」になる自然な言い回しも拾う。
+// (name)は非キャプチャ化した前後の飾り語を跨いで単一のキャプチャグループ(1)に統一。
 static SELF_INTRO_RE: Lazy<Regex> = Lazy::new(|| {
-    Regex::new(r"(私|僕|ぼく|わたし)は([一-龠ぁ-んァ-ヶー]{2,8})(です|だよ|といいます|と言います)")
-        .unwrap()
+    Regex::new(
+        r"(?:私|僕|ぼく|わたし)(?:の名前)?は([一-龠ぁ-んァ-ヶー]{2,8})(?:です|だよ|といいます|と言います|って(?:いいます|言います))",
+    )
+    .unwrap()
+});
+// 「(私は/僕は等が無くても)名前は○○です」のように、pronounを省略しつつ
+// 「名前は」という明確な自己紹介の文脈があるケースを別パターンとして拾う。
+static NAME_DECLARATION_RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(r"名前は([一-龠ぁ-んァ-ヶー]{2,8})(?:です|だよ|といいます|と言います)").unwrap()
+});
+// 都道府県名が無い住所表現(例:「松本市に住んでいます」「渋谷区在住」)。
+// 「市区町村名+居住を示す語」というセットで初めてマッチさせることで、
+// 単なる地名の言及(例:「松本市は寒いところです」)を誤検知しにくくしている。
+static CITY_RESIDENCE_RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(
+        r"[一-龠ぁ-んァ-ヶー]{1,10}(市|区|町|村)(に住んで|に住んでいます|に住んでる|在住|出身です|出身だよ)",
+    )
+    .unwrap()
 });
 
 const PREFECTURES: &[&str] = &[
@@ -94,6 +125,14 @@ const COMMON_SURNAMES: &[&str] = &[
     "加藤", "吉田", "山田", "佐々木", "山口", "松本", "井上", "木村", "林",
     "斎藤", "清水", "山崎", "森", "阿部", "池田", "橋本", "石川", "前田",
     "藤田", "後藤", "岡田", "長谷川", "村上", "近藤", "石井", "斉藤",
+    // 見逃しが多かったため追加(いずれも上位100位以内によく入る一般的な姓)
+    "遠藤", "藤原", "岡本", "村田", "坂本", "原田", "西村", "福田", "竹内",
+    "金子", "三浦", "藤井", "岩崎", "青木", "西田", "増田", "谷口", "新井",
+    "浅野", "平野", "千葉", "菅原", "武田", "上田", "杉山", "菊地", "今井",
+    "小野", "河野", "野口", "松尾", "安藤", "和田", "横山", "水野", "中島",
+    "石田", "宮崎", "内田", "柴田", "本田", "高木", "荒木", "栗原", "北村",
+    "坂井", "土屋", "小川", "太田", "工藤", "宮本", "中野", "大野", "田村",
+    "中山", "小山", "浜田", "岸田", "久保", "岩本", "山下", "松田", "宮田",
 ];
 
 fn detect_regex(text: &str, re: &Regex, kind: PiiType) -> Vec<RangeMatch> {
@@ -137,17 +176,30 @@ fn detect_address(text: &str) -> Vec<RangeMatch> {
     out
 }
 
-/// 氏名: 自己紹介パターン + 一般的な姓+名パターン
+/// 氏名: 自己紹介パターン(pronoun付き/pronoun省略の「名前は」型) + 一般的な姓+名パターン
 fn detect_name(text: &str) -> Vec<RangeMatch> {
     let mut out = Vec::new();
 
     for caps in SELF_INTRO_RE.captures_iter(text) {
-        if let Some(name) = caps.get(2) {
+        if let Some(name) = caps.get(1) {
             out.push(RangeMatch {
                 kind: PiiType::Name,
                 start: name.start(),
                 end: name.end(),
             });
+        }
+    }
+
+    for caps in NAME_DECLARATION_RE.captures_iter(text) {
+        if let Some(name) = caps.get(1) {
+            let overlaps = out.iter().any(|r| name.start() < r.end && name.end() > r.start);
+            if !overlaps {
+                out.push(RangeMatch {
+                    kind: PiiType::Name,
+                    start: name.start(),
+                    end: name.end(),
+                });
+            }
         }
     }
 
@@ -237,6 +289,7 @@ pub fn scan(text: &str) -> ScanResult {
     all.extend(detect_regex(text, &EMAIL_RE, PiiType::Email));
     all.extend(detect_regex(text, &SCHOOL_RE, PiiType::School));
     all.extend(detect_address(text));
+    all.extend(detect_regex(text, &CITY_RESIDENCE_RE, PiiType::Address));
     all.extend(detect_name(text));
 
     let ranges = dedupe(all);
@@ -330,5 +383,96 @@ mod tests {
         // 絵文字や記号混じりでもバイト境界エラーでpanicしないことを確認
         let r = scan("こんにちは🌸私は佐藤あゆみです!〒123-4567 北海道札幌市です。");
         assert!(!r.matches.is_empty());
+    }
+
+    // ── ここから false negative(見逃し)対策の検証 ──
+
+    #[test]
+    fn detects_fullwidth_phone_number() {
+        // タブレット/スマホのIME変換で全角数字になりがちな電話番号
+        let r = scan("電話は０９０－１２３４－５６７８だよ");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Phone));
+    }
+
+    #[test]
+    fn detects_fullwidth_postal_code() {
+        let r = scan("〒３９０－０８０１に住んでいます");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Postal));
+    }
+
+    #[test]
+    fn detects_name_with_no_prefix_phrase() {
+        // 「僕は」ではなく「僕の名前は」という、以前は拾えなかった言い回し
+        let r = scan("僕の名前は太郎です");
+        let name = r.matches.iter().find(|m| m.kind == PiiType::Name);
+        assert!(name.is_some());
+        assert_eq!(name.unwrap().text, "太郎");
+    }
+
+    #[test]
+    fn detects_name_with_tte_iimasu_ending() {
+        // 「と言います」ではなく「って言います」という話し言葉的な言い回し
+        let r = scan("私は花子って言います");
+        let name = r.matches.iter().find(|m| m.kind == PiiType::Name);
+        assert!(name.is_some());
+        assert_eq!(name.unwrap().text, "花子");
+    }
+
+    #[test]
+    fn detects_name_declaration_without_pronoun() {
+        // 「私は/僕は」等の主語が省略され、「名前は」だけで名乗るケース
+        let r = scan("名前はけんとです。よろしくね");
+        let name = r.matches.iter().find(|m| m.kind == PiiType::Name);
+        assert!(name.is_some());
+        assert_eq!(name.unwrap().text, "けんと");
+    }
+
+    #[test]
+    fn detects_high_school_name() {
+        // 従来は小学校/中学校のみ対応で、高校が抜けていた
+        let r = scan("松本第一高等学校に通っています");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::School));
+    }
+
+    #[test]
+    fn detects_city_level_address_without_prefecture() {
+        // 都道府県名が無いと住所とみなせなかったケース
+        let r = scan("松本市に住んでいます");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Address));
+    }
+
+    #[test]
+    fn detects_ward_level_address_without_prefecture() {
+        let r = scan("渋谷区在住です");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Address));
+    }
+
+    #[test]
+    fn city_mention_without_residence_context_is_not_flagged_as_address() {
+        // 「住んでいる」等の文脈が無い単なる地名の言及は、拾いすぎ(誤検知)を避ける
+        let r = scan("松本市はりんごが有名です");
+        assert!(!r.matches.iter().any(|m| m.kind == PiiType::Address));
+    }
+
+    #[test]
+    fn expanded_surname_dictionary_catches_more_names() {
+        // 以前の35件の辞書には含まれていなかった一般的な姓
+        let r = scan("遠藤さんと一緒に帰った");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Name));
+    }
+
+    /// 既知の残存ギャップ(今回はスコープ外として意図的に対応していない)。
+    /// - LINE ID/InstagramなどのSNS ID(「IDは○○だよ」)はPII検出の対象にしていない
+    ///   (safety_drill.rs側の訓練シナリオでは扱っているが、pii_guardの正規表現的な
+    ///   検出には馴染まないため)。
+    /// - ランドマーク経由の間接的な位置情報(例:「○○公園の近くに住んでる」)は
+    ///   自然言語理解が必要でregexベースでは非現実的なため対象外。
+    /// - 電話番号を仮名/漢数字で書く(「ゼロキュウゼロの…」)ようなケースも対象外。
+    #[test]
+    fn known_limitation_sns_id_not_detected_documented() {
+        let r = scan("LINEのIDはtaro_1234だよ");
+        // これは「検出されるべき」ではなく、「現状は検出されない」ことを明示するテスト。
+        // 将来この挙動を変える場合は、このテストごと更新すること。
+        assert!(!r.matches.iter().any(|m| m.kind == PiiType::Name));
     }
 }

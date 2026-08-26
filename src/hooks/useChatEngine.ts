@@ -1,23 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  evaluateDrillResponse,
-  getDrillScenario,
-  listenModelProgress,
-  listModels,
-  loadModel,
-  scanPii,
-  sendMessage as sendMessageIpc,
-  switchModel as switchModelIpc,
-} from "../lib/tauriClient";
-import type {
-  AgeMode,
-  ChatMessage,
-  DrillScenario,
-  ModelProgress,
-  ModelSpec,
-  PiiType,
-  PrivacySessionStats,
-} from "../types";
+import { useCallback, useRef, useState } from "react";
+import { scanPii, sendMessage as sendMessageIpc } from "../lib/tauriClient";
+import type { AgeMode, ChatMessage, PiiType, PrivacySessionStats } from "../types";
+import { useModelManager } from "./useModelManager";
+import { useDrillEngine } from "./useDrillEngine";
+
+export type { DrillSessionStats } from "./useDrillEngine";
 
 const EMPTY_PII_COUNTS: Record<PiiType, number> = {
   name: 0,
@@ -28,144 +15,62 @@ const EMPTY_PII_COUNTS: Record<PiiType, number> = {
   postal: 0,
 };
 
-// SNS/AIリテラシー訓練の発生頻度調整。
-// 「毎回起きる」と警戒されて意味が薄れ、「滅多に起きない」と練習にならないため、
-// 通常のやり取りを何回か挟んでから、確率的に発生させる。
-const DRILL_MIN_TURNS_BETWEEN = 2;
-const DRILL_PROBABILITY = 0.55;
-
 function newId(): string {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 
-export interface DrillSessionStats {
-  attempts: number;
-  sharedPii: number;
-}
-
-export function useChatEngine(mode: AgeMode) {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [modelProgress, setModelProgress] = useState<ModelProgress>({
-    status: "idle",
-    detail: "",
-  });
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [stats, setStats] = useState<PrivacySessionStats>({
+function initialStats(): PrivacySessionStats {
+  return {
     messagesSent: 0,
     piiCaught: 0,
     piiByType: { ...EMPTY_PII_COUNTS },
     sessionStartedAt: Date.now(),
-  });
-  const [drillStats, setDrillStats] = useState<DrillSessionStats>({
-    attempts: 0,
-    sharedPii: 0,
-  });
-  const [availableModels, setAvailableModels] = useState<ModelSpec[]>([]);
-  const [currentModelId, setCurrentModelId] = useState<string | null>(null);
+  };
+}
+
+/**
+ * 会話(チャット)の進行だけに責務を絞ったフック。
+ * モデルの読込/切替は useModelManager、SNS/AIリテラシー訓練の発生・採点は
+ * useDrillEngine にそれぞれ委譲し、ここでは「ユーザー入力をどちらに
+ * ルーティングするか」「メッセージ一覧・PII統計・会話履歴の管理」だけを行う。
+ *
+ * 公開している戻り値の形は分割前と同じにしてあるため、呼び出し側(App.tsx)の
+ * 変更は不要。
+ */
+export function useChatEngine(mode: AgeMode) {
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [stats, setStats] = useState<PrivacySessionStats>(initialStats());
+
+  const modelManager = useModelManager();
+  const drillEngine = useDrillEngine(mode);
 
   // Rustへ渡す会話履歴。ユーザー発話は常にredact済みテキストを保持する
   const historyRef = useRef<[string, string][]>([]);
 
-  // 現在アクティブな訓練シナリオ。nullでなければ、次のユーザー入力は
-  // 通常のLLM送信ではなく、この訓練への返答として扱う。
-  const pendingDrillRef = useRef<DrillScenario | null>(null);
-  const turnsSinceDrillRef = useRef(0);
+  const resetConversationState = useCallback(() => {
+    setMessages([]);
+    historyRef.current = [];
+    drillEngine.resetDrill();
+  }, [drillEngine.resetDrill]);
 
-  const bootstrapped = useRef(false);
-  const progressUnlistenRef = useRef<(() => void) | null>(null);
-
-  // "model-progress" イベントは一度だけ購読し、以降の読込/切り替えすべてで使い回す
-  useEffect(() => {
-    let cancelled = false;
-    listenModelProgress((p) => {
-      if (!cancelled) setModelProgress(p);
-    }).then((unlisten) => {
-      if (cancelled) {
-        unlisten();
-      } else {
-        progressUnlistenRef.current = unlisten;
-      }
-    });
-    return () => {
-      cancelled = true;
-      progressUnlistenRef.current?.();
-    };
-  }, []);
-
-  useEffect(() => {
-    listModels()
-      .then(setAvailableModels)
-      .catch((err) => console.error("モデル一覧の取得に失敗しました", err));
-  }, []);
-
-  const doInitModel = useCallback(async () => {
-    if (bootstrapped.current) return;
-    bootstrapped.current = true;
-    setModelProgress({ status: "downloading", detail: "モデルを確認しています…" });
-    try {
-      await loadModel();
-      const models = await listModels();
-      // デフォルトモデルのidを確定させる(先頭要素がqwen1_5b)
-      setCurrentModelId((prev) => prev ?? models[0]?.id ?? null);
-    } catch (err) {
-      setModelProgress({ status: "error", detail: String(err) });
-    }
-  }, []);
-
-  /** モデルを切り替える。切り替え後は会話をリセットする(履歴の文脈がモデルをまたぐと混乱しやすいため)。 */
-  const switchModel = useCallback(async (modelId: string) => {
-    if (modelId === currentModelId) return;
-    setModelProgress({ status: "downloading", detail: "モデルを切り替えています…" });
-    try {
-      await switchModelIpc(modelId);
-      setCurrentModelId(modelId);
-      setMessages([]);
-      historyRef.current = [];
-      pendingDrillRef.current = null;
-      turnsSinceDrillRef.current = 0;
-    } catch (err) {
-      setModelProgress({ status: "error", detail: String(err) });
-    }
-  }, [currentModelId]);
+  const switchModel = useCallback(
+    (modelId: string) => modelManager.switchModel(modelId, resetConversationState),
+    [modelManager.switchModel, resetConversationState]
+  );
 
   const previewPii = useCallback(async (text: string) => {
     if (!text.trim()) return { matches: [], redacted: text };
     return scanPii(text);
   }, []);
 
-  // 通常のAI応答が完了するたびに呼ぶ。条件を満たしたら訓練シナリオを
-  // 「AIからの1メッセージ」として自然に会話に挿入する。
-  const maybeTriggerDrill = useCallback(async () => {
-    turnsSinceDrillRef.current += 1;
-    if (turnsSinceDrillRef.current < DRILL_MIN_TURNS_BETWEEN) return;
-    if (Math.random() > DRILL_PROBABILITY) return;
-
-    const scenario = await getDrillScenario(mode);
-    if (!scenario) return;
-
-    turnsSinceDrillRef.current = 0;
-    pendingDrillRef.current = scenario;
-
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: newId(),
-        role: "assistant",
-        content: scenario.aiMessage,
-        timestamp: Date.now(),
-      },
-    ]);
-  }, [mode]);
-
   const sendMessage = useCallback(
     async (rawText: string) => {
       if (isGenerating || !rawText.trim()) return;
 
       // 訓練シナリオへの返答として扱うケース(通常のLLM送信は行わない)
-      const activeDrill = pendingDrillRef.current;
+      const activeDrill = drillEngine.consumePendingDrill();
       if (activeDrill) {
-        pendingDrillRef.current = null;
-
         const userMsg: ChatMessage = {
           id: newId(),
           role: "user",
@@ -174,12 +79,7 @@ export function useChatEngine(mode: AgeMode) {
         };
         setMessages((prev) => [...prev, userMsg]);
 
-        const result = await evaluateDrillResponse(activeDrill.category, rawText);
-
-        setDrillStats((prev) => ({
-          attempts: prev.attempts + 1,
-          sharedPii: prev.sharedPii + (result.sharedPii ? 1 : 0),
-        }));
+        const result = await drillEngine.evaluateDrillReply(activeDrill.category, rawText);
 
         const noticeMsg: ChatMessage = {
           id: newId(),
@@ -235,7 +135,18 @@ export function useChatEngine(mode: AgeMode) {
               ["user", scan.redacted],
               ["assistant", acc],
             ];
-            void maybeTriggerDrill();
+            void drillEngine.maybeTriggerDrill().then((scenario) => {
+              if (!scenario) return;
+              setMessages((prev) => [
+                ...prev,
+                {
+                  id: newId(),
+                  role: "assistant",
+                  content: scenario.aiMessage,
+                  timestamp: Date.now(),
+                },
+              ]);
+            });
           },
           onError: (message) => {
             setMessages((prev) =>
@@ -251,32 +162,23 @@ export function useChatEngine(mode: AgeMode) {
         setIsGenerating(false);
       }
     },
-    [mode, isGenerating, maybeTriggerDrill]
+    [mode, isGenerating, drillEngine.consumePendingDrill, drillEngine.evaluateDrillReply, drillEngine.maybeTriggerDrill]
   );
 
   const clearSession = useCallback(() => {
-    setMessages([]);
-    historyRef.current = [];
-    pendingDrillRef.current = null;
-    turnsSinceDrillRef.current = 0;
-    setStats({
-      messagesSent: 0,
-      piiCaught: 0,
-      piiByType: { ...EMPTY_PII_COUNTS },
-      sessionStartedAt: Date.now(),
-    });
-    setDrillStats({ attempts: 0, sharedPii: 0 });
-  }, []);
+    resetConversationState();
+    setStats(initialStats());
+  }, [resetConversationState]);
 
   return {
     messages,
-    modelProgress,
+    modelProgress: modelManager.modelProgress,
     isGenerating,
     stats,
-    drillStats,
-    availableModels,
-    currentModelId,
-    initModel: doInitModel,
+    drillStats: drillEngine.drillStats,
+    availableModels: modelManager.availableModels,
+    currentModelId: modelManager.currentModelId,
+    initModel: modelManager.initModel,
     switchModel,
     previewPii,
     sendMessage,

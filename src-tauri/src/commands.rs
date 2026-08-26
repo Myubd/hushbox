@@ -2,10 +2,11 @@ use rand::seq::SliceRandom;
 use tauri::{AppHandle, Emitter, State};
 use tokio::sync::mpsc;
 
-use crate::llm_engine::{self, GenerationChunk, LlmEngine, LoadProgress, ModelSpec, SharedEngine, SharedModelId};
+use crate::llm_engine::{self, GenerationChunk, LlmEngine, LoadProgress, ModelLoadLock, ModelSpec, SharedEngine, SharedModelId};
 use crate::learning_drill::{self, DrillCheckResult, DrillProblem, SharedDrillState, UnitInfo};
+use crate::encyclopedia;
 use crate::pii_guard::{self, PiiType};
-use crate::prompts::system_prompt_for;
+use crate::prompts::{self, system_prompt_for};
 use crate::safety_drill::{self, DrillResult, DrillScenario};
 
 /// 送信前のPII検出プレビュー(サーバーではなく、この端末内のRustコードが処理)
@@ -106,6 +107,7 @@ pub async fn init_model(
     app: AppHandle,
     engine: State<'_, SharedEngine>,
     current_model: State<'_, SharedModelId>,
+    load_lock: State<'_, ModelLoadLock>,
     model_id: Option<String>,
 ) -> Result<(), String> {
     let target_id = model_id.unwrap_or_else(|| llm_engine::default_model_id().to_string());
@@ -125,6 +127,10 @@ pub async fn init_model(
         }
     }
 
+    // ロード処理全体(ダウンロード〜構築〜スワップ)を1回に1つに直列化する。
+    // これがないと、init_modelとswitch_modelがほぼ同時に呼ばれた場合や
+    // switch_modelの多重クリックで、2つのロード処理が競合してしまう。
+    let _load_guard = load_lock.lock().await;
     load_model_into_state(app, engine, current_model, target_id).await
 }
 
@@ -136,8 +142,10 @@ pub async fn switch_model(
     app: AppHandle,
     engine: State<'_, SharedEngine>,
     current_model: State<'_, SharedModelId>,
+    load_lock: State<'_, ModelLoadLock>,
     model_id: String,
 ) -> Result<(), String> {
+    let _load_guard = load_lock.lock().await;
     load_model_into_state(app, engine, current_model, model_id).await
 }
 
@@ -150,12 +158,10 @@ async fn load_model_into_state(
     let spec = llm_engine::find_model(&model_id)
         .ok_or_else(|| format!("不明なモデルIDです: {model_id}"))?;
 
-    // 新モデルの読込前に、旧モデルの参照を明示的に破棄してメモリを解放する
-    {
-        let mut guard = engine.lock().await;
-        *guard = None;
-    }
-
+    // 新モデルの読込前に旧モデルを破棄しない。ロード失敗時に旧モデルへ
+    // フォールバックできるよう、新モデルの構築が完全に成功するまでは
+    // engine/current_modelの状態に一切触れない(実際の入れ替えロジックは
+    // llm_engine::apply_load_result に切り出してあり、テストで直接検証している)。
     let (tx, mut rx) = mpsc::unbounded_channel::<LoadProgress>();
     let app_for_progress = app.clone();
     tokio::spawn(async move {
@@ -164,25 +170,19 @@ async fn load_model_into_state(
         }
     });
 
-    match LlmEngine::load(&spec, tx).await {
-        Ok(loaded) => {
-            let mut guard = engine.lock().await;
-            *guard = Some(loaded);
-            let mut cur = current_model.lock().await;
-            *cur = Some(spec.id.clone());
-            Ok(())
-        }
-        Err(e) => {
-            let _ = app.emit(
-                "model-progress",
-                LoadProgress {
-                    stage: "error".into(),
-                    detail: e.to_string(),
-                },
-            );
-            Err(e.to_string())
-        }
+    let result = LlmEngine::load(&spec, tx).await.map_err(|e| e.to_string());
+    if let Err(e) = &result {
+        let _ = app.emit(
+            "model-progress",
+            LoadProgress {
+                stage: "error".into(),
+                detail: e.clone(),
+            },
+        );
     }
+
+    llm_engine::apply_load_result(engine.inner(), current_model.inner(), result, spec.id.clone())
+        .await
 }
 
 /// 1往復分のチャット履歴(ロール, 内容)
@@ -214,7 +214,23 @@ pub async fn send_message(
     });
 
     let engine_arc = engine.inner().clone();
-    let system_prompt = system_prompt_for(&mode);
+
+    // ハルシネーション対策(簡易RAG): 質問文が問題バンク(カリキュラム範囲)や
+    // 百科事典(手作業で追加している一般知識)の項目と重なる場合、検証済みの
+    // 内容を「参照情報」としてシステムプロンプトに注入する。
+    // 該当が無い場合は何も注入せず、system_prompt_for()の基本ルール
+    // (「わからないことは正直に言う」)だけに委ねる。
+    const MAX_REFERENCE_SNIPPETS: usize = 3;
+    let mut snippets = learning_drill::search_curriculum_facts(&redacted_input, MAX_REFERENCE_SNIPPETS);
+    if snippets.len() < MAX_REFERENCE_SNIPPETS {
+        let remaining = MAX_REFERENCE_SNIPPETS - snippets.len();
+        snippets.extend(encyclopedia::search(&redacted_input, remaining));
+    }
+
+    let mut system_prompt = system_prompt_for(&mode);
+    if let Some(reference_block) = prompts::build_reference_block(&snippets) {
+        system_prompt.push_str(&reference_block);
+    }
 
     // Candleの推論はCPU/GPUバウンドの同期処理なので、専用スレッドで実行し
     // Tauriの非同期ランタイムをブロックしない
@@ -222,7 +238,13 @@ pub async fn send_message(
         let rt = tokio::runtime::Handle::current();
         let mut guard = rt.block_on(engine_arc.lock());
         match guard.as_mut() {
-            Some(eng) => eng.generate_stream(&system_prompt, &history, &redacted_input, 512, tx),
+            Some(eng) => eng.generate_stream(
+                &system_prompt,
+                &history,
+                &redacted_input,
+                LlmEngine::DEFAULT_MAX_GENERATION_TOKENS,
+                tx,
+            ),
             None => Err(crate::llm_engine::EngineError::Inference(
                 "モデルが読み込まれていません".into(),
             )),

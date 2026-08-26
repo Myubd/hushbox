@@ -33,8 +33,18 @@ pub struct DrillScenario {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DrillResult {
-    /// 個人情報を(部分的にでも)渡してしまったか
-    pub shared_pii: bool,
+    /// pii_guardが返答から実際に検出した具体的なPII(氏名・住所など)があるか。
+    /// 「拒否フレーズを言ったかどうか」とは独立した、客観的な検出結果。
+    pub contains_pii: bool,
+    /// 「教えない」「秘密」のような拒否・警戒フレーズが返答に含まれているか。
+    pub refused: bool,
+    /// 総合判定: この返答は安全だったか(=個人情報を実質的に渡さなかったか)。
+    /// containsPii と refused は独立した軸であり、どちらか一方だけでは
+    /// 安全とは言えない。「山田太郎です。でも住所は教えないよ」のように
+    /// 拒否フレーズを含みながら同時に名前を渡してしまうケースがあるため、
+    /// safe は「PIIが検出されておらず、かつ(拒否した or 実質的な発言がない)」
+    /// 場合にのみ true とする。
+    pub safe: bool,
     /// 参考情報: 返答からpii_guardが検出できた具体的な一致(あれば)
     pub matches: Vec<PiiMatch>,
     pub feedback_title: String,
@@ -119,21 +129,33 @@ fn contains_refusal(text: &str) -> bool {
     const REFUSAL_PATTERNS: &[&str] = &[
         "言わない", "いわない", "教えない", "おしえない", "内緒", "ないしょ",
         "秘密", "ひみつ", "言えない", "いえない", "答えない", "こたえない",
-        "だめ", "ダメ", "無理", "むり", "やだ", "いや", "嫌",
+        "だめ", "ダメ", "駄目", "無理", "むり", "やだ", "いや", "嫌",
         "個人情報", "先生に相談", "親に聞", "保護者に確認", "教えたくない",
         "なんで聞く", "どうして聞", "怪しい", "あやしい",
+        // 「〜ちゃいけない」「〜てはいけない」型(実際のスクリーンショットで
+        // 見逃しが確認された「教えちゃいけないって言われてる」等)。
+        // 「言わない」等の単純な否定形とは活用が異なるため別枠で追加。
+        "いけない", "教えられない", "教えられません", "言えません",
+        "話せません", "答えられません",
     ];
     REFUSAL_PATTERNS.iter().any(|p| text.contains(p))
 }
 
 pub fn evaluate(category: PiiType, reply: &str) -> DrillResult {
     let scan = pii_guard::scan(reply);
+    let contains_pii = !scan.matches.is_empty();
     let refused = contains_refusal(reply);
-    // 拒否フレーズが無く、かつ返答が実質的な内容を含む(空でない)場合は
-    // 「渡してしまった」とみなす。pii_guardの一致は補足情報として添える。
-    let shared_pii = !refused && !reply.trim().is_empty();
+    // 「拒否フレーズがある」ことと「実際にPIIを渡していない」ことは別軸。
+    // 両方を満たして初めて安全と判定する。containsPii=true の場合、
+    // 同じ返答に拒否フレーズが混ざっていても安全側に倒さない
+    // (例:「山田太郎です。でも住所は教えないよ」は名前を渡してしまっている)。
+    //
+    // containsPiiがfalseでも、拒否せず何かしら実質的な内容を答えている場合は
+    // pii_guardの辞書(漢字姓など)が拾えない形の個人情報(例:「さとうです」)の
+    // 可能性があるため、引き続き安全側とはみなさない。
+    let safe = !contains_pii && (refused || reply.trim().is_empty());
 
-    let (feedback_title, feedback_body) = if shared_pii {
+    let (feedback_title, feedback_body) = if !safe {
         (
             "⚠️ これは練習でした".to_string(),
             format!(
@@ -156,7 +178,9 @@ pub fn evaluate(category: PiiType, reply: &str) -> DrillResult {
     };
 
     DrillResult {
-        shared_pii,
+        contains_pii,
+        refused,
+        safe,
         matches: scan.matches,
         feedback_title,
         feedback_body,
@@ -177,27 +201,68 @@ mod tests {
     #[test]
     fn refusal_is_recognized_as_safe() {
         let r = evaluate(PiiType::Name, "え、なんで聞くの?言わないよ");
-        assert!(!r.shared_pii);
+        assert!(r.safe);
+        assert!(r.refused);
+        assert!(!r.contains_pii);
+    }
+
+    /// 実際のアプリで報告された見逃しケース: 「教えちゃいけないって言われてる」は
+    /// 明確な拒否だが、活用形が既存パターン(「教えない」等)と異なるため
+    /// 以前は refused=false と誤判定されていた。
+    #[test]
+    fn tya_ikenai_style_refusal_is_recognized() {
+        let r = evaluate(PiiType::Address, "教えちゃいけないって言われてる");
+        assert!(r.refused, "「〜ちゃいけない」型の拒否表現も拾えるはず");
+        assert!(r.safe);
     }
 
     #[test]
-    fn hiragana_name_without_kanji_still_flagged_as_shared() {
+    fn polite_negative_refusal_forms_are_recognized() {
+        for reply in [
+            "それは言えません",
+            "教えられません",
+            "住所は話せません",
+            "答えられません、ごめんね",
+        ] {
+            let r = evaluate(PiiType::Address, reply);
+            assert!(r.refused, "丁寧語の否定形も拒否として拾えるはず: {reply}");
+        }
+    }
+
+    #[test]
+    fn hiragana_name_without_kanji_still_flagged_as_unsafe() {
         // pii_guardの姓辞書(漢字)には引っかからないが、
         // 拒否していない以上は「渡してしまった」と判定すべきケース
         let r = evaluate(PiiType::Name, "さとうです");
-        assert!(r.shared_pii);
+        assert!(!r.safe);
+        assert!(!r.contains_pii);
+        assert!(!r.refused);
     }
 
     #[test]
     fn explicit_address_is_flagged_and_matched() {
         let r = evaluate(PiiType::Address, "長野県松本市に住んでるよ");
-        assert!(r.shared_pii);
+        assert!(!r.safe);
+        assert!(r.contains_pii);
         assert!(r.matches.iter().any(|m| m.kind == PiiType::Address));
     }
 
     #[test]
     fn empty_reply_is_not_treated_as_shared() {
         let r = evaluate(PiiType::Name, "   ");
-        assert!(!r.shared_pii);
+        assert!(r.safe);
+        assert!(!r.contains_pii);
+    }
+
+    /// レビュー指摘のケース: 拒否フレーズを含みながら、同時に実際のPII(氏名)を
+    /// 渡してしまっている場合、以前の実装では refused=true が優先されて
+    /// 「安全」と誤判定されていた。containsPii と refused を独立に見て、
+    /// 両方満たさない限り safe にしてはいけない。
+    #[test]
+    fn refusal_phrase_mixed_with_actual_pii_is_not_safe() {
+        let r = evaluate(PiiType::Name, "山田太郎です。でも住所は教えないよ");
+        assert!(r.contains_pii, "実際には氏名を渡しているのでcontains_piiはtrueのはず");
+        assert!(r.refused, "「教えない」という拒否フレーズ自体は含まれている");
+        assert!(!r.safe, "PIIを渡してしまっている以上、safeであってはならない");
     }
 }

@@ -984,6 +984,48 @@ pub fn check(given: &str, pending: &PendingAnswer) -> DrillCheckResult {
     }
 }
 
+/// チャットの質問文が、既存の問題バンク(理科・社会・英語・情報・漢字)の
+/// 「正解の用語」と重なる場合に、その内容を検証済みの参照情報として返す。
+///
+/// ドリル問題そのもの(4択の出題形式)ではなく、そこに含まれる
+/// 質問文・正解・解説を「事実の断片」として再利用している。
+/// `ChoiceQuestion`には専用のkeywords欄が無いため、マッチングは
+/// 「正解の選択肢テキスト(たいてい2文字以上の短い用語)がクエリに
+/// 部分一致で含まれているか」というヒューリスティックで行っている
+/// (pii_guard.rs等、このアプリの他の検出ロジックと同じ設計方針)。
+pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledge::KnowledgeSnippet> {
+    use crate::knowledge::KnowledgeSnippet;
+
+    let mut out: Vec<KnowledgeSnippet> = Vec::new();
+
+    for bank in [SCIENCE_BANK, SOCIAL_BANK, ENGLISH_BANK, INFO_BANK] {
+        for q in bank {
+            let correct = q.choices[q.correct_index];
+            // 1文字の用語は誤マッチ(無関係な文への部分一致)が多いため除外する
+            if correct.chars().count() >= 2 && query.contains(correct) {
+                out.push(KnowledgeSnippet {
+                    source: "curriculum",
+                    title: correct.to_string(),
+                    body: format!("{} {}", q.question, q.explanation),
+                });
+            }
+        }
+    }
+
+    for (hira, kanji, _mode) in KANJI_BANK {
+        if query.contains(*kanji) || query.contains(*hira) {
+            out.push(KnowledgeSnippet {
+                source: "curriculum",
+                title: (*kanji).to_string(),
+                body: format!("「{hira}」は漢字で「{kanji}」と書きます。"),
+            });
+        }
+    }
+
+    out.truncate(limit);
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1151,5 +1193,43 @@ mod tests {
         assert!(result.tip.is_some());
         assert!(!result.tip.unwrap().is_empty());
     }
+
+    #[test]
+    fn search_curriculum_facts_matches_known_science_term() {
+        // SCIENCE_BANKに実在する正解用語の1つ("光合成")で検索できることを確認。
+        // (用語自体がバンクの内容次第で変わりうるため、まずバンクから正解用語を
+        // 1つ拾い、それで検索が引っかかることを検証する形にしている)
+        let sample_term = SCIENCE_BANK
+            .iter()
+            .map(|q| q.choices[q.correct_index])
+            .find(|c| c.chars().count() >= 2)
+            .expect("SCIENCE_BANKに2文字以上の正解用語が無い");
+
+        let query = format!("{sample_term}について教えて");
+        let results = search_curriculum_facts(&query, 5);
+        assert!(
+            results.iter().any(|r| r.title == sample_term),
+            "'{sample_term}'を含む質問で該当項目がヒットしなかった"
+        );
+    }
+
+    #[test]
+    fn search_curriculum_facts_matches_kanji_bank() {
+        let results = search_curriculum_facts("がっこうは漢字でどう書くの?", 5);
+        assert!(results.iter().any(|r| r.title == "学校"));
+    }
+
+    #[test]
+    fn search_curriculum_facts_returns_empty_for_unrelated_query() {
+        let results = search_curriculum_facts("今日の晩ごはん何がいいかな", 5);
+        assert!(results.is_empty());
+    }
+
+    #[test]
+    fn search_curriculum_facts_respects_limit() {
+        let results = search_curriculum_facts("学校について教えて", 1);
+        assert!(results.len() <= 1);
+    }
 }
+
 

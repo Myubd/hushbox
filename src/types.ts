@@ -68,7 +68,9 @@ export interface DrillScenario {
 }
 
 export interface DrillResult {
-  sharedPii: boolean;
+  containsPii: boolean;
+  refused: boolean;
+  safe: boolean;
   matches: PiiMatch[];
   feedbackTitle: string;
   feedbackBody: string;
