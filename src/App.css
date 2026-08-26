@@ -907,6 +907,16 @@
   line-height: 1.6;
 }
 
+.privacy-panel__disclaimer {
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+  margin: 0 0 16px;
+  padding: 8px 10px;
+  border-left: 2px solid var(--color-ink-soft);
+  opacity: 0.85;
+}
+
 /* ── モデル読み込み画面 ───────────────────────── */
 .loader-screen {
   flex: 1;

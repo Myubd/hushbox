@@ -114,9 +114,16 @@ async fn sha256_of_file(path: &Path) -> Result<String, EngineError> {
 }
 
 /// 既存のキャッシュファイルが「期待しているrepo/revision/fileと一致し、
-/// manifest記録時からサイズが変わっていないか」を検証する。
+/// manifest記録時からサイズ・SHA-256が変わっていないか」を検証する。
 /// 一致すればそのまま信頼して使い、一致しなければ再ダウンロードを行う
 /// (壊れたファイル・別バージョン・手動での置き換えを無条件に信用しない)。
+///
+/// NOTE(P0): 以前はmanifestにsha256を保存するだけで、検証時にはsize比較までしか
+/// 行っていなかった。これだと「同じファイルサイズの別データに差し替える」だけで
+/// キャッシュ検証をすり抜けられてしまうため、実際のファイルのSHA-256を再計算して
+/// manifest.sha256と一致するかまで確認するようにした。
+/// サイズ比較は「壊れている可能性が高いケースをハッシュ計算(ファイル全体読み込み)
+/// する前に安く弾く」ための事前フィルタとして残している。
 async fn verify_cached_file(
     dest_path: &Path,
     repo: &str,
@@ -152,6 +159,25 @@ async fn verify_cached_file(
     if actual_size != manifest.size {
         eprintln!(
             "[llm_engine] キャッシュファイルのサイズがmanifestと不一致(壊れている可能性)のため再ダウンロードします: {}",
+            dest_path.display()
+        );
+        return false;
+    }
+    // サイズが一致しても中身が差し替えられている可能性は排除できないため、
+    // 実ファイルのSHA-256を再計算してmanifestの値と突き合わせる。
+    let actual_sha256 = match sha256_of_file(dest_path).await {
+        Ok(h) => h,
+        Err(_) => {
+            eprintln!(
+                "[llm_engine] キャッシュファイルの読み込みに失敗したため再ダウンロードします: {}",
+                dest_path.display()
+            );
+            return false;
+        }
+    };
+    if actual_sha256 != manifest.sha256 {
+        eprintln!(
+            "[llm_engine] キャッシュファイルのSHA-256がmanifestと不一致(内容が差し替えられた可能性)のため再ダウンロードします: {}",
             dest_path.display()
         );
         return false;
@@ -275,6 +301,19 @@ async fn download_plain(
 ) -> Result<PathBuf, EngineError> {
     std::fs::create_dir_all(dest_dir).map_err(|e| EngineError::Download(e.to_string()))?;
     let dest_path = dest_dir.join(file);
+
+    // revisionが可変ブランチ("main"等)のままだと、manifestのrepo/revision/file一致
+    // だけでは「Hugging Face側で同名revisionの中身が更新された」ケースを検出できない
+    // (SHA-256はローカルの初回ダウンロード時点の値を記録・検証するだけで、
+    // "今のHFの最新"と比較しているわけではないため)。せめて開発者/運用者が
+    // 気づけるよう、可変revisionを使っている場合は起動時にログで警告する。
+    if revision == DEFAULT_REVISION {
+        eprintln!(
+            "[llm_engine] 警告: {repo} は可変revision(\"{DEFAULT_REVISION}\")を使用しています。\
+             Hugging Face側でこのrevisionのファイルが更新されると、ローカルキャッシュが\
+             古いままでも検証を通過してしまいます。可能であればcommit SHAに固定してください。"
+        );
+    }
 
     // 既にキャッシュ済み「かつ」manifestの内容が今回の期待値と一致する場合のみ再利用する。
     if verify_cached_file(&dest_path, repo, revision, file).await {
@@ -747,12 +786,14 @@ mod tests {
         let dest = dir.join("model.gguf");
         let content = b"dummy-model-bytes";
         tokio::fs::write(&dest, content).await.unwrap();
+        // 実ファイルのSHA-256と一致させないとP0-1の検証で弾かれるため、実際に計算する。
+        let real_sha256 = sha256_of_file(&dest).await.unwrap();
 
         let manifest = CacheManifest {
             repo: "some/repo".to_string(),
             revision: "main".to_string(),
             file: "model.gguf".to_string(),
-            sha256: "irrelevant-for-this-test".to_string(),
+            sha256: real_sha256,
             size: content.len() as u64,
             downloaded_at_unix: 0,
         };
@@ -765,6 +806,49 @@ mod tests {
 
         let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
         assert!(ok);
+
+        let _ = tokio::fs::remove_dir_all(&dir).await;
+    }
+
+    #[tokio::test]
+    async fn cache_is_rejected_when_sha256_differs_but_size_matches() {
+        // P0-1の本題: 「同じファイルサイズの別データに差し替える」攻撃/破損を
+        // サイズ比較だけでは検出できないことの再現テスト。
+        // manifestには正しいSHA-256を記録しつつ、実ファイルの中身だけをサイズが
+        // 同じ別データに差し替えた状態を作り、検証が「サイズ一致」で満足せずに
+        // 拒否できることを確認する。
+        let dir = std::env::temp_dir().join(format!("hushbox_test_{}", uuid_like()));
+        tokio::fs::create_dir_all(&dir).await.unwrap();
+        let dest = dir.join("model.gguf");
+        let original_content = b"dummy-model-bytes";
+        tokio::fs::write(&dest, original_content).await.unwrap();
+        let original_sha256 = sha256_of_file(&dest).await.unwrap();
+
+        let manifest = CacheManifest {
+            repo: "some/repo".to_string(),
+            revision: "main".to_string(),
+            file: "model.gguf".to_string(),
+            sha256: original_sha256,
+            size: original_content.len() as u64,
+            downloaded_at_unix: 0,
+        };
+        tokio::fs::write(
+            manifest_path(&dest),
+            serde_json::to_vec_pretty(&manifest).unwrap(),
+        )
+        .await
+        .unwrap();
+
+        // 同じ長さ・別内容のデータに差し替える(サイズは変わらない)。
+        let tampered_content = b"evil-model-bytesX"; // originalと同じ18バイト
+        assert_eq!(tampered_content.len(), original_content.len());
+        tokio::fs::write(&dest, tampered_content).await.unwrap();
+
+        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        assert!(
+            !ok,
+            "サイズが同じでも中身が差し替えられたキャッシュはSHA-256不一致で拒否すべき"
+        );
 
         let _ = tokio::fs::remove_dir_all(&dir).await;
     }
@@ -838,6 +922,29 @@ mod tests {
         format!("{nanos}_{}", std::process::id())
     }
 
+    #[tokio::test]
+    async fn stray_part_file_from_interrupted_download_is_not_treated_as_cache() {
+        // ダウンロード中に強制終了された場合、".part"ファイルだけが残り
+        // 本来のdest_pathは作られない(download_plainはrenameを最後に行うため)。
+        // この状態で次回起動時にverify_cached_fileが誤って「キャッシュ済み」と
+        // 判定しないことを確認する(dest_pathが存在しない以上、当然falseになるはず)。
+        let dir = std::env::temp_dir().join(format!("hushbox_test_{}", uuid_like()));
+        tokio::fs::create_dir_all(&dir).await.unwrap();
+        let dest = dir.join("model.gguf");
+        let stray_part = dest.with_extension("part");
+        tokio::fs::write(&stray_part, b"only-half-downloaded").await.unwrap();
+
+        // dest_path自体は存在しない
+        assert!(!dest.exists());
+        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        assert!(
+            !ok,
+            "本体ファイルが無い(.partしか無い)状態はキャッシュとして信頼してはいけない"
+        );
+
+        let _ = tokio::fs::remove_dir_all(&dir).await;
+    }
+
     // ── P0-2: atomicスワップの統合テスト ──
 
     #[tokio::test]
@@ -907,6 +1014,82 @@ mod tests {
             1,
             "model_load_lockが機能していれば、ロード処理は直列化されるはず"
         );
+    }
+
+    // ── P1: モデル切替中のsend_message競合の統合テスト ──
+    // switch_model/init_modelの実処理(apply_load_result)はengineのMutexを
+    // 取得する瞬間にのみ状態を書き換える。もし生成中(send_messageがengineの
+    // Mutexを保持している間)にスワップが割り込むと、生成途中でモデルが
+    // すり替わってしまう可能性がある。ここでは「生成中(ロック保持中)は
+    // スワップが完了しない」ことと「生成が終われば速やかにスワップされる」
+    // ことの両方を検証する。
+
+    #[tokio::test]
+    async fn swap_waits_for_in_flight_generation_before_taking_effect() {
+        let engine: Arc<tokio::sync::Mutex<Option<i32>>> =
+            Arc::new(tokio::sync::Mutex::new(Some(1))); // 旧モデル
+        let current_id: SharedModelId =
+            Arc::new(tokio::sync::Mutex::new(Some("model-a".to_string())));
+
+        // send_messageを模したタスク: engineのMutexを一定時間保持し続ける
+        // (実際のgenerate_streamも、ストリーミング完了までロックを保持する)。
+        let engine_for_gen = engine.clone();
+        let swap_observed_old_value_during_generation = Arc::new(AtomicUsize::new(0));
+        let observed = swap_observed_old_value_during_generation.clone();
+        let generation = tokio::spawn(async move {
+            let guard = engine_for_gen.lock().await;
+            // 生成中は必ず旧モデル(1)が見えているはず
+            if *guard == Some(1) {
+                observed.fetch_add(1, Ordering::SeqCst);
+            }
+            tokio::time::sleep(Duration::from_millis(40)).await;
+            // (guardはここでdropされ、ロックが解放される)
+        });
+
+        // 生成が確実にロックを取得してから、スワップを試みさせるため少し待つ
+        tokio::time::sleep(Duration::from_millis(10)).await;
+
+        let swap_started_at = std::time::Instant::now();
+        let swap = apply_load_result(&engine, &current_id, Ok(2), "model-b".to_string()).await;
+        let swap_elapsed = swap_started_at.elapsed();
+
+        generation.await.unwrap();
+
+        assert!(swap.is_ok());
+        // スワップが生成の完了(ロック解放)を待たされたことを、経過時間で確認する
+        // (生成が約40ms保持するので、スワップの完了もそれ未満では終わらないはず)。
+        assert!(
+            swap_elapsed >= Duration::from_millis(25),
+            "スワップは生成中のロック保持が終わるまで待たされるはず(経過: {swap_elapsed:?})"
+        );
+        assert_eq!(
+            swap_observed_old_value_during_generation.load(Ordering::SeqCst),
+            1,
+            "生成中は旧モデルが見えているべき(スワップが割り込んで見えなくなってはいけない)"
+        );
+        // スワップ完了後は新モデルに切り替わっている
+        assert_eq!(*engine.lock().await, Some(2));
+        assert_eq!(*current_id.lock().await, Some("model-b".to_string()));
+    }
+
+    #[tokio::test]
+    async fn swap_takes_effect_promptly_once_no_generation_is_in_flight() {
+        // 生成中でなければ、スワップは(他の待ち行列がない限り)速やかに完了する。
+        let engine: Arc<tokio::sync::Mutex<Option<i32>>> =
+            Arc::new(tokio::sync::Mutex::new(Some(1)));
+        let current_id: SharedModelId =
+            Arc::new(tokio::sync::Mutex::new(Some("model-a".to_string())));
+
+        let started_at = std::time::Instant::now();
+        let result = apply_load_result(&engine, &current_id, Ok(2), "model-b".to_string()).await;
+        let elapsed = started_at.elapsed();
+
+        assert!(result.is_ok());
+        assert!(
+            elapsed < Duration::from_millis(25),
+            "生成中でなければスワップは速やかに完了するはず(経過: {elapsed:?})"
+        );
+        assert_eq!(*engine.lock().await, Some(2));
     }
 
     // ── P1: 会話履歴truncationアルゴリズムの統合テスト ──

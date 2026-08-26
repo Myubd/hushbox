@@ -63,6 +63,13 @@ export function PrivacyPanel({ stats, drillStats, modelName }: Props) {
         </div>
       )}
 
+      <p className="privacy-panel__disclaimer">
+        ※ よくあるパターン(名前・住所・電話番号など)を自動でチェックしていますが、
+        すべての個人情報を見つけられるわけではありません。合言葉のように使う目印や
+        SNSのIDなど、書き方によっては見逃すことがあります。大事な個人情報は、
+        できるだけ自分でも書かないようにしましょう。
+      </p>
+
       {drillStats && drillStats.attempts > 0 && (
         <div className="privacy-panel__breakdown">
           <p className="privacy-panel__breakdown-title">🛡️ SNS・AI安全チェック</p>

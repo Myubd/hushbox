@@ -28,6 +28,8 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "shortDescription": "Local privacy-first AI study buddy",
+    "longDescription": "HushBox is a fully local, privacy-first AI study companion for students. All chat and PII detection run on-device.",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
