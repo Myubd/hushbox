@@ -42,6 +42,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # tauri::generate_context!() は frontendDist ("../dist") の実在を
+      # コンパイル時に検証するため、cargo test/build の前に必ず
+      # フロントエンドをビルドして dist/ を用意しておく必要がある。
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build frontend (creates dist/ for tauri::generate_context!)
+        run: npm run build
+
       # Tauri(Linux)のビルドに必要なシステム依存関係。READMEの
       # 「セットアップ」セクションに記載のものと合わせている。
       - name: Install system dependencies
