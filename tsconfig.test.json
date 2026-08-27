@@ -1,0 +1,13 @@
+{
+  // tsconfig.app.json(本番ビルド用)はテストファイルを除外しているため、
+  // テストファイル(vitest)を型チェックしたいときはこちらを使う:
+  //   npx tsc -p tsconfig.test.json --noEmit
+  // `npm run build` / `tauri build` の経路には含まれないので、
+  // devDependencyのvitest型が無いだけで本番ビルドが壊れることはない。
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.test.tsbuildinfo"
+  },
+  "include": ["src"],
+  "exclude": []
+}

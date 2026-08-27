@@ -1,0 +1,61 @@
+name: CI
+
+# push/PRのたびに、最低限の壊れチェックを自動化する。
+# 特にPlus Challengeのようにデータ量の多いコミットでは、
+# 「問題データの整合性テスト」がここで走ることが重要
+# (src/games/__tests__/ 配下。詳細はテストファイル内のコメントを参照)。
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  frontend:
+    name: Frontend (lint / data validation / build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check test files (vitest)
+        run: npm run typecheck:tests
+
+      - name: Data validation tests (quiz datasets etc.)
+        run: npm run test
+
+      - name: Type-check + build (production, excludes test files)
+        run: npm run build
+
+  backend:
+    name: Backend (cargo test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Tauri(Linux)のビルドに必要なシステム依存関係。READMEの
+      # 「セットアップ」セクションに記載のものと合わせている。
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+            librsvg2-dev libssl-dev libgtk-3-dev libsoup-3.0-dev build-essential
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: cargo test
+        working-directory: src-tauri
+        run: cargo test --locked

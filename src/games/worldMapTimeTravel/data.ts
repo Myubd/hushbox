@@ -18,6 +18,13 @@ import type { ChoiceQuizItem } from "../ChoiceQuizGame";
 export interface WorldMapEraQuestion extends ChoiceQuizItem {
   imageSrc: string;
   caption?: string;
+  /**
+   * true の間は「画像未設置のサンプル/プレースホルダー問題」として扱われ、
+   * 画像存在チェック(src/games/__tests__/worldMapImages.test.ts)の対象から除外される。
+   * ファクトチェックが済み、実際の地図画像を public/ 以下に配置したら、
+   * このフィールドごと削除すること。それだけで自動的にCIの存在チェック対象になる。
+   */
+  sample?: boolean;
 }
 
 export const WORLD_MAP_TIME_TRAVEL_QUESTIONS: WorldMapEraQuestion[] = [
@@ -30,5 +37,6 @@ export const WORLD_MAP_TIME_TRAVEL_QUESTIONS: WorldMapEraQuestion[] = [
     explanation:
       "これはサンプル問題です。public/plus-challenge/maps/ に地図画像を追加し、このデータのimageSrcを差し替えてください。",
     caption: "サンプル問題(画像未設定)",
+    sample: true,
   },
 ];

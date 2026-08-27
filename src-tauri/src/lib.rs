@@ -4,7 +4,6 @@ mod knowledge;
 mod learning_drill;
 mod llm_engine;
 mod pii_guard;
-mod plus_challenge;
 mod prompts;
 mod safety_drill;
 
@@ -25,7 +24,6 @@ pub fn run() {
     let model_load_lock: ModelLoadLock = Arc::new(Mutex::new(()));
 
     tauri::Builder::default()
-        .plugin(tauri_plugin_shell::init())
         .manage(shared_engine)
         .manage(shared_model_id)
         .manage(shared_drill_state)
@@ -42,8 +40,6 @@ pub fn run() {
             commands::next_learning_problem,
             commands::check_learning_answer,
             commands::list_learning_units,
-            commands::list_plus_challenge_categories,
-            commands::next_plus_challenge_problem,
         ])
         .run(tauri::generate_context!())
         .expect("プライバシー・バディの起動に失敗しました");

@@ -1,7 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen, type UnlistenFn } from "@tauri-apps/api/event";
 import type {
-  ChallengeCategoryInfo,
   DrillResult,
   DrillScenario,
   DrillSubject,
@@ -100,22 +99,9 @@ export async function checkLearningAnswer(
   return invoke("check_learning_answer", { problemId, answer });
 }
 
-/**
- * プラスチャレンジ(義務教育よりさらに発展した上級クイズ)のカテゴリ一覧を取得する
- * (先頭は必ず「すべて」)。
- */
-export async function listPlusChallengeCategories(): Promise<ChallengeCategoryInfo[]> {
-  return invoke<ChallengeCategoryInfo[]>("list_plus_challenge_categories");
-}
-
-/**
- * プラスチャレンジの新しい問題を1問取得する。AI(Qwen)を一切使わないため、
- * モデル未読込でも呼び出せる。`category`省略時は全カテゴリからランダムに出題する。
- * 採点は学習ドリルと共通の `checkLearningAnswer` をそのまま使う。
- */
-export async function nextPlusChallengeProblem(category?: string): Promise<LearningProblem> {
-  return invoke("next_plus_challenge_problem", { category: category ?? null });
-}
+// プラスチャレンジ(歴史クイズ・漢字スクエア・世界地図)は Rust IPC を経由せず、
+// src/games/ 配下の静的データ+決定論的ロジックのみで完結している(旧
+// listPlusChallengeCategories / nextPlusChallengeProblem は撤去済み)。
 
 export interface StreamHandlers {
   onChunk: (token: string) => void;

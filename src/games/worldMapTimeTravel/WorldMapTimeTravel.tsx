@@ -35,10 +35,11 @@ function MapImage({ item }: { item: WorldMapEraQuestion }) {
 export function WorldMapTimeTravel({ onBack }: GameScreenProps) {
   return (
     <ChoiceQuizGame
-      title="世界地図タイムトラベル"
+      title="世界地図タイムトラベル（準備中）"
       icon="🗺️"
       items={WORLD_MAP_TIME_TRAVEL_QUESTIONS}
       onBack={onBack}
+      notice="⚠️ このゲームは現在サンプル問題のみです。地図画像・問題データは今後追加予定です。"
       renderPrompt={(item) => (
         <div className="world-map__prompt">
           <p className="world-map__hint">この世界地図は、いつ頃のもの?</p>

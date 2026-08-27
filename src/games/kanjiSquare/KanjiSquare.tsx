@@ -29,7 +29,9 @@ export function KanjiSquare({ onBack }: GameScreenProps) {
 
   const submit = useCallback(() => {
     if (!puzzle || result) return;
-    const cleaned = input.trim();
+    // 全角/半角の表記ゆれ(IME入力などで紛れ込む場合がある)を吸収するため、
+    // 前後の空白除去に加えてUnicode正規化(NFKC)をかけてから比較する。
+    const cleaned = input.trim().normalize("NFKC");
     setTotal((t) => t + 1);
     if (cleaned === puzzle.answer) {
       setResult("correct");
@@ -68,7 +70,8 @@ export function KanjiSquare({ onBack }: GameScreenProps) {
             <input
               className="kanji-square__cell kanji-square__input"
               value={input}
-              maxLength={2}
+              // 答えは常に漢字1字なので、仕様を明確にするためmaxLengthも1にする
+              maxLength={1}
               disabled={!!result}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {

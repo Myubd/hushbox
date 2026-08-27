@@ -28,6 +28,8 @@ interface Props<T extends ChoiceQuizItem> {
   onBack: () => void;
   /** 問題データが空のときに出す案内文。省略時は共通の文言。 */
   emptyMessage?: string;
+  /** ヘッダー直下に常時表示する注記(「準備中」など、問題データが不十分なゲームで使う想定)。 */
+  notice?: ReactNode;
 }
 
 function shuffle<T>(arr: T[]): T[] {
@@ -46,6 +48,7 @@ export function ChoiceQuizGame<T extends ChoiceQuizItem>({
   renderPrompt,
   onBack,
   emptyMessage,
+  notice,
 }: Props<T>) {
   const [itemIndex, setItemIndex] = useState<number | null>(() =>
     items.length > 0 ? Math.floor(Math.random() * items.length) : null
@@ -98,6 +101,8 @@ export function ChoiceQuizGame<T extends ChoiceQuizItem>({
           </span>
         </div>
       </div>
+
+      {notice && <p className="plus-challenge__notice">{notice}</p>}
 
       {total > 0 && (
         <p className="plus-challenge__score">

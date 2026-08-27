@@ -21,10 +21,13 @@ export const GAMES: GameEntry[] = [
     Component: HistoryTimestamp,
   },
   {
+    // 問題データがサンプル1問のみで、地図画像も同梱していない(著作権上の理由)ため、
+    // 「完成したゲーム」ではなく準備中であることをメニュー上で明示している。
+    // 実際の地図画像・問題データを追加したら、この注記を外してよい。
     id: "world-map-time-travel",
-    label: "世界地図タイムトラベル",
+    label: "世界地図タイムトラベル（準備中）",
     icon: "🗺️",
-    description: "ランダムな年代の世界地図を見て、いつ頃の地図か当てよう",
+    description: "ランダムな年代の世界地図を見て、いつ頃の地図か当てよう(現在はサンプル問題のみ)",
     Component: WorldMapTimeTravel,
   },
   {

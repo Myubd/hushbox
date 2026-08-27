@@ -22,5 +22,10 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  // テストファイル(vitest)はここでは型チェックしない。
+  // 本番ビルド(npm run build → tauri build)が devDependency の vitest型に
+  // 依存してしまい、`npm install`し忘れただけでビルドが壊れるのを避けるため。
+  // テストファイルの型チェックは tsconfig.test.json 側の役割に分離している。
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
 }
