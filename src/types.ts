@@ -134,6 +134,15 @@ export interface DrillUnit {
   label: string;
 }
 
+// プラスチャレンジ(義務教育よりさらに発展した、AI・プライバシー・情報社会クイズ。
+// AI不使用、Rust側で確定的に生成・採点。学習ドリルとは別セクションだが、
+// 問題形式(4択)と採点の仕組みは学習ドリルと共通なので LearningProblem / LearningCheckResult を再利用する)
+export interface ChallengeCategoryInfo {
+  id: string;
+  label: string;
+  icon: string;
+}
+
 // プライバシーログ(すべてこの端末内で完結。外部送信は一切なし)
 export interface PrivacySessionStats {
   messagesSent: number;

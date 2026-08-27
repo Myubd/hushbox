@@ -3,9 +3,10 @@ import type { AgeMode } from "../types";
 
 interface Props {
   onSelect: (mode: AgeMode) => void;
+  onPlusChallenge: () => void;
 }
 
-export function AgeGate({ onSelect }: Props) {
+export function AgeGate({ onSelect, onPlusChallenge }: Props) {
   return (
     <div className="age-gate">
       <div className="age-gate__intro">
@@ -33,6 +34,21 @@ export function AgeGate({ onSelect }: Props) {
           </button>
         ))}
       </div>
+
+      <button type="button" className="plus-gate-cta" onClick={onPlusChallenge}>
+        <span className="plus-gate-cta__icon" aria-hidden="true">
+          🎓
+        </span>
+        <span className="plus-gate-cta__text">
+          <span className="plus-gate-cta__label">プラスチャレンジ</span>
+          <span className="plus-gate-cta__desc">
+            義務教育のその先へ。AI・プライバシー・情報社会について、もっと発展した内容に挑戦しよう
+          </span>
+        </span>
+        <span className="plus-gate-cta__arrow" aria-hidden="true">
+          →
+        </span>
+      </button>
 
       <p className="age-gate__footnote">
         ※ このアプリはサーバーを一切使いません。AIモデルを最初に一度だけダウンロードしたら、

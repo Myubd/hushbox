@@ -4,6 +4,7 @@ import { ModelLoader } from "./components/ModelLoader";
 import { ChatBubble } from "./components/ChatBubble";
 import { ChatInput } from "./components/ChatInput";
 import { LearningDrill } from "./components/LearningDrill";
+import { PlusChallenge } from "./components/PlusChallenge";
 import { ModelSettings } from "./components/ModelSettings";
 import { PrivacyPanel } from "./components/PrivacyPanel";
 import { useChatEngine } from "./hooks/useChatEngine";
@@ -15,10 +16,19 @@ type MainTab = "chat" | "drill";
 
 export default function App() {
   const [mode, setMode] = useState<AgeMode | null>(null);
+  const [showPlusChallenge, setShowPlusChallenge] = useState(false);
+
+  if (showPlusChallenge) {
+    return (
+      <div className="app-shell">
+        <PlusChallenge onBack={() => setShowPlusChallenge(false)} />
+      </div>
+    );
+  }
 
   return mode === null ? (
     <div className="app-shell">
-      <AgeGate onSelect={setMode} />
+      <AgeGate onSelect={setMode} onPlusChallenge={() => setShowPlusChallenge(true)} />
     </div>
   ) : (
     <ChatApp mode={mode} onChangeMode={() => setMode(null)} />

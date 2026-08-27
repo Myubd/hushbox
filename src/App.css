@@ -118,6 +118,75 @@
   line-height: 1.7;
 }
 
+/* ── プラスチャレンジへの入り口(学年ゲート画面下部) ───────────────────────── */
+.plus-gate-cta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1.5px dashed var(--color-coral);
+  background: var(--color-coral-soft);
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: transform 0.15s ease, border-style 0.15s ease, box-shadow 0.15s ease;
+}
+
+.plus-gate-cta:hover,
+.plus-gate-cta:focus-visible {
+  border-style: solid;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -16px rgba(226, 119, 91, 0.45);
+  outline: none;
+}
+
+.plus-gate-cta:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
+.plus-gate-cta__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 20px;
+}
+
+.plus-gate-cta__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.plus-gate-cta__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: #a8451f;
+}
+
+.plus-gate-cta__desc {
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+}
+
+.plus-gate-cta__arrow {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--color-coral);
+}
+
 /* ── ヘッダー ───────────────────────── */
 .app-header {
   display: flex;
@@ -573,6 +642,329 @@
 
 .learning-drill__note-text {
   flex: 1;
+}
+
+/* ── プラスチャレンジ画面 ───────────────────────── */
+.plus-challenge {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.plus-challenge__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.plus-challenge__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.plus-challenge__badge {
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--color-coral-soft);
+  color: #a8451f;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.plus-challenge__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.plus-challenge__intro {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+
+.plus-challenge__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.plus-challenge__category {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper-raised);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.plus-challenge__category.is-active {
+  border-color: var(--color-coral);
+  background: var(--color-coral-soft);
+  color: #a8451f;
+  font-weight: 600;
+}
+
+.plus-challenge__score {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
+.plus-challenge__card {
+  border-color: rgba(226, 119, 91, 0.35);
+}
+
+.plus-challenge__choices {
+  max-width: 480px;
+}
+
+@media (max-width: 720px) {
+  .plus-challenge {
+    padding: 20px 16px;
+  }
+
+  .plus-challenge__choices {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── プラスチャレンジ: ゲーム選択メニュー ───────────────────────── */
+.plus-challenge__game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.plus-challenge__game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 20px 18px;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper-raised);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.plus-challenge__game-card:hover,
+.plus-challenge__game-card:focus-visible {
+  border-color: var(--color-coral);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -14px rgba(226, 119, 91, 0.35);
+  outline: none;
+}
+
+.plus-challenge__game-card:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
+.plus-challenge__game-icon {
+  font-size: 26px;
+}
+
+.plus-challenge__game-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.plus-challenge__game-desc {
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+}
+
+/* ── プラスチャレンジ: 各ゲーム共通シェル ───────────────────────── */
+.mini-game {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mini-game__card {
+  border-color: rgba(226, 119, 91, 0.35);
+}
+
+.mini-game__choices {
+  max-width: 480px;
+}
+
+/* ── 歴史のタイムスタンプ ───────────────────────── */
+.history-timestamp__date-wrap {
+  text-align: center;
+  padding: 8px 0 4px;
+}
+
+.history-timestamp__hint {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
+.history-timestamp__date {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 5vw, 32px);
+  letter-spacing: 0.02em;
+}
+
+/* ── 世界地図タイムトラベル ───────────────────────── */
+.world-map__prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.world-map__hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.world-map__image-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.world-map__image {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+}
+
+.world-map__placeholder {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--color-border);
+  background: var(--color-paper);
+  padding: 20px;
+}
+
+.world-map__placeholder-icon {
+  font-size: 28px;
+}
+
+.world-map__placeholder-text {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  text-align: center;
+  line-height: 1.7;
+}
+
+.world-map__placeholder-text code {
+  font-size: 11.5px;
+  background: var(--color-paper-raised);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.world-map__caption {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--color-ink-soft);
+}
+
+/* ── 漢字スクエア ───────────────────────── */
+.kanji-square__hint {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.kanji-square__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 64px);
+  gap: 6px;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.kanji-square__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  background: var(--color-paper-raised);
+  border: 1.5px solid var(--color-border);
+}
+
+.kanji-square__cell--top {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.kanji-square__cell--left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.kanji-square__cell--right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.kanji-square__cell--bottom {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.kanji-square__input {
+  grid-column: 2;
+  grid-row: 2;
+  text-align: center;
+  border-color: var(--color-coral);
+  background: var(--color-coral-soft);
+  color: #a8451f;
+  outline: none;
+}
+
+.kanji-square__input:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
+.kanji-square__words {
+  list-style: none;
+  margin: 10px 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
 }
 
 /* ── メインレイアウト ───────────────────────── */

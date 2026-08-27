@@ -6,6 +6,7 @@ use crate::llm_engine::{self, GenerationChunk, LlmEngine, LoadProgress, ModelLoa
 use crate::learning_drill::{self, DrillCheckResult, DrillProblem, SharedDrillState, UnitInfo};
 use crate::encyclopedia;
 use crate::pii_guard::{self, PiiType};
+use crate::plus_challenge::{self, ChallengeCategory};
 use crate::prompts::{self, system_prompt_for};
 use crate::safety_drill::{self, DrillResult, DrillScenario};
 
@@ -85,6 +86,40 @@ pub async fn check_learning_answer(
         .remove(&problem_id)
         .ok_or_else(|| "この問題はすでに終了しているか、見つかりませんでした".to_string())?;
     Ok(learning_drill::check(&answer, &pending))
+}
+
+/// プラスチャレンジ(義務教育よりさらに発展した、AI・プライバシー・情報社会クイズ)の
+/// カテゴリ一覧を返す(先頭は必ず「すべて」)。
+#[tauri::command]
+pub fn list_plus_challenge_categories() -> Vec<ChallengeCategory> {
+    plus_challenge::categories()
+}
+
+/// プラスチャレンジの新しい問題を1問生成する。LLMは一切使わない。
+/// 学習ドリルと同じ `SharedDrillState` に正解を保持するため、採点は
+/// 既存の `check_learning_answer` コマンドをそのまま使い回せる。
+/// `category`省略時/"mixed"時は全カテゴリからランダムに出題する。
+/// (現状は問題データが未投入のため、常にエラーを返す)
+#[tauri::command]
+pub async fn next_plus_challenge_problem(
+    category: Option<String>,
+    drill_state: State<'_, SharedDrillState>,
+) -> Result<DrillProblem, String> {
+    let (problem, pending) = plus_challenge::generate(category.as_deref())
+        .ok_or_else(|| "プラスチャレンジの問題はまだ用意されていません".to_string())?;
+
+    let id = match &problem {
+        DrillProblem::Choice { id, .. } => id.clone(),
+        DrillProblem::Arithmetic { id, .. } => id.clone(),
+    };
+
+    let mut state = drill_state.lock().await;
+    if state.len() > 200 {
+        state.clear();
+    }
+    state.insert(id, pending);
+
+    Ok(problem)
 }
 
 /// 選択可能なモデルの一覧を返す(モデル切り替え機能用)。LLM未初期化でも呼べる。
