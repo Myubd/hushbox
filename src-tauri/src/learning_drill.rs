@@ -21,6 +21,7 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
+use once_cell::sync::Lazy;
 use rand::seq::SliceRandom;
 use rand::Rng;
 use serde::{Deserialize, Serialize};
@@ -245,6 +246,7 @@ pub fn generate_arithmetic(mode: &str, unit: Option<&str>) -> (DrillProblem, Pen
 
 /// 1問分の定義。`choices`のうち`correct_index`が正解。
 /// 表示順はgenerate_from_bank内でシャッフルするので、ここでの並び順は気にしなくてよい。
+#[derive(Clone)]
 struct ChoiceQuestion {
     question: &'static str,
     choices: [&'static str; 4],
@@ -256,6 +258,46 @@ struct ChoiceQuestion {
     /// choicesと同じ並び順・同じ数の一言解説。正解/不正解を問わず、
     /// 「なぜその選択肢が正しい/正しくないか」を1つずつ書く。
     notes: [&'static str; 4],
+}
+
+/// JSONファイルから読み込む用の入れ物。`ChoiceQuestion`はフィールドが
+/// `&'static str`なので、パース結果(所有String)をそのままでは詰められない。
+/// `leak_str`で`&'static str`化してから`ChoiceQuestion`に変換する
+/// (プロセス終了まで保持し続けるデータなので、リークしても実害はない)。
+#[derive(Deserialize)]
+struct ChoiceQuestionJson {
+    question: String,
+    choices: [String; 4],
+    correct_index: usize,
+    mode: String,
+    unit: String,
+    explanation: String,
+    notes: [String; 4],
+}
+
+fn leak_str(s: String) -> &'static str {
+    Box::leak(s.into_boxed_str())
+}
+
+/// 問題データのJSONファイル(配列)を`ChoiceQuestion`のVecに変換する。
+/// 学年ごとにファイルを分けて追加していける(`include_str!`でバイナリに埋め込むので
+/// 実行時にファイルを読みに行くわけではなく、これまでのRustリテラルと同様に
+/// コンパイル時に固定される)。
+fn load_choice_questions_json(json: &str) -> Vec<ChoiceQuestion> {
+    let parsed: Vec<ChoiceQuestionJson> =
+        serde_json::from_str(json).expect("問題データのJSONが不正です");
+    parsed
+        .into_iter()
+        .map(|q| ChoiceQuestion {
+            question: leak_str(q.question),
+            choices: q.choices.map(leak_str),
+            correct_index: q.correct_index,
+            mode: leak_str(q.mode),
+            unit: leak_str(q.unit),
+            explanation: leak_str(q.explanation),
+            notes: q.notes.map(leak_str),
+        })
+        .collect()
 }
 
 fn pick_choice_question<'a>(
@@ -560,7 +602,7 @@ pub fn generate_science(mode: &str, unit: Option<&str>) -> (DrillProblem, Pendin
 
 // ---- 社会 ----
 // 単元: civics_life(くらしと社会) / history(歴史) / geography_government(地理・政治)
-const SOCIAL_BANK: &[ChoiceQuestion] = &[
+const SOCIAL_BANK_CORE: &[ChoiceQuestion] = &[
     ChoiceQuestion {
         question: "火事のときに電話する番号はどれ?",
         choices: ["110", "119", "104", "117"],
@@ -689,8 +731,24 @@ const SOCIAL_BANK: &[ChoiceQuestion] = &[
     },
 ];
 
+/// 社会科の問題バンク全体。ハードコードされた元の少数の問題(`SOCIAL_BANK_CORE`)に加えて、
+/// 学年ごとのJSONファイル(`social_data/`以下)を起動時に1回だけ読み込んで結合する。
+/// 新しい学年の問題を追加したいときは、`social_data/`にJSONファイルを1つ追加して
+/// ここに1行足すだけでよい。
+static SOCIAL_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
+    let mut all: Vec<ChoiceQuestion> = SOCIAL_BANK_CORE.to_vec();
+    all.extend(load_choice_questions_json(include_str!("social_data/g3.json")));
+    all.extend(load_choice_questions_json(include_str!("social_data/g4.json")));
+    all.extend(load_choice_questions_json(include_str!("social_data/g5.json")));
+    all.extend(load_choice_questions_json(include_str!("social_data/g6.json")));
+    all.extend(load_choice_questions_json(include_str!("social_data/j1.json")));
+    all.extend(load_choice_questions_json(include_str!("social_data/j2.json")));
+    all.extend(load_choice_questions_json(include_str!("social_data/j3.json")));
+    all
+});
+
 pub fn generate_social(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
-    generate_from_bank("social", SOCIAL_BANK, mode, unit)
+    generate_from_bank("social", &SOCIAL_BANK[..], mode, unit)
 }
 
 // ---- 英語 ----
@@ -998,7 +1056,7 @@ pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledg
 
     let mut out: Vec<KnowledgeSnippet> = Vec::new();
 
-    for bank in [SCIENCE_BANK, SOCIAL_BANK, ENGLISH_BANK, INFO_BANK] {
+    for bank in [SCIENCE_BANK, &SOCIAL_BANK[..], ENGLISH_BANK, INFO_BANK] {
         for q in bank {
             let correct = q.choices[q.correct_index];
             // 1文字の用語は誤マッチ(無関係な文への部分一致)が多いため除外する
