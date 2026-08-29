@@ -45,6 +45,7 @@ pub async fn next_learning_problem(
         "kanji" => learning_drill::generate_kanji(&mode, unit_ref),
         "science" => learning_drill::generate_science(&mode, unit_ref),
         "social" => learning_drill::generate_social(&mode, unit_ref),
+        "math" => learning_drill::generate_math(&mode, unit_ref),
         "english" => learning_drill::generate_english(&mode, unit_ref),
         "info" => learning_drill::generate_info(&mode, unit_ref),
         other => return Err(format!("不明な科目です: {other}")),

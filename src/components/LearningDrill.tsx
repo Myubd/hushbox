@@ -22,12 +22,13 @@ const EMPTY_SCORES: ScoreMap = {
   kanji: { correct: 0, total: 0 },
   science: { correct: 0, total: 0 },
   social: { correct: 0, total: 0 },
+  math: { correct: 0, total: 0 },
   english: { correct: 0, total: 0 },
   info: { correct: 0, total: 0 },
 };
 
 export function LearningDrill({ mode }: Props) {
-  const [subject, setSubject] = useState<DrillSubject>("arithmetic");
+  const [subject, setSubject] = useState<DrillSubject>("math");
   const [units, setUnits] = useState<DrillUnit[]>([]);
   const [unit, setUnit] = useState<string>("mixed");
   const [problem, setProblem] = useState<LearningProblem | null>(null);
@@ -91,11 +92,13 @@ export function LearningDrill({ mode }: Props) {
   const subjectInfo = DRILL_SUBJECTS.find((s) => s.id === subject)!;
   // 単元が「すべて」しか無い科目(まだ単元分けしていない)は、セレクタ自体を出さない
   const showUnitSelector = units.length > 1;
+  const mainSubjects = DRILL_SUBJECTS.filter((s) => !s.advanced);
+  const advancedSubjects = DRILL_SUBJECTS.filter((s) => s.advanced);
 
   return (
     <div className="learning-drill">
       <div className="learning-drill__tabs">
-        {DRILL_SUBJECTS.map((s) => (
+        {mainSubjects.map((s) => (
           <button
             key={s.id}
             className={`learning-drill__tab${subject === s.id ? " is-active" : ""}`}
@@ -105,6 +108,21 @@ export function LearningDrill({ mode }: Props) {
           </button>
         ))}
       </div>
+
+      {advancedSubjects.length > 0 && (
+        <div className="learning-drill__tabs learning-drill__tabs--advanced">
+          <span className="learning-drill__tabs-label">発展</span>
+          {advancedSubjects.map((s) => (
+            <button
+              key={s.id}
+              className={`learning-drill__tab${subject === s.id ? " is-active" : ""}`}
+              onClick={() => setSubject(s.id)}
+            >
+              {s.icon} {s.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       {showUnitSelector && (
         <div className="learning-drill__units">

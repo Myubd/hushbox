@@ -97,17 +97,21 @@ export interface ModelSpec {
 }
 
 // 学習ドリル(国語・算数・理科・社会・英語・情報。AI不使用、Rust側で確定的に生成・採点)
-export type DrillSubject = "arithmetic" | "kanji" | "science" | "social" | "english" | "info";
+// ("算数(arithmetic)"の自由入力ドリルは、プラスチャレンジ内の「計算れんしゅう」ゲーム
+//  [src/games/arithmeticPractice/]に移設済み。DrillSubjectの型自体は互換性のため残している)
+export type DrillSubject = "arithmetic" | "kanji" | "science" | "social" | "math" | "english" | "info";
 
 export interface SubjectInfo {
   id: DrillSubject;
   label: string;
   icon: string;
+  /** trueの科目は「発展」セクションにまとめて表示する(通常の科目タブとは分ける)。 */
+  advanced?: boolean;
 }
 
 export const DRILL_SUBJECTS: SubjectInfo[] = [
-  { id: "arithmetic", label: "算数", icon: "🔢" },
   { id: "kanji", label: "国語(漢字)", icon: "📖" },
+  { id: "math", label: "算数・数学", icon: "🔢" },
   { id: "science", label: "理科", icon: "🔬" },
   { id: "social", label: "社会", icon: "🗾" },
   { id: "english", label: "英語", icon: "🔤" },

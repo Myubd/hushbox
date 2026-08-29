@@ -1,6 +1,7 @@
 import { HistoryTimestamp } from "./historyTimestamp/HistoryTimestamp";
 import { WorldMapTimeTravel } from "./worldMapTimeTravel/WorldMapTimeTravel";
 import { KanjiSquare } from "./kanjiSquare/KanjiSquare";
+import { ArithmeticPractice } from "./arithmeticPractice/ArithmeticPractice";
 import type { GameEntry } from "./types";
 
 /**
@@ -36,5 +37,12 @@ export const GAMES: GameEntry[] = [
     icon: "🀄",
     description: "上下左右の漢字と組み合わさるように、中央に漢字を入れよう",
     Component: KanjiSquare,
+  },
+  {
+    id: "arithmetic-practice",
+    label: "計算れんしゅう",
+    icon: "🧮",
+    description: "たしざん・ひきざん・かけざん・わりざんを自由入力で練習しよう",
+    Component: ArithmeticPractice,
   },
 ];

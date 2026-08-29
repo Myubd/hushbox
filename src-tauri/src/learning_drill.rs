@@ -109,6 +109,13 @@ pub fn units_for_subject(subject: &str) -> Vec<UnitInfo> {
             u("multiplication", "掛け算"),
             u("division", "割り算"),
         ],
+        "math" => vec![
+            mixed_unit(),
+            u("numbers_calc", "数と計算"),
+            u("shapes", "図形"),
+            u("relations", "変化と関係"),
+            u("data", "データの活用"),
+        ],
         "science" => vec![
             mixed_unit(),
             u("living_things", "生き物・からだ"),
@@ -132,8 +139,11 @@ pub fn units_for_subject(subject: &str) -> Vec<UnitInfo> {
             u("internet_safety", "インターネットの安全"),
             u("programming", "プログラミング"),
         ],
-        // 漢字はまだ単元分けしていない(読みの範囲のみ)。今後、学年内で
-        // さらに分けたくなったらここに追加し、KANJI_BANKにunit情報を足せばよい。
+        "kanji" => vec![
+            mixed_unit(),
+            u("kanji_reading", "漢字の読み"),
+            u("vocabulary_grammar", "ことば・文法"),
+        ],
         _ => vec![mixed_unit()],
     }
 }
@@ -238,6 +248,28 @@ pub fn generate_arithmetic(mode: &str, unit: Option<&str>) -> (DrillProblem, Pen
         tip: Some(arithmetic_tip(&question)),
     };
     (problem, pending)
+}
+
+// ---- 算数・数学(4択問題バンク) ----
+// 単元: numbers_calc(数と計算) / shapes(図形) / relations(変化と関係・関数) / data(データの活用)
+// generate_arithmeticの自由入力・自動生成ドリルとは別に、文章題・図形・データの活用など
+// 4択+解説形式で出題する。social/scienceと同じくJSONファイルを起動時に1回だけ読み込む。
+static MATH_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
+    let mut all: Vec<ChoiceQuestion> = Vec::new();
+    all.extend(load_choice_questions_json(include_str!("math_data/g1.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/g2.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/g3.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/g4.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/g5.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/g6.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/j1.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/j2.json")));
+    all.extend(load_choice_questions_json(include_str!("math_data/j3.json")));
+    all
+});
+
+pub fn generate_math(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
+    generate_from_bank("math", &MATH_BANK[..], mode, unit)
 }
 
 // ============================================================
@@ -367,107 +399,32 @@ fn generate_from_bank(
     (problem, pending)
 }
 
-// ---- 国語(漢字): 「読み→漢字」の4択。他科目と形が違うため専用の小さな辞書のまま ----
-// (まだ単元分けしていないため unit は使わない。将来分けるならタプルにunitを足せばよい)
+// ---- 国語(漢字・ことば) ----
+// 単元: kanji_reading(漢字の読み) / vocabulary_grammar(ことば・文法)
+// 他の科目(理科・社会・算数など)と同じ、JSONファイル+Lazy読み込み方式。
+// もとは「読み→漢字」の小さな手書き辞書(30語)だけだったが、学年ごとの本格的な
+// 4択+解説データに置き換えた。KANJI_BANK_COREとして元の30語も
+// ChoiceQuestion形式に変換して残してある。
 
-const KANJI_BANK: &[(&str, &str, &str)] = &[
-    ("がっこう", "学校", "low"),
-    ("せんせい", "先生", "low"),
-    ("ともだち", "友達", "low"),
-    ("げんき", "元気", "low"),
-    ("あめ", "雨", "low"),
-    ("そら", "空", "low"),
-    ("はな", "花", "low"),
-    ("みず", "水", "low"),
-    ("やま", "山", "low"),
-    ("かわ", "川", "low"),
-    ("しゃかい", "社会", "mid"),
-    ("りか", "理科", "mid"),
-    ("としょかん", "図書館", "mid"),
-    ("きょうそう", "競争", "mid"),
-    ("かんさつ", "観察", "mid"),
-    ("じゅんび", "準備", "mid"),
-    ("きぼう", "希望", "mid"),
-    ("せいかつ", "生活", "mid"),
-    ("こうつう", "交通", "mid"),
-    ("しぜん", "自然", "mid"),
-    ("けいざい", "経済", "junior"),
-    ("せいじ", "政治", "junior"),
-    ("かんきょう", "環境", "junior"),
-    ("しょうらい", "将来", "junior"),
-    ("ぎじゅつ", "技術", "junior"),
-    ("こくさい", "国際", "junior"),
-    ("せきにん", "責任", "junior"),
-    ("いけん", "意見", "junior"),
-    ("じっけん", "実験", "junior"),
-    ("ひょうか", "評価", "junior"),
-];
+static KANJI_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
+    let mut all: Vec<ChoiceQuestion> = Vec::new();
+    all.extend(load_choice_questions_json(include_str!("kanji_data/core.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/g1.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/g2.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/g3.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/g4.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/g5.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/g6.json")));
+    all
+});
 
-/// unitは現状未使用(漢字はまだ単元分けしていない)。呼び出しシグネチャを他科目と
-/// 揃えるためだけに受け取っている。
-pub fn generate_kanji(mode: &str, _unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
-    let mut rng = rand::thread_rng();
-    let pool: Vec<&(&str, &str, &str)> = KANJI_BANK.iter().filter(|(_, _, m)| *m == mode).collect();
-    let pool: Vec<&(&str, &str, &str)> = if pool.is_empty() {
-        KANJI_BANK.iter().collect()
-    } else {
-        pool
-    };
-
-    let (reading, correct_kanji, _) = **pool.choose(&mut rng).unwrap();
-
-    let mut distractor_pool: Vec<&str> = KANJI_BANK
-        .iter()
-        .map(|(_, k, _)| *k)
-        .filter(|k| *k != correct_kanji)
-        .collect();
-    distractor_pool.shuffle(&mut rng);
-    let mut choices: Vec<String> = distractor_pool
-        .into_iter()
-        .take(3)
-        .map(|s| s.to_string())
-        .collect();
-    choices.push(correct_kanji.to_string());
-    choices.shuffle(&mut rng);
-
-    let id = new_id();
-    let problem = DrillProblem::Choice {
-        id: id.clone(),
-        subject: "kanji".to_string(),
-        question: format!("「{reading}」の漢字はどれ?"),
-        choices: choices.clone(),
-    };
-
-    // 選ばなかった漢字についても「それは何と読むか」を教えることで、
-    // 「なぜ違うか」がその場で分かるようにする。
-    let choice_notes: Vec<(String, String)> = choices
-        .iter()
-        .map(|c| {
-            if c == correct_kanji {
-                (c.clone(), format!("「{reading}」は「{correct_kanji}」と書くよ。"))
-            } else {
-                let own_reading = KANJI_BANK
-                    .iter()
-                    .find(|(_, k, _)| k == c)
-                    .map(|(r, _, _)| *r)
-                    .unwrap_or("?");
-                (c.clone(), format!("「{c}」は「{own_reading}」と読む、別の言葉だよ。"))
-            }
-        })
-        .collect();
-
-    let pending = PendingAnswer {
-        correct_text: correct_kanji.to_string(),
-        explanation: format!("「{reading}」は「{correct_kanji}」と書くよ。"),
-        choice_notes,
-        tip: None,
-    };
-    (problem, pending)
+pub fn generate_kanji(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
+    generate_from_bank("kanji", &KANJI_BANK[..], mode, unit)
 }
 
 // ---- 理科 ----
 // 単元: living_things(生き物・からだ) / physics_energy(物理・化学) / earth_space(地球・宇宙)
-const SCIENCE_BANK: &[ChoiceQuestion] = &[
+const SCIENCE_BANK_CORE: &[ChoiceQuestion] = &[
     ChoiceQuestion {
         question: "たまごから生まれる生き物はどれ?",
         choices: ["ねこ", "にわとり", "うさぎ", "いぬ"],
@@ -596,8 +553,23 @@ const SCIENCE_BANK: &[ChoiceQuestion] = &[
     },
 ];
 
+/// 理科の問題バンク全体。社会科と同じ方式で、ハードコードされた元の少数の問題
+/// (`SCIENCE_BANK_CORE`)に加えて、学年ごとのJSONファイル(`science_data/`以下)を
+/// 起動時に1回だけ読み込んで結合する。
+static SCIENCE_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
+    let mut all: Vec<ChoiceQuestion> = SCIENCE_BANK_CORE.to_vec();
+    all.extend(load_choice_questions_json(include_str!("science_data/g3.json")));
+    all.extend(load_choice_questions_json(include_str!("science_data/g4.json")));
+    all.extend(load_choice_questions_json(include_str!("science_data/g5.json")));
+    all.extend(load_choice_questions_json(include_str!("science_data/g6.json")));
+    all.extend(load_choice_questions_json(include_str!("science_data/j1.json")));
+    all.extend(load_choice_questions_json(include_str!("science_data/j2.json")));
+    all.extend(load_choice_questions_json(include_str!("science_data/j3.json")));
+    all
+});
+
 pub fn generate_science(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
-    generate_from_bank("science", SCIENCE_BANK, mode, unit)
+    generate_from_bank("science", &SCIENCE_BANK[..], mode, unit)
 }
 
 // ---- 社会 ----
@@ -1056,11 +1028,14 @@ pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledg
 
     let mut out: Vec<KnowledgeSnippet> = Vec::new();
 
-    for bank in [SCIENCE_BANK, &SOCIAL_BANK[..], ENGLISH_BANK, INFO_BANK] {
+    for bank in [&SCIENCE_BANK[..], &SOCIAL_BANK[..], &MATH_BANK[..], ENGLISH_BANK, INFO_BANK] {
         for q in bank {
             let correct = q.choices[q.correct_index];
-            // 1文字の用語は誤マッチ(無関係な文への部分一致)が多いため除外する
-            if correct.chars().count() >= 2 && query.contains(correct) {
+            // 1文字の用語や、数字だけの答え(算数の計算結果など)は無関係な文への
+            // 誤マッチが多いため除外する。
+            let is_pure_number = !correct.is_empty()
+                && correct.chars().all(|c| c.is_ascii_digit() || c == '.' || c == '-');
+            if correct.chars().count() >= 2 && !is_pure_number && query.contains(correct) {
                 out.push(KnowledgeSnippet {
                     source: "curriculum",
                     title: correct.to_string(),
@@ -1070,12 +1045,22 @@ pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledg
         }
     }
 
-    for (hira, kanji, _mode) in KANJI_BANK {
-        if query.contains(*kanji) || query.contains(*hira) {
+    // 漢字バンクは「「学校」の読み方はどれ?」のように、問題文に漢字そのものが
+    // 含まれ、正解の選択肢は読み(ひらがな)になっている。上のループとは
+    // ヒットさせたい語(漢字/読みの両方)が違うため、専用に扱う。
+    for q in KANJI_BANK.iter().filter(|q| q.unit == "kanji_reading") {
+        let reading = q.choices[q.correct_index];
+        let kanji_m = q.question.find('「').zip(q.question.find('」'));
+        let Some((start, end)) = kanji_m else { continue };
+        let kanji = &q.question[start + '「'.len_utf8()..end];
+        if kanji.chars().count() < 2 {
+            continue;
+        }
+        if query.contains(kanji) || (reading.chars().count() >= 2 && query.contains(reading)) {
             out.push(KnowledgeSnippet {
                 source: "curriculum",
-                title: (*kanji).to_string(),
-                body: format!("「{hira}」は漢字で「{kanji}」と書きます。"),
+                title: kanji.to_string(),
+                body: format!("「{reading}」は漢字で「{kanji}」と書きます。"),
             });
         }
     }
@@ -1176,6 +1161,8 @@ mod tests {
         let generators: &[(&str, Gen)] = &[
             ("science", generate_science),
             ("social", generate_social),
+            ("math", generate_math),
+            ("kanji", generate_kanji),
             ("english", generate_english),
             ("info", generate_info),
         ];
@@ -1207,6 +1194,8 @@ mod tests {
             ("arithmetic", generate_arithmetic),
             ("science", generate_science),
             ("social", generate_social),
+            ("math", generate_math),
+            ("kanji", generate_kanji),
             ("english", generate_english),
             ("info", generate_info),
         ];

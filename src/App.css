@@ -410,6 +410,19 @@
   font-weight: 600;
 }
 
+.learning-drill__tabs--advanced {
+  align-items: center;
+  margin-top: -2px;
+  opacity: 0.85;
+}
+
+.learning-drill__tabs-label {
+  font-size: 11px;
+  color: var(--color-text-muted, #888);
+  flex-shrink: 0;
+  padding-right: 2px;
+}
+
 .learning-drill__units {
   display: flex;
   gap: 6px;
