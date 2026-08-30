@@ -1,0 +1,2795 @@
+[
+ {
+  "question": "I (　　) already finished my homework.",
+  "choices": [
+   "have",
+   "has",
+   "had",
+   "am"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了形は「have/has＋過去分詞」で作り、過去に始まった動作が現在につながっている状態を表す。完了用法は「（すでに）〜し終えた」という意味で、alreadyはこの用法とよく一緒に使われる語。主語Iは1人称単数なのでhaveを使う。",
+  "notes": [
+   "現在完了形は「have/has＋過去分詞」で作り、過去に始まった動作が現在につながっている状態を表す。完了用法は「（すでに）〜し終えた」という意味で、alreadyはこの用法とよく一緒に使われる語。主語Iは1人称単数なのでhaveを使う。",
+   "hasは3人称単数専用でIとは一致しない。",
+   "hadは過去完了形（もっと過去のある時点までの完了）を作る語で、単純な現在完了とは異なる時制になる。",
+   "be動詞amはこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "She (　　) just arrived at the station.",
+  "choices": [
+   "have",
+   "has",
+   "had",
+   "is"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語sheは3人称単数なのでhasを使う。justは「ちょうど今〜したところだ」という完了用法でよく使われる語。",
+  "notes": [
+   "haveはIやyou、複数用でsheと一致しない。",
+   "主語sheは3人称単数なのでhasを使う。justは「ちょうど今〜したところだ」という完了用法でよく使われる語。",
+   "過去完了は異なる時制。",
+   "be動詞はこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "Have you (　　) your breakfast yet?",
+  "choices": [
+   "finish",
+   "finished",
+   "finishing",
+   "finishes"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了形はhave/has＋過去分詞。finishの過去分詞は規則変化でfinished。yetは疑問文で「もう〜しましたか」という完了をたずねるときに使う語。",
+  "notes": [
+   "原形は過去分詞の形になっていない。",
+   "現在完了形はhave/has＋過去分詞。finishの過去分詞は規則変化でfinished。yetは疑問文で「もう〜しましたか」という完了をたずねるときに使う語。",
+   "ing形は現在完了には使わない。",
+   "3人称単数現在形もこの構文には合わない。"
+  ]
+ },
+ {
+  "question": "I haven't (　　) the movie yet.",
+  "choices": [
+   "see",
+   "saw",
+   "seen",
+   "seeing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了の否定文でも過去分詞を使う。seeの過去分詞は不規則変化でseen。yetは否定文で「まだ〜していない」という意味で使われる。",
+  "notes": [
+   "原形は不適切。",
+   "過去形（sawの形）は現在完了には使わない（過去分詞と過去形が異なる不規則動詞の場合、混同しやすい点に注意が必要）。",
+   "現在完了の否定文でも過去分詞を使う。seeの過去分詞は不規則変化でseen。yetは否定文で「まだ〜していない」という意味で使われる。",
+   "ing形は不適切。"
+  ]
+ },
+ {
+  "question": "(　　) she done her homework yet?",
+  "choices": [
+   "Have",
+   "Has",
+   "Did",
+   "Is"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了の疑問文はHave/Hasを主語の前に出す。主語sheは3人称単数なのでHas。",
+  "notes": [
+   "Haveは3人称単数と一致しない。",
+   "現在完了の疑問文はHave/Hasを主語の前に出す。主語sheは3人称単数なのでHas。",
+   "Didは過去形の疑問文用で、現在完了とは異なる形（doneという過去分詞と組み合わない）。",
+   "be動詞はこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "My father has just (　　) home.",
+  "choices": [
+   "come",
+   "came",
+   "coming",
+   "comes"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了はhas＋過去分詞。comeは原形・過去分詞が同じ形（comeは不規則動詞で、原形come・過去形came・過去分詞come）という特殊な変化をする動詞。",
+  "notes": [
+   "現在完了はhas＋過去分詞。comeは原形・過去分詞が同じ形（comeは不規則動詞で、原形come・過去形came・過去分詞come）という特殊な変化をする動詞。",
+   "cameは過去形であり過去分詞とは異なる形（このような動詞は原形と過去分詞が同じで、過去形だけが異なるという逆のパターンに注意）。",
+   "ing形は不適切。",
+   "3人称単数現在形は不適切。"
+  ]
+ },
+ {
+  "question": "We have (　　) cleaned the room.",
+  "choices": [
+   "already",
+   "yesterday",
+   "ago",
+   "last week"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "alreadyは「すでに」という意味で現在完了の完了用法とよく一緒に使われる語。現在完了は「過去の動作が現在の状態につながっている」ことを表すため、alreadyのように現在との関連を示す語と相性がよい。",
+  "notes": [
+   "alreadyは「すでに」という意味で現在完了の完了用法とよく一緒に使われる語。現在完了は「過去の動作が現在の状態につながっている」ことを表すため、alreadyのように現在との関連を示す語と相性がよい。",
+   "yesterday, ago, last weekはいずれも「明確に過去の一時点」を指定する語であり、現在完了は「いつ〜したか」という特定の過去の時点を明示する文とは一緒に使わないという規則がある（過去の特定の時点を言うときは過去形を使う）。",
+   "yesterday, ago, last weekはいずれも「明確に過去の一時点」を指定する語であり、現在完了は「いつ〜したか」という特定の過去の時点を明示する文とは一緒に使わないという規則がある（過去の特定の時点を言うときは過去形を使う）。",
+   "yesterday, ago, last weekはいずれも「明確に過去の一時点」を指定する語であり、現在完了は「いつ〜したか」という特定の過去の時点を明示する文とは一緒に使わないという規則がある（過去の特定の時点を言うときは過去形を使う）。"
+  ]
+ },
+ {
+  "question": "I (　　) my key. I can't find it.",
+  "choices": [
+   "lose",
+   "lost",
+   "have lost",
+   "am losing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「鍵をなくしてしまった（その結果、今も見つからない）」という、過去の動作の結果が現在まで続いている状態を表すので現在完了（完了・結果用法）が適切。",
+  "notes": [
+   "現在形は習慣を表す形でこの一回性の出来事には合わない。",
+   "過去形は「（過去のある時点で）なくした」という単なる過去の事実を述べる形で、この文のように「今も見つからない」という現在の結果への言及（I can't find it）を含む場合は現在完了の方が意味のつながりを表しやすい。",
+   "「鍵をなくしてしまった（その結果、今も見つからない）」という、過去の動作の結果が現在まで続いている状態を表すので現在完了（完了・結果用法）が適切。",
+   "進行形はこの文脈（なくすという瞬間的な動作）に合わない。"
+  ]
+ },
+ {
+  "question": "The train (　　) already left when we got to the station.",
+  "choices": [
+   "has",
+   "have",
+   "had",
+   "is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「私たちが駅に着いたとき、電車はすでに出発していた」という、過去のある時点（駅に着いたとき）よりもさらに前に完了していたことを表すには過去完了形（had＋過去分詞）を使う。現在完了が「現在」を基準にするのに対し、過去完了は「過去のある時点」を基準にするという違いがある。",
+  "notes": [
+   "現在完了は「現在」を基準にする時制で、gotという過去の出来事を基準にするこの文脈には合わない。",
+   "現在完了は「現在」を基準にする時制で、gotという過去の出来事を基準にするこの文脈には合わない。",
+   "「私たちが駅に着いたとき、電車はすでに出発していた」という、過去のある時点（駅に着いたとき）よりもさらに前に完了していたことを表すには過去完了形（had＋過去分詞）を使う。現在完了が「現在」を基準にするのに対し、過去完了は「過去のある時点」を基準にするという違いがある。",
+   "be動詞はこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "I have (　　) read this book twice.",
+  "choices": [
+   "already",
+   "never",
+   "ever",
+   "yet"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "alreadyは肯定文で「すでに」という完了の意味を表す。「この本はすでに2回読んだ」という意味になる。",
+  "notes": [
+   "alreadyは肯定文で「すでに」という完了の意味を表す。「この本はすでに2回読んだ」という意味になる。",
+   "neverは「一度も〜ない」という否定的な経験を表す語で、肯定文（読んだことがある）とは意味が矛盾する。",
+   "everは主に疑問文・否定文で使われる語（経験用法：これまでに）で、この肯定文には合わない。",
+   "yetは主に疑問文・否定文で使う語で、この肯定文には合わない。"
+  ]
+ },
+ {
+  "question": "Has the game (　　) yet?",
+  "choices": [
+   "start",
+   "started",
+   "starting",
+   "starts"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了の疑問文Has＋主語＋過去分詞。startの過去分詞は規則変化でstarted。",
+  "notes": [
+   "原形は不適切。",
+   "現在完了の疑問文Has＋主語＋過去分詞。startの過去分詞は規則変化でstarted。",
+   "ing形は不適切。",
+   "3人称単数現在形は不適切。"
+  ]
+ },
+ {
+  "question": "I (　　) not eaten lunch yet.",
+  "choices": [
+   "am",
+   "have",
+   "has",
+   "do"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了の否定文はhave/hasの直後にnotを置く。主語Iにはhaveが対応する。",
+  "notes": [
+   "be動詞はこの構文には使わない。",
+   "現在完了の否定文はhave/hasの直後にnotを置く。主語Iにはhaveが対応する。",
+   "hasは3人称単数用でIと一致しない。",
+   "doは現在完了には使わない。"
+  ]
+ },
+ {
+  "question": "Have you (　　) been to Okinawa?",
+  "choices": [
+   "never",
+   "already",
+   "ever",
+   "yet"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Have you ever 〜?で「今までに〜したことがありますか」と経験をたずねる決まった疑問文の形。everは「これまでの人生の中で」という漠然とした期間の中での経験を尋ねる働きをする。",
+  "notes": [
+   "neverは否定文で使う語で疑問文のこの位置には使わない。",
+   "alreadyは主に肯定文（完了用法）で使う語で、経験をたずねる疑問文としては不自然。",
+   "Have you ever 〜?で「今までに〜したことがありますか」と経験をたずねる決まった疑問文の形。everは「これまでの人生の中で」という漠然とした期間の中での経験を尋ねる働きをする。",
+   "yetは「もう（〜しましたか）」という完了をたずねる語で、経験（〜したことがあるか）をたずねる意味とは異なる。"
+  ]
+ },
+ {
+  "question": "I have (　　) seen a panda.",
+  "choices": [
+   "ever",
+   "never",
+   "yet",
+   "already"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "neverは「一度も〜したことがない」という否定的な経験を表す語で、肯定文の形のまま使われる（否定の意味を持つ語なのでnotは付けない）。",
+  "notes": [
+   "everは主に疑問文・否定文で使う語で、この文脈（否定の意味を表したい）にはneverの方が適切。",
+   "neverは「一度も〜したことがない」という否定的な経験を表す語で、肯定文の形のまま使われる（否定の意味を持つ語なのでnotは付けない）。",
+   "yetは主に疑問文・否定文（の中でも「まだ」という意味）で使う語で、経験の意味を表すこの文脈には合わない。",
+   "alreadyは「すでに」という完了の意味を表す語で、「一度も〜ない」という否定の経験とは意味が逆になる。"
+  ]
+ },
+ {
+  "question": "She has been to France (　　).",
+  "choices": [
+   "yesterday",
+   "three times",
+   "last year",
+   "ago"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "three times（3回）は回数を表す語で、経験用法の現在完了とよく一緒に使われる（明確な過去の一時点を指定するのではなく、これまでの回数を表すため）。",
+  "notes": [
+   "これらはいずれも「特定の過去の一時点」を指す語であり、現在完了とは一緒に使わないという規則がある。",
+   "three times（3回）は回数を表す語で、経験用法の現在完了とよく一緒に使われる（明確な過去の一時点を指定するのではなく、これまでの回数を表すため）。",
+   "これらはいずれも「特定の過去の一時点」を指す語であり、現在完了とは一緒に使わないという規則がある。",
+   "これらはいずれも「特定の過去の一時点」を指す語であり、現在完了とは一緒に使わないという規則がある。"
+  ]
+ },
+ {
+  "question": "Have you ever (　　) natto?",
+  "choices": [
+   "eat",
+   "ate",
+   "eaten",
+   "eating"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了はhave＋過去分詞。eatの過去分詞は不規則変化でeaten。",
+  "notes": [
+   "原形は不適切。",
+   "過去形は現在完了には使わない。",
+   "現在完了はhave＋過去分詞。eatの過去分詞は不規則変化でeaten。",
+   "ing形は不適切。"
+  ]
+ },
+ {
+  "question": "I have never (　　) such a beautiful sunset.",
+  "choices": [
+   "see",
+   "saw",
+   "seen",
+   "seeing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "haveの後は過去分詞。",
+  "notes": [
+   "原形は不適切。",
+   "過去形は不適切。",
+   "haveの後は過去分詞。",
+   "ing形は不適切。"
+  ]
+ },
+ {
+  "question": "This is the most interesting book (　　) I have ever read.",
+  "choices": [
+   "that",
+   "what",
+   "who",
+   "whose"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "the most interesting book（先行詞：説明される名詞）を後ろから修飾する関係代名詞thatを使う。特にmost（最上級）や the only, the first などが先行詞に付くときは、関係代名詞whichよりthatが好まれる傾向がある（この文法事項は関係代名詞の章でも扱うが、ここではI have ever read（今まで読んだ中で）という現在完了の経験用法と組み合わせた形として出題）。",
+  "notes": [
+   "the most interesting book（先行詞：説明される名詞）を後ろから修飾する関係代名詞thatを使う。特にmost（最上級）や the only, the first などが先行詞に付くときは、関係代名詞whichよりthatが好まれる傾向がある（この文法事項は関係代名詞の章でも扱うが、ここではI have ever read（今まで読んだ中で）という現在完了の経験用法と組み合わせた形として出題）。",
+   "whatは先行詞を必要としない特殊な関係代名詞（「〜すること・もの」という意味を自分の中に含む）で、先行詞bookがすでにあるこの文には使わない。",
+   "whoは人を先行詞とする関係代名詞でbook（もの）には使わない。",
+   "whoseは所有を表す関係代名詞でこの文脈には合わない。"
+  ]
+ },
+ {
+  "question": "I have lived in this town (　　) I was born.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "before"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "sinceは「〜以来（ずっと）」という起点を表す語で、後ろに「主語＋動詞」の節（I was born）を続けることができる。現在完了の継続用法（後の章で詳しく扱う）でよく使われる語。",
+  "notes": [
+   "sinceは「〜以来（ずっと）」という起点を表す語で、後ろに「主語＋動詞」の節（I was born）を続けることができる。現在完了の継続用法（後の章で詳しく扱う）でよく使われる語。",
+   "forは「〜の間」という期間の長さを表す語で、後ろには通常、期間を表す語句（for three yearsなど）が続き、節（主語＋動詞）は続けない。",
+   "agoは「〜前に」という意味で過去形の文で使う語であり、現在完了とは組み合わせない。",
+   "beforeは「〜より前に」という意味で、この文脈（〜して以来ずっと）とは異なる。"
+  ]
+ },
+ {
+  "question": "Have you ever (　　) a foreign country?",
+  "choices": [
+   "visit",
+   "visited",
+   "visiting",
+   "visits"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了はhave＋過去分詞。visitは規則動詞でvisited。",
+  "notes": [
+   "原形は不適切。",
+   "現在完了はhave＋過去分詞。visitは規則動詞でvisited。",
+   "ing形は不適切。",
+   "3人称単数現在形は不適切。"
+  ]
+ },
+ {
+  "question": "I have (　　) heard such a story before.",
+  "choices": [
+   "ever",
+   "never",
+   "already",
+   "just"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「そんな話は一度も聞いたことがない」という否定の経験を表すのでneverを使う。",
+  "notes": [
+   "everは疑問文・否定文用で、この肯定文の形（haveの後に直接置く形）には使わない（Have you ever heard...?のように疑問文なら使える）。",
+   "「そんな話は一度も聞いたことがない」という否定の経験を表すのでneverを使う。",
+   "alreadyは完了用法の語でこの文脈（経験の否定）には合わない。",
+   "justは「ちょうど今」という完了用法の語でここでは合わない。"
+  ]
+ },
+ {
+  "question": "How many times have you (　　) this movie?",
+  "choices": [
+   "watch",
+   "watched",
+   "watching",
+   "watches"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How many timesは「何回」と経験の回数をたずねる表現で、現在完了（have＋過去分詞）とよく一緒に使われる。",
+  "notes": [
+   "原形は不適切。",
+   "How many timesは「何回」と経験の回数をたずねる表現で、現在完了（have＋過去分詞）とよく一緒に使われる。",
+   "ing形は不適切。",
+   "3人称単数現在形は不適切。"
+  ]
+ },
+ {
+  "question": "I've (　　) tried Indian food.",
+  "choices": [
+   "never",
+   "yet",
+   "ago",
+   "yesterday"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「インド料理を試したことは一度もない」という否定の経験を表すneverが適切。",
+  "notes": [
+   "「インド料理を試したことは一度もない」という否定の経験を表すneverが適切。",
+   "yetは主に疑問文・否定文の文末で使う語で、この位置（have'veの直後）には通常使わない。",
+   "特定の過去の一時点を表す語で現在完了とは組み合わせない。",
+   "特定の過去の一時点を表す語で現在完了とは組み合わせない。"
+  ]
+ },
+ {
+  "question": "I have read this book (　　) times.",
+  "choices": [
+   "several",
+   "ago",
+   "yesterday",
+   "last month"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "several times（数回）は回数を表す表現で、経験用法の現在完了と組み合わせて使う。",
+  "notes": [
+   "several times（数回）は回数を表す表現で、経験用法の現在完了と組み合わせて使う。",
+   "特定の過去の一時点を表す語で現在完了とは組み合わせない。",
+   "特定の過去の一時点を表す語で現在完了とは組み合わせない。",
+   "特定の過去の一時点を表す語で現在完了とは組み合わせない。"
+  ]
+ },
+ {
+  "question": "I have lived here (　　) ten years.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "when"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "forは「〜の間」という期間の長さを表す語で、後ろにten years（10年間）のような期間を表す語句を続ける。継続用法の現在完了は「過去のある時点から現在まで、ずっと〜している（している状態が続いている）」ことを表し、forはその継続している「長さ」を示す。",
+  "notes": [
+   "sinceは「〜以来」という起点（いつから）を表す語で、後ろには通常、具体的な時点（since 2015, since I was bornなど）を続ける。ten years（期間の長さ）にはsinceではなくforを使うという使い分けが規則。",
+   "forは「〜の間」という期間の長さを表す語で、後ろにten years（10年間）のような期間を表す語句を続ける。継続用法の現在完了は「過去のある時点から現在まで、ずっと〜している（している状態が続いている）」ことを表し、forはその継続している「長さ」を示す。",
+   "agoは過去形の文で使う語で現在完了とは組み合わせない。",
+   "whenはこの位置（期間を表す語の前）には使わない。"
+  ]
+ },
+ {
+  "question": "I have known him (　　) we were children.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "during"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "sinceの後には「主語＋動詞」の節（we were children）を続けることができ、「〜して以来」という起点を表す。",
+  "notes": [
+   "sinceの後には「主語＋動詞」の節（we were children）を続けることができ、「〜して以来」という起点を表す。",
+   "forは期間の長さを表す語句（for ten yearsなど）を続けるのが基本で、節（主語＋動詞）は続けない。",
+   "agoは過去形の文で使う語。",
+   "duringは「〜の間ずっと」という意味だが、後ろには節ではなく名詞（during the vacationなど）を続ける。"
+  ]
+ },
+ {
+  "question": "How long have you (　　) in Japan?",
+  "choices": [
+   "live",
+   "lived",
+   "living",
+   "lives"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How longは「どのくらいの間」と期間をたずねる表現で、継続用法の現在完了（have＋過去分詞）と一緒に使う。liveは規則動詞でlived。",
+  "notes": [
+   "原形は不適切。",
+   "How longは「どのくらいの間」と期間をたずねる表現で、継続用法の現在完了（have＋過去分詞）と一緒に使う。liveは規則動詞でlived。",
+   "ing形は不適切（現在完了進行形にはbeenが必要：have been living）。",
+   "3人称単数現在形は不適切。"
+  ]
+ },
+ {
+  "question": "It has been raining (　　) this morning.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "during"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "this morning（今朝）という具体的な起点を表すのでsinceを使う。この文は現在完了進行形（have been＋動詞のing形）で、「（過去のある時点から）ずっと〜し続けている」という、動作の継続そのものを強調する形。状態動詞（know, live など）は現在完了（継続用法）で表すことが多いのに対し、動作動詞（rain, study など）は動作が続いていることを強調するために現在完了進行形を使うことが多いという使い分けがある。",
+  "notes": [
+   "this morning（今朝）という具体的な起点を表すのでsinceを使う。この文は現在完了進行形（have been＋動詞のing形）で、「（過去のある時点から）ずっと〜し続けている」という、動作の継続そのものを強調する形。状態動詞（know, live など）は現在完了（継続用法）で表すことが多いのに対し、動作動詞（rain, study など）は動作が続いていることを強調するために現在完了進行形を使うことが多いという使い分けがある。",
+   "forは期間の長さを表す語句を続けるための語でthis morningのような特定の時点には合わない。",
+   "agoは過去形用。",
+   "duringは名詞を続ける語でthis morning単独とは組み合わせが不自然（this morningは副詞的に使える語なのでsinceで起点を表す方が自然）。"
+  ]
+ },
+ {
+  "question": "I have been studying English (　　) two hours.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "when"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "two hours（2時間）という期間の長さを表すのでforを使う。現在完了進行形（have been＋ing）は「（さっきから今まで）ずっと〜し続けている」という動作の継続を強調する形。",
+  "notes": [
+   "sinceは起点（いつから）を表す語で、期間の長さ（two hours）には使わない。",
+   "two hours（2時間）という期間の長さを表すのでforを使う。現在完了進行形（have been＋ing）は「（さっきから今まで）ずっと〜し続けている」という動作の継続を強調する形。",
+   "この文脈に合わない。",
+   "この文脈に合わない。"
+  ]
+ },
+ {
+  "question": "She has (　　) waiting for the bus for 30 minutes.",
+  "choices": [
+   "be",
+   "is",
+   "been",
+   "was"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了進行形はhave/has＋been＋動詞のing形という形で作る。beenはbe動詞の過去分詞であり、この形全体で「（過去のある時点から）ずっと〜し続けている」という継続中の動作を表す。",
+  "notes": [
+   "原形beはこの位置には使わない（hasの後は過去分詞been）。",
+   "isは活用したbe動詞でこの構文には合わない。",
+   "現在完了進行形はhave/has＋been＋動詞のing形という形で作る。beenはbe動詞の過去分詞であり、この形全体で「（過去のある時点から）ずっと〜し続けている」という継続中の動作を表す。",
+   "wasも活用形でこの構文には合わない。"
+  ]
+ },
+ {
+  "question": "We (　　) friends since we were in elementary school.",
+  "choices": [
+   "are",
+   "have been",
+   "were",
+   "had been"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「小学生のころからずっと友達だ」という、過去に始まった状態が現在まで続いていることを表すので、be動詞の現在完了形（have been）を使う。継続用法の現在完了はbe動詞（状態を表す動詞）にもそのまま使える。",
+  "notes": [
+   "現在形areだけでは「今友達である」という現在の状態しか表せず、「小学生のころから」というsince以下の継続の意味とつながらない。",
+   "「小学生のころからずっと友達だ」という、過去に始まった状態が現在まで続いていることを表すので、be動詞の現在完了形（have been）を使う。継続用法の現在完了はbe動詞（状態を表す動詞）にもそのまま使える。",
+   "過去形は「（過去のある時点で）友達だった」という意味になり、現在まで続いているという意味が表せない。",
+   "had beenは過去完了形で、現在ではなく過去のある時点を基準にする形であり、この文脈（現在まで続いている）には合わない。"
+  ]
+ },
+ {
+  "question": "I have not seen him (　　) last month.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "during"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "last month（先月）という具体的な起点を表すのでsinceを使う。「先月以来、彼に会っていない」という継続の否定用法（否定形の継続用法は「ずっと〜していない」という意味になる）。",
+  "notes": [
+   "last month（先月）という具体的な起点を表すのでsinceを使う。「先月以来、彼に会っていない」という継続の否定用法（否定形の継続用法は「ずっと〜していない」という意味になる）。",
+   "forは期間の長さを表す語句を続ける語でlast monthのような特定の時点には合わない。",
+   "agoは過去形用。",
+   "duringはこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "He has been sick (　　) three days.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "when"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "three days（3日間）という期間の長さを表すのでforを使う。",
+  "notes": [
+   "sinceは起点を表す語で期間の長さには使わない。",
+   "three days（3日間）という期間の長さを表すのでforを使う。",
+   "この文脈に合わない。",
+   "この文脈に合わない。"
+  ]
+ },
+ {
+  "question": "They have been playing soccer (　　) two o'clock.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "during"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "two o'clock（2時）という具体的な起点（開始時刻）を表すのでsinceを使う。",
+  "notes": [
+   "two o'clock（2時）という具体的な起点（開始時刻）を表すのでsinceを使う。",
+   "forは期間の長さを表す語句を続ける語で、two o'clockのような特定の時点には合わない。",
+   "agoは過去形用。",
+   "duringは名詞（期間）を続ける語で時刻には通常使わない。"
+  ]
+ },
+ {
+  "question": "How long has it (　　) since you moved here?",
+  "choices": [
+   "be",
+   "been",
+   "being",
+   "was"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在完了はhas＋過去分詞。beの過去分詞はbeen。How long has it been since 〜?で「〜してからどのくらい経ちますか」という決まった表現。",
+  "notes": [
+   "原形は不適切。",
+   "現在完了はhas＋過去分詞。beの過去分詞はbeen。How long has it been since 〜?で「〜してからどのくらい経ちますか」という決まった表現。",
+   "ing形は不適切。",
+   "過去形は不適切。"
+  ]
+ },
+ {
+  "question": "My brother has been playing video games (　　) three hours.",
+  "choices": [
+   "since",
+   "for",
+   "ago",
+   "before"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "three hours（3時間）という期間の長さを表すのでforを使う。現在完了進行形は、ゲームをするという動作が3時間ずっと続いていることを強調している。",
+  "notes": [
+   "sinceは起点を表す語で期間の長さには使わない。",
+   "three hours（3時間）という期間の長さを表すのでforを使う。現在完了進行形は、ゲームをするという動作が3時間ずっと続いていることを強調している。",
+   "この文脈に合わない。",
+   "この文脈に合わない。"
+  ]
+ },
+ {
+  "question": "I have a friend (　　) can speak three languages.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "what"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "関係代名詞は先行詞（説明される名詞）が人か物かによって使い分ける。先行詞a friend（人）を修飾し、後ろの節（can speak three languages）の主語の働きをする関係代名詞（主格）にはwhoを使う。関係代名詞は「2つの文を1つにつなげる接続詞的な働き」と「節の中で主語・目的語などの働きをする代名詞的な働き」を同時に持つという特徴がある。",
+  "notes": [
+   "関係代名詞は先行詞（説明される名詞）が人か物かによって使い分ける。先行詞a friend（人）を修飾し、後ろの節（can speak three languages）の主語の働きをする関係代名詞（主格）にはwhoを使う。関係代名詞は「2つの文を1つにつなげる接続詞的な働き」と「節の中で主語・目的語などの働きをする代名詞的な働き」を同時に持つという特徴がある。",
+   "whichは物を先行詞とする関係代名詞で、人（friend）には使わない。",
+   "whoseは所有を表す関係代名詞で、この文（friendが「話せる」という動作の主語）には合わない。",
+   "whatは先行詞を必要としない特殊な関係代名詞で、先行詞friendがすでにあるこの文には使わない。"
+  ]
+ },
+ {
+  "question": "This is the book (　　) made me interested in science.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the book（物）を修飾し、後ろの節の主語の働きをする関係代名詞にはwhichを使う。",
+  "notes": [
+   "whoは人を先行詞とする関係代名詞でbook（物）には使わない。",
+   "先行詞the book（物）を修飾し、後ろの節の主語の働きをする関係代名詞にはwhichを使う。",
+   "whoseは所有を表す関係代名詞でこの文脈に合わない。",
+   "whomは人を先行詞とする目的格の関係代名詞で、物にも主格にも使わない。"
+  ]
+ },
+ {
+  "question": "The girl (　　) is singing over there is my sister.",
+  "choices": [
+   "which",
+   "who",
+   "whose",
+   "what"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the girl（人）を修飾する主格の関係代名詞whoを使う。",
+  "notes": [
+   "whichは物用。",
+   "先行詞the girl（人）を修飾する主格の関係代名詞whoを使う。",
+   "whoseは所有格用でこの文脈に合わない。",
+   "whatは先行詞を必要としない語でこの文には合わない。"
+  ]
+ },
+ {
+  "question": "I like the movie (　　) was released last year.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the movie（物）を修飾する主格の関係代名詞whichを使う。",
+  "notes": [
+   "whoは人用。",
+   "先行詞the movie（物）を修飾する主格の関係代名詞whichを使う。",
+   "whoseは所有格用。",
+   "whomは人・目的格用。"
+  ]
+ },
+ {
+  "question": "He is a scientist (　　) discovered a new star.",
+  "choices": [
+   "which",
+   "who",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞a scientist（人）を修飾する主格の関係代名詞whoを使う。",
+  "notes": [
+   "whichは物用。",
+   "先行詞a scientist（人）を修飾する主格の関係代名詞whoを使う。",
+   "whoseは所有格用。",
+   "whomは目的格用でこの文（scientistが「発見した」という動作の主語）には合わない。"
+  ]
+ },
+ {
+  "question": "This is a machine (　　) can translate many languages.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞a machine（物）を修飾する主格の関係代名詞whichを使う。",
+  "notes": [
+   "人用でmachine（物）には使わない。",
+   "先行詞a machine（物）を修飾する主格の関係代名詞whichを使う。",
+   "所有格用でこの文脈に合わない。",
+   "人用でmachine（物）には使わない。"
+  ]
+ },
+ {
+  "question": "I know a boy (　　) lives next door.",
+  "choices": [
+   "which",
+   "who",
+   "whose",
+   "what"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞a boy（人）を修飾する主格の関係代名詞whoを使う。",
+  "notes": [
+   "whichは物用。",
+   "先行詞a boy（人）を修飾する主格の関係代名詞whoを使う。",
+   "whoseは所有格用。",
+   "whatは先行詞を必要としない語で不適切。"
+  ]
+ },
+ {
+  "question": "The bus (　　) goes to the museum comes every 20 minutes.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the bus（物）を修飾する主格の関係代名詞whichを使う。",
+  "notes": [
+   "人用でbus（物）には使わない。",
+   "先行詞the bus（物）を修飾する主格の関係代名詞whichを使う。",
+   "所有格用でこの文脈に合わない。",
+   "人用でbus（物）には使わない。"
+  ]
+ },
+ {
+  "question": "This is the most exciting game (　　) I have ever played.",
+  "choices": [
+   "which",
+   "that",
+   "who",
+   "whose"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞に最上級（the most exciting）が付いているとき、関係代名詞はwhichよりthatが好まれるという慣用的な傾向がある（先行詞にthe only, the first, allなどが付く場合も同様）。",
+  "notes": [
+   "whichも文法的には使えないわけではないが、最上級が先行詞に付く場合はthatを使うのが標準的とされる。",
+   "先行詞に最上級（the most exciting）が付いているとき、関係代名詞はwhichよりthatが好まれるという慣用的な傾向がある（先行詞にthe only, the first, allなどが付く場合も同様）。",
+   "whoは人用でgame（物）には使わない。",
+   "whoseは所有格用でこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "I have a dog (　　) name is Pochi.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "what"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「その犬の名前」という所有関係（犬の名前）を表すので所有格の関係代名詞whoseを使う。whoseは人にも物にも使えるという点が、who/whichとは異なる特徴。",
+  "notes": [
+   "whoは主格（〜who is/does）で、所有を表す働きはない。",
+   "whichも主格・目的格で使う語で所有の意味は持たない。",
+   "「その犬の名前」という所有関係（犬の名前）を表すので所有格の関係代名詞whoseを使う。whoseは人にも物にも使えるという点が、who/whichとは異なる特徴。",
+   "whatはこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "Do you know the man (　　) car is parked over there?",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「その男性の車」という所有関係を表すのでwhoseを使う。",
+  "notes": [
+   "主格・目的格でこの文脈（所有）には合わない。",
+   "whichも所有の意味は持たない。",
+   "「その男性の車」という所有関係を表すのでwhoseを使う。",
+   "主格・目的格でこの文脈（所有）には合わない。"
+  ]
+ },
+ {
+  "question": "This is the singer (　　) songs are popular around the world.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「その歌手の歌」という所有関係を表すのでwhoseを使う。",
+  "notes": [
+   "主格・目的格用でこの文脈には合わない。",
+   "whichも所有の意味は持たない。",
+   "「その歌手の歌」という所有関係を表すのでwhoseを使う。",
+   "主格・目的格用でこの文脈には合わない。"
+  ]
+ },
+ {
+  "question": "The students (　　) study hard usually get good grades.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the students（人・複数）を修飾する主格の関係代名詞whoを使う。関係代名詞whoは先行詞が単数でも複数でも同じ形を使う（後ろの動詞studyが原形のように見えるのは、先行詞が複数のため）。",
+  "notes": [
+   "先行詞the students（人・複数）を修飾する主格の関係代名詞whoを使う。関係代名詞whoは先行詞が単数でも複数でも同じ形を使う（後ろの動詞studyが原形のように見えるのは、先行詞が複数のため）。",
+   "whichは物用。",
+   "whoseは所有格用でこの文脈に合わない。",
+   "whomは目的格用でこの文（studentsが「勉強する」という動作の主語）には合わない。"
+  ]
+ },
+ {
+  "question": "I want a computer (　　) has a large screen.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞a computer（物）を修飾する主格の関係代名詞whichを使う。",
+  "notes": [
+   "人用でcomputer（物）には使わない。",
+   "先行詞a computer（物）を修飾する主格の関係代名詞whichを使う。",
+   "所有格用でこの文脈に合わない。",
+   "人用でcomputer（物）には使わない。"
+  ]
+ },
+ {
+  "question": "People (　　) work too much often get tired.",
+  "choices": [
+   "which",
+   "who",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞people（人）を修飾する主格の関係代名詞whoを使う。",
+  "notes": [
+   "whichは物用。",
+   "先行詞people（人）を修飾する主格の関係代名詞whoを使う。",
+   "whoseは所有格用でこの文脈に合わない。",
+   "whomは目的格用でこの文（peopleが「働く」という動作の主語）には合わない。"
+  ]
+ },
+ {
+  "question": "This is the book (　　) I bought yesterday.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the book（物）が、後ろの節（I bought yesterday）の中でboughtの目的語の働きをしている（「私が買った本」）ときに使う関係代名詞（目的格）はwhich。目的格の関係代名詞は、節の中で主語ではなく動詞や前置詞の目的語の働きをする点が主格との違い。",
+  "notes": [
+   "whoは人用。",
+   "先行詞the book（物）が、後ろの節（I bought yesterday）の中でboughtの目的語の働きをしている（「私が買った本」）ときに使う関係代名詞（目的格）はwhich。目的格の関係代名詞は、節の中で主語ではなく動詞や前置詞の目的語の働きをする点が主格との違い。",
+   "whoseは所有格用。",
+   "whomは人・目的格用でbook（物）には使わない。"
+  ]
+ },
+ {
+  "question": "The man (　　) I met yesterday was very kind.",
+  "choices": [
+   "which",
+   "whom",
+   "whose",
+   "what"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the man（人）が後ろの節（I met yesterday）の中でmetの目的語の働きをしているので、人・目的格の関係代名詞whomを使う（口語ではwhoで代用されることも多いが、文法的にはwhomが目的格）。",
+  "notes": [
+   "whichは物用。",
+   "先行詞the man（人）が後ろの節（I met yesterday）の中でmetの目的語の働きをしているので、人・目的格の関係代名詞whomを使う（口語ではwhoで代用されることも多いが、文法的にはwhomが目的格）。",
+   "whoseは所有格用。",
+   "whatはこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "I like the pictures (　　) she took in Kyoto.",
+  "choices": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the pictures（物）が後ろの節の中でtookの目的語の働きをしているので目的格の関係代名詞which。",
+  "notes": [
+   "人用でpictures（物）には使わない。",
+   "先行詞the pictures（物）が後ろの節の中でtookの目的語の働きをしているので目的格の関係代名詞which。",
+   "whoseは所有格用でこの文脈に合わない。",
+   "人用でpictures（物）には使わない。"
+  ]
+ },
+ {
+  "question": "This is the song (　　) I like the best.",
+  "choices": [
+   "who",
+   "that",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "目的格の関係代名詞はwhich/whom以外にthatも使うことができる（thatは主格・目的格どちらにも、人にも物にも使える万能な関係代名詞という特徴がある）。",
+  "notes": [
+   "whoは主格用（人）で、この文（songが目的語の働き）には主格ではなく目的格が必要。",
+   "目的格の関係代名詞はwhich/whom以外にthatも使うことができる（thatは主格・目的格どちらにも、人にも物にも使える万能な関係代名詞という特徴がある）。",
+   "whoseは所有格用でこの文脈に合わない。",
+   "whomは人用でsong（物）には使わない。"
+  ]
+ },
+ {
+  "question": "Have you read the letter (　　) he sent you?",
+  "choices": [
+   "who",
+   "whom",
+   "which",
+   "whose"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the letter（物）が後ろの節の目的語の働きをしているので目的格の関係代名詞which。",
+  "notes": [
+   "人用で letter（物）には使わない。",
+   "人用で letter（物）には使わない。",
+   "先行詞the letter（物）が後ろの節の目的語の働きをしているので目的格の関係代名詞which。",
+   "所有格用でこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "This is a novel (　　) many people love.",
+  "choices": [
+   "who",
+   "that",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "目的格の関係代名詞thatを使う（whichでも可）。",
+  "notes": [
+   "whoは人用でnovel（物）には使わない。",
+   "目的格の関係代名詞thatを使う（whichでも可）。",
+   "所有格用でこの文脈に合わない。",
+   "whomは人用でnovel（物）には使わない。"
+  ]
+ },
+ {
+  "question": "The book (　　) on the desk is mine.",
+  "choices": [
+   "I bought it yesterday",
+   "I bought yesterday",
+   "which I bought it yesterday",
+   "that I bought it"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "関係代名詞（目的格）は省略することができる。この文では関係代名詞が省略され、先行詞the bookの直後に節（I bought yesterday）が続く形になっている。ただし省略した場合、節の中に本来あったはずの目的語（it）は置かない。関係代名詞は「その名詞（it）の代わり」をしているため、代名詞itを重ねて置くと同じ内容が二重に表現されてしまい誤りになる。",
+  "notes": [
+   "itが残っており、「私はそれを昨日買った」という意味が二重に表現されてしまい誤り。",
+   "関係代名詞（目的格）は省略することができる。この文では関係代名詞が省略され、先行詞the bookの直後に節（I bought yesterday）が続く形になっている。ただし省略した場合、節の中に本来あったはずの目的語（it）は置かない。関係代名詞は「その名詞（it）の代わり」をしているため、代名詞itを重ねて置くと同じ内容が二重に表現されてしまい誤りになる。",
+   "whichとitの両方があり、同じく意味が重複してしまう誤り。",
+   "thatとitの両方があり、同様に誤り。"
+  ]
+ },
+ {
+  "question": "This is the movie (　　).",
+  "choices": [
+   "I wanted to see it",
+   "I wanted to see",
+   "which I wanted to see it",
+   "that I wanted see"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "目的格の関係代名詞が省略された形。節の中にitを重ねて置かないのが正しい。",
+  "notes": [
+   "itが余分にあり誤り。",
+   "目的格の関係代名詞が省略された形。節の中にitを重ねて置かないのが正しい。",
+   "itが余分にあり誤り。",
+   "関係代名詞（省略されている場合でも）toが必要（to see）であり、seeの前のtoが抜けている点が誤り。"
+  ]
+ },
+ {
+  "question": "The cake (　　) my mother made was delicious.",
+  "choices": [
+   "who",
+   "whom",
+   "which",
+   "whose"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the cake（物）が後ろの節の目的語の働きをしているので目的格の関係代名詞which。",
+  "notes": [
+   "人用でcake（物）には使わない。",
+   "人用でcake（物）には使わない。",
+   "先行詞the cake（物）が後ろの節の目的語の働きをしているので目的格の関係代名詞which。",
+   "所有格用でこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "The person (　　) you should talk to is Mr. Smith.",
+  "choices": [
+   "which",
+   "whom",
+   "whose",
+   "what"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the person（人）が後ろの節（you should talk to）の中で前置詞toの目的語の働きをしているので、人・目的格の関係代名詞whom（口語ではwhoも可）を使う。",
+  "notes": [
+   "whichは物用。",
+   "先行詞the person（人）が後ろの節（you should talk to）の中で前置詞toの目的語の働きをしているので、人・目的格の関係代名詞whom（口語ではwhoも可）を使う。",
+   "whoseは所有格用。",
+   "whatはこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "I still remember the day (　　) we first met.",
+  "choices": [
+   "which",
+   "when",
+   "whose",
+   "who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "the day（先行詞：時を表す名詞）を修飾し、後ろの節が「その日に〜した」という時の状況を説明する場合は関係副詞whenを使う（関係代名詞ではなく関係副詞という別のカテゴリーの語）。関係副詞は、節の中で主語や目的語の働きをする関係代名詞とは異なり、時・場所・理由などを表す副詞的な働きをする。",
+  "notes": [
+   "whichは関係代名詞で、後ろの節の中で主語や目的語の働きをする語が欠けている必要があるが、we first metはすでに完全な文（主語・動詞がそろっている）なので、目的語などが欠けていることを前提とする関係代名詞は使わない。",
+   "the day（先行詞：時を表す名詞）を修飾し、後ろの節が「その日に〜した」という時の状況を説明する場合は関係副詞whenを使う（関係代名詞ではなく関係副詞という別のカテゴリーの語）。関係副詞は、節の中で主語や目的語の働きをする関係代名詞とは異なり、時・場所・理由などを表す副詞的な働きをする。",
+   "whoseは所有格の関係代名詞で、この文脈には合わない。",
+   "whoは人を先行詞とする関係代名詞でday（時）には使わない。"
+  ]
+ },
+ {
+  "question": "This is the town (　　) I was born.",
+  "choices": [
+   "which",
+   "where",
+   "whose",
+   "who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "the town（先行詞：場所を表す名詞）を修飾し、後ろの節が「その町で生まれた」という場所の状況を説明するので関係副詞whereを使う。I was bornはすでに完全な文なので、目的語などが欠けていることを前提とする関係代名詞whichは使わない。",
+  "notes": [
+   "whichは関係代名詞で、この文脈（完全な文が続く）には合わない。",
+   "the town（先行詞：場所を表す名詞）を修飾し、後ろの節が「その町で生まれた」という場所の状況を説明するので関係副詞whereを使う。I was bornはすでに完全な文なので、目的語などが欠けていることを前提とする関係代名詞whichは使わない。",
+   "whoseは所有格の関係代名詞でこの文脈に合わない。",
+   "whoは人を先行詞とする関係代名詞でtown（場所）には使わない。"
+  ]
+ },
+ {
+  "question": "The boy (　　) over there is my brother.",
+  "choices": [
+   "run",
+   "runs",
+   "running",
+   "ran"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞（動詞のing形）が名詞を後ろから修飾し、「〜している…」という能動的・進行中の意味を表す。「あそこで走っている男の子」という意味で、runningがthe boyを後ろから修飾している。現在分詞は「〜している」という進行中の状態を表す形容詞的な働きをする。",
+  "notes": [
+   "原形は名詞を修飾する形にならない。",
+   "3人称単数現在形も名詞を修飾する形にならない。",
+   "現在分詞（動詞のing形）が名詞を後ろから修飾し、「〜している…」という能動的・進行中の意味を表す。「あそこで走っている男の子」という意味で、runningがthe boyを後ろから修飾している。現在分詞は「〜している」という進行中の状態を表す形容詞的な働きをする。",
+   "過去形も同様。"
+  ]
+ },
+ {
+  "question": "I have a car (　　) in Germany.",
+  "choices": [
+   "make",
+   "made",
+   "making",
+   "makes"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞が名詞を後ろから修飾し、「〜された…」という受け身の意味を表す。「ドイツで作られた車」という意味で、madeがcarを後ろから修飾している。過去分詞は「〜される・された」という受動的な意味を表す形容詞的な働きをする。",
+  "notes": [
+   "原形は名詞を修飾する形にならない。",
+   "過去分詞が名詞を後ろから修飾し、「〜された…」という受け身の意味を表す。「ドイツで作られた車」という意味で、madeがcarを後ろから修飾している。過去分詞は「〜される・された」という受動的な意味を表す形容詞的な働きをする。",
+   "ing形（現在分詞）だと「作っている車」という能動の意味になり、車自体が「作る」動作をする側になってしまい、文脈（車が作られる側）と矛盾する。",
+   "3人称単数現在形は不適切。"
+  ]
+ },
+ {
+  "question": "The language (　　) in Brazil is Portuguese.",
+  "choices": [
+   "speak",
+   "speaks",
+   "spoken",
+   "speaking"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞spoken（speakの過去分詞）が名詞languageを後ろから修飾し、「話される言語」という受け身の意味を表す。languageは「話される」側（受動）なので過去分詞を使う。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "過去分詞spoken（speakの過去分詞）が名詞languageを後ろから修飾し、「話される言語」という受け身の意味を表す。languageは「話される」側（受動）なので過去分詞を使う。",
+   "ing形だと「話している言語」という能動の意味になり、言語自体が話す動作をする側になってしまい不自然。"
+  ]
+ },
+ {
+  "question": "Do you know the girl (　　) a red hat?",
+  "choices": [
+   "wear",
+   "wears",
+   "wearing",
+   "worn"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞wearingが名詞girlを後ろから修飾し、「赤い帽子をかぶっている女の子」という能動的・進行中の意味を表す。girlは自分の意志で帽子を「かぶっている」側（能動）なので現在分詞を使う。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "現在分詞wearingが名詞girlを後ろから修飾し、「赤い帽子をかぶっている女の子」という能動的・進行中の意味を表す。girlは自分の意志で帽子を「かぶっている」側（能動）なので現在分詞を使う。",
+   "過去分詞wornは「（誰かに）着られた」という受け身の意味になり、この文脈（女の子自身が帽子をかぶっている）には合わない。"
+  ]
+ },
+ {
+  "question": "This is a letter (　　) in French.",
+  "choices": [
+   "write",
+   "writes",
+   "writing",
+   "written"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞writtenが名詞letterを後ろから修飾し、「フランス語で書かれた手紙」という受け身の意味を表す。letterは「書かれる」側（受動）なので過去分詞を使う。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "ing形だと「書いている手紙」という能動の意味になり、手紙自体が書く動作をする側になってしまい不自然。",
+   "過去分詞writtenが名詞letterを後ろから修飾し、「フランス語で書かれた手紙」という受け身の意味を表す。letterは「書かれる」側（受動）なので過去分詞を使う。"
+  ]
+ },
+ {
+  "question": "Look at the picture (　　) on the wall.",
+  "choices": [
+   "hang",
+   "hangs",
+   "hanging",
+   "hung"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞hangingが名詞pictureを後ろから修飾し、「壁に掛かっている絵」という状態を表す。この場合、絵が「掛けられている」という受け身のようにも思えるが、hangには「（自動詞として）掛かっている」という意味もあり、絵自体が「掛かっている」という状態を表す現在分詞（hanging）を使うのが標準的（hangは他動詞「掛ける」と自動詞「掛かる」の両方の意味を持つ動詞）。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "現在分詞hangingが名詞pictureを後ろから修飾し、「壁に掛かっている絵」という状態を表す。この場合、絵が「掛けられている」という受け身のようにも思えるが、hangには「（自動詞として）掛かっている」という意味もあり、絵自体が「掛かっている」という状態を表す現在分詞（hanging）を使うのが標準的（hangは他動詞「掛ける」と自動詞「掛かる」の両方の意味を持つ動詞）。",
+   "過去分詞hungは「（誰かによって）掛けられた」という受け身の意味を強調する場合に使うこともあるが、日常的な「壁に掛かっている絵」という状態を表す場合はhangingがより一般的。"
+  ]
+ },
+ {
+  "question": "The man (　　) to Ken is my uncle.",
+  "choices": [
+   "talk",
+   "talks",
+   "talking",
+   "talked"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞talkingが名詞manを後ろから修飾し、「ケンと話している男性」という能動的・進行中の意味を表す。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "現在分詞talkingが名詞manを後ろから修飾し、「ケンと話している男性」という能動的・進行中の意味を表す。",
+   "過去分詞talkedはこの動詞（自動詞talk）の受け身の意味を作らないため、この文脈には合わない。"
+  ]
+ },
+ {
+  "question": "I found my dog (　　) under the tree.",
+  "choices": [
+   "sleep",
+   "sleeps",
+   "sleeping",
+   "slept"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "この文はfind＋目的語＋現在分詞という文型（知覚に近い用法）で、「〜が…しているのを見つける」という意味を表す。「木の下で眠っている自分の犬を見つけた」という意味で、犬が「眠っている」という進行中の状態を現在分詞で表す。",
+  "notes": [
+   "この文型の補語の位置には使わない形。",
+   "この文型の補語の位置には使わない形。",
+   "この文はfind＋目的語＋現在分詞という文型（知覚に近い用法）で、「〜が…しているのを見つける」という意味を表す。「木の下で眠っている自分の犬を見つけた」という意味で、犬が「眠っている」という進行中の状態を現在分詞で表す。",
+   "過去分詞sleptはこの動詞（自動詞sleep）ではこの受け身的な用法を作らない。"
+  ]
+ },
+ {
+  "question": "I want to eat food (　　) in this restaurant.",
+  "choices": [
+   "cook",
+   "cooks",
+   "cooking",
+   "cooked"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞cookedが名詞foodを後ろから修飾し、「このレストランで調理された食べ物」という受け身の意味を表す。foodは「調理される」側（受動）なので過去分詞を使う。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "ing形だと「調理している食べ物」という不自然な能動の意味になってしまう。",
+   "過去分詞cookedが名詞foodを後ろから修飾し、「このレストランで調理された食べ物」という受け身の意味を表す。foodは「調理される」側（受動）なので過去分詞を使う。"
+  ]
+ },
+ {
+  "question": "There were many people (　　) for the bus.",
+  "choices": [
+   "wait",
+   "waits",
+   "waiting",
+   "waited"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞waitingが名詞peopleを後ろから修飾し、「バスを待っている多くの人々」という能動的・進行中の意味を表す。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "現在分詞waitingが名詞peopleを後ろから修飾し、「バスを待っている多くの人々」という能動的・進行中の意味を表す。",
+   "過去分詞waitedはこの動詞（自動詞wait）の受け身の意味を作らないため不適切。"
+  ]
+ },
+ {
+  "question": "The cake (　　) by my grandmother was delicious.",
+  "choices": [
+   "make",
+   "makes",
+   "making",
+   "made"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞madeが名詞cakeを後ろから修飾し、「祖母によって作られたケーキ」という受け身の意味を表す。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "ing形だと「作っているケーキ」という不自然な能動の意味になってしまう。",
+   "過去分詞madeが名詞cakeを後ろから修飾し、「祖母によって作られたケーキ」という受け身の意味を表す。"
+  ]
+ },
+ {
+  "question": "The students (　　) English in that room are from Osaka.",
+  "choices": [
+   "study",
+   "studies",
+   "studying",
+   "studied"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞studyingが名詞studentsを後ろから修飾し、「あの部屋で英語を勉強している生徒たち」という能動的・進行中の意味を表す。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "現在分詞studyingが名詞studentsを後ろから修飾し、「あの部屋で英語を勉強している生徒たち」という能動的・進行中の意味を表す。",
+   "過去分詞studiedはこの動詞（他動詞study）の受け身の意味（「勉強された」）になり、この文脈（生徒たちが勉強する側）とは矛盾する。"
+  ]
+ },
+ {
+  "question": "My mother let me (　　) out with my friends.",
+  "choices": [
+   "go",
+   "goes",
+   "to go",
+   "going"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "使役動詞letは「〜させる（許可して）」という意味を表し、let＋目的語＋動詞の原形という形を取る。letは許可を与える意味の使役動詞で、目的語の後に動詞の原形（不定詞のtoを伴わない、原形不定詞と呼ばれる形）を続けるという決まった文型を持つ。",
+  "notes": [
+   "使役動詞letは「〜させる（許可して）」という意味を表し、let＋目的語＋動詞の原形という形を取る。letは許可を与える意味の使役動詞で、目的語の後に動詞の原形（不定詞のtoを伴わない、原形不定詞と呼ばれる形）を続けるという決まった文型を持つ。",
+   "3人称単数形はこの文型には合わない。",
+   "letはto不定詞を続けない動詞として決まっている（let me to goとは言わない）。",
+   "ing形もこの文型には合わない。"
+  ]
+ },
+ {
+  "question": "My father made me (　　) my room.",
+  "choices": [
+   "clean",
+   "cleans",
+   "to clean",
+   "cleaning"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "使役動詞makeは「〜させる（強制的に）」という意味を表し、make＋目的語＋動詞の原形という形を取る（第2章でも扱った用法）。letとは異なり強制のニュアンスを持つが、文型（原形不定詞を続ける）は同じ。",
+  "notes": [
+   "使役動詞makeは「〜させる（強制的に）」という意味を表し、make＋目的語＋動詞の原形という形を取る（第2章でも扱った用法）。letとは異なり強制のニュアンスを持つが、文型（原形不定詞を続ける）は同じ。",
+   "3人称単数形は不適切。",
+   "makeもto不定詞を続けない（make me to cleanとは言わない）。",
+   "ing形も不適切。"
+  ]
+ },
+ {
+  "question": "Can you help me (　　) my homework?",
+  "choices": [
+   "do",
+   "does",
+   "to do",
+   "doing"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "helpは「〜するのを手伝う」という意味で、help＋目的語＋動詞の原形（またはto不定詞）という形を取る。helpは他の使役動詞（let, make）と異なり、原形とto不定詞のどちらも使うことができる（help me do／help me to doの両方が使われる）が、原形を使う形の方がより口語的でよく使われる。",
+  "notes": [
+   "helpは「〜するのを手伝う」という意味で、help＋目的語＋動詞の原形（またはto不定詞）という形を取る。helpは他の使役動詞（let, make）と異なり、原形とto不定詞のどちらも使うことができる（help me do／help me to doの両方が使われる）が、原形を使う形の方がより口語的でよく使われる。",
+   "3人称単数形は不適切。",
+   "to不定詞も文法的には使えるが、選択肢の中で最も一般的な形はA（原形）である。",
+   "ing形はこの文型には使わない。"
+  ]
+ },
+ {
+  "question": "I saw a bird (　　) into the sky.",
+  "choices": [
+   "fly",
+   "flies",
+   "to fly",
+   "flew"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "知覚動詞see（見る）は、see＋目的語＋動詞の原形という形で「〜が…するのを見る」という、動作の一部始終（初めから終わりまで）を見たという意味を表す。知覚動詞（see, hear, feelなど）は使役動詞と同じく、目的語の後に動詞の原形（原形不定詞）を続けるという特徴がある。",
+  "notes": [
+   "知覚動詞see（見る）は、see＋目的語＋動詞の原形という形で「〜が…するのを見る」という、動作の一部始終（初めから終わりまで）を見たという意味を表す。知覚動詞（see, hear, feelなど）は使役動詞と同じく、目的語の後に動詞の原形（原形不定詞）を続けるという特徴がある。",
+   "3人称単数形は不適切。",
+   "知覚動詞はto不定詞を続けない（see a bird to flyとは言わない）。",
+   "過去形も不適切。"
+  ]
+ },
+ {
+  "question": "I heard someone (　　) my name.",
+  "choices": [
+   "call",
+   "calls",
+   "to call",
+   "called"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "知覚動詞hear（聞く）もhear＋目的語＋動詞の原形という形を取る。",
+  "notes": [
+   "知覚動詞hear（聞く）もhear＋目的語＋動詞の原形という形を取る。",
+   "3人称単数形は不適切。",
+   "to不定詞は続けない。",
+   "過去形は不適切（ただし、hear＋目的語＋過去分詞という別の形もあり、その場合は「〜されるのを聞く」という受け身の意味になるが、この選択肢calledは動詞callの過去形・過去分詞どちらの形にも見えるため、文脈上「誰かが私の名前を呼ぶ」という能動の意味には原形callが適切）。"
+  ]
+ },
+ {
+  "question": "I felt someone (　　) my shoulder.",
+  "choices": [
+   "touch",
+   "touches",
+   "to touch",
+   "touching"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "知覚動詞feel（感じる）もfeel＋目的語＋動詞の原形という形を取る。「誰かが私の肩に触れたのを感じた」という、動作全体を感じ取ったという意味になる。",
+  "notes": [
+   "知覚動詞feel（感じる）もfeel＋目的語＋動詞の原形という形を取る。「誰かが私の肩に触れたのを感じた」という、動作全体を感じ取ったという意味になる。",
+   "3人称単数形は不適切。",
+   "to不定詞は続けない。",
+   "ing形（feel＋目的語＋ing）を使うと「（その瞬間）触れている最中であることを感じた」という、動作の一部分・進行中の様子に焦点を当てた意味になり、動作全体を表すこの文脈とはややニュアンスが異なる（この文型ではA〈原形〉がより基本的な形として扱われる）。"
+  ]
+ },
+ {
+  "question": "Let's (　　) a party for her birthday.",
+  "choices": [
+   "have",
+   "to have",
+   "having",
+   "had"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Let'sはLet usの短縮形で、「〜しましょう」という提案を表す決まった表現。Let usという形自体がすでに使役動詞letの文型（let＋目的語＋動詞の原形）になっているため、後ろの動詞は原形を使う。",
+  "notes": [
+   "Let'sはLet usの短縮形で、「〜しましょう」という提案を表す決まった表現。Let usという形自体がすでに使役動詞letの文型（let＋目的語＋動詞の原形）になっているため、後ろの動詞は原形を使う。",
+   "letの後にto不定詞は続けない。",
+   "ing形も不適切。",
+   "過去形も不適切。"
+  ]
+ },
+ {
+  "question": "Please let me (　　) about it.",
+  "choices": [
+   "think",
+   "thinks",
+   "to think",
+   "thought"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "let＋目的語＋動詞の原形。「それについて考えさせてください」という意味。",
+  "notes": [
+   "let＋目的語＋動詞の原形。「それについて考えさせてください」という意味。",
+   "3人称単数形は不適切。",
+   "letはto不定詞を続けない。",
+   "過去形は不適切。"
+  ]
+ },
+ {
+  "question": "My grandmother always makes me (　　) happy.",
+  "choices": [
+   "feel",
+   "feels",
+   "to feel",
+   "felt"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "make＋目的語＋動詞の原形。「祖母はいつも私を幸せな気分にさせてくれる」という意味。",
+  "notes": [
+   "make＋目的語＋動詞の原形。「祖母はいつも私を幸せな気分にさせてくれる」という意味。",
+   "3人称単数形は不適切。",
+   "makeはto不定詞を続けない。",
+   "過去形は不適切。"
+  ]
+ },
+ {
+  "question": "I watched the sun (　　) behind the mountains.",
+  "choices": [
+   "set",
+   "sets",
+   "to set",
+   "setting"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "知覚動詞watch（じっと見る）もwatch＋目的語＋動詞の原形という形を取り、「〜が…する（一部始終）のを見る」という意味を表す。「太陽が山の向こうに沈むのを見た」という、日没の全過程を見たという意味になる。",
+  "notes": [
+   "知覚動詞watch（じっと見る）もwatch＋目的語＋動詞の原形という形を取り、「〜が…する（一部始終）のを見る」という意味を表す。「太陽が山の向こうに沈むのを見た」という、日没の全過程を見たという意味になる。",
+   "3人称単数形は不適切。",
+   "知覚動詞はto不定詞を続けない。",
+   "ing形（watch＋目的語＋ing）を使うと「（ある瞬間）沈んでいる最中であることを見た」という部分的な様子に焦点を当てた意味になり、この文型ではA（原形）がより基本的で一般的な形として扱われる。"
+  ]
+ },
+ {
+  "question": "If I (　　) a bird, I could fly to you.",
+  "choices": [
+   "am",
+   "is",
+   "were",
+   "will be"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現実にはあり得ないこと・事実と異なることを仮定して「もし〜だったら」と述べる仮定法過去では、be動詞は主語の人称・数にかかわらずwereを使うのが伝統的な規則（口語ではwasも使われることがあるが、学校文法ではwereが標準とされる）。「もし私が鳥だったら」というのは現実にはあり得ない仮定であり、この非現実性を示すために、通常の過去形とは異なる特別な形（be動詞は常にwere）を使うという英語の特徴的な仕組みがある。",
+  "notes": [
+   "現在形は「実際にそうである・そうなり得る」という現実の内容を述べる形（直接法）であり、現実にはあり得ない仮定を表す仮定法とは異なる。",
+   "現在形は「実際にそうである・そうなり得る」という現実の内容を述べる形（直接法）であり、現実にはあり得ない仮定を表す仮定法とは異なる。",
+   "現実にはあり得ないこと・事実と異なることを仮定して「もし〜だったら」と述べる仮定法過去では、be動詞は主語の人称・数にかかわらずwereを使うのが伝統的な規則（口語ではwasも使われることがあるが、学校文法ではwereが標準とされる）。「もし私が鳥だったら」というのは現実にはあり得ない仮定であり、この非現実性を示すために、通常の過去形とは異なる特別な形（be動詞は常にwere）を使うという英語の特徴的な仕組みがある。",
+   "will beは未来の確定的な予測を表す形で、非現実の仮定を表す仮定法過去の構造とは異なる。"
+  ]
+ },
+ {
+  "question": "If I had a lot of money, I (　　) buy a big house.",
+  "choices": [
+   "will",
+   "would",
+   "can",
+   "do"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "仮定法過去では、if節の中の動詞を過去形にするだけでなく、主節（結論を述べる部分）にはwould/could/mightなどの助動詞の過去形を使う。「もしお金がたくさんあったら、大きな家を買うだろうに」という、現実には持っていないお金を仮定した非現実の内容を表すため、willではなくwouldを使う。",
+  "notes": [
+   "willは現実に起こり得る未来を表す語で、仮定法の非現実的な内容には使わない。",
+   "仮定法過去では、if節の中の動詞を過去形にするだけでなく、主節（結論を述べる部分）にはwould/could/mightなどの助動詞の過去形を使う。「もしお金がたくさんあったら、大きな家を買うだろうに」という、現実には持っていないお金を仮定した非現実の内容を表すため、willではなくwouldを使う。",
+   "canも現在の現実的な可能性を表す語で、この文脈には合わない（仮定法にはcouldを使う）。",
+   "doはこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "If I (　　) you, I would apologize to her.",
+  "choices": [
+   "am",
+   "were",
+   "will be",
+   "am being"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「もし私があなただったら」という、実際にはなり得ない立場を仮定する仮定法過去の決まった表現（If I were you, I would ~）。be動詞はwereを使う。",
+  "notes": [
+   "現実的な意味を持つ形であり、非現実の仮定を表す仮定法には合わない。",
+   "「もし私があなただったら」という、実際にはなり得ない立場を仮定する仮定法過去の決まった表現（If I were you, I would ~）。be動詞はwereを使う。",
+   "現実的な意味を持つ形であり、非現実の仮定を表す仮定法には合わない。",
+   "現実的な意味を持つ形であり、非現実の仮定を表す仮定法には合わない。"
+  ]
+ },
+ {
+  "question": "I wish I (　　) speak English fluently.",
+  "choices": [
+   "can",
+   "could",
+   "will",
+   "do"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "I wish＋主語＋（助動詞の）過去形〜で「〜だったらいいのに」という、現実にはそうではないことへの願望を表す仮定法の表現。「もっと流暢に英語を話せたらいいのに（実際には話せない）」という現実と異なる願望を表すのでcanの過去形couldを使う。",
+  "notes": [
+   "現在形canは現実にできることを表す語で、「話せたらいいのに（できない）」という非現実の願望には合わない。",
+   "I wish＋主語＋（助動詞の）過去形〜で「〜だったらいいのに」という、現実にはそうではないことへの願望を表す仮定法の表現。「もっと流暢に英語を話せたらいいのに（実際には話せない）」という現実と異なる願望を表すのでcanの過去形couldを使う。",
+   "willもこの構文には使わない。",
+   "doも不適切。"
+  ]
+ },
+ {
+  "question": "If it (　　) sunny today, we could go on a picnic.",
+  "choices": [
+   "is",
+   "was",
+   "were",
+   "will be"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "仮定法過去では、if節の中のbe動詞は主語の人称・数にかかわらずwereを使う（it wereという、通常の文法規則〈itはisと結びつく〉とは異なる特別な使い方をする点が仮定法の重要な特徴）。「今日晴れていたら（実際には晴れていない）」という現実と異なる仮定を表す。",
+  "notes": [
+   "現在形は現実の内容を表す直接法で、仮定法とは異なる。",
+   "wasも仮定法過去のbe動詞としては口語的に使われることがあるが、学校文法で最も標準的に教えられる形はwere。",
+   "仮定法過去では、if節の中のbe動詞は主語の人称・数にかかわらずwereを使う（it wereという、通常の文法規則〈itはisと結びつく〉とは異なる特別な使い方をする点が仮定法の重要な特徴）。「今日晴れていたら（実際には晴れていない）」という現実と異なる仮定を表す。",
+   "未来形はこの構文には合わない。"
+  ]
+ },
+ {
+  "question": "I wish I (　　) a car.",
+  "choices": [
+   "have",
+   "has",
+   "had",
+   "will have"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "I wish＋主語＋過去形で「〜だったらいいのに（実際にはそうではない）」という現在の事実と異なる願望を表す。「車を持っていたらいいのに（実際には持っていない）」という文脈でhaveの過去形hadを使う。",
+  "notes": [
+   "現在形は現実の内容を表す語で、非現実の願望を表すI wishの構文には合わない。",
+   "現在形は現実の内容を表す語で、非現実の願望を表すI wishの構文には合わない。",
+   "I wish＋主語＋過去形で「〜だったらいいのに（実際にはそうではない）」という現在の事実と異なる願望を表す。「車を持っていたらいいのに（実際には持っていない）」という文脈でhaveの過去形hadを使う。",
+   "未来形も不適切。"
+  ]
+ },
+ {
+  "question": "If she (　　) here now, she would help us.",
+  "choices": [
+   "is",
+   "were",
+   "will be",
+   "has been"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「もし彼女が今ここにいたら（実際にはいない）」という現実と異なる仮定を表す仮定法過去。be動詞はwere。",
+  "notes": [
+   "現在形は現実の内容を表す語で仮定法とは異なる。",
+   "「もし彼女が今ここにいたら（実際にはいない）」という現実と異なる仮定を表す仮定法過去。be動詞はwere。",
+   "未来形はこの構文には合わない。",
+   "現在完了形もこの構文には合わない。"
+  ]
+ },
+ {
+  "question": "What (　　) you do if you won a million dollars?",
+  "choices": [
+   "will",
+   "would",
+   "do",
+   "can"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "仮定法過去の疑問文では、主節にwould（助動詞の過去形）を使う。「もし100万ドルを当てたら、あなたは何をしますか」という、実際には起きていない（起きるかどうか分からない）仮定の内容を表す。",
+  "notes": [
+   "willは現実的な未来を表す語で、この非現実的な仮定の文脈には合わない。",
+   "仮定法過去の疑問文では、主節にwould（助動詞の過去形）を使う。「もし100万ドルを当てたら、あなたは何をしますか」という、実際には起きていない（起きるかどうか分からない）仮定の内容を表す。",
+   "この構文には使わない。",
+   "この構文には使わない。"
+  ]
+ },
+ {
+  "question": "If I (　　) taller, I could be a basketball player.",
+  "choices": [
+   "am",
+   "is",
+   "were",
+   "will be"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「もし私がもっと背が高かったら（実際には低い）」という現実と異なる仮定を表す仮定法過去。be動詞はwere。",
+  "notes": [
+   "現在形は現実の内容を表す。",
+   "現在形は現実の内容を表す。",
+   "「もし私がもっと背が高かったら（実際には低い）」という現実と異なる仮定を表す仮定法過去。be動詞はwere。",
+   "未来形はこの構文に合わない。"
+  ]
+ },
+ {
+  "question": "I wish it (　　) not rain today.",
+  "choices": [
+   "does",
+   "did",
+   "is",
+   "was"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "I wish＋主語＋過去形（否定はdid not）で「今日雨が降らなければいいのに（実際には降っている）」という現実と異なる願望を表す。一般動詞（rain）の場合、過去形を作るのに助動詞didを使う（did not rain）。",
+  "notes": [
+   "現在形は現実の内容を表す語で不適切。",
+   "I wish＋主語＋過去形（否定はdid not）で「今日雨が降らなければいいのに（実際には降っている）」という現実と異なる願望を表す。一般動詞（rain）の場合、過去形を作るのに助動詞didを使う（did not rain）。",
+   "be動詞はこの一般動詞rainの否定形には使わない。",
+   "be動詞はこの一般動詞rainの否定形には使わない。"
+  ]
+ },
+ {
+  "question": "You are a student, (　　)?",
+  "choices": [
+   "are you",
+   "aren't you",
+   "do you",
+   "don't you"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "付加疑問文は「〜ですね」と相手に確認・同意を求める表現で、直前の文が肯定文のときは否定の短縮形＋主語（代名詞）を文末に付ける、という「肯定文には否定の付加疑問」という規則がある。You areという肯定文にはaren't you（are notの短縮形＋you）を付ける。",
+  "notes": [
+   "肯定形をそのまま繰り返すのは付加疑問文の規則に反する。",
+   "付加疑問文は「〜ですね」と相手に確認・同意を求める表現で、直前の文が肯定文のときは否定の短縮形＋主語（代名詞）を文末に付ける、という「肯定文には否定の付加疑問」という規則がある。You areという肯定文にはaren't you（are notの短縮形＋you）を付ける。",
+   "この文の動詞はbe動詞（are）なので、付加疑問文にもbe動詞を使う必要があり、一般動詞用のdo/don'tは使わない。",
+   "この文の動詞はbe動詞（are）なので、付加疑問文にもbe動詞を使う必要があり、一般動詞用のdo/don'tは使わない。"
+  ]
+ },
+ {
+  "question": "He can swim well, (　　)?",
+  "choices": [
+   "can he",
+   "can't he",
+   "does he",
+   "doesn't he"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "肯定文（He can swim）には否定の付加疑問can'tを付ける。助動詞canを使った文には、付加疑問にも同じ助動詞canを使う（否定形にする）。",
+  "notes": [
+   "肯定形の繰り返しは規則に反する。",
+   "肯定文（He can swim）には否定の付加疑問can'tを付ける。助動詞canを使った文には、付加疑問にも同じ助動詞canを使う（否定形にする）。",
+   "canを使った文にdo/doesを使うのは誤り（付加疑問文では元の文と同じ種類の動詞・助動詞を使うのが規則）。",
+   "canを使った文にdo/doesを使うのは誤り（付加疑問文では元の文と同じ種類の動詞・助動詞を使うのが規則）。"
+  ]
+ },
+ {
+  "question": "She doesn't like coffee, (　　)?",
+  "choices": [
+   "does she",
+   "doesn't she",
+   "is she",
+   "isn't she"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "直前の文が否定文（doesn't like）のときは、付加疑問には肯定形を付けるという「否定文には肯定の付加疑問」という規則がある。主語sheは3人称単数で一般動詞likeの文なのでdoes she。",
+  "notes": [
+   "直前の文が否定文（doesn't like）のときは、付加疑問には肯定形を付けるという「否定文には肯定の付加疑問」という規則がある。主語sheは3人称単数で一般動詞likeの文なのでdoes she。",
+   "否定形を重ねるのは規則に反する。",
+   "この文の動詞は一般動詞likeなのでbe動詞is/isn'tは使わない。",
+   "この文の動詞は一般動詞likeなのでbe動詞is/isn'tは使わない。"
+  ]
+ },
+ {
+  "question": "They have finished their homework, (　　)?",
+  "choices": [
+   "have they",
+   "haven't they",
+   "do they",
+   "don't they"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "肯定文（They have finished）には否定の付加疑問haven'tを付ける。現在完了の文には付加疑問にもhave/hasを使う。",
+  "notes": [
+   "肯定形の繰り返しは規則に反する。",
+   "肯定文（They have finished）には否定の付加疑問haven'tを付ける。現在完了の文には付加疑問にもhave/hasを使う。",
+   "現在完了の文にdo/don'tを使うのは誤り。",
+   "現在完了の文にdo/don'tを使うのは誤り。"
+  ]
+ },
+ {
+  "question": "Let's go to the park, (　　)?",
+  "choices": [
+   "do we",
+   "don't we",
+   "shall we",
+   "will we"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Let's（Let us）で始まる勧誘の文には、付加疑問にshall weを使うという特別な決まりがある。この場合は肯定・否定の規則ではなく、Let'sという文の種類によって決まった付加疑問の形が使われる。",
+  "notes": [
+   "Let'sの文にはdo/don'tを使う付加疑問はない。",
+   "Let'sの文にはdo/don'tを使う付加疑問はない。",
+   "Let's（Let us）で始まる勧誘の文には、付加疑問にshall weを使うという特別な決まりがある。この場合は肯定・否定の規則ではなく、Let'sという文の種類によって決まった付加疑問の形が使われる。",
+   "will weもLet'sの文の付加疑問としては使わない。"
+  ]
+ },
+ {
+  "question": "Don't be late, (　　)?",
+  "choices": [
+   "do you",
+   "will you",
+   "are you",
+   "don't you"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "命令文（Don't be late）に付ける付加疑問はwill you（肯定・否定にかかわらず命令文にはwill youを付けるという決まった規則）。",
+  "notes": [
+   "命令文の付加疑問にdo/don'tは使わない。",
+   "命令文（Don't be late）に付ける付加疑問はwill you（肯定・否定にかかわらず命令文にはwill youを付けるという決まった規則）。",
+   "be動詞のare youも命令文の付加疑問としては使わない。",
+   "命令文の付加疑問にdo/don'tは使わない。"
+  ]
+ },
+ {
+  "question": "You have never been to Canada, (　　)?",
+  "choices": [
+   "have you",
+   "haven't you",
+   "do you",
+   "don't you"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "neverは否定的な意味を持つ語なので、この文は意味の上では否定文として扱われる。そのため、付加疑問には肯定形（have you）を付ける。neverのように、notを使っていなくても否定の意味を持つ語（never, few, littleなど）がある文は、付加疑問文の規則上「否定文」として扱われるという点に注意が必要。",
+  "notes": [
+   "neverは否定的な意味を持つ語なので、この文は意味の上では否定文として扱われる。そのため、付加疑問には肯定形（have you）を付ける。neverのように、notを使っていなくても否定の意味を持つ語（never, few, littleなど）がある文は、付加疑問文の規則上「否定文」として扱われるという点に注意が必要。",
+   "haveの否定形haven'tを付けると、否定を重ねてしまい規則に反する。",
+   "現在完了の文にdo/don'tを使うのは誤り。",
+   "現在完了の文にdo/don'tを使うのは誤り。"
+  ]
+ },
+ {
+  "question": "There isn't any milk in the fridge, (　　)?",
+  "choices": [
+   "is there",
+   "isn't there",
+   "does it",
+   "doesn't it"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "直前の文が否定文（isn't）なので付加疑問には肯定形is thereを付ける。There is/are構文の付加疑問には、thereをそのまま使う（thereが主語のような役割を果たす）という決まりがある。",
+  "notes": [
+   "直前の文が否定文（isn't）なので付加疑問には肯定形is thereを付ける。There is/are構文の付加疑問には、thereをそのまま使う（thereが主語のような役割を果たす）という決まりがある。",
+   "否定形を重ねるのは誤り。",
+   "There構文の付加疑問にはit ではなく there を使う。",
+   "There構文の付加疑問にはit ではなく there を使う。"
+  ]
+ },
+ {
+  "question": "He said, \"I am tired.\" → He said that (　　) tired.",
+  "choices": [
+   "I am",
+   "I was",
+   "he was",
+   "he is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "直接話法（発言をそのまま引用符で伝える）を間接話法（自分の言葉で伝え直す）に変えるときは、（1）話す人の視点に合わせて代名詞を変える（Iは発言した本人〈he〉を指すのでheに変える）、（2）伝える文の動詞（said）が過去形であることに合わせて、引用されていた文の時制も1つ過去にずらす（現在形amは過去形wasに）という2つの規則がある。この規則を「時制の一致」と呼ぶ。",
+  "notes": [
+   "代名詞（I）も時制（am）も変えておらず、話法の転換規則に従っていない。",
+   "時制は正しく変えているが代名詞Iのままで、発言者の視点（三人称の彼）に合わせられていない。",
+   "直接話法（発言をそのまま引用符で伝える）を間接話法（自分の言葉で伝え直す）に変えるときは、（1）話す人の視点に合わせて代名詞を変える（Iは発言した本人〈he〉を指すのでheに変える）、（2）伝える文の動詞（said）が過去形であることに合わせて、引用されていた文の時制も1つ過去にずらす（現在形amは過去形wasに）という2つの規則がある。この規則を「時制の一致」と呼ぶ。",
+   "代名詞は正しくheに変えているが時制がisのままで、時制の一致の規則に従っていない。"
+  ]
+ },
+ {
+  "question": "She said, \"I will come tomorrow.\" → She said that she (　　) come the next day.",
+  "choices": [
+   "will",
+   "would",
+   "can",
+   "shall"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時制の一致により、直接話法のwill（現在の助動詞）は間接話法ではwould（過去の助動詞形）に変える。また、tomorrow（明日）はsaid（過去の発言）を基準にした「その翌日」という意味に変わるため、間接話法ではthe next dayという表現に置き換えるのが規則（この文では書き換え後がすでに示されている）。",
+  "notes": [
+   "willのままでは時制の一致の規則に反する。",
+   "時制の一致により、直接話法のwill（現在の助動詞）は間接話法ではwould（過去の助動詞形）に変える。また、tomorrow（明日）はsaid（過去の発言）を基準にした「その翌日」という意味に変わるため、間接話法ではthe next dayという表現に置き換えるのが規則（この文では書き換え後がすでに示されている）。",
+   "この文脈の助動詞の変化としては不適切。",
+   "この文脈の助動詞の変化としては不適切。"
+  ]
+ },
+ {
+  "question": "He said, \"I can swim well.\" → He said that he (　　) swim well.",
+  "choices": [
+   "can",
+   "could",
+   "will",
+   "may"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時制の一致により、canはcouldに変える。",
+  "notes": [
+   "canのままでは時制の一致の規則に反する。",
+   "時制の一致により、canはcouldに変える。",
+   "この文脈には合わない。",
+   "この文脈には合わない。"
+  ]
+ },
+ {
+  "question": "She said, \"I have finished my homework.\" → She said that she (　　) finished her homework.",
+  "choices": [
+   "has",
+   "have",
+   "had",
+   "has been"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時制の一致により、現在完了（have finished）は間接話法では過去完了（had finished）に変える。saidという過去の時点から見て、さらに前に完了していたことを表すため、現在完了よりもさらに過去の時制である過去完了を使う。",
+  "notes": [
+   "現在完了のままでは時制の一致の規則に反する。",
+   "現在完了のままでは時制の一致の規則に反する。",
+   "時制の一致により、現在完了（have finished）は間接話法では過去完了（had finished）に変える。saidという過去の時点から見て、さらに前に完了していたことを表すため、現在完了よりもさらに過去の時制である過去完了を使う。",
+   "不適切な形。"
+  ]
+ },
+ {
+  "question": "Tom said to me, \"Where do you live?\" → Tom asked me where (　　).",
+  "choices": [
+   "do I live",
+   "I live",
+   "I lived",
+   "did I live"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "疑問文を間接話法にするときは、（1）間接疑問文と同じく「疑問詞＋主語＋動詞」の語順にする、（2）話す人の視点に合わせて代名詞を変える（youは聞かれた本人〈I〉を指す）、（3）時制の一致により現在形（live）を過去形（lived）に変える、という3つの規則が組み合わさる。",
+  "notes": [
+   "語順が疑問文のまま（do I live）で、間接話法の語順規則に反する。",
+   "語順は正しいが時制が変わっておらず、時制の一致の規則に反する。",
+   "疑問文を間接話法にするときは、（1）間接疑問文と同じく「疑問詞＋主語＋動詞」の語順にする、（2）話す人の視点に合わせて代名詞を変える（youは聞かれた本人〈I〉を指す）、（3）時制の一致により現在形（live）を過去形（lived）に変える、という3つの規則が組み合わさる。",
+   "語順が疑問文のままで規則に反する。"
+  ]
+ },
+ {
+  "question": "He said, \"This is my bag.\" → He said that (　　) bag.",
+  "choices": [
+   "this was his",
+   "this is his",
+   "that was his",
+   "it is my"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時制の一致（is→was）に加え、所有格の代名詞my（発言者自身の「私の」）は、発言者の視点（he）に合わせてhis（彼の）に変える。thisはそのまま使うことが多い（近くのものを指す語だが、間接話法でも文脈上問題なければそのまま使われることが一般的）。",
+  "notes": [
+   "時制の一致（is→was）に加え、所有格の代名詞my（発言者自身の「私の」）は、発言者の視点（he）に合わせてhis（彼の）に変える。thisはそのまま使うことが多い（近くのものを指す語だが、間接話法でも文脈上問題なければそのまま使われることが一般的）。",
+   "時制が変わっておらず規則に反する。",
+   "thisをthatに変える必要は必ずしもない（文脈によるが、この選択肢では所有格の変換ができていないため誤り）。",
+   "myのままでは発言者の視点に合わせた変換ができていない。"
+  ]
+ },
+ {
+  "question": "She said, \"I bought this yesterday.\" → She said that she (　　) that the day before.",
+  "choices": [
+   "buys",
+   "bought",
+   "had bought",
+   "has bought"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "直接話法の中ですでに過去形（bought）が使われている場合、時制の一致により間接話法ではさらに1つ前の時制である過去完了（had bought）に変えるのが規則。また、yesterday（昨日）はsaid（過去の発言）を基準にした「その前日」という意味に変わるため、間接話法ではthe day beforeという表現に置き換える。",
+  "notes": [
+   "現在形は規則に反する。",
+   "過去形のままでは、saidという過去の時点からさらに過去にずらす時制の一致の規則が反映されていない。",
+   "直接話法の中ですでに過去形（bought）が使われている場合、時制の一致により間接話法ではさらに1つ前の時制である過去完了（had bought）に変えるのが規則。また、yesterday（昨日）はsaid（過去の発言）を基準にした「その前日」という意味に変わるため、間接話法ではthe day beforeという表現に置き換える。",
+   "現在完了もこの文脈には合わない。"
+  ]
+ },
+ {
+  "question": "He said to her, \"Please help me.\" → He asked her (　　) him.",
+  "choices": [
+   "help",
+   "to help",
+   "helping",
+   "helped"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "依頼・命令を表す文（Please help me）を間接話法にするときは、ask＋人＋to不定詞という形（第2章で扱ったtell/ask＋人＋to不定詞の文型）に変える。命令・依頼の内容を「〜するように」というto不定詞で表す。",
+  "notes": [
+   "原形のままではこの間接話法の文型（ask人to〜）に合わない。",
+   "依頼・命令を表す文（Please help me）を間接話法にするときは、ask＋人＋to不定詞という形（第2章で扱ったtell/ask＋人＋to不定詞の文型）に変える。命令・依頼の内容を「〜するように」というto不定詞で表す。",
+   "ing形は不適切。",
+   "過去分詞も不適切。"
+  ]
+ },
+ {
+  "question": "Mary said, \"I don't like this song.\" → Mary said that she (　　) like that song.",
+  "choices": [
+   "doesn't",
+   "didn't",
+   "don't",
+   "isn't"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時制の一致により、一般動詞の否定（don't like）は間接話法ではdidn'tに変える。",
+  "notes": [
+   "3人称単数のdoesn'tは主語she自体には合うように見えるが、時制の一致（現在→過去）ができていないため誤り。",
+   "時制の一致により、一般動詞の否定（don't like）は間接話法ではdidn'tに変える。",
+   "主語sheに対してdon'tは3人称単数と一致せず、また時制の一致もできていない。",
+   "be動詞はこの一般動詞likeの否定には使わない。"
+  ]
+ },
+ {
+  "question": "He said, \"I am going to visit Kyoto next week.\" → He said that he (　　) visit Kyoto the following week.",
+  "choices": [
+   "is going to",
+   "was going to",
+   "will",
+   "has gone to"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時制の一致により、be going to（現在）はwas going to（過去）に変える。またnext week（来週）は、said（過去の発言）を基準にした「その翌週」を意味するthe following weekに置き換わる。",
+  "notes": [
+   "現在形のままでは規則に反する。",
+   "時制の一致により、be going to（現在）はwas going to（過去）に変える。またnext week（来週）は、said（過去の発言）を基準にした「その翌週」を意味するthe following weekに置き換わる。",
+   "willに変えるのは規則としては不自然（be going toはwas going toに変えるのが対応する形）。",
+   "現在完了もこの文脈には合わない。"
+  ]
+ },
+ {
+  "question": "Don't you like natto? — No, (　　).",
+  "choices": [
+   "I do",
+   "I don't",
+   "I am",
+   "I am not"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "英語では、否定疑問文（Don't you 〜?）に対する答え方は、日本語の「はい／いいえ」の感覚とは異なり、答えの内容（好きか嫌いか）が肯定なのか否定なのかによってYes/Noを決める、という規則がある。「納豆が嫌い（好きではない）」という否定の内容を答える場合は、質問の形にかかわらずNo, I don't.となる（日本語では「いいえ、好きです」と答える場面でも、嫌いなことを答えるならNoを使うという、日英で答え方の理屈が逆転しやすい点に注意）。",
+  "notes": [
+   "Yesの後にI doを続けると、「好きだ」という肯定の内容になり、Noという最初の返事と矛盾してしまう。",
+   "英語では、否定疑問文（Don't you 〜?）に対する答え方は、日本語の「はい／いいえ」の感覚とは異なり、答えの内容（好きか嫌いか）が肯定なのか否定なのかによってYes/Noを決める、という規則がある。「納豆が嫌い（好きではない）」という否定の内容を答える場合は、質問の形にかかわらずNo, I don't.となる（日本語では「いいえ、好きです」と答える場面でも、嫌いなことを答えるならNoを使うという、日英で答え方の理屈が逆転しやすい点に注意）。",
+   "この文の動詞は一般動詞like（好き）なのでbe動詞のI am/I am notは使わない。",
+   "この文の動詞は一般動詞like（好き）なのでbe動詞のI am/I am notは使わない。"
+  ]
+ },
+ {
+  "question": "Aren't you tired? — Yes, (　　).",
+  "choices": [
+   "I am",
+   "I am not",
+   "I do",
+   "I don't"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「疲れている」という肯定の内容を答えるので、質問が否定疑問文（Aren't you 〜?）であってもYes, I am.（疲れている）と答える。英語では常に「答えの内容が肯定か否定か」でYes/Noを決めるという一貫した規則がある。",
+  "notes": [
+   "「疲れている」という肯定の内容を答えるので、質問が否定疑問文（Aren't you 〜?）であってもYes, I am.（疲れている）と答える。英語では常に「答えの内容が肯定か否定か」でYes/Noを決めるという一貫した規則がある。",
+   "Yesの後にI am notを続けると、肯定の返事（Yes）と否定の内容（am not）が矛盾してしまう。",
+   "この文の動詞はbe動詞tiredの状態を表すのでdo/don'tは使わない。",
+   "この文の動詞はbe動詞tiredの状態を表すのでdo/don'tは使わない。"
+  ]
+ },
+ {
+  "question": "Isn't this your bag? — No, (　　).",
+  "choices": [
+   "it is",
+   "it isn't",
+   "it does",
+   "it doesn't"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「これはあなたのバッグではない」という否定の内容を答える場合はNo, it isn't.となる。",
+  "notes": [
+   "Noの後にit isを続けると、否定の返事（No）と肯定の内容（it is＝そうです）が矛盾する。",
+   "「これはあなたのバッグではない」という否定の内容を答える場合はNo, it isn't.となる。",
+   "この文の動詞はbe動詞（is）なのでdoes/doesn'tは使わない。",
+   "この文の動詞はbe動詞（is）なのでdoes/doesn'tは使わない。"
+  ]
+ },
+ {
+  "question": "Doesn't he speak English? — Yes, (　　).",
+  "choices": [
+   "he does",
+   "he doesn't",
+   "he is",
+   "he isn't"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「彼は英語を話す」という肯定の内容を答えるので、質問が否定疑問文であってもYes, he does.となる。",
+  "notes": [
+   "「彼は英語を話す」という肯定の内容を答えるので、質問が否定疑問文であってもYes, he does.となる。",
+   "Yesの後にhe doesn'tを続けると矛盾する。",
+   "この文の動詞は一般動詞speakなのでbe動詞は使わない。",
+   "この文の動詞は一般動詞speakなのでbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "Didn't you finish your homework? — No, (　　).",
+  "choices": [
+   "I did",
+   "I didn't",
+   "I do",
+   "I don't"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「宿題を終えていない」という否定の内容を答えるのでNo, I didn't.となる。この文は過去の出来事についての否定疑問文なのでdidn'tを使う。",
+  "notes": [
+   "Noの後にI didを続けると矛盾する。",
+   "「宿題を終えていない」という否定の内容を答えるのでNo, I didn't.となる。この文は過去の出来事についての否定疑問文なのでdidn'tを使う。",
+   "現在形は、過去の出来事（finished homework、この文脈では終わらせたかどうかという過去の行為）についての答えとしては時制が合わない。",
+   "現在形は、過去の出来事（finished homework、この文脈では終わらせたかどうかという過去の行為）についての答えとしては時制が合わない。"
+  ]
+ },
+ {
+  "question": "Haven't you seen this movie? — Yes, (　　).",
+  "choices": [
+   "I have",
+   "I haven't",
+   "I do",
+   "I don't"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「この映画を見たことがある」という肯定の内容を答えるので、質問が否定疑問文（Haven't you 〜?）であってもYes, I have.となる。現在完了の文にはhave/hasを使って答える。",
+  "notes": [
+   "「この映画を見たことがある」という肯定の内容を答えるので、質問が否定疑問文（Haven't you 〜?）であってもYes, I have.となる。現在完了の文にはhave/hasを使って答える。",
+   "Yesの後にI haven'tを続けると矛盾する。",
+   "現在完了の文にdo/don'tは使わない。",
+   "現在完了の文にdo/don'tは使わない。"
+  ]
+ },
+ {
+  "question": "Can't you come to the party? — No, (　　).",
+  "choices": [
+   "I can",
+   "I can't",
+   "I do",
+   "I don't"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「パーティーに来られない」という否定の内容を答えるのでNo, I can't.となる。助動詞canを使った文には、答えにもcanを使う。",
+  "notes": [
+   "Noの後にI canを続けると矛盾する。",
+   "「パーティーに来られない」という否定の内容を答えるのでNo, I can't.となる。助動詞canを使った文には、答えにもcanを使う。",
+   "canを使った文にdo/don'tは使わない。",
+   "canを使った文にdo/don'tは使わない。"
+  ]
+ },
+ {
+  "question": "Isn't there a bank near here? — Yes, (　　).",
+  "choices": [
+   "there is",
+   "there isn't",
+   "it is",
+   "it isn't"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「近くに銀行がある」という肯定の内容を答えるので、質問が否定疑問文であってもYes, there is.となる。There is/are構文の答えにはthereを使う。",
+  "notes": [
+   "「近くに銀行がある」という肯定の内容を答えるので、質問が否定疑問文であってもYes, there is.となる。There is/are構文の答えにはthereを使う。",
+   "Yesの後にthere isn'tを続けると矛盾する。",
+   "There構文の答えにはit ではなく there を使う。",
+   "There構文の答えにはit ではなく there を使う。"
+  ]
+ },
+ {
+  "question": "I'm looking forward to (　　) you at the party.",
+  "choices": [
+   "see",
+   "seeing",
+   "saw",
+   "seen"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "look forward toのtoは前置詞なので、後ろには動名詞（ing形）を置く（第2学年の章で扱った規則の復習）。",
+  "notes": [
+   "前置詞の後に原形は置けない。",
+   "look forward toのtoは前置詞なので、後ろには動名詞（ing形）を置く（第2学年の章で扱った規則の復習）。",
+   "過去形も前置詞の後には置けない。",
+   "過去分詞も前置詞の後には置けない（過去分詞は本来、be動詞や現在完了などと組み合わせて使う形）。"
+  ]
+ },
+ {
+  "question": "Could you (　　) me a favor?",
+  "choices": [
+   "do",
+   "make",
+   "take",
+   "give"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "do someone a favorで「〜に頼みごとをする、〜のためにひと肌脱ぐ」という決まった熟語表現。doは「（行為として）行う」という意味でfavor（親切な行為）と結びつく。",
+  "notes": [
+   "do someone a favorで「〜に頼みごとをする、〜のためにひと肌脱ぐ」という決まった熟語表現。doは「（行為として）行う」という意味でfavor（親切な行為）と結びつく。",
+   "この熟語ではdoを使うことが慣用的に決まっており、他の動詞には置き換えない。",
+   "この熟語ではdoを使うことが慣用的に決まっており、他の動詞には置き換えない。",
+   "この熟語ではdoを使うことが慣用的に決まっており、他の動詞には置き換えない。"
+  ]
+ },
+ {
+  "question": "I'm sorry, but I have to (　　) now.",
+  "choices": [
+   "go",
+   "went",
+   "going",
+   "goes"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "have to（〜しなければならない）の後は動詞の原形（第2学年で扱った助動詞的表現の規則の復習）。",
+  "notes": [
+   "have to（〜しなければならない）の後は動詞の原形（第2学年で扱った助動詞的表現の規則の復習）。",
+   "have toの後には原形以外は使わない。",
+   "have toの後には原形以外は使わない。",
+   "have toの後には原形以外は使わない。"
+  ]
+ },
+ {
+  "question": "It's up to (　　) to decide.",
+  "choices": [
+   "I",
+   "you",
+   "he",
+   "she"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "It's up to 人で「それは〜次第だ」という決まった表現。toは前置詞なので後ろには目的格（またはyouのように主格・目的格が同じ形の代名詞）を置く。",
+  "notes": [
+   "I, he, sheは主格であり、前置詞toの後（目的語の位置）に置く代名詞としては誤り（正しくはme, him, herを使う）。youは主格・目的格が同じ形なのでこの位置でも問題なく使える。",
+   "It's up to 人で「それは〜次第だ」という決まった表現。toは前置詞なので後ろには目的格（またはyouのように主格・目的格が同じ形の代名詞）を置く。",
+   "I, he, sheは主格であり、前置詞toの後（目的語の位置）に置く代名詞としては誤り（正しくはme, him, herを使う）。youは主格・目的格が同じ形なのでこの位置でも問題なく使える。",
+   "I, he, sheは主格であり、前置詞toの後（目的語の位置）に置く代名詞としては誤り（正しくはme, him, herを使う）。youは主格・目的格が同じ形なのでこの位置でも問題なく使える。"
+  ]
+ },
+ {
+  "question": "Thank you for (　　) me with my homework.",
+  "choices": [
+   "help",
+   "helps",
+   "helping",
+   "helped"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "前置詞forの後は動名詞（第2学年で扱った規則の復習）。",
+  "notes": [
+   "前置詞の後にこれらの形を置くことはできない。",
+   "前置詞の後にこれらの形を置くことはできない。",
+   "前置詞forの後は動名詞（第2学年で扱った規則の復習）。",
+   "前置詞の後にこれらの形を置くことはできない。"
+  ]
+ },
+ {
+  "question": "I'm used to (　　) up early.",
+  "choices": [
+   "get",
+   "gets",
+   "getting",
+   "got"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be used to 〜ingで「〜することに慣れている」という決まった表現。このtoは前置詞であり、後ろには動名詞を置く（不定詞のto（used to do＝以前は〜したものだ）と形が似ているが意味・後続の形が異なるので注意が必要な熟語）。",
+  "notes": [
+   "前置詞の後にこれらの形を置くことはできない。",
+   "前置詞の後にこれらの形を置くことはできない。",
+   "be used to 〜ingで「〜することに慣れている」という決まった表現。このtoは前置詞であり、後ろには動名詞を置く（不定詞のto（used to do＝以前は〜したものだ）と形が似ているが意味・後続の形が異なるので注意が必要な熟語）。",
+   "前置詞の後にこれらの形を置くことはできない。"
+  ]
+ },
+ {
+  "question": "According to the weather report, it (　　) rain tomorrow.",
+  "choices": [
+   "will",
+   "is",
+   "has",
+   "was"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "According to 〜（〜によると）という表現の後には、天気予報の内容（未来の予測）が続くのでwillを使う。",
+  "notes": [
+   "According to 〜（〜によると）という表現の後には、天気予報の内容（未来の予測）が続くのでwillを使う。",
+   "現在形はこの文脈（明日の予測）には合わない。",
+   "現在完了もこの文脈に合わない。",
+   "過去形は未来の文脈と矛盾する。"
+  ]
+ },
+ {
+  "question": "I can't help (　　) when I watch this movie.",
+  "choices": [
+   "cry",
+   "cries",
+   "crying",
+   "cried"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "can't help 〜ingで「〜せずにはいられない」という決まった表現。helpの後は動名詞を使う（第2学年で扱ったmind, enjoy, finishなどと同じく動名詞を目的語に取る動詞の仲間）。",
+  "notes": [
+   "この熟語ではing形を使うことが決まっている。",
+   "この熟語ではing形を使うことが決まっている。",
+   "can't help 〜ingで「〜せずにはいられない」という決まった表現。helpの後は動名詞を使う（第2学年で扱ったmind, enjoy, finishなどと同じく動名詞を目的語に取る動詞の仲間）。",
+   "この熟語ではing形を使うことが決まっている。"
+  ]
+ },
+ {
+  "question": "As soon as I (　　) home, I'll call you.",
+  "choices": [
+   "will get",
+   "get",
+   "got",
+   "getting"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "as soon as（〜するとすぐに）は時を表す接続詞なので、when/ifと同じく、未来のことでも節の中では現在形を使うという規則が適用される（第2学年で扱った時・条件を表す副詞節の規則の復習）。",
+  "notes": [
+   "節の中でwillを使うのは規則に反する。",
+   "as soon as（〜するとすぐに）は時を表す接続詞なので、when/ifと同じく、未来のことでも節の中では現在形を使うという規則が適用される（第2学年で扱った時・条件を表す副詞節の規則の復習）。",
+   "過去形は未来の出来事を表す文脈と矛盾する。",
+   "ing形は単独では述語にならない。"
+  ]
+ },
+ {
+  "question": "Not only he (　　) but also his sister can play the violin.",
+  "choices": [
+   "but",
+   "but also",
+   "also",
+   "and"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "not only A but also Bで「AだけでなくBも」という意味の相関接続詞（2つの語がセットで意味を作る接続詞）。この決まった組み合わせを崩さずに使う。",
+  "notes": [
+   "butだけでは「not only A but B」となり、この熟語の完全な形（but also）にならない。",
+   "not only A but also Bで「AだけでなくBも」という意味の相関接続詞（2つの語がセットで意味を作る接続詞）。この決まった組み合わせを崩さずに使う。",
+   "alsoだけでは相関の意味が弱くなり、決まった表現の形にならない。",
+   "andはこの相関接続詞の組み合わせには使わない。"
+  ]
+ },
+ {
+  "question": "The book (　　) on the table was written by a famous writer.",
+  "choices": [
+   "lying",
+   "lay",
+   "lies",
+   "lain"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在分詞lyingが名詞bookを後ろから修飾し、「テーブルの上に置かれている本」という状態を表す（第6章で扱った分詞の後置修飾の応用）。lie（横たわる、置かれている）は自動詞であり、「置かれている」という能動的な状態を現在分詞で表す。",
+  "notes": [
+   "現在分詞lyingが名詞bookを後ろから修飾し、「テーブルの上に置かれている本」という状態を表す（第6章で扱った分詞の後置修飾の応用）。lie（横たわる、置かれている）は自動詞であり、「置かれている」という能動的な状態を現在分詞で表す。",
+   "名詞を修飾する形として使えない語形。",
+   "名詞を修飾する形として使えない語形。",
+   "名詞を修飾する形として使えない語形。"
+  ]
+ },
+ {
+  "question": "This is a house (　　) roof is painted blue.",
+  "choices": [
+   "which",
+   "whose",
+   "that",
+   "who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「その家の屋根」という所有関係を表す関係代名詞whoseを使う（第4章で扱った所有格の関係代名詞の応用）。painted blueは過去分詞が補語として使われ「青く塗られている」という受動の状態を表している。",
+  "notes": [
+   "主格・目的格用でこの所有の関係には合わない。",
+   "「その家の屋根」という所有関係を表す関係代名詞whoseを使う（第4章で扱った所有格の関係代名詞の応用）。painted blueは過去分詞が補語として使われ「青く塗られている」という受動の状態を表している。",
+   "主格・目的格用でこの所有の関係には合わない。",
+   "whoは人用でhouse（物）には使わない。"
+  ]
+ },
+ {
+  "question": "The letter (　　) yesterday hasn't arrived yet.",
+  "choices": [
+   "send",
+   "sent",
+   "sending",
+   "was sent"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞sentが名詞letterを後ろから修飾し、「昨日送られた手紙」という受け身の意味を表す（第6章の分詞の後置修飾の応用）。文全体の動詞は現在完了hasn't arrivedであり、the letterがその主語になっている。",
+  "notes": [
+   "原形は名詞を修飾しない。",
+   "過去分詞sentが名詞letterを後ろから修飾し、「昨日送られた手紙」という受け身の意味を表す（第6章の分詞の後置修飾の応用）。文全体の動詞は現在完了hasn't arrivedであり、the letterがその主語になっている。",
+   "ing形だと能動の意味になり不自然。",
+   "was sentは受動態の文の動詞の形であり、名詞を修飾する分詞の形（過去分詞単体）としては使わない（be動詞を伴う形は分詞の後置修飾には使わない）。"
+  ]
+ },
+ {
+  "question": "I have a friend (　　) has lived in America (　　) five years.",
+  "choices": [
+   "who / for",
+   "which / since",
+   "who / since",
+   "which / for"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞a friend（人）には主格の関係代名詞whoを使い（第4章）、後半は期間の長さ（five years）を表すのでforを使う（第3章の継続用法の復習）。",
+  "notes": [
+   "先行詞a friend（人）には主格の関係代名詞whoを使い（第4章）、後半は期間の長さ（five years）を表すのでforを使う（第3章の継続用法の復習）。",
+   "whichは物用でfriend（人）には使わない。",
+   "sinceは起点を表す語でfive years（期間の長さ）には合わない。",
+   "whichは物用でfriend（人）には使わない。"
+  ]
+ },
+ {
+  "question": "This is the most difficult problem (　　) I have ever solved (　　) my math class.",
+  "choices": [
+   "that / in",
+   "which / at",
+   "who / on",
+   "whose / for"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞に最上級（the most difficult）が付いているのでthatを使う（第4章）。in my math classは「私の数学の授業の中で」という所属・分野を表すのでinを使う（前置詞inは「〜の中で」という広い範囲・分野を表す用法もある）。",
+  "notes": [
+   "先行詞に最上級（the most difficult）が付いているのでthatを使う（第4章）。in my math classは「私の数学の授業の中で」という所属・分野を表すのでinを使う（前置詞inは「〜の中で」という広い範囲・分野を表す用法もある）。",
+   "最上級が先行詞に付く場合はthatが好まれる。",
+   "whoは人用でproblem（物）には使わない。",
+   "whoseは所有格用でこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "The window (　　) by the boy was broken.",
+  "choices": [
+   "break",
+   "broken",
+   "breaking",
+   "is broken"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞brokenが名詞windowを後ろから修飾し、「その少年によって割られた窓」という受け身の意味を表す。文全体の動詞はwas（be動詞の過去形）で、「（その状態の）窓は壊れていた」という意味になる。",
+  "notes": [
+   "原形は名詞を修飾しない。",
+   "過去分詞brokenが名詞windowを後ろから修飾し、「その少年によって割られた窓」という受け身の意味を表す。文全体の動詞はwas（be動詞の過去形）で、「（その状態の）窓は壊れていた」という意味になる。",
+   "ing形は能動の意味になり不自然。",
+   "is brokenは文全体の動詞として使う受動態の形であり、名詞を修飾する分詞としては使わない。"
+  ]
+ },
+ {
+  "question": "Have you ever met a person (　　) can speak five languages?",
+  "choices": [
+   "which",
+   "who",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞a person（人）を修飾する主格の関係代名詞whoを使う（第4章の復習）。ever（経験用法）と組み合わせた総合問題。",
+  "notes": [
+   "物用。",
+   "先行詞a person（人）を修飾する主格の関係代名詞whoを使う（第4章の復習）。ever（経験用法）と組み合わせた総合問題。",
+   "所有格用でこの文脈に合わない。",
+   "目的格用でこの文（personが「話せる」という動作の主語）には合わない。"
+  ]
+ },
+ {
+  "question": "I have been waiting for the bus (　　) 20 minutes, but it hasn't come (　　).",
+  "choices": [
+   "for / yet",
+   "since / already",
+   "for / already",
+   "since / yet"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "20 minutes（期間の長さ）にはforを使う（第3章）。否定文で「まだ〜していない」という意味を表すのはyet（第1章の完了用法の復習）。",
+  "notes": [
+   "20 minutes（期間の長さ）にはforを使う（第3章）。否定文で「まだ〜していない」という意味を表すのはyet（第1章の完了用法の復習）。",
+   "sinceは起点を表す語で期間の長さ（20 minutes）には合わない。",
+   "肯定的な意味のalreadyは、この否定文（hasn't come）の文脈には合わない。",
+   "sinceは起点を表す語で期間の長さ（20 minutes）には合わない。"
+  ]
+ },
+ {
+  "question": "The cake (　　) by my sister looked delicious.",
+  "choices": [
+   "make",
+   "made",
+   "making",
+   "makes"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "過去分詞madeが名詞cakeを後ろから修飾し、「妹によって作られたケーキ」という受け身の意味を表す。文全体の動詞はlooked（look＋形容詞で「〜に見える」という意味）。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "過去分詞madeが名詞cakeを後ろから修飾し、「妹によって作られたケーキ」という受け身の意味を表す。文全体の動詞はlooked（look＋形容詞で「〜に見える」という意味）。",
+   "ing形だと能動の意味になり不自然。",
+   "名詞を修飾する形にならない。"
+  ]
+ },
+ {
+  "question": "This is the town (　　) I have lived (　　) I was born.",
+  "choices": [
+   "where / since",
+   "which / for",
+   "where / for",
+   "which / since"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "the town（場所）を修飾するのは関係副詞where（第5章の復習）。継続用法の現在完了と組み合わせ、起点（生まれてから）を表すのでsinceを使う（第3章の復習）。",
+  "notes": [
+   "the town（場所）を修飾するのは関係副詞where（第5章の復習）。継続用法の現在完了と組み合わせ、起点（生まれてから）を表すのでsinceを使う（第3章の復習）。",
+   "whichは、後ろに完全な文（I have lived）が続くこの文脈には合わない（目的語などが欠けていないため）。",
+   "sinceの代わりにforを使うと、後ろに節（I was born）ではなく期間の長さの語句が必要になるため合わない。",
+   "whichは、後ろに完全な文（I have lived）が続くこの文脈には合わない（目的語などが欠けていないため）。"
+  ]
+ },
+ {
+  "question": "I know the woman (　　) painting is displayed in that museum.",
+  "choices": [
+   "who",
+   "whose",
+   "which",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「その女性の絵」という所有関係を表すのでwhoseを使う（第4章の復習）。is displayedは受動態（第2学年の復習）。",
+  "notes": [
+   "主格・目的格用で所有の意味は持たない。",
+   "「その女性の絵」という所有関係を表すのでwhoseを使う（第4章の復習）。is displayedは受動態（第2学年の復習）。",
+   "物用でwoman（人）には使わない。",
+   "主格・目的格用で所有の意味は持たない。"
+  ]
+ },
+ {
+  "question": "Not only is she smart, (　　) she is also very kind.",
+  "choices": [
+   "but",
+   "and",
+   "or",
+   "so"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "not only A but also B（第12章）の構文で、Aの部分（is she smart）が文頭に来ると主語と動詞が倒置される（is sheという疑問文のような語順になる）という特別なルールがある。butはこの相関接続詞の一部として使う。",
+  "notes": [
+   "not only A but also B（第12章）の構文で、Aの部分（is she smart）が文頭に来ると主語と動詞が倒置される（is sheという疑問文のような語順になる）という特別なルールがある。butはこの相関接続詞の一部として使う。",
+   "not only とセットで使う語はbut（also）と決まっている。",
+   "not only とセットで使う語はbut（also）と決まっている。",
+   "not only とセットで使う語はbut（also）と決まっている。"
+  ]
+ },
+ {
+  "question": "This is the room (　　) my grandfather used to study in.",
+  "choices": [
+   "which",
+   "who",
+   "whose",
+   "whom"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "先行詞the room（物）が後ろの節（my grandfather used to study in）の中で前置詞inの目的語の働きをしているので、目的格の関係代名詞whichを使う（thatも可）。used to 〜は「以前はよく〜したものだ」という過去の習慣を表す表現。",
+  "notes": [
+   "先行詞the room（物）が後ろの節（my grandfather used to study in）の中で前置詞inの目的語の働きをしているので、目的格の関係代名詞whichを使う（thatも可）。used to 〜は「以前はよく〜したものだ」という過去の習慣を表す表現。",
+   "人用でroom（物）には使わない。",
+   "whoseは所有格用でこの文脈に合わない。",
+   "人用でroom（物）には使わない。"
+  ]
+ },
+ {
+  "question": "The scientist (　　) research changed the world passed away last year.",
+  "choices": [
+   "who",
+   "whose",
+   "which",
+   "whom"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「その科学者の研究」という所有関係を表すのでwhoseを使う。passed awayは「亡くなった」という意味の熟語（自動詞的な用法）。",
+  "notes": [
+   "主格・目的格用で所有の意味は持たない。",
+   "「その科学者の研究」という所有関係を表すのでwhoseを使う。passed awayは「亡くなった」という意味の熟語（自動詞的な用法）。",
+   "物用でscientist（人）には使わない。",
+   "主格・目的格用で所有の意味は持たない。"
+  ]
+ },
+ {
+  "question": "If I (　　) more time, I would travel around the world.",
+  "choices": [
+   "have",
+   "has",
+   "had",
+   "will have"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "仮定法過去（第8章の復習）で、if節の動詞は過去形にする。「もっと時間があったら（実際にはない）」という現実と異なる仮定。",
+  "notes": [
+   "現在形は現実の内容を表す語で仮定法には合わない。",
+   "現在形は現実の内容を表す語で仮定法には合わない。",
+   "仮定法過去（第8章の復習）で、if節の動詞は過去形にする。「もっと時間があったら（実際にはない）」という現実と異なる仮定。",
+   "未来形も仮定法過去の構造には合わない。"
+  ]
+ },
+ {
+  "question": "He hasn't called me, (　　)?",
+  "choices": [
+   "has he",
+   "hasn't he",
+   "does he",
+   "doesn't he"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "直前の文が否定文（hasn't called）なので付加疑問には肯定形has heを付ける（第9章の復習）。現在完了の文には付加疑問にもhave/hasを使う。",
+  "notes": [
+   "直前の文が否定文（hasn't called）なので付加疑問には肯定形has heを付ける（第9章の復習）。現在完了の文には付加疑問にもhave/hasを使う。",
+   "否定形を重ねるのは規則に反する。",
+   "現在完了の文にdo/doesを使うのは誤り。",
+   "現在完了の文にdo/doesを使うのは誤り。"
+  ]
+ }
+]

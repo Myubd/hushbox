@@ -2,6 +2,8 @@ import { HistoryTimestamp } from "./historyTimestamp/HistoryTimestamp";
 import { WorldMapTimeTravel } from "./worldMapTimeTravel/WorldMapTimeTravel";
 import { KanjiSquare } from "./kanjiSquare/KanjiSquare";
 import { ArithmeticPractice } from "./arithmeticPractice/ArithmeticPractice";
+import { PrefecturePuzzle } from "./prefecturePuzzle/PrefecturePuzzle";
+import { ProgrammingMaze } from "./programmingMaze/ProgrammingMaze";
 import type { GameEntry } from "./types";
 
 /**
@@ -44,5 +46,19 @@ export const GAMES: GameEntry[] = [
     icon: "🧮",
     description: "たしざん・ひきざん・かけざん・わりざんを自由入力で練習しよう",
     Component: ArithmeticPractice,
+  },
+  {
+    id: "prefecture-puzzle",
+    label: "都道府県パズル",
+    icon: "🧩",
+    description: "地図のピースをドラッグして、都道府県や市区町村を正しい位置に置こう",
+    Component: PrefecturePuzzle,
+  },
+  {
+    id: "programming-maze",
+    label: "ロジックめいろ",
+    icon: "🤖",
+    description: "命令ブロック(じゅんじょ・くりかえし・もし)を組み合わせてキャラクターをゴールまで導こう",
+    Component: ProgrammingMaze,
   },
 ];

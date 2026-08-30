@@ -143,6 +143,7 @@ pub fn units_for_subject(subject: &str) -> Vec<UnitInfo> {
             mixed_unit(),
             u("kanji_reading", "漢字の読み"),
             u("vocabulary_grammar", "ことば・文法"),
+            u("classics_and_expression", "古典・表現"),
         ],
         _ => vec![mixed_unit()],
     }
@@ -415,6 +416,9 @@ static KANJI_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
     all.extend(load_choice_questions_json(include_str!("kanji_data/g4.json")));
     all.extend(load_choice_questions_json(include_str!("kanji_data/g5.json")));
     all.extend(load_choice_questions_json(include_str!("kanji_data/g6.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/j1.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/j2.json")));
+    all.extend(load_choice_questions_json(include_str!("kanji_data/j3.json")));
     all
 });
 
@@ -725,7 +729,7 @@ pub fn generate_social(mode: &str, unit: Option<&str>) -> (DrillProblem, Pending
 
 // ---- 英語 ----
 // 単元: vocabulary(たんご) / grammar(文法・表現)
-const ENGLISH_BANK: &[ChoiceQuestion] = &[
+const ENGLISH_BANK_CORE: &[ChoiceQuestion] = &[
     ChoiceQuestion {
         question: "「あか」を英語で言うと?",
         choices: ["Blue", "Red", "Green", "Yellow"],
@@ -854,8 +858,22 @@ const ENGLISH_BANK: &[ChoiceQuestion] = &[
     },
 ];
 
+/// 英語の問題バンク全体。社会・理科・算数・国語と同じ方式で、元の少数の問題
+/// (`ENGLISH_BANK_CORE`)に加えて学年ごとのJSONファイルを起動時に1回だけ読み込む。
+static ENGLISH_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
+    let mut all: Vec<ChoiceQuestion> = ENGLISH_BANK_CORE.to_vec();
+    all.extend(load_choice_questions_json(include_str!("english_data/g3.json")));
+    all.extend(load_choice_questions_json(include_str!("english_data/g4.json")));
+    all.extend(load_choice_questions_json(include_str!("english_data/g5.json")));
+    all.extend(load_choice_questions_json(include_str!("english_data/g6.json")));
+    all.extend(load_choice_questions_json(include_str!("english_data/j1.json")));
+    all.extend(load_choice_questions_json(include_str!("english_data/j2.json")));
+    all.extend(load_choice_questions_json(include_str!("english_data/j3.json")));
+    all
+});
+
 pub fn generate_english(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
-    generate_from_bank("english", ENGLISH_BANK, mode, unit)
+    generate_from_bank("english", &ENGLISH_BANK[..], mode, unit)
 }
 
 // ---- 情報 ----
@@ -1028,7 +1046,7 @@ pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledg
 
     let mut out: Vec<KnowledgeSnippet> = Vec::new();
 
-    for bank in [&SCIENCE_BANK[..], &SOCIAL_BANK[..], &MATH_BANK[..], ENGLISH_BANK, INFO_BANK] {
+    for bank in [&SCIENCE_BANK[..], &SOCIAL_BANK[..], &MATH_BANK[..], &ENGLISH_BANK[..], INFO_BANK] {
         for q in bank {
             let correct = q.choices[q.correct_index];
             // 1文字の用語や、数字だけの答え(算数の計算結果など)は無関係な文への
@@ -1050,9 +1068,22 @@ pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledg
     // ヒットさせたい語(漢字/読みの両方)が違うため、専用に扱う。
     for q in KANJI_BANK.iter().filter(|q| q.unit == "kanji_reading") {
         let reading = q.choices[q.correct_index];
-        let kanji_m = q.question.find('「').zip(q.question.find('」'));
+        // 「境界」の「境」の読み...のように「」が二重に出てくる問題もあるため、
+        // 常に最後の「」を対象語とする(単漢字だけになるケースは、下の2文字以上
+        // フィルタで自然に除外される=誤った紐付けのスニペットを出さずに済む)。
+        let kanji_m = q.question.rfind('「').zip(q.question.rfind('」'));
         let Some((start, end)) = kanji_m else { continue };
         let kanji = &q.question[start + '「'.len_utf8()..end];
+        // 「境内」以外で「境」を「ケイ」と読む熟語は?のように、最後の「」が
+        // 読み仮名(カタカナ)そのものになっている設問もまれにある。
+        // そこに漢字が一文字も含まれていなければ、この特殊ループの対象外とする。
+        let has_kanji_char = kanji.chars().any(|c| {
+            let cp = c as u32;
+            (0x4E00..=0x9FFF).contains(&cp) || (0x3400..=0x4DBF).contains(&cp)
+        });
+        if !has_kanji_char {
+            continue;
+        }
         if kanji.chars().count() < 2 {
             continue;
         }
@@ -1136,6 +1167,27 @@ mod tests {
                 assert_eq!(choices.len(), 4);
                 let count = choices.iter().filter(|c| **c == pending.correct_text).count();
                 assert_eq!(count, 1);
+            }
+        }
+    }
+
+    /// 上のテストはランダムに1問だけ抽出するので、壊れた問題がたまたま
+    /// 選ばれなかった回は見逃してしまう(flaky)。こちらはKANJI_BANK全件を
+    /// もれなく検査し、失敗時にはquestionをそのまま表示するので、
+    /// kanji_data/*.json のどの問題が壊れているか一発で特定できる。
+    #[test]
+    fn kanji_bank_has_no_duplicate_choices() {
+        for q in KANJI_BANK.iter() {
+            let mut seen: Vec<&str> = Vec::new();
+            for c in q.choices.iter() {
+                assert!(
+                    !seen.contains(c),
+                    "選択肢が重複しています: question=\"{}\" choices={:?} correct_index={}",
+                    q.question,
+                    q.choices,
+                    q.correct_index
+                );
+                seen.push(c);
             }
         }
     }

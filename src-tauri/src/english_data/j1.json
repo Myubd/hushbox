@@ -1,0 +1,2909 @@
+[
+ {
+  "question": "（　　）in the classroom now.",
+  "choices": [
+   "I am",
+   "I is",
+   "I are",
+   "I be"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語が I のとき、be動詞は必ず am になる。英語のbe動詞は主語の人称（1人称・2人称・3人称）と数（単数・複数）に応じて am／is／are の3つの形に変化する規則があり、I は1人称単数なので am と結びつく。",
+  "notes": [
+   "主語が I のとき、be動詞は必ず am になる。英語のbe動詞は主語の人称（1人称・2人称・3人称）と数（単数・複数）に応じて am／is／are の3つの形に変化する規則があり、I は1人称単数なので am と結びつく。",
+   "is は3人称単数（he, she, it など）専用の形。I と is は人称が一致しないため誤り。",
+   "are は2人称（you）または複数（we, you, they）に使う形。I は単数の1人称なので一致しない。",
+   "be は原形（辞書に載っている形）であり、現在時制の文でそのまま主語の後に置くことはできない。原形が使われるのは助動詞の後や命令文などに限られる。"
+  ]
+ },
+ {
+  "question": "She (　　) a doctor.",
+  "choices": [
+   "am",
+   "is",
+   "are",
+   "be"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "she は3人称単数（話し手・聞き手以外の一人）なので、be動詞は is になる。",
+  "notes": [
+   "am は1人称単数（I）専用。",
+   "she は3人称単数（話し手・聞き手以外の一人）なので、be動詞は is になる。",
+   "are は複数または you に使う。",
+   "be は原形であり、現在の文の述語動詞としてそのまま使えない。"
+  ]
+ },
+ {
+  "question": "We (　　) students.",
+  "choices": [
+   "am",
+   "is",
+   "are",
+   "was"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "we は1人称複数なので are を使う。英語のbe動詞は主語が複数のとき（we, you, they）原則 are になる。",
+  "notes": [
+   "am は I 専用。",
+   "is は3人称単数専用で、複数の we とは一致しない。",
+   "we は1人称複数なので are を使う。英語のbe動詞は主語が複数のとき（we, you, they）原則 are になる。",
+   "was は過去形。現在の状態を述べているのでここでは不適切。"
+  ]
+ },
+ {
+  "question": "(　　) you a teacher?",
+  "choices": [
+   "Am",
+   "Is",
+   "Are",
+   "Be"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "疑問文ではbe動詞を主語の前に出すが、動詞の形自体は主語との一致関係を保つ。主語 you は2人称なので are を使う。",
+  "notes": [
+   "Am は I専用。",
+   "Is は3人称単数専用で you と一致しない。",
+   "疑問文ではbe動詞を主語の前に出すが、動詞の形自体は主語との一致関係を保つ。主語 you は2人称なので are を使う。",
+   "Be は原形であり疑問文の先頭に置く形として使わない。"
+  ]
+ },
+ {
+  "question": "This (　　) not my bag.",
+  "choices": [
+   "am",
+   "is",
+   "are",
+   "do"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "this（これ）は3人称単数扱いなので is を使う。否定文は be動詞の直後に not を置くだけでよい（doやdoesは不要）。",
+  "notes": [
+   "am は I専用。",
+   "this（これ）は3人称単数扱いなので is を使う。否定文は be動詞の直後に not を置くだけでよい（doやdoesは不要）。",
+   "are は複数用で this（単数）と一致しない。",
+   "do はbe動詞の文の否定には使わない。doを使う否定文は一般動詞の文に限られる（この違いは後の一般動詞の章で扱う）。"
+  ]
+ },
+ {
+  "question": "They (　　) my classmates.",
+  "choices": [
+   "am",
+   "is",
+   "are",
+   "was"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "they は3人称複数なので are を使う。",
+  "notes": [
+   "am は I専用。",
+   "is は単数専用でthey（複数）と一致しない。",
+   "they は3人称複数なので are を使う。",
+   "was は過去形（is/amの過去形）で、現在の文には合わない。"
+  ]
+ },
+ {
+  "question": "(　　) it a cat?",
+  "choices": [
+   "Am",
+   "Is",
+   "Are",
+   "Do"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "it は3人称単数（人以外のものを指す代名詞）なのでbe動詞は is。疑問文でも主語との一致は変わらない。",
+  "notes": [
+   "Am はI専用。",
+   "it は3人称単数（人以外のものを指す代名詞）なのでbe動詞は is。疑問文でも主語との一致は変わらない。",
+   "Are は複数・you用。",
+   "Do は一般動詞の疑問文に使う語で、be動詞の文には使わない。"
+  ]
+ },
+ {
+  "question": "My brother and I (　　) good friends.",
+  "choices": [
+   "am",
+   "is",
+   "are",
+   "has"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「My brother and I」は and で2人がつながっているため全体で複数（we相当）になる。主語が複数のときbe動詞は are。",
+  "notes": [
+   "am はI一人のときのみ使う形で、複数主語には使えない。",
+   "is は単数用。",
+   "「My brother and I」は and で2人がつながっているため全体で複数（we相当）になる。主語が複数のときbe動詞は are。",
+   "has はhaveの3人称単数形で、be動詞の文とは別の動詞であり無関係。"
+  ]
+ },
+ {
+  "question": "I (　　) not from Japan.",
+  "choices": [
+   "am",
+   "is",
+   "are",
+   "not"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語I にはamが対応する。be動詞の否定文はbe動詞の直後にnotを置くだけで作れる（I am not …）。",
+  "notes": [
+   "主語I にはamが対応する。be動詞の否定文はbe動詞の直後にnotを置くだけで作れる（I am not …）。",
+   "主語Iと人称・数が一致しない。",
+   "主語Iと人称・数が一致しない。",
+   "notだけでは動詞の働きをする語がなく、文が成立しない。"
+  ]
+ },
+ {
+  "question": "(　　) she and he in the same class?",
+  "choices": [
+   "Am",
+   "Is",
+   "Are",
+   "Do"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "she and he は2人なので複数扱いとなり are を使う。",
+  "notes": [
+   "Iにしか使わない。",
+   "単数専用。",
+   "she and he は2人なので複数扱いとなり are を使う。",
+   "be動詞の疑問文にdoは使わない。"
+  ]
+ },
+ {
+  "question": "Yesterday, I (　　) busy.",
+  "choices": [
+   "am",
+   "is",
+   "was",
+   "are"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "yesterday（昨日）は過去を表す語なので、時制を過去に一致させる必要がある。amの過去形はwas。英語の動詞は時を表す語（yesterday, nowなど）と時制が一致していないと文法的に誤りになる。",
+  "notes": [
+   "現在形であり、過去を表すyesterdayと時制が矛盾する。",
+   "isも現在形であり、同じ理由で不適切。",
+   "yesterday（昨日）は過去を表す語なので、時制を過去に一致させる必要がある。amの過去形はwas。英語の動詞は時を表す語（yesterday, nowなど）と時制が一致していないと文法的に誤りになる。",
+   "現在形であり、過去を表すyesterdayと時制が矛盾する。"
+  ]
+ },
+ {
+  "question": "They (　　) happy yesterday.",
+  "choices": [
+   "was",
+   "is",
+   "were",
+   "are"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "yesterdayにより過去時制が必要。areの過去形はwere。theyは複数なのでwereを使う。",
+  "notes": [
+   "wasはI/he/she/itなど単数主語の過去形であり、theyとは一致しない。",
+   "現在形であり時を表す語yesterdayと矛盾する。",
+   "yesterdayにより過去時制が必要。areの過去形はwere。theyは複数なのでwereを使う。",
+   "現在形であり時を表す語yesterdayと矛盾する。"
+  ]
+ },
+ {
+  "question": "This bag (　　) expensive.",
+  "choices": [
+   "do",
+   "does",
+   "is",
+   "are"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語this bag（単数）の状態を述べる文なのでbe動詞isを使う。",
+  "notes": [
+   "doやdoesは一般動詞の疑問文・否定文を作るための語であり、状態を表すbe動詞の文には使わない。",
+   "doやdoesは一般動詞の疑問文・否定文を作るための語であり、状態を表すbe動詞の文には使わない。",
+   "主語this bag（単数）の状態を述べる文なのでbe動詞isを使う。",
+   "areは複数主語用でthis bag（単数）と一致しない。"
+  ]
+ },
+ {
+  "question": "(　　) your parents at home now?",
+  "choices": [
+   "Is",
+   "Are",
+   "Do",
+   "Does"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "your parents（あなたの両親）は複数なのでbe動詞はare。",
+  "notes": [
+   "単数用でparents（複数）と一致しない。",
+   "your parents（あなたの両親）は複数なのでbe動詞はare。",
+   "be動詞の疑問文にdo/doesは使わない。doやdoesは一般動詞の疑問文専用。",
+   "be動詞の疑問文にdo/doesは使わない。doやdoesは一般動詞の疑問文専用。"
+  ]
+ },
+ {
+  "question": "I (　　) a member of the tennis club.",
+  "choices": [
+   "am",
+   "do",
+   "does",
+   "is"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "I自身の状態（部員である）を述べるのでbe動詞amを使う。",
+  "notes": [
+   "I自身の状態（部員である）を述べるのでbe動詞amを使う。",
+   "do/doesは一般動詞用の助動詞であり、be動詞の代わりにはならない。",
+   "do/doesは一般動詞用の助動詞であり、be動詞の代わりにはならない。",
+   "isは3人称単数用でIと一致しない。"
+  ]
+ },
+ {
+  "question": "I (　　) tennis every Sunday.",
+  "choices": [
+   "play",
+   "plays",
+   "playing",
+   "am play"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語Iは1人称単数なので一般動詞は原形のまま使う。3人称単数のsが付くのは主語が3人称単数（he, she, it, または人名など）のときだけという規則があるため。",
+  "notes": [
+   "主語Iは1人称単数なので一般動詞は原形のまま使う。3人称単数のsが付くのは主語が3人称単数（he, she, it, または人名など）のときだけという規則があるため。",
+   "playsは3人称単数専用の形。Iには付けない。",
+   "playingは進行形などで使う形で、単独では述語動詞になれない（be動詞が必要）。",
+   "be動詞amと一般動詞の原形playを並べることはできない（英語の文では1つの節に主動詞は原則1つ）。"
+  ]
+ },
+ {
+  "question": "He (　　) breakfast every morning.",
+  "choices": [
+   "eat",
+   "eats",
+   "eating",
+   "is eat"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語heは3人称単数なので、一般動詞に-sを付ける（3人称単数現在形）。これは主語と動詞の一致（主述一致）という英語の基本規則。",
+  "notes": [
+   "原形のままでは3人称単数の主語と一致しない。",
+   "主語heは3人称単数なので、一般動詞に-sを付ける（3人称単数現在形）。これは主語と動詞の一致（主述一致）という英語の基本規則。",
+   "-ing形は単独で述語になれない。",
+   "be動詞isの後に動詞の原形を続けることはできない（isの後には-ing形や形容詞などが来る）。"
+  ]
+ },
+ {
+  "question": "My sister (　　) to school by bus.",
+  "choices": [
+   "go",
+   "goes",
+   "going",
+   "is go"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "my sisterは3人称単数なのでgoに-esを付ける。go, do, doのように語尾がo, s, sh, ch, xなどで終わる動詞は-esを付ける（発音上、-sだけでは発音しにくいための綴りの規則）。",
+  "notes": [
+   "3人称単数のsが抜けている。",
+   "my sisterは3人称単数なのでgoに-esを付ける。go, do, doのように語尾がo, s, sh, ch, xなどで終わる動詞は-esを付ける（発音上、-sだけでは発音しにくいための綴りの規則）。",
+   "-ing形単独では述語にならない。",
+   "be動詞+原形の組み合わせは不可。"
+  ]
+ },
+ {
+  "question": "Do you (　　) music?",
+  "choices": [
+   "like",
+   "likes",
+   "liking",
+   "to like"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "疑問文でDoを使った場合、後ろに続く一般動詞は必ず原形になる。これはDoやDoesがその文の時制・人称の情報をすでに引き受けているため、動詞は原形のままでよいという英語の助動詞のルールに基づく。",
+  "notes": [
+   "疑問文でDoを使った場合、後ろに続く一般動詞は必ず原形になる。これはDoやDoesがその文の時制・人称の情報をすでに引き受けているため、動詞は原形のままでよいという英語の助動詞のルールに基づく。",
+   "DoのあとにS付きの形は使わない（時制情報が二重になってしまう）。",
+   "-ing形はDoの後に置く形ではない。",
+   "to不定詞はDoの後には使わない。"
+  ]
+ },
+ {
+  "question": "She doesn't (　　) coffee.",
+  "choices": [
+   "drink",
+   "drinks",
+   "drinking",
+   "to drink"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "doesn'tのあとの動詞は原形になる。doesがすでに3人称単数・現在の情報を持っているため、動詞に重ねて-sを付けると情報が重複してしまい誤りになる。",
+  "notes": [
+   "doesn'tのあとの動詞は原形になる。doesがすでに3人称単数・現在の情報を持っているため、動詞に重ねて-sを付けると情報が重複してしまい誤りになる。",
+   "doesn'tの後に-sの付いた形を置くのは誤り（二重の人称表示）。",
+   "-ing形はここでは不適切。",
+   "to不定詞はここでは不要。"
+  ]
+ },
+ {
+  "question": "(　　) he play soccer well?",
+  "choices": [
+   "Do",
+   "Does",
+   "Is",
+   "Are"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語heは3人称単数なので疑問文の先頭にはDoesを使う。一般動詞の疑問文はDo/Doesを主語の前に置き、動詞は原形に戻す。",
+  "notes": [
+   "Doは1人称・2人称・複数主語用で、heとは一致しない。",
+   "主語heは3人称単数なので疑問文の先頭にはDoesを使う。一般動詞の疑問文はDo/Doesを主語の前に置き、動詞は原形に戻す。",
+   "be動詞は一般動詞soccer playの疑問文には使わない（動詞が二重になってしまう）。",
+   "be動詞は一般動詞soccer playの疑問文には使わない（動詞が二重になってしまう）。"
+  ]
+ },
+ {
+  "question": "My parents (　　) in Osaka.",
+  "choices": [
+   "live",
+   "lives",
+   "living",
+   "is live"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "my parentsは複数（3人称複数）なので一般動詞は原形のまま。3人称単数のsが付くのは主語が単数のときのみ。",
+  "notes": [
+   "my parentsは複数（3人称複数）なので一般動詞は原形のまま。3人称単数のsが付くのは主語が単数のときのみ。",
+   "複数主語にsを付けるのは誤り。",
+   "-ing形単独は不可。",
+   "be動詞+原形は不可。"
+  ]
+ },
+ {
+  "question": "I don't (　　) this song.",
+  "choices": [
+   "know",
+   "knows",
+   "known",
+   "knowing"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "don'tの後の動詞は原形。",
+  "notes": [
+   "don'tの後の動詞は原形。",
+   "don't（=do not）はIやyouなどに使う形であり、3人称単数のsを動詞に付けることはさらに誤り。",
+   "knownは過去分詞で、この文脈（現在の否定文）には合わない。",
+   "-ing形は不適切。"
+  ]
+ },
+ {
+  "question": "What time (　　) school start?",
+  "choices": [
+   "do",
+   "does",
+   "is",
+   "are"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語schoolは3人称単数（1つの学校）なのでDoesを使う。",
+  "notes": [
+   "主語が単数なのでDoは不一致。",
+   "主語schoolは3人称単数（1つの学校）なのでDoesを使う。",
+   "一般動詞startの疑問文にbe動詞は使わない。",
+   "一般動詞startの疑問文にbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "He (　　) English very well.",
+  "choices": [
+   "speak",
+   "speaks",
+   "speaking",
+   "to speak"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語heは3人称単数なのでspeakに-sを付ける。",
+  "notes": [
+   "3人称単数のsが抜けている。",
+   "主語heは3人称単数なのでspeakに-sを付ける。",
+   "単独で述語動詞になれない形。",
+   "単独で述語動詞になれない形。"
+  ]
+ },
+ {
+  "question": "Ken and Yumi (　　) in the same club.",
+  "choices": [
+   "is",
+   "are",
+   "belong",
+   "belongs"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Ken and Yumiはandで結ばれ複数主語になるので、一般動詞は原形のまま（3人称単数のsは付けない）。",
+  "notes": [
+   "この文はbe動詞ではなく一般動詞belong（所属する）を使う文であり、be動詞は不要。",
+   "この文はbe動詞ではなく一般動詞belong（所属する）を使う文であり、be動詞は不要。",
+   "Ken and Yumiはandで結ばれ複数主語になるので、一般動詞は原形のまま（3人称単数のsは付けない）。",
+   "複数主語にsを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "(　　) they have any pets?",
+  "choices": [
+   "Do",
+   "Does",
+   "Are",
+   "Is"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語theyは複数なのでDoを使う。",
+  "notes": [
+   "主語theyは複数なのでDoを使う。",
+   "Doesは3人称単数専用。",
+   "一般動詞haveの疑問文にbe動詞は使わない。",
+   "一般動詞haveの疑問文にbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "My dog (　　) a lot.",
+  "choices": [
+   "bark",
+   "barks",
+   "barking",
+   "is bark"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "my dogは3人称単数なのでbarkに-sを付ける。",
+  "notes": [
+   "3人称単数のsが抜けている。",
+   "my dogは3人称単数なのでbarkに-sを付ける。",
+   "-ing形単独は不可。",
+   "be動詞+原形は不可。"
+  ]
+ },
+ {
+  "question": "I (　　) not like natto.",
+  "choices": [
+   "do",
+   "does",
+   "am",
+   "is"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "一般動詞の否定文はdo/does + not + 動詞の原形で作る。主語Iは1人称単数なのでdoを使う。",
+  "notes": [
+   "一般動詞の否定文はdo/does + not + 動詞の原形で作る。主語Iは1人称単数なのでdoを使う。",
+   "doesは3人称単数専用。",
+   "この文の動詞はlike（一般動詞）であり、be動詞am/isを否定の助けに使うことはできない。",
+   "この文の動詞はlike（一般動詞）であり、be動詞am/isを否定の助けに使うことはできない。"
+  ]
+ },
+ {
+  "question": "Where (　　) your father work?",
+  "choices": [
+   "do",
+   "does",
+   "is",
+   "are"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語your fatherは3人称単数なのでdoesを使う。",
+  "notes": [
+   "doは単数の3人称と一致しない。",
+   "主語your fatherは3人称単数なのでdoesを使う。",
+   "一般動詞workの疑問文にbe動詞は使わない。",
+   "一般動詞workの疑問文にbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "(　　) is that girl? — She is my sister.",
+  "choices": [
+   "What",
+   "Who",
+   "Where",
+   "When"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "人物についてたずねるときはWhoを使う。答えがShe is my sister（人物）になっていることからも判断できる。",
+  "notes": [
+   "Whatはものや事柄をたずねる語。",
+   "人物についてたずねるときはWhoを使う。答えがShe is my sister（人物）になっていることからも判断できる。",
+   "Whereは場所をたずねる語で、答えが場所になっていない。",
+   "Whenは時をたずねる語で、答えと合わない。"
+  ]
+ },
+ {
+  "question": "(　　) is this? — It's a pencil case.",
+  "choices": [
+   "What",
+   "Who",
+   "How",
+   "Whose"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "ものの名前・内容をたずねるのはWhat。答えがIt's a pencil case（もの）なので一致する。",
+  "notes": [
+   "ものの名前・内容をたずねるのはWhat。答えがIt's a pencil case（もの）なので一致する。",
+   "Whoは人をたずねる語で答えと合わない。",
+   "Howは方法・状態をたずねる語。",
+   "Whoseは「誰の」と所有者をたずねる語で、この答えには所有者の情報が含まれていない。"
+  ]
+ },
+ {
+  "question": "(　　) do you live? — I live in Nagano.",
+  "choices": [
+   "Who",
+   "What",
+   "Where",
+   "When"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "場所をたずねるのはWhere。答えのin Nagano（場所）と一致する。",
+  "notes": [
+   "人をたずねる語。",
+   "ものをたずねる語。",
+   "場所をたずねるのはWhere。答えのin Nagano（場所）と一致する。",
+   "時をたずねる語で、答えと合わない。"
+  ]
+ },
+ {
+  "question": "(　　) is your birthday? — It's April 3rd.",
+  "choices": [
+   "What",
+   "When",
+   "Where",
+   "Who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "日付・時をたずねるのはWhen。答えのApril 3rd（日付）と一致する。",
+  "notes": [
+   "Whatも使えそうに見えるが、日付を尋ねる場合はWhen is your birthday?が標準的な表現で、Whatは主に「何」（物事の内容）をたずねる。",
+   "日付・時をたずねるのはWhen。答えのApril 3rd（日付）と一致する。",
+   "場所をたずねる語で答えと合わない。",
+   "人をたずねる語で答えと合わない。"
+  ]
+ },
+ {
+  "question": "(　　) are you sad? — Because I lost my key.",
+  "choices": [
+   "How",
+   "Why",
+   "What",
+   "Where"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "理由をたずねるのはWhy。答えがBecause〜（〜だから）となっていることからも理由を答える形が対応している。",
+  "notes": [
+   "Howは方法・状態・程度をたずねる語で、理由には使わない。",
+   "理由をたずねるのはWhy。答えがBecause〜（〜だから）となっていることからも理由を答える形が対応している。",
+   "内容・場所をたずねる語で、Because〜という答えとかみ合わない。",
+   "内容・場所をたずねる語で、Because〜という答えとかみ合わない。"
+  ]
+ },
+ {
+  "question": "(　　) do you go to school? — By bike.",
+  "choices": [
+   "What",
+   "How",
+   "Who",
+   "When"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "手段・方法をたずねるのはHow。答えのBy bike（手段）と一致する。",
+  "notes": [
+   "ものをたずねる語で答えと合わない。",
+   "手段・方法をたずねるのはHow。答えのBy bike（手段）と一致する。",
+   "人をたずねる語。",
+   "時をたずねる語で、By bikeという答えと合わない。"
+  ]
+ },
+ {
+  "question": "(　　) old are you? — I'm thirteen.",
+  "choices": [
+   "What",
+   "How",
+   "Who",
+   "Where"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How + 形容詞（old, tall, many など）で「どのくらい〜か」という程度をたずねる形になる。年齢はHow oldでたずねるのが決まった言い方。",
+  "notes": [
+   "Whatだけでは年齢をたずねる形にならない。",
+   "How + 形容詞（old, tall, many など）で「どのくらい〜か」という程度をたずねる形になる。年齢はHow oldでたずねるのが決まった言い方。",
+   "人・場所をたずねる語で、年齢の質問には合わない。",
+   "人・場所をたずねる語で、年齢の質問には合わない。"
+  ]
+ },
+ {
+  "question": "(　　) bag is this, yours or mine?",
+  "choices": [
+   "What",
+   "Which",
+   "Whose",
+   "Who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Whichは「（限られた選択肢の中で）どちら・どれ」をたずねる語。yours or mineという2択が示されているのでWhichが適切。",
+  "notes": [
+   "Whatは限定されない一般的な「何」をたずねる語で、2択が示された文脈にはWhichの方が自然。",
+   "Whichは「（限られた選択肢の中で）どちら・どれ」をたずねる語。yours or mineという2択が示されているのでWhichが適切。",
+   "Whoseは「誰の」と所有者をたずねる語で、この文の意図（どちらのバッグか）とは異なる。",
+   "Whoは人をたずねる語で、bagという物には使えない。"
+  ]
+ },
+ {
+  "question": "(　　) pen is this? — It's Ken's.",
+  "choices": [
+   "What",
+   "Which",
+   "Whose",
+   "Who"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "所有者をたずねるのはWhose。答えのIt's Ken's（ケンのもの）が所有者を示しているので一致する。",
+  "notes": [
+   "一般的な「何のペン」をたずねる形にはならない（内容ではなく所有者が問われている）。",
+   "選択肢の中からの「どれ」をたずねる語で、この文脈とは異なる。",
+   "所有者をたずねるのはWhose。答えのIt's Ken's（ケンのもの）が所有者を示しているので一致する。",
+   "Whoは人をたずねる語で、直接ペンには使えない。"
+  ]
+ },
+ {
+  "question": "(　　) many students are there in your class?",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How many + 複数名詞で「いくつ・何人」と数をたずねる決まった形。",
+  "notes": [
+   "数をたずねる形にはならない。",
+   "How many + 複数名詞で「いくつ・何人」と数をたずねる決まった形。",
+   "数をたずねる形にはならない。",
+   "数をたずねる形にはならない。"
+  ]
+ },
+ {
+  "question": "(　　) is it today? — It's Monday.",
+  "choices": [
+   "What day",
+   "What time",
+   "How long",
+   "How old"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "曜日をたずねるときはWhat day（is it today?）という決まった表現を使う。",
+  "notes": [
+   "曜日をたずねるときはWhat day（is it today?）という決まった表現を使う。",
+   "時刻をたずねる表現で、答えのMonday（曜日）と合わない。",
+   "期間の長さをたずねる表現。",
+   "年齢をたずねる表現。"
+  ]
+ },
+ {
+  "question": "(　　) time is it now? — It's ten o'clock.",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Who"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "What time is it?で「今何時ですか」という時刻をたずねる決まった表現になる。",
+  "notes": [
+   "What time is it?で「今何時ですか」という時刻をたずねる決まった表現になる。",
+   "Howで時刻を直接たずねる形はない。",
+   "この文脈には合わない。",
+   "この文脈には合わない。"
+  ]
+ },
+ {
+  "question": "(　　) does this word mean?",
+  "choices": [
+   "What",
+   "How",
+   "Who",
+   "Where"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "意味・内容をたずねるのでWhatを使う。What does 〜 mean?で「〜はどういう意味ですか」という決まった表現になる。",
+  "notes": [
+   "意味・内容をたずねるのでWhatを使う。What does 〜 mean?で「〜はどういう意味ですか」という決まった表現になる。",
+   "方法をたずねる語で意味には使わない。",
+   "人・場所をたずねる語で意味の質問には合わない。",
+   "人・場所をたずねる語で意味の質問には合わない。"
+  ]
+ },
+ {
+  "question": "(　　) is your favorite color? — Blue.",
+  "choices": [
+   "Who",
+   "What",
+   "Where",
+   "When"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "好きなもの（色）の内容をたずねるのでWhatを使う。",
+  "notes": [
+   "それぞれ人・場所・時をたずねる語であり、色（もの）には合わない。",
+   "好きなもの（色）の内容をたずねるのでWhatを使う。",
+   "それぞれ人・場所・時をたずねる語であり、色（もの）には合わない。",
+   "それぞれ人・場所・時をたずねる語であり、色（もの）には合わない。"
+  ]
+ },
+ {
+  "question": "(　　) is the library? — It's next to the gym.",
+  "choices": [
+   "What",
+   "When",
+   "Where",
+   "Who"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "場所をたずねるのでWhereを使う。答えのnext to the gym（場所）と一致する。",
+  "notes": [
+   "それぞれ内容・時・人をたずねる語で、場所を答える文とは合わない。",
+   "それぞれ内容・時・人をたずねる語で、場所を答える文とは合わない。",
+   "場所をたずねるのでWhereを使う。答えのnext to the gym（場所）と一致する。",
+   "それぞれ内容・時・人をたずねる語で、場所を答える文とは合わない。"
+  ]
+ },
+ {
+  "question": "(　　) the door, please.",
+  "choices": [
+   "You open",
+   "Open",
+   "Opens",
+   "Opening"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "命令文は主語（you）を省略し、動詞の原形を文頭に置いて作る。相手に直接指示・依頼するときの英語の基本形。",
+  "notes": [
+   "命令文では主語Youを省略するのが基本のルールなので不要。",
+   "命令文は主語（you）を省略し、動詞の原形を文頭に置いて作る。相手に直接指示・依頼するときの英語の基本形。",
+   "命令文の動詞には3人称単数のsは付けない（主語が想定上youであり、youに対する動詞は原形のため）。",
+   "-ing形は命令文の動詞としては使わない。"
+  ]
+ },
+ {
+  "question": "(　　) noisy in the library.",
+  "choices": [
+   "Don't be",
+   "Not be",
+   "Doesn't be",
+   "Isn't"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be動詞を使った文を否定の命令文にするときはDon't be 〜という形になる。一般動詞の否定命令文と同じくDon'tを文頭に置き、その後は動詞の原形（be動詞の場合はbe）を使う。",
+  "notes": [
+   "be動詞を使った文を否定の命令文にするときはDon't be 〜という形になる。一般動詞の否定命令文と同じくDon'tを文頭に置き、その後は動詞の原形（be動詞の場合はbe）を使う。",
+   "Don'tを使わずNotだけでは否定命令文の決まった形にならない。",
+   "命令文の主語はyou相当なのでDoesn't（3人称単数用）は使わない。",
+   "Isn'tはbe動詞の否定の疑問・平叙文で使う形で、命令文には使わない。"
+  ]
+ },
+ {
+  "question": "(　　) careful when you cross the street.",
+  "choices": [
+   "Are",
+   "Is",
+   "Be",
+   "Being"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be動詞を使った命令文はBeを文頭に置く（Beは原形）。命令文では動詞は常に原形を使う。",
+  "notes": [
+   "are/isは主語と結びついた活用形であり、主語を省略する命令文には使わない。",
+   "are/isは主語と結びついた活用形であり、主語を省略する命令文には使わない。",
+   "be動詞を使った命令文はBeを文頭に置く（Beは原形）。命令文では動詞は常に原形を使う。",
+   "-ing形は命令文の主動詞として使わない。"
+  ]
+ },
+ {
+  "question": "(　　) quiet, everyone.",
+  "choices": [
+   "You are",
+   "Be",
+   "Being",
+   "Bes"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "命令文なので原形Beを使う。",
+  "notes": [
+   "命令文では主語を言わないのが基本形。",
+   "命令文なので原形Beを使う。",
+   "-ing形は不可。",
+   "Besという形は英語には存在しない（beは不規則動詞で活用形はam/is/are/was/wereのみ）。"
+  ]
+ },
+ {
+  "question": "(　　) your homework before dinner.",
+  "choices": [
+   "Finish",
+   "Finishes",
+   "Finishing",
+   "To finish"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "命令文は動詞の原形を文頭に置く。",
+  "notes": [
+   "命令文は動詞の原形を文頭に置く。",
+   "3人称単数のsは、主語youが想定されている命令文には不要（そもそも3人称でもない）。",
+   "-ing形は不可。",
+   "to不定詞は命令文の形としては使わない。"
+  ]
+ },
+ {
+  "question": "(　　) run in the hallway.",
+  "choices": [
+   "Not",
+   "Don't",
+   "Doesn't",
+   "No"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "一般動詞の否定命令文はDon't + 動詞の原形。",
+  "notes": [
+   "Notだけでは否定命令文を作る決まった形にならない。",
+   "一般動詞の否定命令文はDon't + 動詞の原形。",
+   "Doesn'tは3人称単数の否定文で使う語で、命令文（主語you相当）には使わない。",
+   "Noは返事の「いいえ」であり、動詞の前に置いて否定命令文を作る語ではない。"
+  ]
+ },
+ {
+  "question": "(　　) at me when I'm talking.",
+  "choices": [
+   "Look",
+   "Looks",
+   "Looking",
+   "To look"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "命令文なので動詞の原形をそのまま使う。",
+  "notes": [
+   "命令文なので動詞の原形をそのまま使う。",
+   "3人称単数のsは不要。",
+   "-ing形・to不定詞は命令文の主動詞にはならない。",
+   "-ing形・to不定詞は命令文の主動詞にはならない。"
+  ]
+ },
+ {
+  "question": "(　　) me your notebook, please.",
+  "choices": [
+   "Show",
+   "Shows",
+   "Showing",
+   "Shown"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "命令文は原形。pleaseを付けても文の構造（動詞の原形＋目的語）は変わらず、丁寧さが加わるだけ。",
+  "notes": [
+   "命令文は原形。pleaseを付けても文の構造（動詞の原形＋目的語）は変わらず、丁寧さが加わるだけ。",
+   "3人称単数のsは不要。",
+   "-ing形は不可。",
+   "shown（過去分詞）は命令文の主動詞として使わない。"
+  ]
+ },
+ {
+  "question": "(　　) afraid to make mistakes.",
+  "choices": [
+   "Not be",
+   "Don't be",
+   "No be",
+   "Aren't be"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be動詞を使う否定命令文はDon't be 〜。",
+  "notes": [
+   "語順がDon'tを使う決まった形と異なる（英語ではNot単独を動詞の前に置く形は一般的でない）。",
+   "be動詞を使う否定命令文はDon't be 〜。",
+   "Noはこの位置では使えない。",
+   "Aren't（are notの短縮形）はすでに活用した形であり、原形beの前に重ねて置くことはできない。"
+  ]
+ },
+ {
+  "question": "I (　　) TV now.",
+  "choices": [
+   "watch",
+   "watches",
+   "am watching",
+   "watched"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "現在進行形は「be動詞＋動詞のing形」で作り、「今まさに〜している最中だ」という進行中の動作を表す。文中のnow（今）がその根拠になっている。主語Iにはamが対応する。",
+  "notes": [
+   "現在形は習慣的な動作（毎日すること）を表す形で、nowという「今この瞬間」を表す語とは意味がかみ合わない。",
+   "3人称単数のsが付いておりIと一致しない。",
+   "現在進行形は「be動詞＋動詞のing形」で作り、「今まさに〜している最中だ」という進行中の動作を表す。文中のnow（今）がその根拠になっている。主語Iにはamが対応する。",
+   "過去形であり、nowという現在を表す語と時制が矛盾する。"
+  ]
+ },
+ {
+  "question": "She (　　) a letter right now.",
+  "choices": [
+   "writes",
+   "is writing",
+   "write",
+   "writing"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語sheは3人称単数なのでbe動詞isを使い、動詞をing形にして進行形を作る。right nowが進行中であることを示している。",
+  "notes": [
+   "現在形（習慣）であり、進行中を表すright nowとかみ合わない。",
+   "主語sheは3人称単数なのでbe動詞isを使い、動詞をing形にして進行形を作る。right nowが進行中であることを示している。",
+   "主語との一致がなく、また進行形の形になっていない。",
+   "ing形の前にbe動詞がなく、単独では述語として成立しない。"
+  ]
+ },
+ {
+  "question": "They (　　) soccer in the park now.",
+  "choices": [
+   "play",
+   "plays",
+   "are playing",
+   "played"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "theyは複数なのでbe動詞areを使い、動詞をing形にする。nowにより進行中の動作だと分かる。",
+  "notes": [
+   "現在形（習慣）でnowと合わない。",
+   "3人称単数のsがtheyと一致しない。",
+   "theyは複数なのでbe動詞areを使い、動詞をing形にする。nowにより進行中の動作だと分かる。",
+   "過去形でnowと時制が矛盾する。"
+  ]
+ },
+ {
+  "question": "(　　) you studying English now?",
+  "choices": [
+   "Do",
+   "Does",
+   "Are",
+   "Is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "進行形の疑問文はbe動詞を主語の前に出す。主語youにはareが対応する。",
+  "notes": [
+   "Do/Doesは一般動詞の疑問文で使う語であり、進行形（すでにbe動詞を含む文）には使わない。",
+   "Do/Doesは一般動詞の疑問文で使う語であり、進行形（すでにbe動詞を含む文）には使わない。",
+   "進行形の疑問文はbe動詞を主語の前に出す。主語youにはareが対応する。",
+   "Isは3人称単数用でyouと一致しない。"
+  ]
+ },
+ {
+  "question": "What (　　) he doing now?",
+  "choices": [
+   "is",
+   "are",
+   "do",
+   "does"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語heは3人称単数なのでisを使う。",
+  "notes": [
+   "主語heは3人称単数なのでisを使う。",
+   "areは複数・you用でheと一致しない。",
+   "進行形の疑問文にdo/doesは使わない。",
+   "進行形の疑問文にdo/doesは使わない。"
+  ]
+ },
+ {
+  "question": "I (　　) not sleeping. I'm reading.",
+  "choices": [
+   "am",
+   "is",
+   "do",
+   "don't"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "進行形の否定文はbe動詞の直後にnotを置く。主語Iにはamが対応する。",
+  "notes": [
+   "進行形の否定文はbe動詞の直後にnotを置く。主語Iにはamが対応する。",
+   "3人称単数用でIと一致しない。",
+   "進行形の否定にはdo/don'tを使わない（進行形はすでにbe動詞を含んでいるため）。",
+   "進行形の否定にはdo/don'tを使わない（進行形はすでにbe動詞を含んでいるため）。"
+  ]
+ },
+ {
+  "question": "Look! It (　　) outside.",
+  "choices": [
+   "rain",
+   "rains",
+   "is raining",
+   "rained"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Look!（見て！）という語から「今まさに起きていること」を表すと分かるので現在進行形が適切。itはこの場合、天候を表す主語で3人称単数扱いなのでisを使う。",
+  "notes": [
+   "現在形は習慣的なことを表すため、今起きている一時的な出来事（雨が降っている最中）を表すには適さない。",
+   "現在形は習慣的なことを表すため、今起きている一時的な出来事（雨が降っている最中）を表すには適さない。",
+   "Look!（見て！）という語から「今まさに起きていること」を表すと分かるので現在進行形が適切。itはこの場合、天候を表す主語で3人称単数扱いなのでisを使う。",
+   "過去形であり、Look!（今の様子）という文脈と合わない。"
+  ]
+ },
+ {
+  "question": "We (　　) lunch at the moment.",
+  "choices": [
+   "have",
+   "has",
+   "are having",
+   "had"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "at the moment（今この瞬間）は進行形と相性のよい表現で、weは複数なのでareを使う。",
+  "notes": [
+   "現在形（習慣）はat the momentという一時的な状況を表す語と意味がかみ合わない。",
+   "3人称単数のsがweと一致しない。",
+   "at the moment（今この瞬間）は進行形と相性のよい表現で、weは複数なのでareを使う。",
+   "過去形でat the momentと時制が矛盾する。"
+  ]
+ },
+ {
+  "question": "My father is (　　) a newspaper.",
+  "choices": [
+   "read",
+   "reads",
+   "reading",
+   "readed"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "is（be動詞）がすでにあるので、動詞はing形にして進行形を完成させる。",
+  "notes": [
+   "原形のままではbe動詞の後に続く進行形の形にならない。",
+   "isの後に3人称単数のsを付けた形を重ねるのは誤り（時制情報の重複）。",
+   "is（be動詞）がすでにあるので、動詞はing形にして進行形を完成させる。",
+   "readは不規則ではなく規則動詞だが、そもそも過去形readedという形自体が存在しない（readの過去形はread、発音のみ変化）。ここではing形が必要な文脈なので、いずれにせよ不適切。"
+  ]
+ },
+ {
+  "question": "(　　) is not studying now; she is watching TV.",
+  "choices": [
+   "He",
+   "She",
+   "They",
+   "I"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "文の後半にsheとあるので、前半の主語も同一人物を指すSheが自然に一致する。文脈の一貫性（同じ人物について話している）から判断する。",
+  "notes": [
+   "後半のsheと主語が食い違ってしまい、文全体として矛盾する。",
+   "文の後半にsheとあるので、前半の主語も同一人物を指すSheが自然に一致する。文脈の一貫性（同じ人物について話している）から判断する。",
+   "後半のsheと主語が食い違ってしまい、文全体として矛盾する。",
+   "後半のsheと主語が食い違ってしまい、文全体として矛盾する。"
+  ]
+ },
+ {
+  "question": "Who (　　) singing in the music room?",
+  "choices": [
+   "is",
+   "are",
+   "do",
+   "does"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "whoは「誰が」とたずねる疑問詞で、答えが基本的に単数（1人の人物）を想定するため、be動詞はisを使うのが標準的。",
+  "notes": [
+   "whoは「誰が」とたずねる疑問詞で、答えが基本的に単数（1人の人物）を想定するため、be動詞はisを使うのが標準的。",
+   "areは複数主語用で、単数を想定するwhoの主語としては通常使わない。",
+   "進行形の疑問文にdo/doesは使わない。",
+   "進行形の疑問文にdo/doesは使わない。"
+  ]
+ },
+ {
+  "question": "I'm not busy. I (　　) anything now.",
+  "choices": [
+   "am not doing",
+   "don't do",
+   "doesn't do",
+   "not doing"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "now（今）とあるので進行形（be動詞＋not＋ing形）で「今何もしていない」ことを表す。",
+  "notes": [
+   "now（今）とあるので進行形（be動詞＋not＋ing形）で「今何もしていない」ことを表す。",
+   "現在形の否定（習慣的に〜しない）であり、nowという一時的な状況とかみ合わない。",
+   "3人称単数用の形でIと一致しない。",
+   "be動詞（am）が抜けており、ing形だけでは否定文として成立しない。"
+  ]
+ },
+ {
+  "question": "I (　　) swim very fast.",
+  "choices": [
+   "can",
+   "cans",
+   "canning",
+   "am can"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "canは助動詞であり、主語の人称や数にかかわらず常に同じ形（can）を使う。助動詞は一般動詞とは異なり3人称単数のsを付けない、という英語の特徴的なルールがある。",
+  "notes": [
+   "canは助動詞であり、主語の人称や数にかかわらず常に同じ形（can）を使う。助動詞は一般動詞とは異なり3人称単数のsを付けない、という英語の特徴的なルールがある。",
+   "助動詞にsを付けることは英語の文法規則にない。",
+   "助動詞は-ing形にならない。",
+   "be動詞canという組み合わせも存在せず、canは単独で助動詞として働く。"
+  ]
+ },
+ {
+  "question": "She (　　) play the piano well.",
+  "choices": [
+   "can",
+   "cans",
+   "is can",
+   "canning"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "canは主語が3人称単数（she）であっても形を変えない。これが一般動詞との大きな違いで、助動詞は主語に応じて変化しない。",
+  "notes": [
+   "canは主語が3人称単数（she）であっても形を変えない。これが一般動詞との大きな違いで、助動詞は主語に応じて変化しない。",
+   "canにsを付ける形は存在しない。",
+   "be動詞と助動詞canを並べることはできない。",
+   "-ing形は存在しない。"
+  ]
+ },
+ {
+  "question": "(　　) you speak English?",
+  "choices": [
+   "Do",
+   "Does",
+   "Can",
+   "Cans"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "canを使った疑問文はcanを主語の前に出すだけでよい。助動詞は疑問文を作るときも自身が前に出て、do/doesは不要になる。",
+  "notes": [
+   "canの文にはdo/doesを重ねて使わない（助動詞が2つ並ぶことは英語の基本文型では起こらない）。",
+   "canの文にはdo/doesを重ねて使わない（助動詞が2つ並ぶことは英語の基本文型では起こらない）。",
+   "canを使った疑問文はcanを主語の前に出すだけでよい。助動詞は疑問文を作るときも自身が前に出て、do/doesは不要になる。",
+   "cansという形はない。"
+  ]
+ },
+ {
+  "question": "He (　　) not swim.",
+  "choices": [
+   "can",
+   "cans",
+   "do",
+   "does"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "canの否定文はcanの直後にnotを置くだけで作る（can not、短縮形はcan't）。",
+  "notes": [
+   "canの否定文はcanの直後にnotを置くだけで作る（can not、短縮形はcan't）。",
+   "canにsは付けない。",
+   "canの否定文にdo/doesは使わない。",
+   "canの否定文にdo/doesは使わない。"
+  ]
+ },
+ {
+  "question": "I can (　　) a bike.",
+  "choices": [
+   "ride",
+   "rides",
+   "riding",
+   "rode"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "助動詞canの後の動詞は必ず原形になる。助動詞の後に原形を置くというルールは英語のすべての助動詞（can, will, mayなど）に共通する。",
+  "notes": [
+   "助動詞canの後の動詞は必ず原形になる。助動詞の後に原形を置くというルールは英語のすべての助動詞（can, will, mayなど）に共通する。",
+   "canの後に3人称単数のsを付けた形を置くことはできない。",
+   "ing形は助動詞の後には使わない。",
+   "過去形も助動詞の後には使わない。"
+  ]
+ },
+ {
+  "question": "(　　) I use your pen?",
+  "choices": [
+   "Can",
+   "Do",
+   "Does",
+   "Am"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "許可を求める表現「〜してもいいですか」はCan I 〜?という決まった形を使う。",
+  "notes": [
+   "許可を求める表現「〜してもいいですか」はCan I 〜?という決まった形を使う。",
+   "一般動詞の疑問文の形であり、許可を求める意味にはならない。",
+   "一般動詞の疑問文の形であり、許可を求める意味にはならない。",
+   "Am Iという語順自体は文法的に作れるが、許可を求める意味にはならず、この文脈には合わない。"
+  ]
+ },
+ {
+  "question": "My brother can't (　　) chopsticks.",
+  "choices": [
+   "use",
+   "uses",
+   "used",
+   "using"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "can'tの後も助動詞canのルールが適用され、動詞は原形になる。",
+  "notes": [
+   "can'tの後も助動詞canのルールが適用され、動詞は原形になる。",
+   "3人称単数のsを付けるのは誤り（can'tがすでに否定・助動詞の情報を持っているため）。",
+   "過去形・ing形は助動詞の後には使わない。",
+   "過去形・ing形は助動詞の後には使わない。"
+  ]
+ },
+ {
+  "question": "(　　) can speak three languages.",
+  "choices": [
+   "He",
+   "Him",
+   "His",
+   "Himself"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "文の主語（動詞canの前に置く語）には主格（he, she, I, theyなど）を使う。",
+  "notes": [
+   "文の主語（動詞canの前に置く語）には主格（he, she, I, theyなど）を使う。",
+   "himは目的格（動詞や前置詞の後で使う形）であり、主語の位置には使わない。",
+   "hisは所有格「彼の」で、主語として文の動作主を表す形ではない。",
+   "himselfは再帰代名詞（〜自身）で、単独の主語としては使わない。"
+  ]
+ },
+ {
+  "question": "We can (　　) this problem together.",
+  "choices": [
+   "solve",
+   "solves",
+   "solved",
+   "solving"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "助動詞canの後は動詞の原形。",
+  "notes": [
+   "助動詞canの後は動詞の原形。",
+   "canの後に活用した形（3人称単数形・過去形・ing形）を置くことはできない。",
+   "canの後に活用した形（3人称単数形・過去形・ing形）を置くことはできない。",
+   "canの後に活用した形（3人称単数形・過去形・ing形）を置くことはできない。"
+  ]
+ },
+ {
+  "question": "(　　) they play the guitar?",
+  "choices": [
+   "Do",
+   "Does",
+   "Can",
+   "Is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「〜することができるか」という能力をたずねる疑問文はCanを主語の前に出す。",
+  "notes": [
+   "一般動詞の疑問文用の語で、can（能力）の意味を尋ねる形にはならない。",
+   "一般動詞の疑問文用の語で、can（能力）の意味を尋ねる形にはならない。",
+   "「〜することができるか」という能力をたずねる疑問文はCanを主語の前に出す。",
+   "be動詞は一般動詞play the guitarの疑問文には使わない。"
+  ]
+ },
+ {
+  "question": "I have two (　　).",
+  "choices": [
+   "dog",
+   "dogs",
+   "a dog",
+   "the dog"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "twoのような具体的な数を表す語の後には、名詞を複数形（-sを付けた形）にする必要がある。英語では数えられる名詞が2つ以上あるとき、名詞自体の形を変えて数を示す。",
+  "notes": [
+   "単数形のままでは「2」という数と矛盾する。",
+   "twoのような具体的な数を表す語の後には、名詞を複数形（-sを付けた形）にする必要がある。英語では数えられる名詞が2つ以上あるとき、名詞自体の形を変えて数を示す。",
+   "a（1つの、を表す冠詞）はtwoと同時には使えない（1つと2つは意味が矛盾する）。",
+   "theを付けても複数形になっていないのでtwoと数が一致しない。"
+  ]
+ },
+ {
+  "question": "There are many (　　) in this box.",
+  "choices": [
+   "apple",
+   "apples",
+   "an apple",
+   "apple's"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "manyは「たくさんの」という意味で複数の名詞と共に使う語なので、appleを複数形apples（-sを付けた形）にする。",
+  "notes": [
+   "単数形のままではmany（複数を示す語）と一致しない。",
+   "manyは「たくさんの」という意味で複数の名詞と共に使う語なので、appleを複数形apples（-sを付けた形）にする。",
+   "anは「1つの」を表す冠詞でmany（複数）と矛盾する。",
+   "apple'sは所有格（〜の）の形であり、複数形ではない。"
+  ]
+ },
+ {
+  "question": "Can I have some (　　)?",
+  "choices": [
+   "water",
+   "waters",
+   "a water",
+   "waters's"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "waterは形のない液体を表す名詞（数えられない名詞）であり、1つ2つと数えられないため複数形にしない。someは数えられない名詞にもそのまま使える語。",
+  "notes": [
+   "waterは形のない液体を表す名詞（数えられない名詞）であり、1つ2つと数えられないため複数形にしない。someは数えられない名詞にもそのまま使える語。",
+   "数えられない名詞に-sを付けて複数形にすることは基本的にできない。",
+   "数えられない名詞には冠詞a/anを直接付けない（数えられないので「1つ」という数え方ができないため）。",
+   "所有格の形であり、この文脈に合わない。"
+  ]
+ },
+ {
+  "question": "How many (　　) do you have?",
+  "choices": [
+   "brother",
+   "brothers",
+   "a brother",
+   "brother's"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How many（いくつの）は数えられる名詞の複数形と共に使う決まった表現。",
+  "notes": [
+   "単数形はHow manyと合わない。",
+   "How many（いくつの）は数えられる名詞の複数形と共に使う決まった表現。",
+   "aはHow many（複数を尋ねる語）と矛盾する。",
+   "所有格の形は不適切。"
+  ]
+ },
+ {
+  "question": "There is (　　) milk in the bottle.",
+  "choices": [
+   "many",
+   "a few",
+   "a little",
+   "some apples"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "milkは数えられない名詞なので、量が少ないことを表すにはa little（少しの）を使う。数えられない名詞の量を表す語（much, little, a littleなど）と、数えられる名詞の数を表す語（many, few, a fewなど）は使い分けが必要。",
+  "notes": [
+   "manyは数えられる名詞の複数形に使う語でmilkには合わない。",
+   "a fewも数えられる名詞用の語。",
+   "milkは数えられない名詞なので、量が少ないことを表すにはa little（少しの）を使う。数えられない名詞の量を表す語（much, little, a littleなど）と、数えられる名詞の数を表す語（many, few, a fewなど）は使い分けが必要。",
+   "apples（複数名詞）はmilk（不可算名詞）の話題とかみ合わない。"
+  ]
+ },
+ {
+  "question": "I have (　　) friends in this town.",
+  "choices": [
+   "much",
+   "a little",
+   "a few",
+   "little"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "friendsは数えられる名詞（複数形）なので、「少しの」を表すにはa fewを使う。a fewは数えられる名詞専用の表現。",
+  "notes": [
+   "much/littleは数えられない名詞に使う語でfriendsとは合わない。",
+   "a littleも数えられない名詞専用。",
+   "friendsは数えられる名詞（複数形）なので、「少しの」を表すにはa fewを使う。a fewは数えられる名詞専用の表現。",
+   "much/littleは数えられない名詞に使う語でfriendsとは合わない。"
+  ]
+ },
+ {
+  "question": "This (　　) is very kind.",
+  "choices": [
+   "man",
+   "men",
+   "mans",
+   "man's"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "thisは単数を指す語（thoseやtheseが複数用）なので、名詞も単数形manになる。",
+  "notes": [
+   "thisは単数を指す語（thoseやtheseが複数用）なので、名詞も単数形manになる。",
+   "menはmanの不規則な複数形で、thisが指す単数とは一致しない。",
+   "manの複数形はmenであり、mansという語尾変化の仕方は誤り（不規則変化名詞に規則的な-sを付けてしまう典型的な間違い）。",
+   "所有格の形でこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "How much (　　) do you need?",
+  "choices": [
+   "time",
+   "times",
+   "a time",
+   "time's"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "timeは（時間の意味では）数えられない名詞なので、量をたずねるHow muchに対応する単数のままの形を使う。",
+  "notes": [
+   "timeは（時間の意味では）数えられない名詞なので、量をたずねるHow muchに対応する単数のままの形を使う。",
+   "数えられない名詞に複数形は基本的に使わない。",
+   "数えられない名詞にaは付けない。",
+   "所有格は不適切。"
+  ]
+ },
+ {
+  "question": "There are three (　　) on the table.",
+  "choices": [
+   "knife",
+   "knifes",
+   "knives",
+   "knife's"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "knifeのように語尾がfe/fで終わる名詞の一部は、複数形にするときfをvに変えてesを付ける不規則な変化をする（knife→knives）。これは発音のしやすさに由来する歴史的な変化。",
+  "notes": [
+   "単数形のままではthree（3つ）と数が一致しない。",
+   "規則通りに-sを付けただけの形は誤りで、この単語では特別な変化が必要。",
+   "knifeのように語尾がfe/fで終わる名詞の一部は、複数形にするときfをvに変えてesを付ける不規則な変化をする（knife→knives）。これは発音のしやすさに由来する歴史的な変化。",
+   "所有格は不適切。"
+  ]
+ },
+ {
+  "question": "This is (　　) bag.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "名詞（bag）の前に置いて「〜の」という所有を表すには所有格myを使う。英語の人称代名詞は文中での働き（主語・所有・目的語）によって形が変わる。",
+  "notes": [
+   "Iは主語のときに使う主格。名詞の前には置けない。",
+   "名詞（bag）の前に置いて「〜の」という所有を表すには所有格myを使う。英語の人称代名詞は文中での働き（主語・所有・目的語）によって形が変わる。",
+   "meは動詞や前置詞の後に使う目的格で、名詞の前には置けない。",
+   "mineは「私のもの」という意味で名詞を伴わず単独で使う所有代名詞。bagという名詞が直後にあるこの文には合わない（mine bagとは言わない）。"
+  ]
+ },
+ {
+  "question": "I know (　　) very well.",
+  "choices": [
+   "he",
+   "his",
+   "him",
+   "himself"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "動詞know（知っている）の目的語になる位置なので目的格himを使う。",
+  "notes": [
+   "heは主格で目的語の位置には使わない。",
+   "hisは所有格「彼の」で、単独で「彼を」という意味にはならない。",
+   "動詞know（知っている）の目的語になる位置なので目的格himを使う。",
+   "himselfは「彼自身を」という再帰の意味を持ち、単に「彼を知っている」という文脈には合わない（別人を知っているという意味の文なので再帰代名詞は使わない）。"
+  ]
+ },
+ {
+  "question": "Is this pen (　　)?",
+  "choices": [
+   "you",
+   "your",
+   "yours",
+   "yourself"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「これはあなたのものですか」と名詞を伴わずに所有を表すときは所有代名詞yoursを使う。",
+  "notes": [
+   "youは主格・目的格の形で所有の意味を持たない。",
+   "yourは所有格だが必ず名詞の前に置く形（your pen）で、名詞なしで文末に置く形にはならない。",
+   "「これはあなたのものですか」と名詞を伴わずに所有を表すときは所有代名詞yoursを使う。",
+   "yourselfは「あなた自身」という再帰代名詞で所有の意味ではない。"
+  ]
+ },
+ {
+  "question": "(　　) mother is a nurse.",
+  "choices": [
+   "She",
+   "Her",
+   "Hers",
+   "Herself"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "名詞motherの前で「彼女の」という所有を表すには所有格herを使う。",
+  "notes": [
+   "sheは主格で名詞の前には置けない。",
+   "名詞motherの前で「彼女の」という所有を表すには所有格herを使う。",
+   "hersは所有代名詞で、名詞を伴わず単独で使う形（motherという名詞が続くこの文には不適切）。",
+   "herselfは再帰代名詞。"
+  ]
+ },
+ {
+  "question": "We often help (　　).",
+  "choices": [
+   "they",
+   "their",
+   "them",
+   "theirs"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "動詞help（助ける）の目的語になる位置なので目的格themを使う。",
+  "notes": [
+   "theyは主格。",
+   "theirは所有格で名詞の前に置く形。",
+   "動詞help（助ける）の目的語になる位置なので目的格themを使う。",
+   "theirsは所有代名詞（名詞なしで使う）で、この文の意味（彼らを助ける）とも合わない。"
+  ]
+ },
+ {
+  "question": "This book is (　　).",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「これは私のものです」と名詞を伴わず所有を表すには所有代名詞mineを使う。",
+  "notes": [
+   "主格でbe動詞isの補語として所有を表す意味にはならない。",
+   "myは所有格で必ず名詞の前に置く（my book）ため、名詞のないこの位置には使わない。",
+   "meは目的格で所有の意味を持たない。",
+   "「これは私のものです」と名詞を伴わず所有を表すには所有代名詞mineを使う。"
+  ]
+ },
+ {
+  "question": "(　　) are good friends.",
+  "choices": [
+   "We",
+   "Our",
+   "Us",
+   "Ours"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "文の主語の位置なので主格weを使う。",
+  "notes": [
+   "文の主語の位置なので主格weを使う。",
+   "ourは所有格で名詞の前に置く形。",
+   "usは目的格。",
+   "oursは所有代名詞で名詞を伴わない所有の意味を表す語であり、主語の位置には使わない。"
+  ]
+ },
+ {
+  "question": "Please give (　　) some water.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "動詞give（与える）の目的語（人）になる位置なので目的格meを使う。giveのように「人に物を与える」動詞は「動詞＋人（目的格）＋物」という語順を取る。",
+  "notes": [
+   "主格は目的語の位置には使わない。",
+   "所有格は名詞の前に置く形。",
+   "動詞give（与える）の目的語（人）になる位置なので目的格meを使う。giveのように「人に物を与える」動詞は「動詞＋人（目的格）＋物」という語順を取る。",
+   "所有代名詞は名詞を伴わない所有の意味であり、ここでは「私に」という意味にはならない。"
+  ]
+ },
+ {
+  "question": "I like (　　) new teacher.",
+  "choices": [
+   "we",
+   "our",
+   "us",
+   "ours"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "名詞teacherの前に置いて「私たちの」という所有を表すには所有格ourを使う。",
+  "notes": [
+   "主格は名詞の前には置けない。",
+   "名詞teacherの前に置いて「私たちの」という所有を表すには所有格ourを使う。",
+   "目的格も名詞の前には置けない。",
+   "所有代名詞は名詞を伴わない形なので、teacherという名詞が続くここでは使わない。"
+  ]
+ },
+ {
+  "question": "That car is not (　　); it's my father's.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「私のものではない」と名詞なしで所有を否定するので所有代名詞mineを使う。",
+  "notes": [
+   "主格は所有の意味を持たない。",
+   "所有格は名詞の前に置く形で、名詞のないこの位置には合わない。",
+   "目的格は所有の意味を持たない。",
+   "「私のものではない」と名詞なしで所有を否定するので所有代名詞mineを使う。"
+  ]
+ },
+ {
+  "question": "There (　　) a cat under the table.",
+  "choices": [
+   "is",
+   "are",
+   "do",
+   "have"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "There is/are構文では、be動詞の形は後ろに続く名詞（この場合a cat＝単数）と一致させる。There自体は主語ではなく、実際の主語は後ろの名詞という点が英語の特徴的な語順。a catは単数なのでisを使う。",
+  "notes": [
+   "There is/are構文では、be動詞の形は後ろに続く名詞（この場合a cat＝単数）と一致させる。There自体は主語ではなく、実際の主語は後ろの名詞という点が英語の特徴的な語順。a catは単数なのでisを使う。",
+   "areは複数名詞用でa cat（単数）と一致しない。",
+   "There構文にはbe動詞を使い、do/haveは使わない。",
+   "There構文にはbe動詞を使い、do/haveは使わない。"
+  ]
+ },
+ {
+  "question": "There (　　) many books on the desk.",
+  "choices": [
+   "is",
+   "are",
+   "has",
+   "have"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "後ろのmany books（複数）に合わせてareを使う。",
+  "notes": [
+   "isは単数用でbooks（複数）と一致しない。",
+   "後ろのmany books（複数）に合わせてareを使う。",
+   "There構文にhave/hasは使わない。",
+   "There構文にhave/hasは使わない。"
+  ]
+ },
+ {
+  "question": "(　　) there a bank near here?",
+  "choices": [
+   "Is",
+   "Are",
+   "Do",
+   "Does"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "後ろのa bank（単数）に合わせてisを使う。疑問文ではbe動詞をThereの前に出す。",
+  "notes": [
+   "後ろのa bank（単数）に合わせてisを使う。疑問文ではbe動詞をThereの前に出す。",
+   "後ろが単数なのでareは不一致。",
+   "There構文の疑問文にdo/doesは使わない。",
+   "There構文の疑問文にdo/doesは使わない。"
+  ]
+ },
+ {
+  "question": "There (　　) not any milk in the fridge.",
+  "choices": [
+   "is",
+   "are",
+   "do",
+   "does"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "milkは数えられない名詞で単数扱いなのでisを使う。否定文はbe動詞の直後にnotを置く。",
+  "notes": [
+   "milkは数えられない名詞で単数扱いなのでisを使う。否定文はbe動詞の直後にnotを置く。",
+   "areは複数（数えられる名詞の複数形）用でmilk（不可算・単数扱い）とは一致しない。",
+   "do/doesは使わない。",
+   "do/doesは使わない。"
+  ]
+ },
+ {
+  "question": "How many students (　　) there in your class?",
+  "choices": [
+   "is",
+   "are",
+   "do",
+   "does"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How many students（複数）に合わせてareを使う。",
+  "notes": [
+   "単数用で不一致。",
+   "How many students（複数）に合わせてareを使う。",
+   "There構文にdo/doesは使わない。",
+   "There構文にdo/doesは使わない。"
+  ]
+ },
+ {
+  "question": "There (　　) a lot of water in the lake.",
+  "choices": [
+   "is",
+   "are",
+   "has",
+   "have"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "waterは数えられない名詞なので単数扱いとしてisを使う。a lot of は数えられる名詞にも数えられない名詞にも使えるが、be動詞の形は後ろの名詞（water＝不可算）に合わせる。",
+  "notes": [
+   "waterは数えられない名詞なので単数扱いとしてisを使う。a lot of は数えられる名詞にも数えられない名詞にも使えるが、be動詞の形は後ろの名詞（water＝不可算）に合わせる。",
+   "areは複数の数えられる名詞用でwaterには合わない。",
+   "have/hasはThere構文には使わない。",
+   "have/hasはThere構文には使わない。"
+  ]
+ },
+ {
+  "question": "There (　　) two dogs and a cat in the yard.",
+  "choices": [
+   "is",
+   "are",
+   "has",
+   "do"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "There is/are構文でand（等位接続）によって複数の主語がつながっている場合、直後の名詞（two dogs＝複数）に一致させることが一般的で、全体として複数を表すのでareを使う。",
+  "notes": [
+   "直後がtwo dogs（複数）なのでisは不一致。",
+   "There is/are構文でand（等位接続）によって複数の主語がつながっている場合、直後の名詞（two dogs＝複数）に一致させることが一般的で、全体として複数を表すのでareを使う。",
+   "使わない語。",
+   "使わない語。"
+  ]
+ },
+ {
+  "question": "There isn't (　　) park near my house.",
+  "choices": [
+   "a",
+   "many",
+   "some",
+   "any"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "parkは数えられる名詞の単数形なので、否定文で「1つも〜ない」という一般的な言い方はThere isn't a park（＝公園が1つもない）と表現する。",
+  "notes": [
+   "parkは数えられる名詞の単数形なので、否定文で「1つも〜ない」という一般的な言い方はThere isn't a park（＝公園が1つもない）と表現する。",
+   "manyは複数名詞に使う語でpark（単数形のまま）とは一致しない。",
+   "someは主に肯定文で使う語で、否定文ではanyを使うのが基本ルール。",
+   "anyはThere isn't any park（複数形にすればより自然）という形になるため、単数のparkとの組み合わせとしてはAのa parkの方が自然。"
+  ]
+ },
+ {
+  "question": "There will (　　) a big event next week.",
+  "choices": [
+   "is",
+   "be",
+   "are",
+   "being"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "助動詞willの後は動詞の原形になる。be動詞の原形はbeなので、There will beという形になる。",
+  "notes": [
+   "活用したbe動詞の形はwillの後には使えない（助動詞の後は原形というルール）。",
+   "助動詞willの後は動詞の原形になる。be動詞の原形はbeなので、There will beという形になる。",
+   "活用したbe動詞の形はwillの後には使えない（助動詞の後は原形というルール）。",
+   "ing形も助動詞の後には使わない。"
+  ]
+ },
+ {
+  "question": "I (　　) my homework yesterday.",
+  "choices": [
+   "finish",
+   "finishes",
+   "finished",
+   "finishing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "yesterday（昨日）は過去を表す語なので過去形にする。規則動詞は原形の語尾に-edを付けて過去形を作る。",
+  "notes": [
+   "現在形であり、yesterdayという過去を表す語と時制が矛盾する。",
+   "3人称単数現在形であり、時制も人称も文脈と合わない。",
+   "yesterday（昨日）は過去を表す語なので過去形にする。規則動詞は原形の語尾に-edを付けて過去形を作る。",
+   "ing形は過去の出来事を単に述べる文には使わない。"
+  ]
+ },
+ {
+  "question": "She (　　) to Kyoto last month.",
+  "choices": [
+   "go",
+   "goes",
+   "went",
+   "going"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "goは不規則動詞で、過去形はgoの形が大きく変化してwentになる（規則的な-edではない）。last monthという過去を示す語から過去形が必要と分かる。",
+  "notes": [
+   "現在形であり過去を表す語と矛盾する。",
+   "現在形であり過去を表す語と矛盾する。",
+   "goは不規則動詞で、過去形はgoの形が大きく変化してwentになる（規則的な-edではない）。last monthという過去を示す語から過去形が必要と分かる。",
+   "ing形は単独で過去の出来事を述べる文の動詞にはならない。"
+  ]
+ },
+ {
+  "question": "We (　　) a good time at the party.",
+  "choices": [
+   "have",
+   "has",
+   "had",
+   "having"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "haveの過去形は不規則にhadとなる。partyという過去の出来事を述べる文脈（過去形の文であることが前提）にはhadが適切。",
+  "notes": [
+   "現在形。",
+   "現在形。",
+   "haveの過去形は不規則にhadとなる。partyという過去の出来事を述べる文脈（過去形の文であることが前提）にはhadが適切。",
+   "ing形は単独では過去の文の動詞にならない。"
+  ]
+ },
+ {
+  "question": "Did you (　　) breakfast this morning?",
+  "choices": [
+   "eat",
+   "ate",
+   "eats",
+   "eaten"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Didを使った疑問文では、Didがすでに過去の時制情報を持っているため、後ろの動詞は原形に戻す。これはdo/doesの後に原形が来るのと同じ仕組み。",
+  "notes": [
+   "Didを使った疑問文では、Didがすでに過去の時制情報を持っているため、後ろの動詞は原形に戻す。これはdo/doesの後に原形が来るのと同じ仕組み。",
+   "Didの後に過去形を重ねて使うのは誤り（時制情報の重複）。",
+   "3人称単数現在形も不適切。",
+   "過去分詞はここでは使わない（現在完了などの特別な形で使う語形）。"
+  ]
+ },
+ {
+  "question": "I did not (　　) the movie.",
+  "choices": [
+   "watch",
+   "watched",
+   "watches",
+   "watching"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "did notの後の動詞は原形に戻る。Didと同様、notを伴っても過去の時制情報はdidがすでに持っている。",
+  "notes": [
+   "did notの後の動詞は原形に戻る。Didと同様、notを伴っても過去の時制情報はdidがすでに持っている。",
+   "過去形を重ねるのは誤り。",
+   "3人称単数形は不適切。",
+   "ing形は不適切。"
+  ]
+ },
+ {
+  "question": "He (　　) not come to school yesterday.",
+  "choices": [
+   "do",
+   "does",
+   "did",
+   "is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "yesterdayから過去の否定文と分かるので、didを使う（did not / didn't）。",
+  "notes": [
+   "doは現在形用。",
+   "doesも現在形用。",
+   "yesterdayから過去の否定文と分かるので、didを使う（did not / didn't）。",
+   "一般動詞comeの否定文にbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "(　　) she call you last night?",
+  "choices": [
+   "Do",
+   "Does",
+   "Did",
+   "Is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "last nightから過去の疑問文と分かるのでDidを使う。",
+  "notes": [
+   "現在形の疑問文用。",
+   "現在形の疑問文用。",
+   "last nightから過去の疑問文と分かるのでDidを使う。",
+   "一般動詞callの疑問文にbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "I (　　) very happy when I heard the news.",
+  "choices": [
+   "am",
+   "is",
+   "was",
+   "were"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "whenの後のheard（hearの過去形）から文全体が過去の出来事であると分かる。主語Iに対応するbe動詞の過去形はwas。",
+  "notes": [
+   "現在形であり、過去の出来事を表す文脈と矛盾する。",
+   "現在形であり、過去の出来事を表す文脈と矛盾する。",
+   "whenの後のheard（hearの過去形）から文全体が過去の出来事であると分かる。主語Iに対応するbe動詞の過去形はwas。",
+   "wereはyouまたは複数主語の過去形であり、単数のIとは一致しない。"
+  ]
+ },
+ {
+  "question": "They (　　) at the station two hours ago.",
+  "choices": [
+   "was",
+   "were",
+   "is",
+   "are"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "two hours ago（2時間前）は過去を表す語。theyは複数なので、areの過去形wereを使う。",
+  "notes": [
+   "wasは単数主語用でtheyと一致しない。",
+   "two hours ago（2時間前）は過去を表す語。theyは複数なので、areの過去形wereを使う。",
+   "現在形であり過去を表す語と矛盾する。",
+   "現在形であり過去を表す語と矛盾する。"
+  ]
+ },
+ {
+  "question": "I (　　) TV when my mother came home.",
+  "choices": [
+   "watch",
+   "watched",
+   "am watching",
+   "was watching"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「母が帰宅したとき、私はテレビを見ている最中だった」という、過去のある時点で進行中だった動作を表すには過去進行形（was/were＋ing）を使う。cameという過去形の動詞が示す一時点に対して、watchという動作が進行中だったという状況を表現している。",
+  "notes": [
+   "現在形は不適切（過去の文脈）。",
+   "過去形単体では「見た（完了した動作）」という意味になり、「〜していた最中」という進行中のニュアンスが出ない。",
+   "現在進行形であり、過去の文脈（came）と時制が矛盾する。",
+   "「母が帰宅したとき、私はテレビを見ている最中だった」という、過去のある時点で進行中だった動作を表すには過去進行形（was/were＋ing）を使う。cameという過去形の動詞が示す一時点に対して、watchという動作が進行中だったという状況を表現している。"
+  ]
+ },
+ {
+  "question": "(　　) you busy last weekend?",
+  "choices": [
+   "Do",
+   "Are",
+   "Were",
+   "Did"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "last weekend（先週末）は過去を表す語。busyという状態を表すのでbe動詞を使い、主語youの過去形はwere。",
+  "notes": [
+   "一般動詞用でこの文には合わない（busyは形容詞でbe動詞が必要）。",
+   "現在形であり過去を表す語と矛盾する。",
+   "last weekend（先週末）は過去を表す語。busyという状態を表すのでbe動詞を使い、主語youの過去形はwere。",
+   "Didは一般動詞の疑問文用で、be動詞（状態）を使うこの文には合わない。"
+  ]
+ },
+ {
+  "question": "We (　　) not at home yesterday.",
+  "choices": [
+   "do",
+   "were",
+   "was",
+   "did"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "weは複数なのでareの過去形wereを使う。否定文はbe動詞の直後にnotを置く。",
+  "notes": [
+   "be動詞の否定文にdo/didは使わない。",
+   "weは複数なのでareの過去形wereを使う。否定文はbe動詞の直後にnotを置く。",
+   "wasは単数主語用でweと一致しない。",
+   "be動詞の否定文にdo/didは使わない。"
+  ]
+ },
+ {
+  "question": "She (　　) three books last week.",
+  "choices": [
+   "read",
+   "reads",
+   "readed",
+   "reading"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "readは原形・過去形・過去分詞形がすべて同じ綴りread（発音のみ現在は[riːd]、過去は[rɛd]と変わる）という特殊な不規則動詞。last weekから過去の文だと分かるが、綴りは変化しない。",
+  "notes": [
+   "readは原形・過去形・過去分詞形がすべて同じ綴りread（発音のみ現在は[riːd]、過去は[rɛd]と変わる）という特殊な不規則動詞。last weekから過去の文だと分かるが、綴りは変化しない。",
+   "現在形（3人称単数）は時制が合わない。",
+   "readedという語形は存在しない（規則動詞の-edを不規則動詞に誤って付けた形）。",
+   "ing形は単独では過去の文の動詞にならない。"
+  ]
+ },
+ {
+  "question": "I (　　) my key somewhere yesterday.",
+  "choices": [
+   "lose",
+   "lost",
+   "loses",
+   "losing"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "loseの過去形は不規則にlostになる。yesterdayから過去形が必要。",
+  "notes": [
+   "現在形。",
+   "loseの過去形は不規則にlostになる。yesterdayから過去形が必要。",
+   "3人称単数現在形。",
+   "ing形。いずれも過去を表すyesterdayと時制が矛盾する。"
+  ]
+ },
+ {
+  "question": "(　　) it rain yesterday?",
+  "choices": [
+   "Do",
+   "Does",
+   "Did",
+   "Is"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "yesterdayから過去の疑問文と分かるのでDidを使う。rainはここでは一般動詞（雨が降る）として使われている。",
+  "notes": [
+   "現在形用。",
+   "現在形用。",
+   "yesterdayから過去の疑問文と分かるのでDidを使う。rainはここでは一般動詞（雨が降る）として使われている。",
+   "一般動詞rainの疑問文にbe動詞は使わない。"
+  ]
+ },
+ {
+  "question": "I get up (　　) seven o'clock.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "by"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "時刻（何時）を表すときはatを使う。英語の時間を表す前置詞は範囲の大きさによって使い分けるルールがあり、atは「点」としての時刻に使う。",
+  "notes": [
+   "inは月・年・季節など比較的長い期間に使う（in July, in 2024など）。",
+   "onは日付・曜日に使う（on Monday）。",
+   "時刻（何時）を表すときはatを使う。英語の時間を表す前置詞は範囲の大きさによって使い分けるルールがあり、atは「点」としての時刻に使う。",
+   "byは「〜までに」という期限を表す語で、単純な時刻の表現には使わない。"
+  ]
+ },
+ {
+  "question": "My birthday is (　　) April.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "by"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "月（April）にはinを使う。inは年・月・季節など比較的長い期間を表すときに使う前置詞。",
+  "notes": [
+   "月（April）にはinを使う。inは年・月・季節など比較的長い期間を表すときに使う前置詞。",
+   "onは日付・曜日用。",
+   "atは時刻など「点」として捉えられる短い時間用。",
+   "byは期限を表す語で月を表すのには使わない。"
+  ]
+ },
+ {
+  "question": "We have a math test (　　) Friday.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "with"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "曜日（Friday）にはonを使う。onは特定の「日」（曜日・日付）に使う前置詞。",
+  "notes": [
+   "inは月・年など、より長い期間に使う。",
+   "曜日（Friday）にはonを使う。onは特定の「日」（曜日・日付）に使う前置詞。",
+   "atは時刻に使う。",
+   "withは「〜と一緒に」の意味で時を表す語ではない。"
+  ]
+ },
+ {
+  "question": "The cat is (　　) the table.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "to"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「テーブルの上に接している状態」を表すのでonを使う。onは面と面が接触している状態を表す前置詞。",
+  "notes": [
+   "inは内部・囲まれた空間の中を表す（in the box＝箱の中）。",
+   "「テーブルの上に接している状態」を表すのでonを使う。onは面と面が接触している状態を表す前置詞。",
+   "atは点としての位置を表す。",
+   "toは方向・到達点を表す語で、位置そのものを表すのには使わない。"
+  ]
+ },
+ {
+  "question": "There is a ball (　　) the box.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "under"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「箱の中に」という内部の空間を表すのでinを使う。inは何かに囲まれた空間の内側を表す前置詞。",
+  "notes": [
+   "「箱の中に」という内部の空間を表すのでinを使う。inは何かに囲まれた空間の内側を表す前置詞。",
+   "onは接触している面の上を表し、内部ではない。",
+   "atは点としての位置。",
+   "underは「〜の下に」という意味で、箱の中とは異なる位置関係を表す。"
+  ]
+ },
+ {
+  "question": "Look! There is a cat sleeping (　　) the desk. It's resting its paws on the surface.",
+  "choices": [
+   "in",
+   "on",
+   "under",
+   "to"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "文中の「机の面の上に手足を置いて休んでいる」という描写から、机の表面に接している状態だと分かるのでonを使う。",
+  "notes": [
+   "inは囲まれた内部の空間を表し、机の中（引き出しの中）を意味してしまうため、描写と合わない。",
+   "文中の「机の面の上に手足を置いて休んでいる」という描写から、机の表面に接している状態だと分かるのでonを使う。",
+   "underは机の下を表し、描写と逆になる。",
+   "toは方向を表す語で位置を表すのには使わない。"
+  ]
+ },
+ {
+  "question": "We live (　　) Nagano.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "to"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "市や県、国など比較的広い場所（面としての広がりを持つ場所）にはinを使う。",
+  "notes": [
+   "市や県、国など比較的広い場所（面としての広がりを持つ場所）にはinを使う。",
+   "onは面の上に接する意味で、広い地域を表すのには使わない。",
+   "atは番地など、より狭く特定された地点に使うことが多い（at 3 Main Street）。",
+   "toは方向を表す語で、居住地を表すのには使わない。"
+  ]
+ },
+ {
+  "question": "Meet me (　　) the station.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "to"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "駅のような特定の地点・場所を「点」として捉えるときはatを使う。",
+  "notes": [
+   "inは内部の空間（駅の建物の中）を強調する場合に使うこともあるが、待ち合わせ場所として一般的なのはat。",
+   "onは面の上を表す語で、この文脈には合わない。",
+   "駅のような特定の地点・場所を「点」として捉えるときはatを使う。",
+   "toは方向を表す語で位置を表すのには使わない。"
+  ]
+ },
+ {
+  "question": "The picture is (　　) the wall.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "under"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "壁に接している（掛かっている）状態を表すのでonを使う。",
+  "notes": [
+   "inは内部の空間を表す。",
+   "壁に接している（掛かっている）状態を表すのでonを使う。",
+   "atは点としての位置。",
+   "underは下の位置を表し、壁に掛かっている状況とは異なる。"
+  ]
+ },
+ {
+  "question": "I go to school (　　) bike.",
+  "choices": [
+   "in",
+   "on",
+   "at",
+   "by"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "交通手段（〜を使って）を表すときはbyを使う（by bike, by bus, by trainなど）。この場合、乗り物の前に冠詞（a/theなど）は付けないのが決まった言い方。",
+  "notes": [
+   "inは自動車の中に乗るときに使うことがある（in a car）が、交通手段一般を表す決まった形としてはbyが基本。",
+   "onは自転車やバスの「上に乗っている」イメージで使われることもあるが（on a bike, on foot以外）、手段を表す最も一般的な形はbyである。",
+   "atは手段を表す前置詞としては使わない。",
+   "交通手段（〜を使って）を表すときはbyを使う（by bike, by bus, by trainなど）。この場合、乗り物の前に冠詞（a/theなど）は付けないのが決まった言い方。"
+  ]
+ },
+ {
+  "question": "I like dogs (　　) cats.",
+  "choices": [
+   "and",
+   "but",
+   "or",
+   "because"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "2つの好きなもの（犬と猫）を単純に並べて追加する意味を表すのはand（そして、〜と）。",
+  "notes": [
+   "2つの好きなもの（犬と猫）を単純に並べて追加する意味を表すのはand（そして、〜と）。",
+   "butは「しかし」と対立・対比を表す語で、単純な並列を表す文脈には合わない。",
+   "orは「または」と選択肢の中からどちらかを表す語で、両方好きだという意味とは異なる。",
+   "becauseは理由を表す語でこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "I wanted to go out, (　　) it was raining.",
+  "choices": [
+   "and",
+   "but",
+   "or",
+   "so"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「外出したかった」ことと「雨が降っていた」ことは対立する内容（出かけたいのに雨で出かけにくい）なので、対比を表すbutが適切。",
+  "notes": [
+   "andは単純な並列・追加を表す語で、対立する内容をつなぐのには合わない。",
+   "「外出したかった」ことと「雨が降っていた」ことは対立する内容（出かけたいのに雨で出かけにくい）なので、対比を表すbutが適切。",
+   "orは選択を表す語で、この文脈には合わない。",
+   "soは「だから」と結果を表す語で、雨が降っていたから外出したかった、という因果関係にはならないため文意が逆転してしまう。"
+  ]
+ },
+ {
+  "question": "Do you want tea (　　) coffee?",
+  "choices": [
+   "and",
+   "but",
+   "or",
+   "because"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「お茶とコーヒーのどちらが欲しいか」という選択をたずねる文なので、選択肢をつなぐorを使う。",
+  "notes": [
+   "andは両方を並べて追加する意味になり、選択の意味にならない。",
+   "butは対立を表す語で選択の文脈に合わない。",
+   "「お茶とコーヒーのどちらが欲しいか」という選択をたずねる文なので、選択肢をつなぐorを使う。",
+   "becauseは理由を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "I was late (　　) I missed the bus.",
+  "choices": [
+   "and",
+   "but",
+   "or",
+   "because"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「バスに乗り遅れたので遅刻した」という原因と結果の関係を表すのでbecause（〜なので）が適切。",
+  "notes": [
+   "andは単純な並列で因果関係を明示しない。",
+   "butは対立を表す語でここでは意味が通らない。",
+   "orは選択を表す語で合わない。",
+   "「バスに乗り遅れたので遅刻した」という原因と結果の関係を表すのでbecause（〜なので）が適切。"
+  ]
+ },
+ {
+  "question": "(　　) it is sunny tomorrow, we will go on a picnic.",
+  "choices": [
+   "And",
+   "But",
+   "If",
+   "Because"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「もし明日晴れたら」という条件を表すのでIf（もし〜ならば）が適切。条件節（if節）では、未来のことでも現在形で表すのが基本ルールで、この文でもis（現在形）が使われている点が条件文の特徴と一致する。",
+  "notes": [
+   "Andは条件を表す語ではない。",
+   "Butも条件を表さない。",
+   "「もし明日晴れたら」という条件を表すのでIf（もし〜ならば）が適切。条件節（if節）では、未来のことでも現在形で表すのが基本ルールで、この文でもis（現在形）が使われている点が条件文の特徴と一致する。",
+   "Becauseは理由を表す語で、条件（もし〜なら）とは意味が異なる。"
+  ]
+ },
+ {
+  "question": "(　　) I was a child, I lived in Osaka.",
+  "choices": [
+   "When",
+   "Because",
+   "If",
+   "But"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「子どもだったとき」という「時」を表す文脈なのでWhen（〜のとき）が適切。",
+  "notes": [
+   "「子どもだったとき」という「時」を表す文脈なのでWhen（〜のとき）が適切。",
+   "Becauseは理由を表す語で、この文脈（時を述べている）には合わない。",
+   "Ifは条件（もし〜なら）を表す語で、過去の事実（子どもだった）を述べる文脈には合わない。",
+   "Butは対立を表す接続詞で、文頭で節をつなぐ働きが異なる。"
+  ]
+ },
+ {
+  "question": "I was tired, (　　) I went to bed early.",
+  "choices": [
+   "but",
+   "or",
+   "so",
+   "because"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「疲れていた」ことが原因で「早く寝た」という結果につながっているので、結果を表すso（だから）が適切。",
+  "notes": [
+   "butは対立を表す語で、この因果関係の文脈には合わない。",
+   "orは選択を表す語で合わない。",
+   "「疲れていた」ことが原因で「早く寝た」という結果につながっているので、結果を表すso（だから）が適切。",
+   "becauseも理由を表す語だが、becauseは「結果, because 原因」という語順（後ろに原因が来る）で使うのが基本であり、ここでは「疲れていた」がすでに前に置かれ「寝た」という結果が後に続く形なので、原因→結果の流れに合うsoの方が適切。"
+  ]
+ },
+ {
+  "question": "Which do you like better, tea (　　) coffee?",
+  "choices": [
+   "and",
+   "or",
+   "but",
+   "so"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Which「どちらが」という疑問文で2つの選択肢を挙げるときはorを使う。",
+  "notes": [
+   "andは追加・並列を表す語で選択の意味にならない。",
+   "Which「どちらが」という疑問文で2つの選択肢を挙げるときはorを使う。",
+   "butは対立を表す語で合わない。",
+   "soは結果を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "Today is my (　　) birthday.",
+  "choices": [
+   "twelve",
+   "twelfth",
+   "twelveth",
+   "twelfthy"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「12番目の」という順序を表す語（序数）はtwelfthとなる。英語の序数は多くの場合、基数（数そのもの）にthを付けて作るが、twelveの場合は語尾のveをfに変えてthを付けるという綴りの変化が伴う（five→fifthなども同様の変化）。",
+  "notes": [
+   "twelveは基数（数そのもの）であり、「〜番目」という順序を表す形になっていない。",
+   "「12番目の」という順序を表す語（序数）はtwelfthとなる。英語の序数は多くの場合、基数（数そのもの）にthを付けて作るが、twelveの場合は語尾のveをfに変えてthを付けるという綴りの変化が伴う（five→fifthなども同様の変化）。",
+   "twelvethという綴りは、veをfに変えるという不規則な変化を反映していないため誤り。",
+   "twelfthyという語は存在しない。"
+  ]
+ },
+ {
+  "question": "February is the (　　) month of the year.",
+  "choices": [
+   "two",
+   "second",
+   "twoth",
+   "secondth"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「2番目の」という順序はsecondという特別な語を使う（1番目first、2番目second、3番目thirdは規則的な-thではなく特別な語形になる）。",
+  "notes": [
+   "twoは基数であり順序を表さない。",
+   "「2番目の」という順序はsecondという特別な語を使う（1番目first、2番目second、3番目thirdは規則的な-thではなく特別な語形になる）。",
+   "twoth という語は存在しない。",
+   "secondという語自体がすでに序数の完成形であり、そこにさらにthを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "My birthday is on the (　　) of May.",
+  "choices": [
+   "five",
+   "fifth",
+   "fiveth",
+   "fifty"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "日付（何日）を表すときは序数を使う。fiveの序数はveをfに変えてthを付けたfifth。",
+  "notes": [
+   "基数のままでは日付の言い方として不適切。",
+   "日付（何日）を表すときは序数を使う。fiveの序数はveをfに変えてthを付けたfifth。",
+   "fiveth という綴りは不規則変化を反映しておらず誤り。",
+   "fiftyは「50」という別の数を表す語で無関係。"
+  ]
+ },
+ {
+  "question": "(　　) is the last day of the week in many calendars.",
+  "choices": [
+   "Sunday",
+   "Monday",
+   "Wednesday",
+   "Saturday"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "多くのカレンダー（特に日本や欧米の一般的な表記）では、月曜始まりの場合、土曜日（Saturday）が週の最後の曜日として扱われることが多い。曜日の英語名はそれぞれ北欧神話やローマの天体名に由来する固有の語で、Saturdayは土星（Saturn）にちなむ。",
+  "notes": [
+   "Sunday（日曜日）は多くのカレンダーで週の最初（または最後）とされることがあるが、月曜始まりの一般的な並びでは最後は土曜日になる。",
+   "Mondayは週の始まりとされることが多い。",
+   "Wednesdayは週の真ん中あたりの曜日。",
+   "多くのカレンダー（特に日本や欧米の一般的な表記）では、月曜始まりの場合、土曜日（Saturday）が週の最後の曜日として扱われることが多い。曜日の英語名はそれぞれ北欧神話やローマの天体名に由来する固有の語で、Saturdayは土星（Saturn）にちなむ。"
+  ]
+ },
+ {
+  "question": "There are (　　) months in a year.",
+  "choices": [
+   "twelve",
+   "twelfth",
+   "twelveth",
+   "twelth"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「12ヶ月」という数そのものを表すときは基数twelveを使う。序数（12番目）を使うのはここでは不適切。",
+  "notes": [
+   "「12ヶ月」という数そのものを表すときは基数twelveを使う。序数（12番目）を使うのはここでは不適切。",
+   "twelfthは序数（12番目の）であり、単なる数量（12ヶ月）を表す文脈には合わない。",
+   "正しい綴りではない。",
+   "正しい綴りではない。"
+  ]
+ },
+ {
+  "question": "August is the (　　) month of the year.",
+  "choices": [
+   "eight",
+   "eighth",
+   "eightth",
+   "eighty"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「8番目の」という序数はeightにthを付けるが、tの重複を避けるためtを1つ省略しeighthとなる（発音上の理由による綴りの調整）。",
+  "notes": [
+   "基数のままでは順序を表さない。",
+   "「8番目の」という序数はeightにthを付けるが、tの重複を避けるためtを1つ省略しeighthとなる（発音上の理由による綴りの調整）。",
+   "eightthはtが重複しており誤った綴り。",
+   "eightyは「80」という別の数を表す語。"
+  ]
+ },
+ {
+  "question": "My brother is as (　　) as my father.",
+  "choices": [
+   "tall",
+   "taller",
+   "tallest",
+   "more tall"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「AはBと同じくらい〜だ」という同等比較はas + 形容詞の原級（元の形）+ asという形で表す。程度の差ではなく「同じ程度」であることを表すため、比較級（-er）や最上級（-est）ではなく形容詞そのままの形（原級）を使う。",
+  "notes": [
+   "「AはBと同じくらい〜だ」という同等比較はas + 形容詞の原級（元の形）+ asという形で表す。程度の差ではなく「同じ程度」であることを表すため、比較級（-er）や最上級（-est）ではなく形容詞そのままの形（原級）を使う。",
+   "比較級（taller）は「AがBより〜だ」という差を表す形で、as ~ as（同等）の構文には使わない。",
+   "最上級（tallest）は3つ以上の中で一番であることを表す形で、2者の比較には使わない。",
+   "tallのような短い形容詞（1音節）はmoreを付けずに-erを付けて比較級を作るのが基本ルールであり、そもそもmore tallという形自体が誤り。"
+  ]
+ },
+ {
+  "question": "This book is (　　) than that one.",
+  "choices": [
+   "interesting",
+   "more interesting",
+   "most interesting",
+   "as interesting"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "than（〜より）があるので比較級の文だと分かる。interestingのようにつづりが長い形容詞（3音節以上など）は、語尾に-erを付けるのではなくmoreを前に置いて比較級を作るという英語の規則がある（音節が多い語に-erを付けると発音しにくくなるため）。",
+  "notes": [
+   "原級のままでは比較級の文（than）と合わない。",
+   "than（〜より）があるので比較級の文だと分かる。interestingのようにつづりが長い形容詞（3音節以上など）は、語尾に-erを付けるのではなくmoreを前に置いて比較級を作るという英語の規則がある（音節が多い語に-erを付けると発音しにくくなるため）。",
+   "mostは最上級を作る語でthanを使う2者比較には使わない。",
+   "as ~ asは同等比較の形でthanとは組み合わせない。"
+  ]
+ },
+ {
+  "question": "Ken runs the (　　) in our class.",
+  "choices": [
+   "fast",
+   "faster",
+   "fastest",
+   "more fast"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「クラスの中で一番」という3つ（3人）以上の中での最上位を表すので最上級を使う。fastのような短い語は語尾に-estを付けて最上級を作る。",
+  "notes": [
+   "原級のままでは最上位という意味が出ない。",
+   "比較級は2者の比較に使う形で、「クラスの中で一番」という3人以上の比較には合わない。",
+   "「クラスの中で一番」という3つ（3人）以上の中での最上位を表すので最上級を使う。fastのような短い語は語尾に-estを付けて最上級を作る。",
+   "短い形容詞・副詞にmoreを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "This question is (　　) than that one.",
+  "choices": [
+   "easy",
+   "easier",
+   "easiest",
+   "more easy"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "than（〜より）から比較級の文と分かる。easyのように子音字＋yで終わる語は、比較級を作るときyをiに変えて-erを付ける（easy→easier）という綴りの規則がある。",
+  "notes": [
+   "原級のままではthanと合わない。",
+   "than（〜より）から比較級の文と分かる。easyのように子音字＋yで終わる語は、比較級を作るときyをiに変えて-erを付ける（easy→easier）という綴りの規則がある。",
+   "最上級は2者の比較には使わない。",
+   "yで終わる語にmoreを付けるのは規則に反する（moreを使うのは主に長い語）。"
+  ]
+ },
+ {
+  "question": "Mt. Fuji is the (　　) mountain in Japan.",
+  "choices": [
+   "high",
+   "higher",
+   "highest",
+   "more high"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「日本で一番高い」という、多数の中での最上位を表すので最上級を使う。highのような短い語は-estを付けて最上級を作る。",
+  "notes": [
+   "原級では最上位の意味が出ない。",
+   "比較級は2者間の比較に使う形で、多数（日本中の山）の中での一番を表す文脈には合わない。",
+   "「日本で一番高い」という、多数の中での最上位を表すので最上級を使う。highのような短い語は-estを付けて最上級を作る。",
+   "短い語にmoreを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "I have (　　) apple in my bag.",
+  "choices": [
+   "a",
+   "an",
+   "the",
+   "（冠詞なし）"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "appleは母音で始まる発音（[æ]）を持つ語なので、aではなくanを使う。冠詞a/anの使い分けは、直後に続く語のつづり（母音字か子音字か）ではなく、発音（母音の音で始まるかどうか）で決まるという点が重要な規則。",
+  "notes": [
+   "aは子音の発音で始まる語の前で使う（a book, a catなど）。appleは母音の発音で始まるためaは不適切。",
+   "appleは母音で始まる発音（[æ]）を持つ語なので、aではなくanを使う。冠詞a/anの使い分けは、直後に続く語のつづり（母音字か子音字か）ではなく、発音（母音の音で始まるかどうか）で決まるという点が重要な規則。",
+   "theは「その〜」と特定のものを指す語で、ここでは「（数ある中の）1つのりんご」という不特定の意味を表したいのでaやanが適切。",
+   "数えられる名詞apple（単数）の前には、原則として何らかの冠詞（a/an/theなど）が必要であり、何も付けないのは誤り。"
+  ]
+ },
+ {
+  "question": "I saw (　　) dog in the park. (　　) dog was very cute.",
+  "choices": [
+   "a / A",
+   "a / The",
+   "the / A",
+   "the / The"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "1文目で初めて話題に出す犬は、聞き手にとって「どの犬か特定できない」ため不定冠詞aを使う。2文目では、すでに1文目で話題にした「その犬」を指しているので、聞き手も特定できる情報になり、定冠詞Theを使う。このように、英語の冠詞は「話し手・聞き手がその名詞を特定できるかどうか」で使い分けるという仕組みがある。",
+  "notes": [
+   "2文目でaを使うと、まるで別の（新しい）犬について話しているかのようになり、1文目とのつながりが不自然になる。",
+   "1文目で初めて話題に出す犬は、聞き手にとって「どの犬か特定できない」ため不定冠詞aを使う。2文目では、すでに1文目で話題にした「その犬」を指しているので、聞き手も特定できる情報になり、定冠詞Theを使う。このように、英語の冠詞は「話し手・聞き手がその名詞を特定できるかどうか」で使い分けるという仕組みがある。",
+   "1文目でtheを使うと、聞き手がすでにどの犬か知っている前提になってしまうが、初めて登場する犬なのでこれは不自然。",
+   "1文目のtheが不自然（Bと同じ理由）。"
+  ]
+ },
+ {
+  "question": "The sun rises in (　　) east.",
+  "choices": [
+   "a",
+   "an",
+   "the",
+   "（冠詞なし）"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "east（東）のように、世界に1つしかない・唯一に定まるものを指すときはtheを使う。sun（太陽）も同じ理由でthe sunと表現される。",
+  "notes": [
+   "east（東）は数えられない、また「1つの東」という数え方をする概念ではないため、a/anは使わない。",
+   "east（東）は数えられない、また「1つの東」という数え方をする概念ではないため、a/anは使わない。",
+   "east（東）のように、世界に1つしかない・唯一に定まるものを指すときはtheを使う。sun（太陽）も同じ理由でthe sunと表現される。",
+   "east単独で方角を表す場合は原則theを付けるのが標準的な言い方。"
+  ]
+ },
+ {
+  "question": "She plays (　　) piano very well.",
+  "choices": [
+   "a",
+   "an",
+   "the",
+   "（冠詞なし）"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "楽器の演奏について述べるときは、play the + 楽器名という決まった言い方をする。楽器全般を指す種類の名詞として捉え、the pianoのように定冠詞を付けるのが英語の慣用表現。",
+  "notes": [
+   "楽器名の前に不定冠詞a/anを使う決まった言い方は基本的にない（play a pianoとは通常言わない）。",
+   "楽器名の前に不定冠詞a/anを使う決まった言い方は基本的にない（play a pianoとは通常言わない）。",
+   "楽器の演奏について述べるときは、play the + 楽器名という決まった言い方をする。楽器全般を指す種類の名詞として捉え、the pianoのように定冠詞を付けるのが英語の慣用表現。",
+   "楽器を演奏する意味でplay pianoと冠詞なしで使う言い方もあるが、教科書的・標準的な表現としてはtheを付けるplay the pianoが基本形として教えられる。"
+  ]
+ },
+ {
+  "question": "This is (　　) old house.",
+  "choices": [
+   "a",
+   "an",
+   "the",
+   "（冠詞なし）"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "oldは母音の音（[oʊ]）で始まる語なので、直前の冠詞はaではなくanになる。",
+  "notes": [
+   "aは子音の音で始まる語の前で使うためoldとは合わない。",
+   "oldは母音の音（[oʊ]）で始まる語なので、直前の冠詞はaではなくanになる。",
+   "theは特定のものを指す語で、ここでは「（数ある中の）1つの古い家」という不特定の意味なのでa/anが適切。",
+   "数えられる名詞house（単数）の前には冠詞が必要。"
+  ]
+ }
+]

@@ -1,0 +1,2852 @@
+[
+ {
+  "question": "I want (　　) a new bike.",
+  "choices": [
+   "buy",
+   "buys",
+   "to buy",
+   "buying"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "wantの後には「to+動詞の原形」（to不定詞）を置いて「〜することを望む」という意味を作る。wantのように「これから先のこと・まだ実現していないこと」を目的語に取る動詞は、未来志向の意味を持つto不定詞と相性がよいという特徴がある。",
+  "notes": [
+   "動詞の原形をそのままwantの後に置くことはできない（英語では動詞が2つ連続する場合、間に何らかの形（to不定詞やing形など）が必要）。",
+   "wantの目的語の位置に3人称単数現在形を置くことはない。",
+   "wantの後には「to+動詞の原形」（to不定詞）を置いて「〜することを望む」という意味を作る。wantのように「これから先のこと・まだ実現していないこと」を目的語に取る動詞は、未来志向の意味を持つto不定詞と相性がよいという特徴がある。",
+   "wantの後にing形を置く用法は一般的ではない（likeやenjoyなどはing形を取るが、wantはto不定詞を取るという使い分けがある）。"
+  ]
+ },
+ {
+  "question": "(　　) English is a lot of fun.",
+  "choices": [
+   "Study",
+   "Studies",
+   "To study",
+   "Studied"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "to不定詞は文の主語（〜すること）としても使える（名詞的用法）。「英語を勉強することは楽しい」という文で、to studyが主語の役割を果たしている。",
+  "notes": [
+   "動詞の原形は単独では文の主語になれない。",
+   "3人称単数形も主語の位置には使わない。",
+   "to不定詞は文の主語（〜すること）としても使える（名詞的用法）。「英語を勉強することは楽しい」という文で、to studyが主語の役割を果たしている。",
+   "過去形も主語にはならない。"
+  ]
+ },
+ {
+  "question": "I have a lot of homework (　　) today.",
+  "choices": [
+   "finish",
+   "finishes",
+   "to finish",
+   "finishing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "to不定詞が直前の名詞（homework）を後ろから説明する用法（形容詞的用法）。「今日終えるべき宿題」のように、名詞に「これから〜する」という未来志向の説明を加える働きをする。",
+  "notes": [
+   "動詞の原形は名詞を直接修飾する形にならない。",
+   "3人称単数形も名詞を修飾する形にはならない。",
+   "to不定詞が直前の名詞（homework）を後ろから説明する用法（形容詞的用法）。「今日終えるべき宿題」のように、名詞に「これから〜する」という未来志向の説明を加える働きをする。",
+   "ing形にも名詞を修飾する用法（現在分詞）はあるが、その場合「今〜している最中の」という進行中の意味になり、「終えるべき」という義務・目的の意味を表すto不定詞とは意味が異なる。"
+  ]
+ },
+ {
+  "question": "I got up early (　　) the first train.",
+  "choices": [
+   "catch",
+   "catches",
+   "to catch",
+   "catching"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "to不定詞が「〜するために」という目的を表す用法（副詞的用法）。「始発電車に乗るために早起きした」という、動作（早起きした）の目的を説明している。",
+  "notes": [
+   "動詞の原形単独では目的を表す働きをしない。",
+   "3人称単数形も同様。",
+   "to不定詞が「〜するために」という目的を表す用法（副詞的用法）。「始発電車に乗るために早起きした」という、動作（早起きした）の目的を説明している。",
+   "ing形で目的を表す用法は一般的ではない。"
+  ]
+ },
+ {
+  "question": "It is important (　　) breakfast every day.",
+  "choices": [
+   "eat",
+   "eats",
+   "to eat",
+   "eating"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "It is + 形容詞 + to不定詞という形で「〜することは…だ」という意味を表す。このItは形式的な主語（形式主語）で、本当の主語であるto eat breakfast every day（毎日朝食を食べること）を後ろに置くための構造になっている。",
+  "notes": [
+   "動詞の原形・3人称単数形はこの構造に入らない。",
+   "動詞の原形・3人称単数形はこの構造に入らない。",
+   "It is + 形容詞 + to不定詞という形で「〜することは…だ」という意味を表す。このItは形式的な主語（形式主語）で、本当の主語であるto eat breakfast every day（毎日朝食を食べること）を後ろに置くための構造になっている。",
+   "ing形をこの構造で使うことは一般的でない（It is important eatingとは言わない）。"
+  ]
+ },
+ {
+  "question": "I don't have anything (　　) today.",
+  "choices": [
+   "do",
+   "does",
+   "to do",
+   "doing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "形容詞的用法のto不定詞がanything（何か）を後ろから修飾し、「今日すること（何か）」という意味を作る。",
+  "notes": [
+   "動詞の原形・3人称単数形は名詞を後ろから修飾する形にならない。",
+   "動詞の原形・3人称単数形は名詞を後ろから修飾する形にならない。",
+   "形容詞的用法のto不定詞がanything（何か）を後ろから修飾し、「今日すること（何か）」という意味を作る。",
+   "ing形での修飾は「今している最中の何か」という別の意味になり、この文脈（これからすべきこと）には合わない。"
+  ]
+ },
+ {
+  "question": "She studies hard (　　) a doctor.",
+  "choices": [
+   "become",
+   "becomes",
+   "to become",
+   "becoming"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「医者になるために」という目的を表す副詞的用法のto不定詞。",
+  "notes": [
+   "動詞の原形・3人称単数形は目的を表す働きをしない。",
+   "動詞の原形・3人称単数形は目的を表す働きをしない。",
+   "「医者になるために」という目的を表す副詞的用法のto不定詞。",
+   "ing形は目的を表す用法としては使わない。"
+  ]
+ },
+ {
+  "question": "My dream is (　　) a teacher.",
+  "choices": [
+   "become",
+   "becomes",
+   "to become",
+   "became"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be動詞isの補語としてto不定詞を置き、「私の夢は先生になることだ」という意味を作る（名詞的用法）。",
+  "notes": [
+   "動詞の原形は補語の位置にそのまま置けない。",
+   "3人称単数形も同様。",
+   "be動詞isの補語としてto不定詞を置き、「私の夢は先生になることだ」という意味を作る（名詞的用法）。",
+   "過去形は「夢」という未来志向の内容と時制的に矛盾する。"
+  ]
+ },
+ {
+  "question": "I need something (　　) with.",
+  "choices": [
+   "write",
+   "writes",
+   "to write",
+   "written"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "形容詞的用法のto不定詞がsomethingを修飾し、「書くための何か（＝筆記用具）」という意味を作る。withは前置詞で、write withで「〜を使って書く」という道具の意味を表すため、withを文末に残す形になる。",
+  "notes": [
+   "動詞の原形・3人称単数形は名詞を修飾しない。",
+   "動詞の原形・3人称単数形は名詞を修飾しない。",
+   "形容詞的用法のto不定詞がsomethingを修飾し、「書くための何か（＝筆記用具）」という意味を作る。withは前置詞で、write withで「〜を使って書く」という道具の意味を表すため、withを文末に残す形になる。",
+   "過去分詞writtenは「書かれた」という受け身の意味になり、「書くための道具」という能動的な目的の意味とは異なる。"
+  ]
+ },
+ {
+  "question": "(　　) fly in the sky was his dream.",
+  "choices": [
+   "Fly",
+   "Flies",
+   "To fly",
+   "Flying and"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "to不定詞の名詞的用法が文の主語になっている（「空を飛ぶことが彼の夢だった」）。",
+  "notes": [
+   "動詞の原形単独は主語になれない。",
+   "3人称単数形も主語にならない。",
+   "to不定詞の名詞的用法が文の主語になっている（「空を飛ぶことが彼の夢だった」）。",
+   "Flying自体は主語になれる（動名詞）が、Flying and flyという形自体が不自然で、選択肢として文法的に成立していない。"
+  ]
+ },
+ {
+  "question": "I was happy (　　) the news.",
+  "choices": [
+   "hear",
+   "hears",
+   "to hear",
+   "hearing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "to不定詞が感情の原因を表す用法（副詞的用法の一種）。「そのニュースを聞いて嬉しかった」というように、happyという感情がなぜ生じたかの原因をto不定詞で説明している。",
+  "notes": [
+   "動詞の原形・3人称単数形は感情の原因を表す働きをしない。",
+   "動詞の原形・3人称単数形は感情の原因を表す働きをしない。",
+   "to不定詞が感情の原因を表す用法（副詞的用法の一種）。「そのニュースを聞いて嬉しかった」というように、happyという感情がなぜ生じたかの原因をto不定詞で説明している。",
+   "ing形をこの意味で使う決まった形はない。"
+  ]
+ },
+ {
+  "question": "It's difficult (　　) this question.",
+  "choices": [
+   "answer",
+   "answers",
+   "to answer",
+   "answered"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "It is + 形容詞 + to不定詞の形式主語構文。",
+  "notes": [
+   "原形・3人称単数形はこの構造には合わない。",
+   "原形・3人称単数形はこの構造には合わない。",
+   "It is + 形容詞 + to不定詞の形式主語構文。",
+   "過去分詞は受け身の意味になり、この文脈（この質問に答えることが難しい）には合わない。"
+  ]
+ },
+ {
+  "question": "Please give me something cold (　　).",
+  "choices": [
+   "drink",
+   "drinks",
+   "to drink",
+   "drinking"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "形容詞的用法のto不定詞がsomething coldを後ろから修飾し、「何か冷たい飲み物」という意味を作る。something+形容詞+to不定詞という語順（somethingを修飾する形容詞は後ろに置く）は英語の特徴的なルール。",
+  "notes": [
+   "動詞の原形・3人称単数形は名詞を修飾する形にならない。",
+   "動詞の原形・3人称単数形は名詞を修飾する形にならない。",
+   "形容詞的用法のto不定詞がsomething coldを後ろから修飾し、「何か冷たい飲み物」という意味を作る。something+形容詞+to不定詞という語順（somethingを修飾する形容詞は後ろに置く）は英語の特徴的なルール。",
+   "ing形では「飲んでいる最中の冷たい何か」という不自然な意味になってしまう。"
+  ]
+ },
+ {
+  "question": "He went to the library (　　) some books.",
+  "choices": [
+   "borrow",
+   "borrows",
+   "to borrow",
+   "borrowing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「本を借りるために」という目的を表す副詞的用法。",
+  "notes": [
+   "目的を表す働きをしない形。",
+   "目的を表す働きをしない形。",
+   "「本を借りるために」という目的を表す副詞的用法。",
+   "ing形は目的を表す用法としては使わない。"
+  ]
+ },
+ {
+  "question": "I'm glad (　　) you again.",
+  "choices": [
+   "see",
+   "sees",
+   "to see",
+   "seeing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "感情の原因を表すto不定詞。「あなたに再び会えて嬉しい」という感情の理由を表す。",
+  "notes": [
+   "この用法には使わない形。",
+   "この用法には使わない形。",
+   "感情の原因を表すto不定詞。「あなたに再び会えて嬉しい」という感情の理由を表す。",
+   "ing形での感情の原因表現は一般的でない。"
+  ]
+ },
+ {
+  "question": "(　　) is important for our health.",
+  "choices": [
+   "Sleep enough",
+   "To sleep enough",
+   "Sleeps enough",
+   "Slept enough"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "to不定詞の名詞的用法が主語になっている（「十分に眠ることは健康にとって重要だ」）。",
+  "notes": [
+   "動詞の原形単独では主語になれない。",
+   "to不定詞の名詞的用法が主語になっている（「十分に眠ることは健康にとって重要だ」）。",
+   "3人称単数形も主語にはならない。",
+   "過去形も主語の位置には使わない。"
+  ]
+ },
+ {
+  "question": "We were surprised (　　) him at the station.",
+  "choices": [
+   "see",
+   "sees",
+   "to see",
+   "seeing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "surprised（驚いた）という感情の原因を表すto不定詞。「駅で彼を見て驚いた」。",
+  "notes": [
+   "この用法には使わない形。",
+   "この用法には使わない形。",
+   "surprised（驚いた）という感情の原因を表すto不定詞。「駅で彼を見て驚いた」。",
+   "一般的でない。"
+  ]
+ },
+ {
+  "question": "I have no time (　　) now.",
+  "choices": [
+   "lose",
+   "loses",
+   "to lose",
+   "losing"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "形容詞的用法のto不定詞がtime（時間）を修飾し、「失う時間（＝ぐずぐずしている時間）」という意味を作る。I have no time to lose.は「（時間を無駄にしている場合ではない＝）急がなければならない」という決まった表現。",
+  "notes": [
+   "名詞を修飾する形にならない。",
+   "名詞を修飾する形にならない。",
+   "形容詞的用法のto不定詞がtime（時間）を修飾し、「失う時間（＝ぐずぐずしている時間）」という意味を作る。I have no time to lose.は「（時間を無駄にしている場合ではない＝）急がなければならない」という決まった表現。",
+   "一般的でない。"
+  ]
+ },
+ {
+  "question": "I enjoy (　　) music.",
+  "choices": [
+   "listen",
+   "listens",
+   "to listen",
+   "listening"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "enjoyの後は動詞のing形（動名詞）を目的語にする。enjoyのように「すでに行っている（行った）ことや、その最中の感覚」に焦点を当てる動詞は、現在進行中・経験を表すing形と相性がよいという特徴がある。",
+  "notes": [
+   "動詞の原形・3人称単数形をenjoyの目的語にすることはできない。",
+   "動詞の原形・3人称単数形をenjoyの目的語にすることはできない。",
+   "enjoyはto不定詞ではなくing形を目的語に取る動詞として決まっている（enjoy to listenとは言わない）。",
+   "enjoyの後は動詞のing形（動名詞）を目的語にする。enjoyのように「すでに行っている（行った）ことや、その最中の感覚」に焦点を当てる動詞は、現在進行中・経験を表すing形と相性がよいという特徴がある。"
+  ]
+ },
+ {
+  "question": "(　　) is fun.",
+  "choices": [
+   "Swim",
+   "Swims",
+   "Swimming",
+   "To swimming"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "動名詞（動詞のing形）が主語になり、「泳ぐことは楽しい」という意味を作る。動名詞はto不定詞の名詞的用法と同じく「〜すること」という意味で主語になれる。",
+  "notes": [
+   "動詞の原形単独は主語になれない。",
+   "3人称単数形も主語にならない。",
+   "動名詞（動詞のing形）が主語になり、「泳ぐことは楽しい」という意味を作る。動名詞はto不定詞の名詞的用法と同じく「〜すること」という意味で主語になれる。",
+   "To swimmingという形は文法的に誤り（toの後は原形、または動名詞ならtoなしで使う）。"
+  ]
+ },
+ {
+  "question": "He finished (　　) his homework.",
+  "choices": [
+   "do",
+   "does",
+   "to do",
+   "doing"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "finishの後は動名詞を目的語に取る。finishは「すでに行っていたことを終える」という意味であり、動作がすでに進行していたことを前提とするためing形と結びつく。",
+  "notes": [
+   "原形・3人称単数形はfinishの目的語にならない。",
+   "原形・3人称単数形はfinishの目的語にならない。",
+   "finishはto不定詞を目的語に取らない動詞として決まっている（finish to doとは言わない）。",
+   "finishの後は動名詞を目的語に取る。finishは「すでに行っていたことを終える」という意味であり、動作がすでに進行していたことを前提とするためing形と結びつく。"
+  ]
+ },
+ {
+  "question": "Would you mind (　　) the window?",
+  "choices": [
+   "open",
+   "opens",
+   "to open",
+   "opening"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "mindは動名詞のみを目的語に取る動詞。Would you mind -ing?で「〜していただけますか」という丁寧な依頼の決まった表現になる。",
+  "notes": [
+   "原形・3人称単数形は目的語にならない。",
+   "原形・3人称単数形は目的語にならない。",
+   "mindはto不定詞を目的語に取らない。",
+   "mindは動名詞のみを目的語に取る動詞。Would you mind -ing?で「〜していただけますか」という丁寧な依頼の決まった表現になる。"
+  ]
+ },
+ {
+  "question": "I'm interested (　　) about other countries.",
+  "choices": [
+   "learn",
+   "learns",
+   "to learn",
+   "in learning"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "interested inという前置詞inの後には動名詞（ing形）を置く。英語では前置詞の直後に動詞を置く場合、原形やto不定詞ではなく必ず動名詞（ing形）を使うという規則がある。これは前置詞の後には名詞（相当語句）が来るという原則に基づき、動名詞は動詞でありながら名詞としての性質も持つため前置詞の後に置ける。",
+  "notes": [
+   "前置詞inの後に動詞の原形・3人称単数形を置くことはできない。",
+   "前置詞inの後に動詞の原形・3人称単数形を置くことはできない。",
+   "to不定詞のtoも前置詞的な性質を持つが、interested inという決まった組み合わせにさらにto不定詞を続ける形にはならない。",
+   "interested inという前置詞inの後には動名詞（ing形）を置く。英語では前置詞の直後に動詞を置く場合、原形やto不定詞ではなく必ず動名詞（ing形）を使うという規則がある。これは前置詞の後には名詞（相当語句）が来るという原則に基づき、動名詞は動詞でありながら名詞としての性質も持つため前置詞の後に置ける。"
+  ]
+ },
+ {
+  "question": "Thank you for (　　) me.",
+  "choices": [
+   "help",
+   "helps",
+   "helped",
+   "helping"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "前置詞forの後は動名詞を置く。",
+  "notes": [
+   "前置詞の後に動詞の原形・活用形をそのまま置くことはできない。",
+   "前置詞の後に動詞の原形・活用形をそのまま置くことはできない。",
+   "過去形も前置詞の後には置けない。",
+   "前置詞forの後は動名詞を置く。"
+  ]
+ },
+ {
+  "question": "She is good (　　) singing songs.",
+  "choices": [
+   "at",
+   "in",
+   "on",
+   "for"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be good at 〜ingで「〜するのが得意だ」という決まった表現になる。atは能力・技能が発揮される「的（まと）」のような対象を示す前置詞として使われる。",
+  "notes": [
+   "be good at 〜ingで「〜するのが得意だ」という決まった表現になる。atは能力・技能が発揮される「的（まと）」のような対象を示す前置詞として使われる。",
+   "be good at という組み合わせが慣用的に定着しており、他の前置詞は使わない。",
+   "be good at という組み合わせが慣用的に定着しており、他の前置詞は使わない。",
+   "be good at という組み合わせが慣用的に定着しており、他の前置詞は使わない。"
+  ]
+ },
+ {
+  "question": "I like (　　) pictures.",
+  "choices": [
+   "take",
+   "takes",
+   "to take / taking",
+   "took"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "likeはto不定詞と動名詞のどちらも目的語に取ることができる動詞で、意味もほぼ同じ「〜することが好き」になる。動詞によって目的語の形が1つに決まっているもの（want→to不定詞のみ、enjoy→動名詞のみ）と、両方使えるものがある。",
+  "notes": [
+   "原形・3人称単数形は目的語にならない。",
+   "原形・3人称単数形は目的語にならない。",
+   "likeはto不定詞と動名詞のどちらも目的語に取ることができる動詞で、意味もほぼ同じ「〜することが好き」になる。動詞によって目的語の形が1つに決まっているもの（want→to不定詞のみ、enjoy→動名詞のみ）と、両方使えるものがある。",
+   "過去形も目的語の位置には使わない。"
+  ]
+ },
+ {
+  "question": "(　　) a foreign language takes time.",
+  "choices": [
+   "Learn",
+   "Learns",
+   "Learning",
+   "Learned"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "動名詞が主語になっている（「外国語を学ぶことは時間がかかる」）。",
+  "notes": [
+   "原形は主語にならない。",
+   "3人称単数形も主語にならない。",
+   "動名詞が主語になっている（「外国語を学ぶことは時間がかかる」）。",
+   "過去分詞・過去形もこの位置には使わない。"
+  ]
+ },
+ {
+  "question": "I remember (　　) him before.",
+  "choices": [
+   "meet",
+   "meets",
+   "to meet",
+   "meeting"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "remember -ingで「（過去に）〜したことを覚えている」という意味になる。ing形は「すでに起きた（実際に経験した）こと」に焦点を当てる性質があるため、過去の記憶を表すこの文脈に合う。remember to doは「これから〜することを覚えておく（忘れずに〜する）」という未来志向の別の意味になる。",
+  "notes": [
+   "目的語の形として不適切。",
+   "目的語の形として不適切。",
+   "to不定詞を使うと「これからのこと」という異なる意味になり、beforeと矛盾する。",
+   "remember -ingで「（過去に）〜したことを覚えている」という意味になる。ing形は「すでに起きた（実際に経験した）こと」に焦点を当てる性質があるため、過去の記憶を表すこの文脈に合う。remember to doは「これから〜することを覚えておく（忘れずに〜する）」という未来志向の別の意味になる。"
+  ]
+ },
+ {
+  "question": "Stop (　　) and listen to me.",
+  "choices": [
+   "talk",
+   "talks",
+   "to talk",
+   "talking"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "stop -ingで「〜するのをやめる」という意味になる。stopは「今行っている動作をやめる」という意味であり、その動作（すでに進行中の行為）をing形で表す。",
+  "notes": [
+   "目的語の形として不適切。",
+   "目的語の形として不適切。",
+   "stop to doは「（何か別のことを）するために立ち止まる」という全く異なる意味になり、文脈（話すのをやめて）とは合わない。",
+   "stop -ingで「〜するのをやめる」という意味になる。stopは「今行っている動作をやめる」という意味であり、その動作（すでに進行中の行為）をing形で表す。"
+  ]
+ },
+ {
+  "question": "I'm looking forward to (　　) you soon.",
+  "choices": [
+   "see",
+   "sees",
+   "seeing",
+   "saw"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "look forward to 〜ingで「〜するのを楽しみにする」という決まった表現。このtoは不定詞のtoではなく前置詞のtoであるため、後ろには動詞の原形ではなく動名詞（ing形）が続くという点が重要な区別。",
+  "notes": [
+   "前置詞toの後に原形を置くのは誤り（このtoが不定詞のtoだと誤解しやすい典型的な間違い）。",
+   "3人称単数形も前置詞の後には置けない。",
+   "look forward to 〜ingで「〜するのを楽しみにする」という決まった表現。このtoは不定詞のtoではなく前置詞のtoであるため、後ろには動詞の原形ではなく動名詞（ing形）が続くという点が重要な区別。",
+   "過去形も同様。"
+  ]
+ },
+ {
+  "question": "This question is (　　) than that one.",
+  "choices": [
+   "difficult",
+   "more difficult",
+   "most difficult",
+   "difficulter"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "difficultのように音節数が多い（つづりが長い）形容詞は、語尾に-erを付けるのではなくmoreを前に置いて比較級を作る。これは、長い単語に-erを付けると発音上のリズムが悪くなるため、英語の歴史の中でmoreを使う形が定着したことによる。",
+  "notes": [
+   "原級のままではthan（〜より）と組み合わせる比較の文にならない。",
+   "difficultのように音節数が多い（つづりが長い）形容詞は、語尾に-erを付けるのではなくmoreを前に置いて比較級を作る。これは、長い単語に-erを付けると発音上のリズムが悪くなるため、英語の歴史の中でmoreを使う形が定着したことによる。",
+   "mostは最上級を作る語で、than（2者の比較）を使う文には合わない。",
+   "difficultにerを直接付けるdifficulterという形は存在しない。"
+  ]
+ },
+ {
+  "question": "Soccer is the (　　) popular sport in our school.",
+  "choices": [
+   "more",
+   "most",
+   "much",
+   "many"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "the + most + 形容詞で最上級を作る（長い形容詞の場合）。「私たちの学校で一番人気のあるスポーツ」という3つ以上の中での最上位を表す。",
+  "notes": [
+   "moreは比較級を作る語で、2者の比較に使う。",
+   "the + most + 形容詞で最上級を作る（長い形容詞の場合）。「私たちの学校で一番人気のあるスポーツ」という3つ以上の中での最上位を表す。",
+   "much/manyは「多い」という意味の語であり、最上級を作る働きはない。",
+   "much/manyは「多い」という意味の語であり、最上級を作る働きはない。"
+  ]
+ },
+ {
+  "question": "This is the (　　) important thing for us.",
+  "choices": [
+   "more",
+   "most",
+   "much",
+   "many"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "importantも音節の多い形容詞なのでmostを使って最上級を作る。",
+  "notes": [
+   "比較級用の語。",
+   "importantも音節の多い形容詞なのでmostを使って最上級を作る。",
+   "最上級を作る働きはない。",
+   "最上級を作る働きはない。"
+  ]
+ },
+ {
+  "question": "I can run (　　) than my brother.",
+  "choices": [
+   "fast",
+   "faster",
+   "fastest",
+   "more fast"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "than（〜より）があるので比較級。fastのような短い副詞は語尾に-erを付ける。",
+  "notes": [
+   "原級のままではthanと合わない。",
+   "than（〜より）があるので比較級。fastのような短い副詞は語尾に-erを付ける。",
+   "最上級は2者比較には使わない。",
+   "短い語にmoreを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "This is (　　) of the three bags.",
+  "choices": [
+   "big",
+   "bigger",
+   "the biggest",
+   "more big"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "of the three（3つの中で）とあるので3つ以上の中での最上位を表す最上級を使う。bigのように短く、かつ子音字+母音字+子音字で終わる語は、最後の子音字を重ねてestを付ける（big→biggest）という綴りの規則がある。",
+  "notes": [
+   "原級では最上位の意味が出ない。",
+   "比較級は2者比較に使う形で、3つの中での比較にはthe+最上級を使うのが基本。",
+   "of the three（3つの中で）とあるので3つ以上の中での最上位を表す最上級を使う。bigのように短く、かつ子音字+母音字+子音字で終わる語は、最後の子音字を重ねてestを付ける（big→biggest）という綴りの規則がある。",
+   "短い語にmoreを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "Which do you like (　　), tea or coffee?",
+  "choices": [
+   "good",
+   "well",
+   "better",
+   "best"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "2つのもの（tea or coffee）を比べて「どちらがより好きか」をたずねているので比較級を使う。goodやwellの比較級はwell→better（不規則変化）。",
+  "notes": [
+   "goodは形容詞の原級であり、この文でlikeを修飾する副詞の位置には合わない。",
+   "wellは原級（副詞）で、比較（than相当の意味を持つ文）には合わない。",
+   "2つのもの（tea or coffee）を比べて「どちらがより好きか」をたずねているので比較級を使う。goodやwellの比較級はwell→better（不規則変化）。",
+   "bestは最上級で、2つの中からの選択（or）には通常使わない（3つ以上の中で一番のときに使う）。"
+  ]
+ },
+ {
+  "question": "Of all the students, Mika studies (　　).",
+  "choices": [
+   "hard",
+   "harder",
+   "hardest",
+   "the hardest"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Of all the students（すべての生徒の中で）から3人以上の中での最上位を表す最上級と分かる。副詞の最上級には通常theを付ける（副詞の最上級ではtheを省略することもあるが、the hardestという形が標準的）。",
+  "notes": [
+   "原級では最上位の意味にならない。",
+   "比較級は2者比較用。",
+   "theが抜けており、副詞の最上級としてはthe hardestの形が基本。",
+   "Of all the students（すべての生徒の中で）から3人以上の中での最上位を表す最上級と分かる。副詞の最上級には通常theを付ける（副詞の最上級ではtheを省略することもあるが、the hardestという形が標準的）。"
+  ]
+ },
+ {
+  "question": "This bag is (　　) as that one.",
+  "choices": [
+   "heavy",
+   "heavier",
+   "as heavy",
+   "the heaviest"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "as ~ as構文（同等比較）で「AはBと同じくらい〜だ」を表す。文の骨格はThis bag is as heavy as that one.であり、最初のasの直前には形容詞の原級を置く。",
+  "notes": [
+   "asが抜けており、as ~ asという構文が完成していない。",
+   "比較級はas ~ asの構文には使わない（差ではなく同等を表すため）。",
+   "as ~ as構文（同等比較）で「AはBと同じくらい〜だ」を表す。文の骨格はThis bag is as heavy as that one.であり、最初のasの直前には形容詞の原級を置く。",
+   "最上級もこの構文には合わない。"
+  ]
+ },
+ {
+  "question": "My brother is not as (　　) as me.",
+  "choices": [
+   "tall",
+   "taller",
+   "tallest",
+   "more tall"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "not as ~ as（〜ほど…ではない）という否定の同等比較でも、asの後には形容詞の原級を置く。",
+  "notes": [
+   "not as ~ as（〜ほど…ではない）という否定の同等比較でも、asの後には形容詞の原級を置く。",
+   "比較級・最上級・不要なmoreはas ~ as構文には使わない。",
+   "比較級・最上級・不要なmoreはas ~ as構文には使わない。",
+   "比較級・最上級・不要なmoreはas ~ as構文には使わない。"
+  ]
+ },
+ {
+  "question": "The more you practice, the (　　) you become.",
+  "choices": [
+   "good",
+   "well",
+   "better",
+   "best"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "The + 比較級 ~, the + 比較級 …で「〜すればするほど、ますます…になる」という構文。前半にmoreという比較級が使われているので、後半も比較級で対応させる（goodの比較級はbetter）。",
+  "notes": [
+   "原級では構文の形が成立しない。",
+   "wellは副詞でここでは形容詞の原級goodに対応する語ではない。",
+   "The + 比較級 ~, the + 比較級 …で「〜すればするほど、ますます…になる」という構文。前半にmoreという比較級が使われているので、後半も比較級で対応させる（goodの比較級はbetter）。",
+   "最上級はこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "This movie is (　　) interesting than that one.",
+  "choices": [
+   "much more",
+   "much most",
+   "very more",
+   "more much"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "比較級を強めて「はるかに、ずっと」という意味を加えるにはmuchを比較級（more interesting）の前に置く。muchは比較級を強調する働きを持つ語として使われる（veryは原級を強めるのに使い、比較級には使わない）。",
+  "notes": [
+   "比較級を強めて「はるかに、ずっと」という意味を加えるにはmuchを比較級（more interesting）の前に置く。muchは比較級を強調する働きを持つ語として使われる（veryは原級を強めるのに使い、比較級には使わない）。",
+   "mostは最上級用の語でmoreと組み合わせない。",
+   "veryは原級を強める語で比較級（more）を直接強めるのには使わない。",
+   "muchはmoreの前に置くのが正しい語順。"
+  ]
+ },
+ {
+  "question": "This is one of the (　　) mountains in Japan.",
+  "choices": [
+   "high",
+   "higher",
+   "highest",
+   "more high"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "one of the + 最上級 + 複数名詞で「最も〜な…の1つ」という決まった表現。日本の山々の中で特に高い部類に入るという意味を表すため最上級を使う。",
+  "notes": [
+   "原級では最上位の意味が出ない。",
+   "比較級は2者比較用でこの文脈に合わない。",
+   "one of the + 最上級 + 複数名詞で「最も〜な…の1つ」という決まった表現。日本の山々の中で特に高い部類に入るという意味を表すため最上級を使う。",
+   "短い語にmoreを付けるのは誤り。"
+  ]
+ },
+ {
+  "question": "I have (　　) books than you.",
+  "choices": [
+   "many",
+   "more",
+   "most",
+   "much"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "books（数えられる名詞の複数形）の量を比べる比較級はmanyの不規則変化形moreを使う。",
+  "notes": [
+   "原級のままではthan（比較）を使う文にならない。",
+   "books（数えられる名詞の複数形）の量を比べる比較級はmanyの不規則変化形moreを使う。",
+   "mostは最上級用。",
+   "muchは数えられない名詞の量を表す語であり、booksという数えられる名詞には合わない。"
+  ]
+ },
+ {
+  "question": "She can swim (　　) of all the students in her class.",
+  "choices": [
+   "good",
+   "well",
+   "better",
+   "best"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "of all the students（クラス全員の中で）から3人以上の中での最上位を表す最上級が必要。wellの最上級はbest（不規則変化）。",
+  "notes": [
+   "goodは形容詞であり、swim（動詞）を修飾する副詞の位置には使えない。",
+   "原級では最上位の意味にならない。",
+   "比較級は2者比較用でof all（全員の中で）という文脈に合わない。",
+   "of all the students（クラス全員の中で）から3人以上の中での最上位を表す最上級が必要。wellの最上級はbest（不規則変化）。"
+  ]
+ },
+ {
+  "question": "This is (　　) than any other mountain in Japan.",
+  "choices": [
+   "high",
+   "higher",
+   "highest",
+   "the highest"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "than any other + 単数名詞という形は「他のどの…よりも」という意味で、比較級を使って最上級と同じ意味（一番高い）を遠回しに表す構文。any other（他のどの〜も）と単数名詞を組み合わせるのがこの構文の決まった形。",
+  "notes": [
+   "原級では比較の意味にならない。",
+   "than any other + 単数名詞という形は「他のどの…よりも」という意味で、比較級を使って最上級と同じ意味（一番高い）を遠回しに表す構文。any other（他のどの〜も）と単数名詞を組み合わせるのがこの構文の決まった形。",
+   "最上級はthan（比較の語）と一緒には使わない（最上級はof/inなどと組み合わせるのが基本）。",
+   "最上級はthan（比較の語）と一緒には使わない（最上級はof/inなどと組み合わせるのが基本）。"
+  ]
+ },
+ {
+  "question": "This song (　　) by many people.",
+  "choices": [
+   "sing",
+   "sings",
+   "is sung",
+   "sang"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「この歌は多くの人々によって歌われている」という、主語（this song）が動作を受ける側になる文なので受動態（be動詞＋過去分詞）を使う。主語this songは3人称単数なのでbe動詞はis。動作をする側（人々）ではなく、動作を受ける側（歌）を主語にするときにこの形が使われる。",
+  "notes": [
+   "能動態の原形は主語が動作を「する」側であることを前提とする形で、ここでは主語（歌）が動作を「される」側なので合わない。",
+   "能動態の3人称単数形も同様に「歌が歌う」という不自然な意味になってしまう。",
+   "「この歌は多くの人々によって歌われている」という、主語（this song）が動作を受ける側になる文なので受動態（be動詞＋過去分詞）を使う。主語this songは3人称単数なのでbe動詞はis。動作をする側（人々）ではなく、動作を受ける側（歌）を主語にするときにこの形が使われる。",
+   "過去形singは能動態の形であり、受動態には使わない。"
+  ]
+ },
+ {
+  "question": "This car (　　) in Japan.",
+  "choices": [
+   "make",
+   "makes",
+   "made",
+   "is made"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「この車は日本で作られている」という受動の意味なのでbe動詞＋過去分詞。",
+  "notes": [
+   "能動態の形で、車が「作る」側になってしまい意味が不自然。",
+   "能動態の形で、車が「作る」側になってしまい意味が不自然。",
+   "madeだけでは過去形か過去分詞か文脈上判断しづらいが、be動詞が伴わないため受動態の文としては成立しない。",
+   "「この車は日本で作られている」という受動の意味なのでbe動詞＋過去分詞。"
+  ]
+ },
+ {
+  "question": "English (　　) in many countries.",
+  "choices": [
+   "speak",
+   "speaks",
+   "is spoken",
+   "spoke"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「英語は多くの国で話されている」という受動の意味。speakの過去分詞は不規則変化でspoken。",
+  "notes": [
+   "能動態の形で、英語が「話す」側になってしまい不自然。",
+   "能動態の形で、英語が「話す」側になってしまい不自然。",
+   "「英語は多くの国で話されている」という受動の意味。speakの過去分詞は不規則変化でspoken。",
+   "過去形は受動態には使わない。"
+  ]
+ },
+ {
+  "question": "The letter (　　) by my sister yesterday.",
+  "choices": [
+   "write",
+   "was written",
+   "is written",
+   "writes"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "yesterday（昨日）から過去の受動態と分かるので、be動詞の過去形wasを使う。writeの過去分詞は不規則変化でwritten。",
+  "notes": [
+   "能動態の原形は不適切。",
+   "yesterday（昨日）から過去の受動態と分かるので、be動詞の過去形wasを使う。writeの過去分詞は不規則変化でwritten。",
+   "現在形の受動態はyesterdayという過去を表す語と時制が矛盾する。",
+   "能動態の現在形も不適切。"
+  ]
+ },
+ {
+  "question": "These pictures (　　) by my father.",
+  "choices": [
+   "take",
+   "takes",
+   "took",
+   "were taken"
+  ],
+  "correct_index": 3,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語these pictures（複数）に合わせてbe動詞をwereにし、takeの過去分詞taken（不規則変化）を続ける。",
+  "notes": [
+   "能動態の形は不適切。",
+   "能動態の形は不適切。",
+   "過去形も受動態には使わない。",
+   "主語these pictures（複数）に合わせてbe動詞をwereにし、takeの過去分詞taken（不規則変化）を続ける。"
+  ]
+ },
+ {
+  "question": "(　　) this book written in English?",
+  "choices": [
+   "Do",
+   "Does",
+   "Is",
+   "Are"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "受動態の疑問文はbe動詞を主語の前に出す。主語this book（単数）にはisが対応する。",
+  "notes": [
+   "受動態の疑問文にdo/doesは使わない（すでにbe動詞を使っているため）。",
+   "受動態の疑問文にdo/doesは使わない（すでにbe動詞を使っているため）。",
+   "受動態の疑問文はbe動詞を主語の前に出す。主語this book（単数）にはisが対応する。",
+   "areは複数主語用でthis book（単数）と一致しない。"
+  ]
+ },
+ {
+  "question": "This room (　　) not used every day.",
+  "choices": [
+   "is",
+   "does",
+   "do",
+   "was"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "受動態の否定文はbe動詞の直後にnotを置く。主語this room（単数・現在）にはisが対応する。",
+  "notes": [
+   "受動態の否定文はbe動詞の直後にnotを置く。主語this room（単数・現在）にはisが対応する。",
+   "受動態の否定にdo/doesは使わない。",
+   "受動態の否定にdo/doesは使わない。",
+   "wasは過去形であり、この文には過去を示す語がないため現在形isが適切。"
+  ]
+ },
+ {
+  "question": "The window (　　) by the strong wind.",
+  "choices": [
+   "break",
+   "broke",
+   "was broken",
+   "is break"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「窓は強風によって割られた」という過去の受動態。breakの過去分詞は不規則変化でbroken。",
+  "notes": [
+   "能動態の原形は不適切。",
+   "過去形（能動態）も受動態には使わない。",
+   "「窓は強風によって割られた」という過去の受動態。breakの過去分詞は不規則変化でbroken。",
+   "be動詞isの後に原形breakを置くことはできない（be動詞の後には過去分詞が必要）。"
+  ]
+ },
+ {
+  "question": "Rice (　　) in many parts of Asia.",
+  "choices": [
+   "grow",
+   "grows",
+   "is grown",
+   "grew"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「米はアジアの多くの地域で栽培されている」という受動の意味。growの過去分詞はgrown。",
+  "notes": [
+   "能動態の形で、米が「育てる」側になってしまい不自然。",
+   "能動態の形で、米が「育てる」側になってしまい不自然。",
+   "「米はアジアの多くの地域で栽培されている」という受動の意味。growの過去分詞はgrown。",
+   "過去形は受動態には使わない。"
+  ]
+ },
+ {
+  "question": "Who (　　) this picture painted by?",
+  "choices": [
+   "is",
+   "was",
+   "do",
+   "does"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「この絵は誰によって描かれたのか」という過去の受動態の疑問文。paintedという過去分詞が使われていることからも過去の文脈と分かるのでwasを使う。",
+  "notes": [
+   "現在形は文脈（過去の出来事）と合わない。",
+   "「この絵は誰によって描かれたのか」という過去の受動態の疑問文。paintedという過去分詞が使われていることからも過去の文脈と分かるのでwasを使う。",
+   "受動態の疑問文にdo/doesは使わない。",
+   "受動態の疑問文にdo/doesは使わない。"
+  ]
+ },
+ {
+  "question": "The news (　　) everyone surprised.",
+  "choices": [
+   "make",
+   "makes",
+   "made",
+   "was made"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "この文はThe news（ニュース）が主語で「みんなを驚かせた」という能動の意味（ニュースが人を驚かせるという動作をする側）なので、受動態ではなく能動態の過去形madeを使う。makeは「主語＋make＋目的語＋形容詞」で「〜を…にする」という意味を表せる動詞で、ここではmade everyone surprisedという形。",
+  "notes": [
+   "現在形は文脈上、過去の出来事を述べる文には合わない。",
+   "現在形は文脈上、過去の出来事を述べる文には合わない。",
+   "この文はThe news（ニュース）が主語で「みんなを驚かせた」という能動の意味（ニュースが人を驚かせるという動作をする側）なので、受動態ではなく能動態の過去形madeを使う。makeは「主語＋make＋目的語＋形容詞」で「〜を…にする」という意味を表せる動詞で、ここではmade everyone surprisedという形。",
+   "この文は主語newsが「驚かせる」側（能動）であり、「驚かされる」側（受動）ではないため、受動態は意味的に不適切。"
+  ]
+ },
+ {
+  "question": "This bridge (　　) 100 years ago.",
+  "choices": [
+   "build",
+   "built",
+   "was built",
+   "builds"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「この橋は100年前に建てられた」という過去の受動態。100 years agoから過去の文脈と分かる。",
+  "notes": [
+   "能動態の形で、橋が「建てる」側になってしまい不自然。",
+   "過去形（能動態）は受動態には使わない。",
+   "「この橋は100年前に建てられた」という過去の受動態。100 years agoから過去の文脈と分かる。",
+   "能動態の形で、橋が「建てる」側になってしまい不自然。"
+  ]
+ },
+ {
+  "question": "These flowers (　　) very well.",
+  "choices": [
+   "smell",
+   "smells",
+   "is smelled",
+   "are smelled"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "smell（においがする）は「〜のようににおう」という状態を表す動詞として使われるとき、主語自体がにおいを発する側（能動的な状態）として扱われ、受動態にしない。this flowers smell wellではなくsmell well（においがよい）という表現になる。主語these flowersは複数なので原形（3人称単数のsなし）のsmellを使う。",
+  "notes": [
+   "smell（においがする）は「〜のようににおう」という状態を表す動詞として使われるとき、主語自体がにおいを発する側（能動的な状態）として扱われ、受動態にしない。this flowers smell wellではなくsmell well（においがよい）という表現になる。主語these flowersは複数なので原形（3人称単数のsなし）のsmellを使う。",
+   "複数主語にsを付けるのは誤り。",
+   "においがする、という状態を表すこの用法のsmellは受動態にしない（「においを嗅がれる」という意味にはならないため）。",
+   "においがする、という状態を表すこの用法のsmellは受動態にしない（「においを嗅がれる」という意味にはならないため）。"
+  ]
+ },
+ {
+  "question": "This chair (　　) of wood.",
+  "choices": [
+   "make",
+   "makes",
+   "is made",
+   "made"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be made of 〜で「〜（材料）でできている」という受動態の決まった表現。ofは材料が見た目からもそのまま分かる場合に使う前置詞。",
+  "notes": [
+   "能動態の形は不適切。",
+   "能動態の形は不適切。",
+   "be made of 〜で「〜（材料）でできている」という受動態の決まった表現。ofは材料が見た目からもそのまま分かる場合に使う前置詞。",
+   "be動詞が抜けており受動態として成立しない。"
+  ]
+ },
+ {
+  "question": "Paper (　　) from wood.",
+  "choices": [
+   "make",
+   "is made",
+   "makes",
+   "made"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be made from 〜で「〜（原料）から作られる」という受動態の決まった表現。fromは、材料が見た目から元の状態が分かりにくいほど変化している場合に使う前置詞（木からできた紙のように、原料と製品の見た目が大きく異なる場合）。",
+  "notes": [
+   "能動態の形は不適切。",
+   "be made from 〜で「〜（原料）から作られる」という受動態の決まった表現。fromは、材料が見た目から元の状態が分かりにくいほど変化している場合に使う前置詞（木からできた紙のように、原料と製品の見た目が大きく異なる場合）。",
+   "能動態の形は不適切。",
+   "be動詞が抜けている。"
+  ]
+ },
+ {
+  "question": "You (　　) study hard for the exam.",
+  "choices": [
+   "must",
+   "musts",
+   "musting",
+   "to must"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "mustは助動詞であり、主語の人称・数にかかわらず常に同じ形（must）を使う。助動詞は3人称単数のsを付けず、原形のまま使うという英語の助動詞に共通する特徴がある。",
+  "notes": [
+   "mustは助動詞であり、主語の人称・数にかかわらず常に同じ形（must）を使う。助動詞は3人称単数のsを付けず、原形のまま使うという英語の助動詞に共通する特徴がある。",
+   "助動詞にsを付ける形は存在しない。",
+   "助動詞はing形にならない。",
+   "mustは他の動詞のtoの後には来ない特殊な語で、to mustという形自体が存在しない。"
+  ]
+ },
+ {
+  "question": "She (　　) to get up early tomorrow.",
+  "choices": [
+   "must",
+   "has",
+   "have",
+   "is"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "have toは「〜しなければならない」という意味を表す表現だが、have自体は一般動詞としての性質を持つため、主語が3人称単数（she）のときはhasになる。mustは助動詞なので活用しないが、have toのhaveは一般動詞のように主語に応じて変化するという点が、mustとhave toの文法的な違いとして重要。",
+  "notes": [
+   "mustはこのまま使えるが、後ろにtoを伴う形（must to）にはならないため、has toの形が必要なこの文脈には合わない。",
+   "have toは「〜しなければならない」という意味を表す表現だが、have自体は一般動詞としての性質を持つため、主語が3人称単数（she）のときはhasになる。mustは助動詞なので活用しないが、have toのhaveは一般動詞のように主語に応じて変化するという点が、mustとhave toの文法的な違いとして重要。",
+   "haveは複数・I/you用でsheには一致しない。",
+   "isはhave toの構文には使わない。"
+  ]
+ },
+ {
+  "question": "You (　　) not eat too much sugar.",
+  "choices": [
+   "should",
+   "shoulds",
+   "shoulding",
+   "to should"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "shouldも助動詞なので活用せず常に同じ形。should notで「〜すべきではない」というアドバイス・忠告の意味を表す。",
+  "notes": [
+   "shouldも助動詞なので活用せず常に同じ形。should notで「〜すべきではない」というアドバイス・忠告の意味を表す。",
+   "助動詞は活用しない・ing形にならない・toの後には来ないという性質から、いずれも誤り。",
+   "助動詞は活用しない・ing形にならない・toの後には来ないという性質から、いずれも誤り。",
+   "助動詞は活用しない・ing形にならない・toの後には来ないという性質から、いずれも誤り。"
+  ]
+ },
+ {
+  "question": "(　　) I use your dictionary?",
+  "choices": [
+   "May",
+   "Mays",
+   "Maying",
+   "Do may"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "mayは「〜してもよいですか」と許可を求める助動詞。助動詞は常に同じ形で使う。",
+  "notes": [
+   "mayは「〜してもよいですか」と許可を求める助動詞。助動詞は常に同じ形で使う。",
+   "助動詞にsやing形はない。",
+   "助動詞にsやing形はない。",
+   "助動詞の疑問文はその助動詞自体を主語の前に出すだけでよく、doを重ねて使うことはない。"
+  ]
+ },
+ {
+  "question": "We (　　) to wear a school uniform.",
+  "choices": [
+   "must",
+   "have",
+   "has",
+   "should"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "主語weは複数（1人称複数）なのでhave toのhave（原形のまま）を使う。",
+  "notes": [
+   "mustの後にtoは続けない（must toという形はない）。",
+   "主語weは複数（1人称複数）なのでhave toのhave（原形のまま）を使う。",
+   "hasは3人称単数用でweと一致しない。",
+   "shouldの後にもtoは続けない（should toという形はない）。"
+  ]
+ },
+ {
+  "question": "He (　　) not have to come to the meeting.",
+  "choices": [
+   "do",
+   "does",
+   "is",
+   "has"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "have toの否定文は一般動詞と同じ仕組みでdo/doesを使う。have toのhaveは一般動詞的な性質を持つため、mustのような純粋な助動詞とは異なり、否定文にdoes not（doesn't）を使う。主語heは3人称単数なのでdoes。",
+  "notes": [
+   "doは3人称単数と一致しない。",
+   "have toの否定文は一般動詞と同じ仕組みでdo/doesを使う。have toのhaveは一般動詞的な性質を持つため、mustのような純粋な助動詞とは異なり、否定文にdoes not（doesn't）を使う。主語heは3人称単数なのでdoes。",
+   "have toの否定にbe動詞は使わない。",
+   "hasをそのまま否定に使うことはできず、does not haveという形にする必要がある。"
+  ]
+ },
+ {
+  "question": "You must (　　) quiet in the library.",
+  "choices": [
+   "be",
+   "is",
+   "are",
+   "being"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "助動詞mustの後の動詞は必ず原形になる。be動詞の原形はbe。",
+  "notes": [
+   "助動詞mustの後の動詞は必ず原形になる。be動詞の原形はbe。",
+   "活用したbe動詞の形は助動詞の後には使わない。",
+   "活用したbe動詞の形は助動詞の後には使わない。",
+   "ing形も助動詞の後には使わない。"
+  ]
+ },
+ {
+  "question": "Do we (　　) to bring our own lunch?",
+  "choices": [
+   "must",
+   "has",
+   "have",
+   "should"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "have toを疑問文にするときは、have自体が一般動詞的性質を持つため、Doを使った一般動詞の疑問文と同じ形になる（主語weは複数なのでDo）。動詞haveは原形のまま使う（Doがすでに疑問文の情報を担っているため）。",
+  "notes": [
+   "mustを使う疑問文はDoを使わずMust we 〜?という形になり、この文の構造（Do we ...?）とは合わない。",
+   "hasは3人称単数用で、Doとも人称が矛盾する。",
+   "have toを疑問文にするときは、have自体が一般動詞的性質を持つため、Doを使った一般動詞の疑問文と同じ形になる（主語weは複数なのでDo）。動詞haveは原形のまま使う（Doがすでに疑問文の情報を担っているため）。",
+   "shouldを使う疑問文もDoを使わずShould we 〜?という形になる。"
+  ]
+ },
+ {
+  "question": "You don't (　　) to worry about that.",
+  "choices": [
+   "must",
+   "has",
+   "have",
+   "should"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "don't have to 〜で「〜する必要はない」という意味を表す（mustn'tとは意味が異なる点に注意：mustn'tは「〜してはいけない」という禁止の意味）。主語youなのでdon't + have。",
+  "notes": [
+   "mustは通常don't mustという否定形にはしない（must notを使う）。",
+   "hasはdon'tと人称が矛盾する（don'tはIやyou、複数に使う）。",
+   "don't have to 〜で「〜する必要はない」という意味を表す（mustn'tとは意味が異なる点に注意：mustn'tは「〜してはいけない」という禁止の意味）。主語youなのでdon't + have。",
+   "shouldはdon'tと組み合わせず、should notを使う。"
+  ]
+ },
+ {
+  "question": "(　　) I help you with your bags?",
+  "choices": [
+   "May",
+   "Musts",
+   "Am",
+   "Do may"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "May I 〜?で「〜してもよろしいでしょうか、〜しましょうか」と申し出や許可を求める丁寧な表現になる。",
+  "notes": [
+   "May I 〜?で「〜してもよろしいでしょうか、〜しましょうか」と申し出や許可を求める丁寧な表現になる。",
+   "助動詞にsは付けない。",
+   "Am Iは文法的には作れるが、申し出や許可を求める決まった表現にはならない。",
+   "助動詞の疑問文にdoを重ねることはない。"
+  ]
+ },
+ {
+  "question": "You (　　) not tell a lie.",
+  "choices": [
+   "must",
+   "musts",
+   "has to",
+   "have to"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "must notで「〜してはいけない」という禁止の意味を表す。",
+  "notes": [
+   "must notで「〜してはいけない」という禁止の意味を表す。",
+   "助動詞にsは付けない。",
+   "have to notやhas to notという語順・形は一般的ではなく、have toの否定はdon't/doesn't have toの形にする必要がある。",
+   "have to notやhas to notという語順・形は一般的ではなく、have toの否定はdon't/doesn't have toの形にする必要がある。"
+  ]
+ },
+ {
+  "question": "It (　　) rain this afternoon, so take an umbrella.",
+  "choices": [
+   "must",
+   "may",
+   "can",
+   "mays"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "mayには「〜かもしれない」という推量（可能性）を表す用法がある。「今日の午後は雨が降るかもしれないので、傘を持って行きなさい」という文脈に合う。",
+  "notes": [
+   "mustにも「〜に違いない」という強い推量の意味があるが、mayに比べて確信度が高い場合に使うため、「かもしれない」程度の軽い可能性を表すこの文脈にはmayがより自然。",
+   "mayには「〜かもしれない」という推量（可能性）を表す用法がある。「今日の午後は雨が降るかもしれないので、傘を持って行きなさい」という文脈に合う。",
+   "canは「〜できる」という能力・可能性を表す語で、「（天候が）〜かもしれない」という推量の意味では通常使わない。",
+   "助動詞にsは付けない。"
+  ]
+ },
+ {
+  "question": "I think (　　) she is a kind person.",
+  "choices": [
+   "that",
+   "what",
+   "which",
+   "who"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "think（think, believe, hopeなど）の後に「〜ということ」という節（文の形をした内容）を続けるときはthatを使う。このthatは接続詞であり、後ろに続く節（she is a kind person）を丸ごとthinkの目的語にする働きをする。日常会話ではthatはしばしば省略される。",
+  "notes": [
+   "think（think, believe, hopeなど）の後に「〜ということ」という節（文の形をした内容）を続けるときはthatを使う。このthatは接続詞であり、後ろに続く節（she is a kind person）を丸ごとthinkの目的語にする働きをする。日常会話ではthatはしばしば省略される。",
+   "whatは「何が〜か」という具体的な疑問の内容を導く語で、この文のように単に「〜ということ」と伝える場合には使わない。",
+   "whichは「どちら・どれ」という選択を表す語で文脈に合わない。",
+   "whoは人をたずねる語で、この文脈には合わない。"
+  ]
+ },
+ {
+  "question": "I hope (　　) you will get well soon.",
+  "choices": [
+   "that",
+   "what",
+   "if",
+   "because"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "hope thatで「〜ということを望む」という意味。thatは省略可能だが、文法的な骨格としてはthat節が正しい。",
+  "notes": [
+   "hope thatで「〜ということを望む」という意味。thatは省略可能だが、文法的な骨格としてはthat節が正しい。",
+   "whatはこの文脈に合わない。",
+   "ifは「もし〜なら」という条件を表す語で、「〜ということを望む」という内容説明のthatとは意味が異なる。",
+   "becauseは理由を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "I didn't know (　　) he was sick.",
+  "choices": [
+   "that",
+   "what",
+   "which",
+   "who"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "knowの後に「〜ということ」という内容を続けるのでthatを使う。",
+  "notes": [
+   "knowの後に「〜ということ」という内容を続けるのでthatを使う。",
+   "具体的な疑問の内容を表す語であり、単なる事実の内容を伝えるこの文脈には合わない。",
+   "具体的な疑問の内容を表す語であり、単なる事実の内容を伝えるこの文脈には合わない。",
+   "具体的な疑問の内容を表す語であり、単なる事実の内容を伝えるこの文脈には合わない。"
+  ]
+ },
+ {
+  "question": "(　　) I was young, I lived in Tokyo.",
+  "choices": [
+   "When",
+   "That",
+   "If",
+   "Because"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「若かったとき」という「時」を表すのでWhenを使う。",
+  "notes": [
+   "「若かったとき」という「時」を表すのでWhenを使う。",
+   "Thatは「〜ということ」という内容を表す語で、この位置（文頭で時を表す節を作る）には使わない。",
+   "Ifは条件（もし〜なら）を表す語で、過去の事実を述べるこの文脈には合わない。",
+   "Becauseは理由を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "(　　) it rains tomorrow, we will stay home.",
+  "choices": [
+   "When",
+   "If",
+   "That",
+   "Because"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「もし明日雨が降ったら」という条件を表すのでIfを使う。条件を表すif節の中では、未来のことでも現在形を使うのが英語の基本ルールで、この文でもrains（現在形）が使われている点が確認できる。",
+  "notes": [
+   "Whenも「〜するとき」という意味で似ているが、Whenは「実際に起こることが前提」であるのに対し、Ifは「起こるかどうか分からない仮定」を表すという違いがある。この文脈（雨が降るかどうか分からない）にはIfがより適切。",
+   "「もし明日雨が降ったら」という条件を表すのでIfを使う。条件を表すif節の中では、未来のことでも現在形を使うのが英語の基本ルールで、この文でもrains（現在形）が使われている点が確認できる。",
+   "Thatは条件を表さない。",
+   "Becauseは理由を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "I will call you when I (　　) home.",
+  "choices": [
+   "will get",
+   "get",
+   "got",
+   "getting"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "when（〜するとき）が導く節の中では、未来のことでも現在形を使うという英語の規則（時・条件を表す副詞節の中ではwillを使わない）がある。主節（I will call you）はwillを使って未来を表すが、when節の中は現在形getを使う。",
+  "notes": [
+   "when節の中でwillを使うのは、この規則に反するため誤り。",
+   "when（〜するとき）が導く節の中では、未来のことでも現在形を使うという英語の規則（時・条件を表す副詞節の中ではwillを使わない）がある。主節（I will call you）はwillを使って未来を表すが、when節の中は現在形getを使う。",
+   "過去形は未来の出来事を表す文脈と矛盾する。",
+   "ing形は単独では述語にならない。"
+  ]
+ },
+ {
+  "question": "If it (　　) sunny tomorrow, we will go hiking.",
+  "choices": [
+   "will be",
+   "is",
+   "was",
+   "being"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "if節（条件を表す副詞節）の中では未来のことでも現在形を使うというルールがある。主節（we will go hiking）はwillを使うが、if節の中はis。",
+  "notes": [
+   "if節の中でwillを使うのは規則に反する。",
+   "if節（条件を表す副詞節）の中では未来のことでも現在形を使うというルールがある。主節（we will go hiking）はwillを使うが、if節の中はis。",
+   "過去形は未来の出来事を表す文脈と矛盾する。",
+   "ing形は単独では述語にならない。"
+  ]
+ },
+ {
+  "question": "I was sure (　　) he would come.",
+  "choices": [
+   "that",
+   "if",
+   "when",
+   "because"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be sure that 〜で「〜だと確信している」という意味。thatが「確信している内容」を導く。",
+  "notes": [
+   "be sure that 〜で「〜だと確信している」という意味。thatが「確信している内容」を導く。",
+   "ifは条件を表す語でこの文脈には合わない。",
+   "whenは時を表す語でここでは不適切。",
+   "becauseは理由を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "He said (　　) he was busy that day.",
+  "choices": [
+   "that",
+   "what",
+   "if",
+   "because"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "sayの後に「〜ということ」という発言内容を続けるのでthatを使う。",
+  "notes": [
+   "sayの後に「〜ということ」という発言内容を続けるのでthatを使う。",
+   "この文脈（発言の内容をそのまま伝える）には合わない語。",
+   "この文脈（発言の内容をそのまま伝える）には合わない語。",
+   "この文脈（発言の内容をそのまま伝える）には合わない語。"
+  ]
+ },
+ {
+  "question": "I'm not sure (　　) she will come to the party.",
+  "choices": [
+   "that",
+   "if",
+   "because",
+   "so"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「〜かどうか分からない」という「〜かどうか」の意味を表すときはifを使う（whetherも同じ意味で使われる）。be sure ifで「〜かどうか確信が持てない」という意味になる。",
+  "notes": [
+   "thatは「〜ということ」と事実をそのまま述べる場合に使う語で、「〜かどうか」という不確かさを表すこの文脈には合わない。",
+   "「〜かどうか分からない」という「〜かどうか」の意味を表すときはifを使う（whetherも同じ意味で使われる）。be sure ifで「〜かどうか確信が持てない」という意味になる。",
+   "becauseは理由を表す語で合わない。",
+   "soは結果を表す語で合わない。"
+  ]
+ },
+ {
+  "question": "My mother gave (　　) a nice present.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "give＋人＋物という文型（SVOO：主語＋動詞＋間接目的語＋直接目的語）で、「人」の部分には目的格の代名詞を使う。giveの直後は「与えられる相手（人）」を表す位置なので目的格meが適切。",
+  "notes": [
+   "主格は目的語の位置に使わない。",
+   "所有格は名詞の前に置く形で、この位置（動詞の直後で「人」を表す）には合わない。",
+   "give＋人＋物という文型（SVOO：主語＋動詞＋間接目的語＋直接目的語）で、「人」の部分には目的格の代名詞を使う。giveの直後は「与えられる相手（人）」を表す位置なので目的格meが適切。",
+   "所有代名詞は名詞を伴わない所有の意味で、この位置には合わない。"
+  ]
+ },
+ {
+  "question": "She showed (　　) her new bag.",
+  "choices": [
+   "we",
+   "our",
+   "us",
+   "ours"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "show＋人＋物の「人」の位置には目的格を使う。",
+  "notes": [
+   "主格は不適切。",
+   "所有格は名詞の前に置く形。",
+   "show＋人＋物の「人」の位置には目的格を使う。",
+   "所有代名詞も不適切。"
+  ]
+ },
+ {
+  "question": "Please tell (　　) the way to the station.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "tell＋人＋物（情報）の「人」の位置には目的格を使う。",
+  "notes": [
+   "それぞれ主格・所有格・所有代名詞であり、この位置には使わない。",
+   "それぞれ主格・所有格・所有代名詞であり、この位置には使わない。",
+   "tell＋人＋物（情報）の「人」の位置には目的格を使う。",
+   "それぞれ主格・所有格・所有代名詞であり、この位置には使わない。"
+  ]
+ },
+ {
+  "question": "This song makes (　　) happy.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "make＋目的語＋形容詞という文型（SVOC：主語＋動詞＋目的語＋補語）で、「〜を…にする」という意味を表す。目的語の位置には目的格を使う。makesの直後は動作を受ける対象（私）を表すのでme。",
+  "notes": [
+   "主格は目的語の位置に使わない。",
+   "所有格は名詞の前に置く形でhappy（形容詞）の前には合わない。",
+   "make＋目的語＋形容詞という文型（SVOC：主語＋動詞＋目的語＋補語）で、「〜を…にする」という意味を表す。目的語の位置には目的格を使う。makesの直後は動作を受ける対象（私）を表すのでme。",
+   "所有代名詞も不適切。"
+  ]
+ },
+ {
+  "question": "We call (　　) Ken.",
+  "choices": [
+   "he",
+   "his",
+   "him",
+   "himself"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "call＋目的語＋名詞（呼び名）という文型で、「〜を…と呼ぶ」という意味。目的語の位置には目的格を使う。",
+  "notes": [
+   "主格は目的語には使わない。",
+   "所有格はここでは不適切。",
+   "call＋目的語＋名詞（呼び名）という文型で、「〜を…と呼ぶ」という意味。目的語の位置には目的格を使う。",
+   "再帰代名詞はこの文脈（他者を呼ぶ）には合わない。"
+  ]
+ },
+ {
+  "question": "My father bought (　　) a new bike.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "buy＋人＋物という文型（SVOO）で、「人」の位置には目的格を使う。",
+  "notes": [
+   "それぞれ主格・所有格・所有代名詞であり不適切。",
+   "それぞれ主格・所有格・所有代名詞であり不適切。",
+   "buy＋人＋物という文型（SVOO）で、「人」の位置には目的格を使う。",
+   "それぞれ主格・所有格・所有代名詞であり不適切。"
+  ]
+ },
+ {
+  "question": "This news made everyone (　　).",
+  "choices": [
+   "surprise",
+   "surprised",
+   "surprises",
+   "to surprise"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "make＋目的語＋補語（形容詞または過去分詞）という文型で、「〜を…（の状態）にする」という意味を表す。ここではeveryone（人々）が「驚かされた（受動的な感情の状態）」ことを表すため、過去分詞surprisedを補語として使う。surprise（驚かせる）という動詞の過去分詞は「驚かされた」という受け身の意味の形容詞的用法になる。",
+  "notes": [
+   "原形surpriseは「驚かせる」という能動の意味になり、人が「驚く（驚かされる）」という状態を表すこの文脈には合わない。",
+   "make＋目的語＋補語（形容詞または過去分詞）という文型で、「〜を…（の状態）にする」という意味を表す。ここではeveryone（人々）が「驚かされた（受動的な感情の状態）」ことを表すため、過去分詞surprisedを補語として使う。surprise（驚かせる）という動詞の過去分詞は「驚かされた」という受け身の意味の形容詞的用法になる。",
+   "3人称単数形も能動の意味になり不適切。",
+   "to不定詞はこの文型（make＋O＋C）の補語としては使わない。"
+  ]
+ },
+ {
+  "question": "We named (　　) dog Pochi.",
+  "choices": [
+   "our",
+   "us",
+   "we",
+   "ours"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "name＋目的語（＋補語）という文型で、目的語dogの前に「私たちの」という所有を表す語を置くには所有格ourを使う（名詞dogの前に置く形）。",
+  "notes": [
+   "name＋目的語（＋補語）という文型で、目的語dogの前に「私たちの」という所有を表す語を置くには所有格ourを使う（名詞dogの前に置く形）。",
+   "目的格は名詞の前には置けない。",
+   "主格も名詞の前には置けない。",
+   "所有代名詞は名詞を伴わない形なのでdogという名詞が続くここでは使わない。"
+  ]
+ },
+ {
+  "question": "I'll show (　　) some pictures.",
+  "choices": [
+   "they",
+   "their",
+   "them",
+   "theirs"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "show＋人＋物の「人」の位置には目的格themを使う。",
+  "notes": [
+   "主格は不適切。",
+   "所有格は名詞の前に置く形。",
+   "show＋人＋物の「人」の位置には目的格themを使う。",
+   "所有代名詞も不適切。"
+  ]
+ },
+ {
+  "question": "Music makes people (　　).",
+  "choices": [
+   "relax",
+   "relaxes",
+   "relaxed",
+   "to relax"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "make＋目的語＋原形不定詞（動詞の原形）という文型があり、「〜に…させる」という使役の意味を表す。「音楽は人々をリラックスさせる」という意味で、makeの後の補語には動詞の原形を使う（この文型は使役動詞の特徴的な形として知られる）。",
+  "notes": [
+   "make＋目的語＋原形不定詞（動詞の原形）という文型があり、「〜に…させる」という使役の意味を表す。「音楽は人々をリラックスさせる」という意味で、makeの後の補語には動詞の原形を使う（この文型は使役動詞の特徴的な形として知られる）。",
+   "3人称単数形はこの文型（原形を使う使役の形）には合わない。",
+   "relaxedにすると「リラックスさせられた（すでに完了した状態）」という異なるニュアンスになり、一般的な習慣を表すこの文の現在形の文脈には合わない。",
+   "make＋O＋to不定詞という形は一般的ではない（makeは原形を使う使役動詞として決まっている）。"
+  ]
+ },
+ {
+  "question": "Please call (　　) Ken.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "call＋目的語＋名詞（呼び名）の目的語の位置には目的格を使う。「私をケンと呼んでください」という意味。",
+  "notes": [
+   "それぞれ主格・所有格・所有代名詞であり不適切。",
+   "それぞれ主格・所有格・所有代名詞であり不適切。",
+   "call＋目的語＋名詞（呼び名）の目的語の位置には目的格を使う。「私をケンと呼んでください」という意味。",
+   "それぞれ主格・所有格・所有代名詞であり不適切。"
+  ]
+ },
+ {
+  "question": "The teacher told (　　) to study harder.",
+  "choices": [
+   "we",
+   "our",
+   "us",
+   "ours"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "tell＋人＋to不定詞という文型で「人に〜するように言う」という意味。「人」の位置には目的格を使う。",
+  "notes": [
+   "主格は不適切。",
+   "所有格は名詞の前に置く形でここでは合わない。",
+   "tell＋人＋to不定詞という文型で「人に〜するように言う」という意味。「人」の位置には目的格を使う。",
+   "所有代名詞も不適切。"
+  ]
+ },
+ {
+  "question": "I don't know (　　) to do next.",
+  "choices": [
+   "what",
+   "when",
+   "how",
+   "which"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "疑問詞what＋to不定詞で「何を〜すべきか」という意味の名詞のかたまりを作る。「次に何をすべきか分からない」という意味になる。",
+  "notes": [
+   "疑問詞what＋to不定詞で「何を〜すべきか」という意味の名詞のかたまりを作る。「次に何をすべきか分からない」という意味になる。",
+   "whenは「いつ」という時を表す語で、「何を」という内容とは異なる。",
+   "howは「どのように〜すべきか」という方法の意味になり、「何を」という内容とは異なる。",
+   "whichは「どちらを」という限定された選択を表す語で、この文脈（漠然と次に何をすべきか）には合わない。"
+  ]
+ },
+ {
+  "question": "Do you know (　　) to use this machine?",
+  "choices": [
+   "what",
+   "how",
+   "who",
+   "which"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "how＋to不定詞で「〜する方法、どうやって〜するか」という意味を作る。「この機械の使い方を知っていますか」という意味になる。",
+  "notes": [
+   "whatは「何を」という内容をたずねる語で、「方法」を表すこの文脈には合わない。",
+   "how＋to不定詞で「〜する方法、どうやって〜するか」という意味を作る。「この機械の使い方を知っていますか」という意味になる。",
+   "whoは人をたずねる語で無関係。",
+   "whichは「どちら」という選択の語で、方法を表す文脈には合わない。"
+  ]
+ },
+ {
+  "question": "I don't know (　　) to go.",
+  "choices": [
+   "what",
+   "how",
+   "where",
+   "who"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "where＋to不定詞で「どこへ〜すべきか」という意味を作る。「どこへ行けばいいか分からない」という意味になる。",
+  "notes": [
+   "whatは「何を」という内容の語で「どこ」という場所とは異なる。",
+   "howは方法を表す語で場所とは異なる。",
+   "where＋to不定詞で「どこへ〜すべきか」という意味を作る。「どこへ行けばいいか分からない」という意味になる。",
+   "whoは人を表す語で無関係。"
+  ]
+ },
+ {
+  "question": "Please tell me (　　) to start.",
+  "choices": [
+   "what",
+   "where",
+   "when",
+   "who"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "when＋to不定詞で「いつ〜すべきか」という意味を作る。",
+  "notes": [
+   "whatは内容を表す語で「いつ」とは異なる。",
+   "whereは場所を表す語で「いつ」とは異なる。",
+   "when＋to不定詞で「いつ〜すべきか」という意味を作る。",
+   "whoは人を表す語で無関係。"
+  ]
+ },
+ {
+  "question": "I didn't know (　　) to say to her.",
+  "choices": [
+   "what",
+   "how",
+   "where",
+   "when"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "what＋to不定詞で「何を〜すべきか」という意味。「彼女に何と言えばいいか分からなかった」という意味になる。",
+  "notes": [
+   "what＋to不定詞で「何を〜すべきか」という意味。「彼女に何と言えばいいか分からなかった」という意味になる。",
+   "howは方法を表す語でここでは合わない。",
+   "場所・時を表す語でこの文脈には合わない。",
+   "場所・時を表す語でこの文脈には合わない。"
+  ]
+ },
+ {
+  "question": "Could you tell me (　　) to get to the museum?",
+  "choices": [
+   "what",
+   "how",
+   "who",
+   "which day"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "how＋to不定詞で「どうやって〜すべきか（行き方）」という意味を作る。「博物館への行き方を教えていただけますか」という意味になる。",
+  "notes": [
+   "whatは内容を表す語で「行き方」という方法の意味にはならない。",
+   "how＋to不定詞で「どうやって〜すべきか（行き方）」という意味を作る。「博物館への行き方を教えていただけますか」という意味になる。",
+   "whoは人を表す語で無関係。",
+   "which dayは「どの日」という意味で、行き方をたずねる文脈には合わない。"
+  ]
+ },
+ {
+  "question": "I know (　　) to swim.",
+  "choices": [
+   "what",
+   "how",
+   "where",
+   "who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "know how to 〜で「〜する方法を知っている（＝〜できる）」という決まった表現。",
+  "notes": [
+   "この文脈（泳ぎ方を知っている）には合わない語。",
+   "know how to 〜で「〜する方法を知っている（＝〜できる）」という決まった表現。",
+   "この文脈（泳ぎ方を知っている）には合わない語。",
+   "この文脈（泳ぎ方を知っている）には合わない語。"
+  ]
+ },
+ {
+  "question": "She showed me (　　) to make a cake.",
+  "choices": [
+   "what",
+   "how",
+   "who",
+   "which"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "how＋to不定詞で「作り方」という方法の意味を表す。",
+  "notes": [
+   "whatは内容を表す語でここでは「作り方」という方法の意味にはならない。",
+   "how＋to不定詞で「作り方」という方法の意味を表す。",
+   "この文脈に合わない語。",
+   "この文脈に合わない語。"
+  ]
+ },
+ {
+  "question": "It is easy (　　) me to solve this problem.",
+  "choices": [
+   "of",
+   "for",
+   "to",
+   "with"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "It is + 形容詞 + for + 人 + to不定詞で「（人）にとって〜することは…だ」という意味を表す。forは「〜にとって」という、to不定詞の動作をする人を示す働きをする。",
+  "notes": [
+   "ofを使うのはkind, niceなど「人の性質」を表す形容詞のときに限られる特別なルールがある（It is kind of you to help me.のように）。easyは人の性質を表す形容詞ではないためforを使う。",
+   "It is + 形容詞 + for + 人 + to不定詞で「（人）にとって〜することは…だ」という意味を表す。forは「〜にとって」という、to不定詞の動作をする人を示す働きをする。",
+   "toはすでにto不定詞のtoが使われているのでここでは不要。",
+   "withはこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "It was kind (　　) you to help me.",
+  "choices": [
+   "for",
+   "of",
+   "to",
+   "with"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "kind, nice, careless, rudeなど「人の性質・人柄」を表す形容詞の場合、It is + 形容詞 + of + 人 + to不定詞という形を使う。この場合のofは「〜（という性質）の人が」という、人の性質そのものを表す働きをする点でforとは異なる。",
+  "notes": [
+   "forは人の性質を表さない一般的な形容詞（easy, difficultなど）のときに使うため、kind（性質を表す語）にはofを使うのが規則。",
+   "kind, nice, careless, rudeなど「人の性質・人柄」を表す形容詞の場合、It is + 形容詞 + of + 人 + to不定詞という形を使う。この場合のofは「〜（という性質）の人が」という、人の性質そのものを表す働きをする点でforとは異なる。",
+   "toはto不定詞のtoがすでにあるので不要。",
+   "withはこの構文には使わない。"
+  ]
+ },
+ {
+  "question": "It is important (　　) us to keep promises.",
+  "choices": [
+   "of",
+   "for",
+   "with",
+   "to"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "importantは人の性質を表す形容詞ではないのでforを使う。",
+  "notes": [
+   "ofはkind, niceなど人の性質を表す形容詞のときに限る。",
+   "importantは人の性質を表す形容詞ではないのでforを使う。",
+   "この構文には使わない。",
+   "この構文には使わない。"
+  ]
+ },
+ {
+  "question": "My mother wants (　　) to clean my room.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "want＋人＋to不定詞で「人に〜してほしい」という意味を表す。「人」の位置には目的格を使う。",
+  "notes": [
+   "主格は目的語の位置には使わない。",
+   "所有格はここでは不適切。",
+   "want＋人＋to不定詞で「人に〜してほしい」という意味を表す。「人」の位置には目的格を使う。",
+   "所有代名詞も不適切。"
+  ]
+ },
+ {
+  "question": "I want (　　) to be a good friend.",
+  "choices": [
+   "he",
+   "his",
+   "him",
+   "himself"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "want＋人＋to不定詞の「人」の位置には目的格を使う。「彼に良い友達になってほしい」という意味。",
+  "notes": [
+   "主格は不適切。",
+   "所有格は不適切。",
+   "want＋人＋to不定詞の「人」の位置には目的格を使う。「彼に良い友達になってほしい」という意味。",
+   "再帰代名詞はこの文脈（他者に〜してほしい）には合わない。"
+  ]
+ },
+ {
+  "question": "The teacher told (　　) to be quiet.",
+  "choices": [
+   "they",
+   "their",
+   "them",
+   "theirs"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "tell＋人＋to不定詞の「人」の位置には目的格を使う。",
+  "notes": [
+   "主格は不適切。",
+   "所有格は名詞の前に置く形で不適切。",
+   "tell＋人＋to不定詞の「人」の位置には目的格を使う。",
+   "所有代名詞も不適切。"
+  ]
+ },
+ {
+  "question": "I asked (　　) to open the window.",
+  "choices": [
+   "she",
+   "her",
+   "hers",
+   "herself"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "ask＋人＋to不定詞で「人に〜するよう頼む」という意味。「人」の位置には目的格を使う。",
+  "notes": [
+   "主格は不適切。",
+   "ask＋人＋to不定詞で「人に〜するよう頼む」という意味。「人」の位置には目的格を使う。",
+   "所有代名詞は不適切。",
+   "再帰代名詞は文脈に合わない。"
+  ]
+ },
+ {
+  "question": "It is difficult (　　) speak English fluently.",
+  "choices": [
+   "of me to",
+   "for me to",
+   "me to",
+   "to me"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "It is + 形容詞 + for + 人 + to不定詞の形。difficultは人の性質ではなく一般的な難易を表す形容詞なのでforを使う。",
+  "notes": [
+   "ofはkindなど人の性質を表す形容詞のときに限る。",
+   "It is + 形容詞 + for + 人 + to不定詞の形。difficultは人の性質ではなく一般的な難易を表す形容詞なのでforを使う。",
+   "forが抜けており、動作主を示す語がない。",
+   "語順が構文の決まった形と異なる。"
+  ]
+ },
+ {
+  "question": "My parents want (　　) to study abroad.",
+  "choices": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "want＋人＋to不定詞の「人」の位置には目的格を使う。",
+  "notes": [
+   "それぞれ主格・所有格・所有代名詞であり不適切。",
+   "それぞれ主格・所有格・所有代名詞であり不適切。",
+   "want＋人＋to不定詞の「人」の位置には目的格を使う。",
+   "それぞれ主格・所有格・所有代名詞であり不適切。"
+  ]
+ },
+ {
+  "question": "It's dangerous (　　) children to swim here alone.",
+  "choices": [
+   "of",
+   "for",
+   "to",
+   "with"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "dangerousは人の性質を表す形容詞ではないのでforを使う。",
+  "notes": [
+   "ofはkindなど人の性質を表す形容詞専用。",
+   "dangerousは人の性質を表す形容詞ではないのでforを使う。",
+   "この構文には使わない。",
+   "この構文には使わない。"
+  ]
+ },
+ {
+  "question": "(　　) a beautiful flower this is!",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Why"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "What＋a/an＋形容詞＋名詞＋主語＋動詞！という形で「なんて〜な…だろう」という感嘆文を作る。この文にはa beautiful flower（形容詞＋名詞のかたまり）があるのでWhatを使う。",
+  "notes": [
+   "What＋a/an＋形容詞＋名詞＋主語＋動詞！という形で「なんて〜な…だろう」という感嘆文を作る。この文にはa beautiful flower（形容詞＋名詞のかたまり）があるのでWhatを使う。",
+   "Howを使う感嘆文はHow＋形容詞／副詞＋主語＋動詞！という、名詞を伴わない形になる（How beautiful this flower is!のように）。この文のように後ろに名詞（flower）が続く形にはWhatを使うのが規則。",
+   "Whichは選択を表す語で感嘆文には使わない。",
+   "Whyは理由をたずねる語で感嘆文には使わない。"
+  ]
+ },
+ {
+  "question": "(　　) fast he runs!",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How＋形容詞／副詞＋主語＋動詞！の形。この文には名詞がなく、fast（副詞）だけが続いているのでHowを使う。",
+  "notes": [
+   "Whatの後には（a/an＋）名詞を伴う形が基本なので、名詞のないこの文には合わない。",
+   "How＋形容詞／副詞＋主語＋動詞！の形。この文には名詞がなく、fast（副詞）だけが続いているのでHowを使う。",
+   "感嘆文には使わない語。",
+   "感嘆文には使わない語。"
+  ]
+ },
+ {
+  "question": "(　　) an interesting story this is!",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Where"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "What＋a/an＋形容詞＋名詞の形。an interesting story（形容詞＋名詞）が続いているのでWhatを使う。",
+  "notes": [
+   "What＋a/an＋形容詞＋名詞の形。an interesting story（形容詞＋名詞）が続いているのでWhatを使う。",
+   "Howの後には名詞を伴わない形（形容詞・副詞のみ）が基本なので、story（名詞）が続くこの文には合わない。",
+   "感嘆文には使わない語。",
+   "感嘆文には使わない語。"
+  ]
+ },
+ {
+  "question": "(　　) kind you are!",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Who"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "How＋形容詞＋主語＋動詞！の形。kind（形容詞のみ、名詞なし）が続いているのでHowを使う。",
+  "notes": [
+   "Whatの後には名詞を伴う形が基本なので、名詞のないこの文には合わない。",
+   "How＋形容詞＋主語＋動詞！の形。kind（形容詞のみ、名詞なし）が続いているのでHowを使う。",
+   "感嘆文には使わない語。",
+   "感嘆文には使わない語。"
+  ]
+ },
+ {
+  "question": "(　　) big dogs they have!",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Why"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "What＋形容詞＋複数名詞（この場合bigはあってもaは使わない：複数名詞のときはWhat＋形容詞＋名詞の形でaは付けない）＋主語＋動詞！の形。dogs（複数名詞）が続いているのでWhatを使う。",
+  "notes": [
+   "What＋形容詞＋複数名詞（この場合bigはあってもaは使わない：複数名詞のときはWhat＋形容詞＋名詞の形でaは付けない）＋主語＋動詞！の形。dogs（複数名詞）が続いているのでWhatを使う。",
+   "Howの後に名詞（dogs）を続ける形は基本的にない。",
+   "感嘆文には使わない語。",
+   "感嘆文には使わない語。"
+  ]
+ },
+ {
+  "question": "(　　) well she sings!",
+  "choices": [
+   "What",
+   "How",
+   "Which",
+   "Where"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "well（副詞、名詞なし）が続いているのでHowを使う。",
+  "notes": [
+   "Whatは名詞を伴う形が基本でこの文には合わない。",
+   "well（副詞、名詞なし）が続いているのでHowを使う。",
+   "感嘆文には使わない語。",
+   "感嘆文には使わない語。"
+  ]
+ },
+ {
+  "question": "I think it (　　) rain tomorrow.",
+  "choices": [
+   "will",
+   "is going to",
+   "is",
+   "was"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "I thinkのように、話し手がその場で判断・予測した未来のことを述べるときはwillを使う傾向がある。willは「今その場で決めたこと」や「話し手の主観的な予測」を表すのに適した助動詞。",
+  "notes": [
+   "I thinkのように、話し手がその場で判断・予測した未来のことを述べるときはwillを使う傾向がある。willは「今その場で決めたこと」や「話し手の主観的な予測」を表すのに適した助動詞。",
+   "be going toは、すでに何らかの根拠（兆候や計画）に基づいて「〜しそうだ」と予測するときに使われることが多く、単なる主観的な思いつきの予測（I think〜）とはややニュアンスが異なる。",
+   "現在形は確定した予定・時刻表的な未来（電車の発着など）に使う形で、天気の予測には合わない。",
+   "過去形は未来を表す文脈と矛盾する。"
+  ]
+ },
+ {
+  "question": "Look at those dark clouds! It (　　) rain soon.",
+  "choices": [
+   "will",
+   "is going to",
+   "is",
+   "was"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be going toは、現在すでに見えている兆候（暗い雲）に基づいて「（このままいくと）〜しそうだ」と予測するときに使う。「今見えている証拠」から未来を予測する場合はbe going toが適している。",
+  "notes": [
+   "willは主にその場で決めたことや根拠のない予測に使われることが多く、「目の前の兆候に基づく予測」を表す場合はbe going toの方が自然とされる。",
+   "be going toは、現在すでに見えている兆候（暗い雲）に基づいて「（このままいくと）〜しそうだ」と予測するときに使う。「今見えている証拠」から未来を予測する場合はbe going toが適している。",
+   "現在形は確定した予定用でこの文脈には合わない。",
+   "過去形は未来と矛盾する。"
+  ]
+ },
+ {
+  "question": "A: The phone is ringing. B: OK, I (　　) answer it.",
+  "choices": [
+   "will",
+   "am going to",
+   "am",
+   "was"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "その場で（電話が鳴ったのを聞いて）とっさに決めた行動を表すときはwillを使う。willは「話しているまさにその瞬間に決めたこと」を表す用法として使われる。",
+  "notes": [
+   "その場で（電話が鳴ったのを聞いて）とっさに決めた行動を表すときはwillを使う。willは「話しているまさにその瞬間に決めたこと」を表す用法として使われる。",
+   "be going toは事前に決めていた計画・予定を表すのに使うことが多く、その場での即座の決定にはwillの方が自然。",
+   "現在形は確定した予定を表す形でこの文脈には合わない。",
+   "過去形は矛盾する。"
+  ]
+ },
+ {
+  "question": "I (　　) visit my grandmother next weekend. I've already bought the train ticket.",
+  "choices": [
+   "will",
+   "am going to",
+   "am",
+   "was"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "すでに切符を買っているという事前の計画・準備がある場合、その計画に基づく未来の予定を表すのはbe going toが自然。be going toは「すでに決まっている計画」を表す用法として使われる。",
+  "notes": [
+   "willは基本的に「その場で決めたこと」を表すため、すでに準備している計画を表すこの文脈にはbe going toの方が適切。",
+   "すでに切符を買っているという事前の計画・準備がある場合、その計画に基づく未来の予定を表すのはbe going toが自然。be going toは「すでに決まっている計画」を表す用法として使われる。",
+   "現在形は時刻表的な確定予定に使うことが多く、個人的な計画にはあまり使わない。",
+   "過去形は矛盾する。"
+  ]
+ },
+ {
+  "question": "The train (　　) at 9:00 tomorrow morning.",
+  "choices": [
+   "will leave",
+   "is going to leave",
+   "leaves",
+   "left"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "電車やバスなど、時刻表によってあらかじめ決まっているスケジュールを表すときは、未来のことでも現在形を使うという英語の特徴的な用法がある。「確定した予定」であることを強調する表現。",
+  "notes": [
+   "willやbe going toも文法的には使えないわけではないが、時刻表に基づく確定的なスケジュールを表す最も標準的な形は現在形。",
+   "willやbe going toも文法的には使えないわけではないが、時刻表に基づく確定的なスケジュールを表す最も標準的な形は現在形。",
+   "電車やバスなど、時刻表によってあらかじめ決まっているスケジュールを表すときは、未来のことでも現在形を使うという英語の特徴的な用法がある。「確定した予定」であることを強調する表現。",
+   "過去形は未来（tomorrow）を表す文脈と矛盾する。"
+  ]
+ },
+ {
+  "question": "(　　) you help me with my homework?",
+  "choices": [
+   "Will",
+   "Are going to",
+   "Do",
+   "Are"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "Will you 〜?で「〜してくれますか」という依頼の意味を表す決まった表現。",
+  "notes": [
+   "Will you 〜?で「〜してくれますか」という依頼の意味を表す決まった表現。",
+   "Are you going to 〜?は「〜するつもりですか」という予定・意図をたずねる意味になり、依頼の意味にはならない。",
+   "依頼を表す決まった形ではない。",
+   "依頼を表す決まった形ではない。"
+  ]
+ },
+ {
+  "question": "What (　　) you do this summer?",
+  "choices": [
+   "will",
+   "are going to",
+   "do",
+   "did"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "What are you going to do 〜?で「〜する予定は何ですか」と、すでに考えている計画をたずねる決まった表現としてよく使われる。",
+  "notes": [
+   "willも使えるが、be going toの方が「事前に考えている計画」をたずねるニュアンスとしてより自然とされる。",
+   "What are you going to do 〜?で「〜する予定は何ですか」と、すでに考えている計画をたずねる決まった表現としてよく使われる。",
+   "現在形は習慣をたずねる意味になり、未来の予定をたずねる文脈とは異なる。",
+   "過去形は未来（this summer、文脈上これから来る夏を指す）と矛盾する。"
+  ]
+ },
+ {
+  "question": "She (　　) be 15 years old next month.",
+  "choices": [
+   "will",
+   "is",
+   "was",
+   "does"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「来月15歳になる」という、確実に起こる未来の変化を表すのでwillを使う。",
+  "notes": [
+   "「来月15歳になる」という、確実に起こる未来の変化を表すのでwillを使う。",
+   "現在形は「今15歳である」という意味になり、next month（来月）という未来の時点とは合わない。",
+   "過去形は矛盾する。",
+   "doesは一般動詞用でbe動詞の文には使わない。"
+  ]
+ },
+ {
+  "question": "I (　　) not be free tomorrow.",
+  "choices": [
+   "will",
+   "am going to",
+   "do",
+   "am"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "willの否定文はwillの直後にnotを置く（won't）。",
+  "notes": [
+   "willの否定文はwillの直後にnotを置く（won't）。",
+   "be going toの否定はbe動詞の直後にnotを置く形（am not going to）になり、この文の語順（not be）とは合わない。",
+   "willを使う文にdoは使わない。",
+   "amだけでは助動詞willの働きがなくなってしまう。"
+  ]
+ },
+ {
+  "question": "(　　) it be sunny tomorrow?",
+  "choices": [
+   "Will",
+   "Does",
+   "Is",
+   "Do"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "will（未来）の疑問文はwillを主語の前に出す。",
+  "notes": [
+   "will（未来）の疑問文はwillを主語の前に出す。",
+   "doやdoesはwillを使う文には使わない。",
+   "isだけでは未来のニュアンス（willの意味）が失われる。",
+   "doやdoesはwillを使う文には使わない。"
+  ]
+ },
+ {
+  "question": "We (　　) going to have a party next Saturday.",
+  "choices": [
+   "will",
+   "are",
+   "do",
+   "did"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be going toの構文はbe動詞＋going to＋動詞の原形という形。主語weにはareが対応する。",
+  "notes": [
+   "willとgoing toを重ねて使うことはない（will be going toという形は基本的な未来表現としては使わない）。",
+   "be going toの構文はbe動詞＋going to＋動詞の原形という形。主語weにはareが対応する。",
+   "doはこの構文に不要。",
+   "過去形areの代わりにはならず、また未来（next Saturday）と矛盾する。"
+  ]
+ },
+ {
+  "question": "My brother (　　) 20 years old next year.",
+  "choices": [
+   "will turn",
+   "turns",
+   "turned",
+   "turning"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "「来年20歳になる」という未来の変化を表すのでwill＋動詞の原形（turn）を使う。",
+  "notes": [
+   "「来年20歳になる」という未来の変化を表すのでwill＋動詞の原形（turn）を使う。",
+   "現在形は「今20歳である」という意味になりnext year（来年）と合わない。",
+   "過去形は未来と矛盾する。",
+   "ing形は単独では述語にならない。"
+  ]
+ },
+ {
+  "question": "Do you know (　　)?",
+  "choices": [
+   "where does he live",
+   "where he lives",
+   "where he live",
+   "where lives he"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "疑問詞を含む節が別の文の一部（動詞knowの目的語）に組み込まれるとき（間接疑問文）は、疑問文特有の語順（動詞と主語の倒置）ではなく、通常の平叙文と同じ「主語＋動詞」の語順に戻る。主語heは3人称単数なので動詞にはsを付けてlivesとする。",
+  "notes": [
+   "doesを使った疑問文の語順（where does he live）のままでは、間接疑問文の「主語＋動詞」という規則に反する（doesという疑問文用の助動詞は間接疑問文では使わない）。",
+   "疑問詞を含む節が別の文の一部（動詞knowの目的語）に組み込まれるとき（間接疑問文）は、疑問文特有の語順（動詞と主語の倒置）ではなく、通常の平叙文と同じ「主語＋動詞」の語順に戻る。主語heは3人称単数なので動詞にはsを付けてlivesとする。",
+   "語順は正しいが、3人称単数のsが抜けている。",
+   "疑問文の語順（動詞＋主語）のままで誤り。"
+  ]
+ },
+ {
+  "question": "I don't know (　　).",
+  "choices": [
+   "what is her name",
+   "what her name is",
+   "what her name does",
+   "what does her name be"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文では「疑問詞＋主語＋動詞」の順になる。ここではwhat（疑問詞）＋her name（主語）＋is（動詞）という語順が正しい。",
+  "notes": [
+   "is her name（動詞＋主語）という疑問文の語順のままで誤り。",
+   "間接疑問文では「疑問詞＋主語＋動詞」の順になる。ここではwhat（疑問詞）＋her name（主語）＋is（動詞）という語順が正しい。",
+   "be動詞の文にdoesを使うのは誤り。",
+   "語順・助動詞の使い方いずれも誤り。"
+  ]
+ },
+ {
+  "question": "Could you tell me (　　)?",
+  "choices": [
+   "how old is she",
+   "how old she is",
+   "how she old is",
+   "how is she old"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順は「疑問詞（how old）＋主語（she）＋動詞（is）」。",
+  "notes": [
+   "動詞と主語が疑問文の語順のままで誤り。",
+   "間接疑問文の語順は「疑問詞（how old）＋主語（she）＋動詞（is）」。",
+   "oldの位置が不自然（how oldはひとまとまりの疑問詞句として扱う）。",
+   "語順が誤り。"
+  ]
+ },
+ {
+  "question": "I wonder (　　).",
+  "choices": [
+   "what he wants",
+   "what does he want",
+   "what want he",
+   "what he want"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞）で、主語heが3人称単数なのでwantsとsを付ける。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞）で、主語heが3人称単数なのでwantsとsを付ける。",
+   "doesを使った疑問文の語順のままで誤り。",
+   "語順が誤り。",
+   "3人称単数のsが抜けている。"
+  ]
+ },
+ {
+  "question": "Do you know (　　)?",
+  "choices": [
+   "when the train arrives",
+   "when does the train arrive",
+   "when arrives the train",
+   "when the train arrive"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞）で、主語the trainは3人称単数なのでarrivesとsを付ける。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞）で、主語the trainは3人称単数なのでarrivesとsを付ける。",
+   "doesを使った疑問文の語順のままで誤り。",
+   "疑問文の語順（動詞＋主語）のままで誤り。",
+   "3人称単数のsが抜けている。"
+  ]
+ },
+ {
+  "question": "I don't remember (　　).",
+  "choices": [
+   "where I put my keys",
+   "where did I put my keys",
+   "where put I my keys",
+   "where I did put my keys"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞）。過去の内容なのでputはそのまま過去形（putは原形・過去形・過去分詞が同じ形の不規則動詞）として使う。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞）。過去の内容なのでputはそのまま過去形（putは原形・過去形・過去分詞が同じ形の不規則動詞）として使う。",
+   "didを使った疑問文の語順のままで誤り。",
+   "語順が誤り。",
+   "didが不要（間接疑問文では通常の過去形の文と同じ形にする）。"
+  ]
+ },
+ {
+  "question": "Please tell me (　　).",
+  "choices": [
+   "who that girl is",
+   "who is that girl",
+   "who that girl be",
+   "who does that girl be"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞）。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞）。",
+   "動詞と主語が疑問文の語順のままで誤り。",
+   "beは原形であり、この位置には主語に応じて活用したbe動詞（is）が必要。",
+   "be動詞の文にdoesを使うのは誤り。"
+  ]
+ },
+ {
+  "question": "I want to know (　　).",
+  "choices": [
+   "why she is crying",
+   "why is she crying",
+   "why she crying is",
+   "why does she crying"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞〈be動詞＋ing〉）。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞〈be動詞＋ing〉）。",
+   "疑問文の語順のままで誤り。",
+   "語順が誤り。",
+   "進行形の文にdoesを使うのは誤り。"
+  ]
+ },
+ {
+  "question": "Do you remember (　　)?",
+  "choices": [
+   "what time we met",
+   "what time did we meet",
+   "what time we did meet",
+   "what time met we"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞）。過去の出来事なので動詞は過去形metをそのまま使う。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞）。過去の出来事なので動詞は過去形metをそのまま使う。",
+   "didを使った疑問文の語順のままで誤り。",
+   "didが不要。",
+   "語順が誤り。"
+  ]
+ },
+ {
+  "question": "I'm not sure (　　).",
+  "choices": [
+   "how much this bag costs",
+   "how much does this bag cost",
+   "how much this bag cost",
+   "how much cost this bag"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "間接疑問文の語順（疑問詞＋主語＋動詞）で、主語this bagは3人称単数なのでcostsとsを付ける。",
+  "notes": [
+   "間接疑問文の語順（疑問詞＋主語＋動詞）で、主語this bagは3人称単数なのでcostsとsを付ける。",
+   "doesを使った疑問文の語順のままで誤り。",
+   "3人称単数のsが抜けている。",
+   "語順が誤り。"
+  ]
+ },
+ {
+  "question": "I'm looking (　　) my dog. Have you seen him?",
+  "choices": [
+   "at",
+   "for",
+   "after",
+   "on"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "look forで「〜を探す」という意味の句動詞（複数の語がまとまって1つの動詞のような意味を作るもの）になる。forは「〜を求めて」という探索の対象を示す働きをする。",
+  "notes": [
+   "look atは「〜を見る」という意味で、「探す」という意味にはならない。",
+   "look forで「〜を探す」という意味の句動詞（複数の語がまとまって1つの動詞のような意味を作るもの）になる。forは「〜を求めて」という探索の対象を示す働きをする。",
+   "look afterは「〜の世話をする」という別の意味の句動詞になる。",
+   "look onは「傍観する、見物する」といった意味になり、探すという意味にはならない。"
+  ]
+ },
+ {
+  "question": "Can you look (　　) my cat while I'm away?",
+  "choices": [
+   "for",
+   "at",
+   "after",
+   "on"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "look afterで「〜の世話をする」という意味。「留守の間、猫の世話をしてくれますか」という文脈に合う。",
+  "notes": [
+   "look forは「探す」という意味で、世話をするという意味にはならない。",
+   "look atは「見る」という意味。",
+   "look afterで「〜の世話をする」という意味。「留守の間、猫の世話をしてくれますか」という文脈に合う。",
+   "look onはこの文脈に合わない。"
+  ]
+ },
+ {
+  "question": "This town is famous (　　) its beautiful lake.",
+  "choices": [
+   "for",
+   "of",
+   "in",
+   "with"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be famous forで「〜で有名だ」という決まった表現。forは「〜という理由・特徴によって」という原因・理由を表す働きをする。",
+  "notes": [
+   "be famous forで「〜で有名だ」という決まった表現。forは「〜という理由・特徴によって」という原因・理由を表す働きをする。",
+   "be famous ofやbe famous in、be famous withという形は一般的ではなく、famousに続く前置詞はforと決まっている。",
+   "be famous ofやbe famous in、be famous withという形は一般的ではなく、famousに続く前置詞はforと決まっている。",
+   "be famous ofやbe famous in、be famous withという形は一般的ではなく、famousに続く前置詞はforと決まっている。"
+  ]
+ },
+ {
+  "question": "Please take (　　) of your little sister.",
+  "choices": [
+   "care",
+   "look",
+   "after",
+   "for"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "take care ofで「〜の世話をする」という決まった熟語。",
+  "notes": [
+   "take care ofで「〜の世話をする」という決まった熟語。",
+   "take care ofという組み合わせ以外の語をここに入れると熟語として成立しない。",
+   "take care ofという組み合わせ以外の語をここに入れると熟語として成立しない。",
+   "take care ofという組み合わせ以外の語をここに入れると熟語として成立しない。"
+  ]
+ },
+ {
+  "question": "I'm looking forward (　　) the summer vacation.",
+  "choices": [
+   "for",
+   "to",
+   "at",
+   "on"
+  ],
+  "correct_index": 1,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "look forward toで「〜を楽しみにする」という決まった表現。このtoは前置詞であり、後ろに動詞が続く場合は動名詞（ing形）になる（第2章参照）が、ここでは名詞（the summer vacation）がそのまま続いている。",
+  "notes": [
+   "look forward toという決まった組み合わせ以外の前置詞は使わない。",
+   "look forward toで「〜を楽しみにする」という決まった表現。このtoは前置詞であり、後ろに動詞が続く場合は動名詞（ing形）になる（第2章参照）が、ここでは名詞（the summer vacation）がそのまま続いている。",
+   "look forward toという決まった組み合わせ以外の前置詞は使わない。",
+   "look forward toという決まった組み合わせ以外の前置詞は使わない。"
+  ]
+ },
+ {
+  "question": "She is good (　　) math.",
+  "choices": [
+   "at",
+   "in",
+   "on",
+   "for"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be good atで「〜が得意だ」という決まった表現。",
+  "notes": [
+   "be good atで「〜が得意だ」という決まった表現。",
+   "be goodに続く前置詞はatと決まっている。",
+   "be goodに続く前置詞はatと決まっている。",
+   "be goodに続く前置詞はatと決まっている。"
+  ]
+ },
+ {
+  "question": "I'm interested (　　) Japanese history.",
+  "choices": [
+   "at",
+   "on",
+   "in",
+   "for"
+  ],
+  "correct_index": 2,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be interested inで「〜に興味がある」という決まった表現。inは「〜の中に（関心が向いている）」というイメージを表す前置詞として使われる。",
+  "notes": [
+   "be interestedに続く前置詞はinと決まっている。",
+   "be interestedに続く前置詞はinと決まっている。",
+   "be interested inで「〜に興味がある」という決まった表現。inは「〜の中に（関心が向いている）」というイメージを表す前置詞として使われる。",
+   "be interestedに続く前置詞はinと決まっている。"
+  ]
+ },
+ {
+  "question": "We need to take (　　) of this problem right away.",
+  "choices": [
+   "care",
+   "look",
+   "after",
+   "forward"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "take care ofで「〜に対処する、〜の世話をする」という決まった熟語。ここでは「この問題に対処する」という意味で使われている。",
+  "notes": [
+   "take care ofで「〜に対処する、〜の世話をする」という決まった熟語。ここでは「この問題に対処する」という意味で使われている。",
+   "take care ofという組み合わせ以外の語は熟語として成立しない。",
+   "take care ofという組み合わせ以外の語は熟語として成立しない。",
+   "take care ofという組み合わせ以外の語は熟語として成立しない。"
+  ]
+ },
+ {
+  "question": "He is proud (　　) his country.",
+  "choices": [
+   "of",
+   "for",
+   "in",
+   "at"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be proud ofで「〜を誇りに思う」という決まった表現。ofは「〜という対象について」という、誇りを感じる対象を示す働きをする。",
+  "notes": [
+   "be proud ofで「〜を誇りに思う」という決まった表現。ofは「〜という対象について」という、誇りを感じる対象を示す働きをする。",
+   "be proudに続く前置詞はofと決まっている。",
+   "be proudに続く前置詞はofと決まっている。",
+   "be proudに続く前置詞はofと決まっている。"
+  ]
+ },
+ {
+  "question": "I'm afraid (　　) dogs.",
+  "choices": [
+   "of",
+   "for",
+   "in",
+   "at"
+  ],
+  "correct_index": 0,
+  "mode": "junior",
+  "unit": "grammar",
+  "explanation": "be afraid ofで「〜が怖い」という決まった表現。",
+  "notes": [
+   "be afraid ofで「〜が怖い」という決まった表現。",
+   "be afraidに続く前置詞はofと決まっている。",
+   "be afraidに続く前置詞はofと決まっている。",
+   "be afraidに続く前置詞はofと決まっている。"
+  ]
+ }
+]

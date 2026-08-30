@@ -990,6 +990,164 @@
   font-size: 14px;
 }
 
+/* ── ロジックめいろ ───────────────────────── */
+.programming-maze__hint {
+  width: 100%;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-indigo-soft);
+  border: 1px solid rgba(58, 90, 120, 0.25);
+  font-size: 12.5px;
+  color: var(--color-ink);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.programming-maze__board {
+  display: grid;
+  gap: 3px;
+  justify-content: center;
+  margin: 4px auto 4px;
+}
+
+.programming-maze__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--maze-font, 1.2rem);
+  border-radius: 6px;
+  background: var(--color-paper-raised);
+  border: 1.5px solid var(--color-border);
+}
+
+.programming-maze__cell--wall {
+  background: var(--color-ink-soft);
+  border-color: var(--color-ink-soft);
+  opacity: 0.55;
+}
+
+.programming-maze__cell--goal {
+  background: var(--color-moss-soft);
+  border-color: var(--color-moss);
+}
+
+.programming-maze__cell--avatar {
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 2px var(--color-coral-soft) inset;
+}
+
+.programming-maze__blocks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.programming-maze__block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.programming-maze__block-index {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.programming-maze__block-container {
+  flex: 1;
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  background: var(--color-paper);
+}
+
+.programming-maze__block-container-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.programming-maze__block-body {
+  margin-top: 6px;
+  padding-left: 10px;
+  border-left: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.programming-maze__block-body-items {
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+}
+
+.programming-maze__block-body-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.programming-maze__remove {
+  flex-shrink: 0;
+}
+
+.programming-maze__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.programming-maze__code {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: #1e2530;
+  color: #e6e9ef;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 4;
+  resize: vertical;
+}
+
+.programming-maze__code:disabled {
+  opacity: 0.6;
+}
+
+.programming-maze__error {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-coral-soft);
+  border: 1px solid rgba(226, 119, 91, 0.35);
+  text-align: left;
+}
+
+.programming-maze__error-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+  color: var(--color-coral);
+}
+
+.programming-maze__error-body {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--color-ink);
+  white-space: pre-wrap;
+}
+
 /* ── メインレイアウト ───────────────────────── */
 .app-main {
   flex: 1;
@@ -1392,4 +1550,148 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* ── 都道府県パズル ───────────────────────── */
+.prefecture-puzzle__select {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.prefecture-puzzle__hint {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: 14px;
+}
+
+.prefecture-puzzle__difficulty-grid,
+.prefecture-puzzle__region-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.prefecture-puzzle__difficulty-btn,
+.prefecture-puzzle__region-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-paper-raised);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.prefecture-puzzle__difficulty-btn:hover,
+.prefecture-puzzle__region-btn:hover {
+  border-color: var(--color-indigo);
+  transform: translateY(-1px);
+}
+
+.prefecture-puzzle__difficulty-label {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.prefecture-puzzle__difficulty-desc {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.prefecture-puzzle__region-btn {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.prefecture-puzzle__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.prefecture-puzzle__total-progress {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-indigo);
+}
+
+.prefecture-puzzle__panels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 独立盤面(北海道など)・離島インセットは、縦に積み上げず横方向の余白を
+   使ってグリッド状に並べる(天気予報の隅にまとめて表示されるイメージ)。 */
+.prefecture-puzzle__secondary-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.prefecture-puzzle__panel {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-paper-raised);
+  padding: 10px 12px 14px;
+}
+
+.prefecture-puzzle__panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.prefecture-puzzle__panel-label {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-ink);
+}
+
+.prefecture-puzzle__panel-progress {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.prefecture-puzzle__panel-svg {
+  display: block;
+  width: 100%;
+  background: var(--color-indigo-soft);
+  border-radius: 10px;
+}
+
+.prefecture-puzzle__panel-svg--mainland {
+  min-height: 420px;
+}
+
+.prefecture-puzzle__panel-svg--small {
+  height: 220px;
+}
+
+.prefecture-puzzle__guide-shape {
+  fill: rgba(58, 90, 120, 0.12);
+  stroke: rgba(58, 90, 120, 0.35);
+}
+
+.prefecture-puzzle__piece-shape {
+  fill: var(--color-coral);
+  fill-opacity: 0.88;
+  stroke: #2b2a28;
+}
+
+.prefecture-puzzle__piece.is-locked .prefecture-puzzle__piece-shape {
+  fill: var(--color-moss);
+  fill-opacity: 0.92;
 }
