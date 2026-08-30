@@ -18,18 +18,20 @@ export type MazeDifficulty = "low" | "mid" | "junior";
 export type Direction = "up" | "right" | "down" | "left";
 export type CellType = "empty" | "wall" | "goal";
 
-// 単純命令(くりかえし・もしブロック/文の中にも入れられる)
+// 単純命令(くりかえし・もしブロック/文の中にも入れられる)。
+// line はコードエディタ(junior)でパースしたときだけ入る、元のコードの行番号。
+// ブロック方式(low/mid)で組み立てたものにはline は付かない(undefinedのまま)。
 export type SimpleCommand =
-  | { kind: "forward" }
-  | { kind: "turnLeft" }
-  | { kind: "turnRight" };
+  | { kind: "forward"; line?: number }
+  | { kind: "turnLeft"; line?: number }
+  | { kind: "turnRight"; line?: number };
 
 // プログラム全体で使える命令。repeat/ifWallの中身も再帰的にCommand[]にできるので、
 // 中学生向けのコードエディタで for/if を好きなだけネストしても実行できる。
 export type Command =
   | SimpleCommand
-  | { kind: "repeat"; times: number; body: Command[] }
-  | { kind: "ifWall"; body: Command[]; elseBody?: Command[] };
+  | { kind: "repeat"; times: number; body: Command[]; line?: number }
+  | { kind: "ifWall"; body: Command[]; elseBody?: Command[]; line?: number };
 
 export type CommandKind = Command["kind"];
 
@@ -43,6 +45,10 @@ export interface RunResult {
   success: boolean;
   path: { x: number; y: number }[];
   message: string;
+  /** ゴールに着く/失敗するまでに、実際に何マス移動できたか */
+  stepsExecuted: number;
+  /** 失敗の原因になった命令のコード上の行番号(コードエディタ実行時のみ) */
+  failedLine?: number;
 }
 
 const DELTA: Record<Direction, [number, number]> = {
@@ -266,7 +272,8 @@ export function runProgram(level: MazeLevel, program: Command[]): RunResult {
   const path: { x: number; y: number }[] = [{ x, y }];
   let steps = 0;
   let success = false;
-  let message = "";
+  let failReason: "wall" | "steps" | null = null;
+  let failedLine: number | undefined;
 
   function cellAt(cx: number, cy: number): CellType | null {
     if (cy < 0 || cy >= level.grid.length) return null;
@@ -284,7 +291,8 @@ export function runProgram(level: MazeLevel, program: Command[]): RunResult {
   function execOne(cmd: SimpleCommand): boolean {
     steps++;
     if (steps > MAX_STEPS) {
-      message = "命令が多すぎて止まらなくなったよ。くりかえしの回数を見直してみよう。";
+      failReason = "steps";
+      failedLine = cmd.line;
       return false;
     }
     if (cmd.kind === "turnLeft") {
@@ -296,7 +304,8 @@ export function runProgram(level: MazeLevel, program: Command[]): RunResult {
       return true;
     }
     if (wallAhead()) {
-      message = "壁にぶつかった!命令を見直してみよう。";
+      failReason = "wall";
+      failedLine = cmd.line;
       return false;
     }
     const [dx, dy] = DELTA[dir];
@@ -328,15 +337,39 @@ export function runProgram(level: MazeLevel, program: Command[]): RunResult {
     return true;
   }
 
-  const finishedWithoutError = execList(program);
+  execList(program);
+
+  // ここから: 「どこまで実行できたか」「どこで止まったか」が分かるメッセージを組み立てる
+  const stepsExecuted = path.length - 1;
+  const lineText = failedLine ? `(${failedLine}行目)` : "";
+  let message: string;
 
   if (success) {
-    message = "🎉 ゴールにたどり着いた!";
-  } else if (finishedWithoutError) {
-    message = "ゴールに届かなかったよ。命令を増やしたり、順番を見直してみよう。";
+    const optimalPath = solvePath(level);
+    if (optimalPath.length > 0) {
+      const optimal = optimalPath.length - 1;
+      message =
+        stepsExecuted <= optimal
+          ? `🎉 ゴールにたどり着いた!(${stepsExecuted}マスで到着、最短ルートだよ)`
+          : `🎉 ゴールにたどり着いた!(${stepsExecuted}マスで到着。最短だと${optimal}マスで行けるよ)`;
+    } else {
+      message = "🎉 ゴールにたどり着いた!";
+    }
+  } else if (failReason === "wall") {
+    message = `壁にぶつかった!${stepsExecuted}マス進んだところまでは合っていたよ${lineText}。`;
+  } else if (failReason === "steps") {
+    message = `命令が多すぎて止まらなくなったよ。${stepsExecuted}マス進んだところで止めたよ${lineText}。くりかえしの回数を見直してみよう。`;
+  } else {
+    const stopPoint = path[path.length - 1];
+    const remainPath = solvePath(level, stopPoint);
+    const remaining = remainPath.length > 0 ? remainPath.length - 1 : null;
+    message =
+      remaining !== null
+        ? `${stepsExecuted}マス進んだけど、ゴールに届かなかったよ。ゴールまであと最短で${remaining}マスだよ。命令を増やしたり、順番を見直してみよう。`
+        : `${stepsExecuted}マス進んだけど、ゴールに届かなかったよ。命令を増やしたり、順番を見直してみよう。`;
   }
 
-  return { success, path, message };
+  return { success, path, message, stepsExecuted, failedLine };
 }
 
 // --- 中学生向け: 簡易Pythonもどきのパーサー -----------------------------------
@@ -408,7 +441,7 @@ function parseBlock(lines: RawLine[], start: number, indent: number, maxRange: n
     const line = lines[i];
 
     if (SIMPLE_LINE[line.text]) {
-      statements.push({ kind: SIMPLE_LINE[line.text] });
+      statements.push({ kind: SIMPLE_LINE[line.text], line: line.lineNo });
       i++;
       continue;
     }
@@ -428,7 +461,7 @@ function parseBlock(lines: RawLine[], start: number, indent: number, maxRange: n
       }
       const child = parseBlock(lines, i + 1, lines[i + 1].indent, maxRange);
       if (child.error) return { statements, nextIndex: i, error: child.error };
-      statements.push({ kind: "repeat", times, body: child.statements });
+      statements.push({ kind: "repeat", times, body: child.statements, line: line.lineNo });
       i = child.nextIndex;
       continue;
     }
@@ -457,7 +490,7 @@ function parseBlock(lines: RawLine[], start: number, indent: number, maxRange: n
         nextIdx = elseBlock.nextIndex;
       }
 
-      statements.push({ kind: "ifWall", body: thenBlock.statements, elseBody });
+      statements.push({ kind: "ifWall", body: thenBlock.statements, elseBody, line: line.lineNo });
       i = nextIdx;
       continue;
     }
@@ -509,3 +542,90 @@ export const DEFAULT_JUNIOR_CODE = `# 使えるコマンド:
 forward()
 forward()
 `;
+
+// --- ヒント機能(AIは使わず、BFSによる決定的な最短経路探索だけを使う) --------------
+
+/**
+ * スタートからゴールまでの最短経路をBFSで求める。
+ * コードの答えを教えるのではなく、あくまで「地図」として道すじを見せるためのもの。
+ * 迷路は生成時に必ず到達可能になっているので、通常は空配列にはならない。
+ */
+/**
+ * 指定した地点からゴールまでの最短経路をBFSで求める(fromを省略するとスタート地点から)。
+ * コードの答えを教えるのではなく、あくまで「地図」として道すじを見せるためのもの。
+ * 失敗した地点からゴールまでの残り距離を計算するのにも使う。
+ * 迷路は生成時に必ず到達可能になっているので、通常は空配列にはならない。
+ */
+export function solvePath(
+  level: MazeLevel,
+  from: { x: number; y: number } = level.start
+): { x: number; y: number }[] {
+  const { grid } = level;
+  const h = grid.length;
+  const w = grid[0]?.length ?? 0;
+
+  const key = (x: number, y: number) => `${x},${y}`;
+  const prev = new Map<string, { x: number; y: number } | null>();
+  prev.set(key(from.x, from.y), null);
+
+  const queue: { x: number; y: number }[] = [{ x: from.x, y: from.y }];
+  let qi = 0;
+  let goal: { x: number; y: number } | null = null;
+
+  while (qi < queue.length) {
+    const cur = queue[qi++];
+    if (grid[cur.y][cur.x] === "goal") {
+      goal = cur;
+      break;
+    }
+    for (const [dx, dy] of [
+      [0, -1],
+      [1, 0],
+      [0, 1],
+      [-1, 0],
+    ]) {
+      const nx = cur.x + dx;
+      const ny = cur.y + dy;
+      if (nx < 0 || nx >= w || ny < 0 || ny >= h) continue;
+      if (grid[ny][nx] === "wall") continue;
+      const k = key(nx, ny);
+      if (prev.has(k)) continue;
+      prev.set(k, cur);
+      queue.push({ x: nx, y: ny });
+    }
+  }
+
+  if (!goal) return [];
+
+  const path: { x: number; y: number }[] = [];
+  let cur: { x: number; y: number } | null = goal;
+  while (cur) {
+    path.push(cur);
+    cur = prev.get(key(cur.x, cur.y)) ?? null;
+  }
+  return path.reverse();
+}
+
+/**
+ * 現在地からゴールがどちら向きにあるかを、方角の言葉で伝える簡易ヒント。
+ * 正確な道すじではなく、大まかな方向感覚だけを与える(答えは教えない)。
+ */
+export function compassHint(level: MazeLevel, from: { x: number; y: number }): string {
+  let goal: { x: number; y: number } | null = null;
+  for (let y = 0; y < level.grid.length; y++) {
+    for (let x = 0; x < level.grid[y].length; x++) {
+      if (level.grid[y][x] === "goal") goal = { x, y };
+    }
+  }
+  if (!goal) return "";
+
+  const dx = goal.x - from.x;
+  const dy = goal.y - from.y;
+  const parts: string[] = [];
+  if (dy < 0) parts.push("上");
+  if (dy > 0) parts.push("下");
+  if (dx < 0) parts.push("左");
+  if (dx > 0) parts.push("右");
+  if (parts.length === 0) return "";
+  return `🧭 ゴールは今いる場所より${parts.join("・")}の方向だよ。`;
+}

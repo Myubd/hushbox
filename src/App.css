@@ -1037,6 +1037,12 @@
   box-shadow: 0 0 0 2px var(--color-coral-soft) inset;
 }
 
+.programming-maze__cell--hint {
+  background: var(--color-indigo-soft);
+  color: var(--color-indigo);
+  font-weight: 700;
+}
+
 .programming-maze__blocks {
   width: 100%;
   display: flex;
