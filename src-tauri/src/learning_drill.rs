@@ -149,6 +149,20 @@ pub fn units_for_subject(subject: &str) -> Vec<UnitInfo> {
     }
 }
 
+/// 指定した科目の問題バンクに何問入っているかを返す(UIで「全◯問」と表示するため)。
+/// 「算数(計算れんしゅう)」はその場で無限に生成する方式でバンクを持たないため`None`。
+pub fn subject_question_count(subject: &str) -> Option<usize> {
+    match subject {
+        "science" => Some(SCIENCE_BANK.len()),
+        "social" => Some(SOCIAL_BANK.len()),
+        "math" => Some(MATH_BANK.len()),
+        "english" => Some(ENGLISH_BANK.len()),
+        "info" => Some(INFO_BANK.len()),
+        "kanji" => Some(KANJI_BANK.len()),
+        _ => None,
+    }
+}
+
 fn new_id() -> String {
     use std::time::{SystemTime, UNIX_EPOCH};
     let nanos = SystemTime::now()

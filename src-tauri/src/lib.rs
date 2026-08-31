@@ -40,6 +40,7 @@ pub fn run() {
             commands::next_learning_problem,
             commands::check_learning_answer,
             commands::list_learning_units,
+            commands::get_subject_question_count,
         ])
         .run(tauri::generate_context!())
         .expect("プライバシー・バディの起動に失敗しました");

@@ -118,6 +118,28 @@ export const DRILL_SUBJECTS: SubjectInfo[] = [
   { id: "info", label: "情報", icon: "💻" },
 ];
 
+// 科目ごとの正解数/回答数。学習ドリルの成績はApp.tsxで保持し、本体(LearningDrill)と
+// 成績パネル(LearningDrillSidebar)の両方に配る(2つは.app-mainグリッドで別カラムに
+// 描画されるため、Reactツリー上の親であるApp.tsxで状態を持つ必要がある)。
+export type ScoreMap = Record<DrillSubject, { correct: number; total: number }>;
+
+export const EMPTY_DRILL_SCORES: ScoreMap = {
+  arithmetic: { correct: 0, total: 0 },
+  kanji: { correct: 0, total: 0 },
+  science: { correct: 0, total: 0 },
+  social: { correct: 0, total: 0 },
+  math: { correct: 0, total: 0 },
+  english: { correct: 0, total: 0 },
+  info: { correct: 0, total: 0 },
+};
+
+// 1問正解したときにもらえるポイント。学年帯が上がるほど1問の重みを増やす。
+export const POINTS_PER_CORRECT_ANSWER: Record<AgeMode, number> = {
+  low: 1,
+  mid: 2,
+  junior: 3,
+};
+
 export type LearningProblem =
   | { kind: "arithmetic"; id: string; question: string }
   | { kind: "choice"; id: string; subject: string; question: string; choices: string[] };

@@ -4,11 +4,19 @@ import { ModelLoader } from "./components/ModelLoader";
 import { ChatBubble } from "./components/ChatBubble";
 import { ChatInput } from "./components/ChatInput";
 import { LearningDrill } from "./components/LearningDrill";
+import { LearningDrillSidebar } from "./components/LearningDrillSidebar";
 import { PlusChallenge } from "./components/PlusChallenge";
 import { ModelSettings } from "./components/ModelSettings";
 import { PrivacyPanel } from "./components/PrivacyPanel";
 import { useChatEngine } from "./hooks/useChatEngine";
-import { AGE_MODES, type AgeMode } from "./types";
+import {
+  AGE_MODES,
+  DRILL_SUBJECTS,
+  EMPTY_DRILL_SCORES,
+  POINTS_PER_CORRECT_ANSWER,
+  type AgeMode,
+  type DrillSubject,
+} from "./types";
 import "./App.css";
 
 const MODEL_DISPLAY_NAME = "Qwen2.5-1.5B-Instruct (Candle / GGUF)";
@@ -60,6 +68,8 @@ function ChatApp({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showModelSettings, setShowModelSettings] = useState(false);
   const [tab, setTab] = useState<MainTab>("chat");
+  const [drillSubject, setDrillSubject] = useState<DrillSubject>("math");
+  const [drillScores, setDrillScores] = useState(EMPTY_DRILL_SCORES);
   const modeInfo = AGE_MODES.find((m) => m.id === mode)!;
 
   useEffect(() => {
@@ -162,9 +172,30 @@ function ChatApp({
             />
           </>
         ) : (
-          <section className="chat-panel">
-            <LearningDrill mode={mode} />
-          </section>
+          <>
+            <section className="chat-panel">
+              <LearningDrill
+                mode={mode}
+                subject={drillSubject}
+                onSubjectChange={setDrillSubject}
+                onAnswered={(subject, correct) =>
+                  setDrillScores((prev) => ({
+                    ...prev,
+                    [subject]: {
+                      correct: prev[subject].correct + (correct ? 1 : 0),
+                      total: prev[subject].total + 1,
+                    },
+                  }))
+                }
+              />
+            </section>
+
+            <LearningDrillSidebar
+              subjectInfo={DRILL_SUBJECTS.find((s) => s.id === drillSubject)!}
+              score={drillScores[drillSubject]}
+              points={drillScores[drillSubject].correct * POINTS_PER_CORRECT_ANSWER[mode]}
+            />
+          </>
         )}
       </main>
     </div>

@@ -65,8 +65,12 @@
 }
 
 .age-card {
-  background: var(--color-paper-raised);
-  border: 1.5px solid var(--color-border);
+  /* iPhoneのフォルダのような、背景がにじんで透ける半透明ガラス effect。
+     壁紙(--wallpaper-image)が設定されると、このぼかし越しに壁紙が見える。 */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-lg);
   padding: 28px 20px;
   display: flex;
@@ -74,15 +78,18 @@
   gap: 8px;
   cursor: pointer;
   text-align: left;
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
   font-family: var(--font-body);
+  box-shadow: 0 10px 32px -14px rgba(43, 42, 40, 0.22);
 }
 
 .age-card:hover,
 .age-card:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
   border-color: var(--color-indigo);
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px -14px rgba(58, 90, 120, 0.35);
+  box-shadow: 0 14px 34px -14px rgba(58, 90, 120, 0.4);
   outline: none;
 }
 
@@ -128,17 +135,22 @@
   padding: 16px 20px;
   border-radius: var(--radius-lg);
   border: 1.5px dashed var(--color-coral);
-  background: var(--color-coral-soft);
+  /* .age-cardと同じくガラス風。コーラル色を薄く乗せつつ背景を透かす */
+  background: rgba(251, 234, 227, 0.15);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
   color: var(--color-ink);
   cursor: pointer;
   text-align: left;
   font-family: var(--font-body);
-  transition: transform 0.15s ease, border-style 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, border-style 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 .plus-gate-cta:hover,
 .plus-gate-cta:focus-visible {
   border-style: solid;
+  background: rgba(251, 234, 227, 0.28);
   transform: translateY(-2px);
   box-shadow: 0 10px 24px -16px rgba(226, 119, 91, 0.45);
   outline: none;
@@ -386,6 +398,53 @@
   gap: 10px;
 }
 
+/* ── 学習ドリルの成績パネル(.app-mainの第2カラム。チャットタブの.privacy-panelと同じ列) ── */
+.learning-drill-sidebar {
+  padding: 20px;
+  background: var(--color-paper-raised);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.learning-drill-sidebar__title {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-indigo);
+}
+
+.learning-drill-sidebar__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.learning-drill-sidebar__stat:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.learning-drill-sidebar__stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.learning-drill-sidebar__stat-label {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.learning-drill-sidebar__stat--points .learning-drill-sidebar__stat-value {
+  color: var(--color-moss);
+}
+
+
 .learning-drill__tabs {
   display: flex;
   gap: 8px;
@@ -423,11 +482,27 @@
   padding-right: 2px;
 }
 
+.learning-drill__units-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .learning-drill__units {
   display: flex;
   gap: 6px;
   overflow-x: auto;
   padding-bottom: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.learning-drill__question-count {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
 }
 
 .learning-drill__unit {
@@ -453,12 +528,6 @@
   margin: 0;
   font-size: 11px;
   color: var(--color-moss);
-}
-
-.learning-drill__score {
-  margin: 0;
-  font-size: 13px;
-  color: var(--color-ink-soft);
 }
 
 .learning-drill__loading {
@@ -1167,6 +1236,9 @@
     grid-template-columns: 1fr;
   }
   .privacy-panel {
+    display: none;
+  }
+  .learning-drill-sidebar {
     display: none;
   }
 }

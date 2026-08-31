@@ -91,6 +91,14 @@ export async function listLearningUnits(subject: DrillSubject): Promise<DrillUni
   return invoke<DrillUnit[]>("list_learning_units", { subject });
 }
 
+/**
+ * 指定した科目の問題バンクの総問題数を取得する(UIの「全◯問」表示用)。
+ * 算数(計算れんしゅう)のようにその場で無限に生成する科目はnullが返る。
+ */
+export async function getSubjectQuestionCount(subject: DrillSubject): Promise<number | null> {
+  return invoke<number | null>("get_subject_question_count", { subject });
+}
+
 /** 学習ドリルの回答を採点する。正解はこの呼び出しの結果でのみ判明する。 */
 export async function checkLearningAnswer(
   problemId: string,

@@ -74,6 +74,13 @@ pub fn list_learning_units(subject: String) -> Vec<UnitInfo> {
     learning_drill::units_for_subject(&subject)
 }
 
+/// 指定した科目の問題バンクの総問題数を返す(UIの「全◯問」表示用)。
+/// 算数(計算れんしゅう)のようにその場で無限に生成する科目はNoneを返す。
+#[tauri::command]
+pub fn get_subject_question_count(subject: String) -> Option<usize> {
+    learning_drill::subject_question_count(&subject)
+}
+
 /// 学習ドリルの回答を採点する。
 #[tauri::command]
 pub async fn check_learning_answer(
