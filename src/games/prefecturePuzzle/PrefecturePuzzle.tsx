@@ -18,9 +18,16 @@ const DIFFICULTY_INFO: { id: PuzzleDifficulty; label: string; description: strin
   { id: "hard", label: "むずかしい", description: "市区町村(全国約1,900パーツ)" },
 ];
 
+/** 難易度ごとの獲得ポイント(1ピース正しく置くごと)。簡単なほうから1p/2p/3p。 */
+const POINTS_BY_DIFFICULTY: Record<PuzzleDifficulty, number> = {
+  easy: 1,
+  normal: 2,
+  hard: 3,
+};
+
 type Selection = { difficulty: PuzzleDifficulty; region: PuzzleRegion | null };
 
-export function PrefecturePuzzle({ onBack }: GameScreenProps) {
+export function PrefecturePuzzle({ onBack, onCorrect }: GameScreenProps) {
   const [selection, setSelection] = useState<Selection | null>(null);
   const [solvedTotal, setSolvedTotal] = useState(0);
 
@@ -34,9 +41,15 @@ export function PrefecturePuzzle({ onBack }: GameScreenProps) {
 
   const totalPieces = status.status === "ready" ? status.data.piece_count : 0;
 
-  const handleProgress = useCallback((delta: number) => {
-    setSolvedTotal((s) => s + delta);
-  }, []);
+  const handleProgress = useCallback(
+    (delta: number) => {
+      setSolvedTotal((s) => s + delta);
+      if (delta > 0 && selection) {
+        onCorrect?.(delta * POINTS_BY_DIFFICULTY[selection.difficulty]);
+      }
+    },
+    [selection, onCorrect]
+  );
 
   const handleSelectDifficulty = (difficulty: PuzzleDifficulty) => {
     setSolvedTotal(0);

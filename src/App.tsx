@@ -9,7 +9,9 @@ import { PlusChallenge } from "./components/PlusChallenge";
 import { ModelSettings } from "./components/ModelSettings";
 import { PrivacyPanel } from "./components/PrivacyPanel";
 import { SettingsPage } from "./components/SettingsPage";
+import { WallpaperShop } from "./components/WallpaperShop";
 import { useChatEngine } from "./hooks/useChatEngine";
+import { usePointsWallet, type PointsWallet } from "./hooks/usePointsWallet";
 import {
   AGE_MODES,
   DRILL_SUBJECTS,
@@ -53,7 +55,9 @@ export default function App() {
   const [mode, setMode] = useState<AgeMode | null>(null);
   const [showPlusChallenge, setShowPlusChallenge] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showWallpaperShop, setShowWallpaperShop] = useState(false);
   const [textColor, setTextColor] = useState<string>(loadStoredTextColor);
+  const wallet = usePointsWallet();
 
   // アプリ起動時、および設定変更のたびにドキュメントルートへ適用する。
   // どの画面を開いていても常に最新の値が効くようにするため。
@@ -61,6 +65,17 @@ export default function App() {
     document.documentElement.style.setProperty("--color-ink", textColor);
     document.documentElement.style.setProperty("--color-ink-soft", toSoftColor(textColor));
   }, [textColor]);
+
+  // 壁紙(アプリ全体のテーマ)。ポイント交換で開放した壁紙を選ぶと、
+  // どの画面(チャット/学習ドリル/プラスチャレンジ/設定)を開いていても
+  // 常にこの背景が反映される。src/index.cssの--wallpaper-imageを上書きする。
+  useEffect(() => {
+    const { src } = wallet.activeWallpaper;
+    document.documentElement.style.setProperty(
+      "--wallpaper-image",
+      src ? `url("${src}")` : "none"
+    );
+  }, [wallet.activeWallpaper]);
 
   const handleTextColorChange = (color: string) => {
     setTextColor(color);
@@ -83,10 +98,18 @@ export default function App() {
     );
   }
 
+  if (showWallpaperShop) {
+    return (
+      <div className="app-shell">
+        <WallpaperShop wallet={wallet} onBack={() => setShowWallpaperShop(false)} />
+      </div>
+    );
+  }
+
   if (showPlusChallenge) {
     return (
       <div className="app-shell">
-        <PlusChallenge onBack={() => setShowPlusChallenge(false)} />
+        <PlusChallenge onBack={() => setShowPlusChallenge(false)} onCorrect={wallet.addPoints} />
       </div>
     );
   }
@@ -97,19 +120,30 @@ export default function App() {
         onSelect={setMode}
         onPlusChallenge={() => setShowPlusChallenge(true)}
         onOpenSettings={() => setShowSettings(true)}
+        onOpenWallpaperShop={() => setShowWallpaperShop(true)}
+        totalPoints={wallet.totalPoints}
       />
     </div>
   ) : (
-    <ChatApp mode={mode} onChangeMode={() => setMode(null)} />
+    <ChatApp
+      mode={mode}
+      onChangeMode={() => setMode(null)}
+      wallet={wallet}
+      onOpenWallpaperShop={() => setShowWallpaperShop(true)}
+    />
   );
 }
 
 function ChatApp({
   mode,
   onChangeMode,
+  wallet,
+  onOpenWallpaperShop,
 }: {
   mode: AgeMode;
   onChangeMode: () => void;
+  wallet: PointsWallet;
+  onOpenWallpaperShop: () => void;
 }) {
   const {
     messages,
@@ -156,6 +190,13 @@ function ChatApp({
           </div>
         </div>
         <div className="app-header__actions">
+          <button
+            className="points-badge"
+            onClick={onOpenWallpaperShop}
+            title="壁紙ショップを開く"
+          >
+            🌟 {wallet.totalPoints}
+          </button>
           <button
             className="btn btn--ghost"
             onClick={() => setShowModelSettings((v) => !v)}
@@ -239,15 +280,16 @@ function ChatApp({
                 mode={mode}
                 subject={drillSubject}
                 onSubjectChange={setDrillSubject}
-                onAnswered={(subject, correct) =>
+                onAnswered={(subject, correct) => {
                   setDrillScores((prev) => ({
                     ...prev,
                     [subject]: {
                       correct: prev[subject].correct + (correct ? 1 : 0),
                       total: prev[subject].total + 1,
                     },
-                  }))
-                }
+                  }));
+                  if (correct) wallet.addPoints(POINTS_PER_CORRECT_ANSWER[mode]);
+                }}
               />
             </section>
 

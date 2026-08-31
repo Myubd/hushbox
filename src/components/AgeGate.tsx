@@ -5,11 +5,28 @@ interface Props {
   onSelect: (mode: AgeMode) => void;
   onPlusChallenge: () => void;
   onOpenSettings: () => void;
+  onOpenWallpaperShop: () => void;
+  totalPoints: number;
 }
 
-export function AgeGate({ onSelect, onPlusChallenge, onOpenSettings }: Props) {
+export function AgeGate({
+  onSelect,
+  onPlusChallenge,
+  onOpenSettings,
+  onOpenWallpaperShop,
+  totalPoints,
+}: Props) {
   return (
     <div className="age-gate">
+      <button
+        type="button"
+        className="age-gate__wallpaper-shop-btn"
+        onClick={onOpenWallpaperShop}
+        aria-label="壁紙ショップを開く"
+        title="壁紙ショップ"
+      >
+        🌟 {totalPoints}
+      </button>
       <button
         type="button"
         className="age-gate__settings-btn"

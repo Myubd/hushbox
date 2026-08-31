@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import type { GameScreenProps } from "../types";
+import { POINTS_PER_CORRECT_ANSWER } from "../../types";
 import {
   ARITHMETIC_DIFFICULTIES,
   ARITHMETIC_OPERATORS,
@@ -15,7 +16,7 @@ import {
  * 使っているChoiceQuizGameとは別に、専用の画面として実装している。
  * Tauri IPCは使わず、フロントエンドだけで問題の生成・採点が完結する。
  */
-export function ArithmeticPractice({ onBack }: GameScreenProps) {
+export function ArithmeticPractice({ onBack, onCorrect }: GameScreenProps) {
   const [difficulty, setDifficulty] = useState<ArithmeticDifficulty>("low");
   const [operator, setOperator] = useState<ArithmeticOperator>("mixed");
   const [problem, setProblem] = useState<ArithmeticProblem>(() =>
@@ -57,8 +58,11 @@ export function ArithmeticPractice({ onBack }: GameScreenProps) {
     if (answered || !inputValue.trim()) return;
     setAnswered(true);
     setTotal((t) => t + 1);
-    if (Number(inputValue) === problem.answer) setCorrect((c) => c + 1);
-  }, [answered, inputValue, problem]);
+    if (Number(inputValue) === problem.answer) {
+      setCorrect((c) => c + 1);
+      onCorrect?.(POINTS_PER_CORRECT_ANSWER[difficulty]);
+    }
+  }, [answered, inputValue, problem, difficulty, onCorrect]);
 
   return (
     <div className="mini-game">

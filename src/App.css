@@ -1968,3 +1968,220 @@
   fill: var(--color-moss);
   fill-opacity: 0.92;
 }
+
+/* ── ポイントバッジ(ヘッダー/AgeGate。壁紙ショップへの入口を兼ねる) ───── */
+.points-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.points-badge:hover,
+.points-badge:focus-visible {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: var(--color-coral);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.age-gate__wallpaper-shop-btn {
+  position: fixed;
+  top: 20px;
+  right: 72px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.age-gate__wallpaper-shop-btn:hover,
+.age-gate__wallpaper-shop-btn:focus-visible {
+  border-color: var(--color-coral);
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* ── 壁紙ショップ ───────────────────────── */
+.wallpaper-shop {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.wallpaper-shop__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.wallpaper-shop__header .btn {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.wallpaper-shop__header .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.wallpaper-shop__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.wallpaper-shop__points-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* .plus-challenge__game-cardなどと揃えた半透明ガラス風。壁紙が透けて見える */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.wallpaper-shop__points-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-coral);
+}
+
+.wallpaper-shop__points-label {
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+}
+
+.wallpaper-shop__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.wallpaper-shop__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+  text-align: left;
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* .age-cardや.plus-challenge__game-cardと揃えた半透明ガラス風。壁紙が透けて見える */
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: 0 10px 32px -14px rgba(43, 42, 40, 0.22);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.wallpaper-shop__card:hover:not(:disabled),
+.wallpaper-shop__card:focus-visible:not(:disabled) {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: var(--color-coral);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -14px rgba(226, 119, 91, 0.35);
+  outline: none;
+}
+
+.wallpaper-shop__card.is-active {
+  border-color: var(--color-moss);
+  box-shadow: 0 0 0 2px var(--color-moss-soft);
+}
+
+.wallpaper-shop__card.is-locked {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.wallpaper-shop__thumb-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-indigo-soft);
+}
+
+.wallpaper-shop__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wallpaper-shop__thumb--none {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+}
+
+.wallpaper-shop__lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: rgba(43, 42, 40, 0.4);
+}
+
+.wallpaper-shop__label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.wallpaper-shop__status {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.wallpaper-shop__status--active {
+  color: var(--color-moss);
+  font-weight: 700;
+}
+
+.wallpaper-shop__status--locked {
+  color: var(--color-coral);
+  font-weight: 600;
+}

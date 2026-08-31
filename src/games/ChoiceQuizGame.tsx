@@ -30,6 +30,12 @@ interface Props<T extends ChoiceQuizItem> {
   emptyMessage?: string;
   /** ヘッダー直下に常時表示する注記(「準備中」など、問題データが不十分なゲームで使う想定)。 */
   notice?: ReactNode;
+  /**
+   * 正解1問あたりのポイント。このゲーム形式には難易度の概念がないため、
+   * 呼び出し側が固定値を渡す想定(未指定時は「ふつう」相当の2p)。
+   */
+  pointsPerCorrect?: number;
+  onCorrect?: (points: number) => void;
 }
 
 function shuffle<T>(arr: T[]): T[] {
@@ -49,6 +55,8 @@ export function ChoiceQuizGame<T extends ChoiceQuizItem>({
   onBack,
   emptyMessage,
   notice,
+  pointsPerCorrect = 2,
+  onCorrect,
 }: Props<T>) {
   const [itemIndex, setItemIndex] = useState<number | null>(() =>
     items.length > 0 ? Math.floor(Math.random() * items.length) : null
@@ -82,9 +90,12 @@ export function ChoiceQuizGame<T extends ChoiceQuizItem>({
       if (!item || selected) return;
       setSelected(choice);
       setTotal((t) => t + 1);
-      if (choice === item.correctChoice) setCorrect((c) => c + 1);
+      if (choice === item.correctChoice) {
+        setCorrect((c) => c + 1);
+        onCorrect?.(pointsPerCorrect);
+      }
     },
-    [item, selected]
+    [item, selected, onCorrect, pointsPerCorrect]
   );
 
   const answeredCorrectly = selected !== null && item !== null && selected === item.correctChoice;

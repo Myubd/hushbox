@@ -32,13 +32,14 @@ function MapImage({ item }: { item: WorldMapEraQuestion }) {
   );
 }
 
-export function WorldMapTimeTravel({ onBack }: GameScreenProps) {
+export function WorldMapTimeTravel({ onBack, onCorrect }: GameScreenProps) {
   return (
     <ChoiceQuizGame
       title="世界地図タイムトラベル（準備中）"
       icon="🗺️"
       items={WORLD_MAP_TIME_TRAVEL_QUESTIONS}
       onBack={onBack}
+      onCorrect={onCorrect}
       notice="⚠️ このゲームは現在サンプル問題のみです。地図画像・問題データは今後追加予定です。"
       renderPrompt={(item) => (
         <div className="world-map__prompt">

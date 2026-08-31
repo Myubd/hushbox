@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
 import type { GameScreenProps } from "../types";
+import { POINTS_PER_CORRECT_ANSWER } from "../../types";
 import {
   ALLOWED_COMMANDS,
   DEFAULT_JUNIOR_CODE,
@@ -56,7 +57,7 @@ function cellSizeRem(gridWidth: number): number {
   return 2.4;
 }
 
-export function ProgrammingMaze({ onBack }: GameScreenProps) {
+export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
   const [difficulty, setDifficulty] = useState<MazeDifficulty>("low");
   const [level, setLevel] = useState<MazeLevel>(() => generateMazeLevel("low"));
   const [program, setProgram] = useState<Command[]>([]);
@@ -215,12 +216,15 @@ export function ProgrammingMaze({ onBack }: GameScreenProps) {
     if (pathIndex >= runResult.path.length - 1) {
       setAnimating(false);
       setTotal((t) => t + 1);
-      if (runResult.success) setCorrect((c) => c + 1);
+      if (runResult.success) {
+        setCorrect((c) => c + 1);
+        onCorrect?.(POINTS_PER_CORRECT_ANSWER[difficulty]);
+      }
       return;
     }
     const timer = setTimeout(() => setPathIndex((i) => i + 1), 200);
     return () => clearTimeout(timer);
-  }, [animating, runResult, pathIndex]);
+  }, [animating, runResult, pathIndex, onCorrect, difficulty]);
 
   const avatarPos = runResult ? runResult.path[Math.min(pathIndex, runResult.path.length - 1)] : level.start;
   const finished = runResult !== null && !animating;

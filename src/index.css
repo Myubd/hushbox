@@ -15,10 +15,10 @@
   --color-coral-soft: #fbeae3;
 
   /* 背景の壁紙。デフォルトは無地(--color-paperのみ)。
-     壁紙を設定するときはJS側で例えば
-     document.documentElement.style.setProperty('--wallpaper-image', 'url(/wallpapers/xxx.png)')
-     のようにこの変数を上書きする。 */
-  --wallpaper-image: url("/test-wallpaper.jpg");
+     ポイント交換で開放した壁紙は、App.tsx(usePointsWallet)がJS側で
+     document.documentElement.style.setProperty('--wallpaper-image', 'url(/xxx.jpg)')
+     のようにこの変数を上書きすることで反映される。 */
+  --wallpaper-image: none;
 
   --font-display: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "Meiryo", sans-serif;
   --font-body: "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;

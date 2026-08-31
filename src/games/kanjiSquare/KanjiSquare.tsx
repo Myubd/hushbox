@@ -9,7 +9,10 @@ function pickRandomIndex(length: number, excludeIndex: number | null): number {
   return idx;
 }
 
-export function KanjiSquare({ onBack }: GameScreenProps) {
+// このゲームには難易度の概念がないため、「ふつう」相当の固定2pを正解ごとに加算する。
+const POINTS_PER_CORRECT = 2;
+
+export function KanjiSquare({ onBack, onCorrect }: GameScreenProps) {
   const [puzzleIndex, setPuzzleIndex] = useState<number | null>(() =>
     KANJI_SQUARE_PUZZLES.length > 0 ? pickRandomIndex(KANJI_SQUARE_PUZZLES.length, null) : null
   );
@@ -36,10 +39,11 @@ export function KanjiSquare({ onBack }: GameScreenProps) {
     if (cleaned === puzzle.answer) {
       setResult("correct");
       setCorrect((c) => c + 1);
+      onCorrect?.(POINTS_PER_CORRECT);
     } else {
       setResult("wrong");
     }
-  }, [puzzle, input, result]);
+  }, [puzzle, input, result, onCorrect]);
 
   return (
     <div className="mini-game">

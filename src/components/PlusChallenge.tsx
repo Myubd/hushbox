@@ -3,6 +3,8 @@ import { GAMES } from "../games/registry";
 
 interface Props {
   onBack: () => void;
+  /** 正解時のポイント加算コールバック。各ゲームコンポーネントへそのまま渡す。 */
+  onCorrect?: (points: number) => void;
 }
 
 // プラスチャレンジ画面。ゲームを選んでいないときは一覧(メニュー)を表示し、
@@ -10,7 +12,7 @@ interface Props {
 // ゲームの追加は src/games/registry.ts にエントリを1件足すだけでよい。
 // 文字色(--color-ink / --color-ink-soft)は設定ページ(SettingsPage)で選択され、
 // App.tsx側でドキュメントルートに適用される(アプリ全体に共通)。
-export function PlusChallenge({ onBack }: Props) {
+export function PlusChallenge({ onBack, onCorrect }: Props) {
   const [activeGameId, setActiveGameId] = useState<string | null>(null);
   const activeGame = GAMES.find((g) => g.id === activeGameId) ?? null;
 
@@ -18,7 +20,7 @@ export function PlusChallenge({ onBack }: Props) {
     const { Component } = activeGame;
     return (
       <div className="plus-challenge">
-        <Component onBack={() => setActiveGameId(null)} />
+        <Component onBack={() => setActiveGameId(null)} onCorrect={onCorrect} />
       </div>
     );
   }
