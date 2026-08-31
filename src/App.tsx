@@ -8,6 +8,7 @@ import { LearningDrillSidebar } from "./components/LearningDrillSidebar";
 import { PlusChallenge } from "./components/PlusChallenge";
 import { ModelSettings } from "./components/ModelSettings";
 import { PrivacyPanel } from "./components/PrivacyPanel";
+import { SettingsPage } from "./components/SettingsPage";
 import { useChatEngine } from "./hooks/useChatEngine";
 import {
   AGE_MODES,
@@ -22,9 +23,65 @@ import "./App.css";
 const MODEL_DISPLAY_NAME = "Qwen2.5-1.5B-Instruct (Candle / GGUF)";
 type MainTab = "chat" | "drill";
 
+// アプリ全体の文字色。localStorageに保存し、次回起動時も復元する
+// (すべてこの端末内で完結し、外へは出ない)。設定ページ(SettingsPage)から変更する。
+// --color-ink(通常の文字)と--color-ink-soft(補足文などの薄い文字)の2つを
+// 上書きすることで、アプリ全体のほぼすべてのテキストに反映される。
+const TEXT_COLOR_STORAGE_KEY = "appTextColor";
+const DEFAULT_TEXT_COLOR = "#2b2a28"; // 元々の--color-inkと同じ
+
+function loadStoredTextColor(): string {
+  try {
+    return localStorage.getItem(TEXT_COLOR_STORAGE_KEY) ?? DEFAULT_TEXT_COLOR;
+  } catch {
+    return DEFAULT_TEXT_COLOR;
+  }
+}
+
+/** "#rrggbb" 形式の色から、補足文用に少し薄くしたrgba文字列を作る。 */
+function toSoftColor(hex: string, alpha = 0.72): string {
+  const match = /^#?([0-9a-f]{6})$/i.exec(hex);
+  if (!match) return hex;
+  const value = match[1];
+  const r = parseInt(value.slice(0, 2), 16);
+  const g = parseInt(value.slice(2, 4), 16);
+  const b = parseInt(value.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 export default function App() {
   const [mode, setMode] = useState<AgeMode | null>(null);
   const [showPlusChallenge, setShowPlusChallenge] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [textColor, setTextColor] = useState<string>(loadStoredTextColor);
+
+  // アプリ起動時、および設定変更のたびにドキュメントルートへ適用する。
+  // どの画面を開いていても常に最新の値が効くようにするため。
+  useEffect(() => {
+    document.documentElement.style.setProperty("--color-ink", textColor);
+    document.documentElement.style.setProperty("--color-ink-soft", toSoftColor(textColor));
+  }, [textColor]);
+
+  const handleTextColorChange = (color: string) => {
+    setTextColor(color);
+    try {
+      localStorage.setItem(TEXT_COLOR_STORAGE_KEY, color);
+    } catch {
+      // 保存できなくても表示上の変更自体は継続する
+    }
+  };
+
+  if (showSettings) {
+    return (
+      <div className="app-shell">
+        <SettingsPage
+          textColor={textColor}
+          onTextColorChange={handleTextColorChange}
+          onBack={() => setShowSettings(false)}
+        />
+      </div>
+    );
+  }
 
   if (showPlusChallenge) {
     return (
@@ -36,7 +93,11 @@ export default function App() {
 
   return mode === null ? (
     <div className="app-shell">
-      <AgeGate onSelect={setMode} onPlusChallenge={() => setShowPlusChallenge(true)} />
+      <AgeGate
+        onSelect={setMode}
+        onPlusChallenge={() => setShowPlusChallenge(true)}
+        onOpenSettings={() => setShowSettings(true)}
+      />
     </div>
   ) : (
     <ChatApp mode={mode} onChangeMode={() => setMode(null)} />

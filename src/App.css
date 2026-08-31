@@ -11,6 +11,7 @@
 
 /* ── 学年ゲート画面 ───────────────────────── */
 .age-gate {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -23,6 +24,35 @@
   text-align: center;
 }
 
+.age-gate__settings-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* .brand-markなどと揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.age-gate__settings-btn:hover,
+.age-gate__settings-btn:focus-visible {
+  border-color: var(--color-indigo);
+  background: rgba(255, 255, 255, 0.28);
+  transform: rotate(20deg);
+  outline: none;
+}
+
 .brand-mark {
   display: inline-flex;
   align-items: center;
@@ -30,7 +60,11 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: var(--color-indigo-soft);
+  /* .age-cardなどと合わせた半透明ガラス風。壁紙が透けて見える */
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--color-indigo);
   margin-bottom: 4px;
 }
@@ -134,7 +168,7 @@
   max-width: 560px;
   padding: 16px 20px;
   border-radius: var(--radius-lg);
-  border: 1.5px dashed var(--color-coral);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   /* .age-cardと同じくガラス風。コーラル色を薄く乗せつつ背景を透かす */
   background: rgba(251, 234, 227, 0.15);
   backdrop-filter: blur(22px) saturate(180%);
@@ -143,13 +177,13 @@
   cursor: pointer;
   text-align: left;
   font-family: var(--font-body);
-  transition: transform 0.15s ease, border-style 0.15s ease, box-shadow 0.15s ease,
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease,
     background 0.15s ease;
 }
 
 .plus-gate-cta:hover,
 .plus-gate-cta:focus-visible {
-  border-style: solid;
+  border-color: var(--color-coral);
   background: rgba(251, 234, 227, 0.28);
   transform: translateY(-2px);
   box-shadow: 0 10px 24px -16px rgba(226, 119, 91, 0.45);
@@ -169,7 +203,11 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #ffffff;
+  /* 親(.plus-gate-cta)と揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 20px;
 }
 
@@ -205,8 +243,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 24px;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-paper-raised);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  /* .age-cardなどと揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
 }
 
 .app-header__brand {
@@ -237,6 +278,18 @@
 .app-header__actions {
   display: flex;
   gap: 8px;
+}
+
+/* ヘッダーが半透明になったため、その上に乗るボタンも揃えてガラス風にする */
+.app-header__actions .btn {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.app-header__actions .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .btn {
@@ -375,8 +428,11 @@
   flex: 1;
   padding: 10px 12px;
   border-radius: var(--radius-md);
-  border: 1.5px solid var(--color-border);
-  background: var(--color-paper-raised);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* .age-cardなどと揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   font-size: 13px;
   font-weight: 600;
   color: var(--color-ink-soft);
@@ -386,7 +442,7 @@
 
 .main-tabs__item.is-active {
   border-color: var(--color-indigo);
-  background: var(--color-indigo-soft);
+  background: rgba(234, 240, 244, 0.55);
   color: var(--color-ink);
 }
 
@@ -401,7 +457,10 @@
 /* ── 学習ドリルの成績パネル(.app-mainの第2カラム。チャットタブの.privacy-panelと同じ列) ── */
 .learning-drill-sidebar {
   padding: 20px;
-  background: var(--color-paper-raised);
+  /* .age-cardなどと揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -455,8 +514,10 @@
 .learning-drill__tab {
   padding: 8px 14px;
   border-radius: 999px;
-  border: 1.5px solid var(--color-border);
-  background: var(--color-paper-raised);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   font-size: 13px;
   cursor: pointer;
   white-space: nowrap;
@@ -465,7 +526,7 @@
 
 .learning-drill__tab.is-active {
   border-color: var(--color-moss);
-  background: var(--color-moss-soft, var(--color-indigo-soft));
+  background: rgba(233, 241, 234, 0.6);
   font-weight: 600;
 }
 
@@ -509,8 +570,10 @@
   flex-shrink: 0;
   padding: 5px 12px;
   border-radius: 999px;
-  border: 1.5px solid var(--color-border);
-  background: var(--color-paper-raised);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   font-size: 12px;
   color: var(--color-ink-soft);
   cursor: pointer;
@@ -519,7 +582,7 @@
 
 .learning-drill__unit.is-active {
   border-color: var(--color-indigo);
-  background: var(--color-indigo-soft);
+  background: rgba(234, 240, 244, 0.55);
   color: var(--color-ink);
   font-weight: 600;
 }
@@ -536,14 +599,17 @@
 }
 
 .learning-drill__card {
-  border: 1.5px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-md);
   padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  background: var(--color-paper-raised);
+  /* .age-cardなどと揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
 }
 
 .learning-drill__question {
@@ -567,7 +633,9 @@
   text-align: center;
   border-radius: var(--radius-md);
   border: 2px solid var(--color-indigo);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   color: var(--color-ink);
 }
 
@@ -577,7 +645,7 @@
 }
 
 .learning-drill__input:disabled {
-  background: var(--color-paper-raised);
+  background: rgba(255, 255, 255, 0.25);
   color: var(--color-ink-soft);
   border-color: var(--color-border);
 }
@@ -595,8 +663,10 @@
   font-size: 17px;
   font-weight: 600;
   border-radius: var(--radius-md);
-  border: 2px solid var(--color-border);
-  background: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   color: var(--color-ink);
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
@@ -604,7 +674,7 @@
 
 .learning-drill__choice:hover:not(:disabled) {
   border-color: var(--color-indigo);
-  background: var(--color-indigo-soft);
+  background: rgba(234, 240, 244, 0.55);
 }
 
 .learning-drill__choice:disabled {
@@ -744,6 +814,19 @@
   gap: 16px;
 }
 
+/* このヘッダーは壁紙が透ける画面に直接乗っているため、
+   .btnの既定の不透明背景をここだけ半透明ガラス風に上書きする */
+.plus-challenge__header .btn {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.plus-challenge__header .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .plus-challenge__heading {
   display: flex;
   flex-direction: column;
@@ -754,7 +837,10 @@
   align-self: flex-start;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--color-coral-soft);
+  /* .plus-gate-ctaと揃えた半透明ガラス風 */
+  background: rgba(251, 234, 227, 0.28);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   color: #a8451f;
   font-size: 11px;
   font-weight: 700;
@@ -765,6 +851,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 20px;
+  color: var(--color-ink);
 }
 
 .plus-challenge__intro {
@@ -772,6 +859,98 @@
   font-size: 13.5px;
   color: var(--color-ink-soft);
   line-height: 1.7;
+}
+
+/* ── 設定ページ ───────────────────────── */
+.settings-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.settings-page__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* このヘッダーも壁紙が透ける画面に直接乗っているため、同様に半透明ガラス風にする */
+.settings-page__header .btn {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.settings-page__header .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.settings-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.settings-page__section {
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper-raised);
+  padding: 8px 20px;
+}
+
+.settings-page__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.settings-page__row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-page__row-label {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+
+.settings-page__row-desc {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+}
+
+.settings-page__color-input {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+}
+
+.settings-page__color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.settings-page__color-input::-webkit-color-swatch {
+  border: 1.5px solid var(--color-border);
+  border-radius: 50%;
 }
 
 .plus-challenge__categories {
@@ -784,7 +963,11 @@
   padding: 7px 14px;
   border-radius: 999px;
   border: 1.5px solid var(--color-border);
-  background: var(--color-paper-raised);
+  /* .age-cardや.plus-challenge__game-cardと合わせた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  color: var(--color-ink);
   font-size: 13px;
   cursor: pointer;
   white-space: nowrap;
@@ -808,7 +991,9 @@
   padding: 8px 12px;
   border-radius: 10px;
   border: 1.5px dashed var(--color-border);
-  background: var(--color-paper-raised);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   font-size: 12.5px;
   color: var(--color-ink-soft);
 }
@@ -846,15 +1031,21 @@
   text-align: left;
   padding: 20px 18px;
   border-radius: var(--radius-lg);
-  border: 1.5px solid var(--color-border);
-  background: var(--color-paper-raised);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* .age-cardと同じ半透明ガラス風。壁紙が透けて見える */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: 0 10px 32px -14px rgba(43, 42, 40, 0.22);
   cursor: pointer;
   font-family: var(--font-body);
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 .plus-challenge__game-card:hover,
 .plus-challenge__game-card:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
   border-color: var(--color-coral);
   transform: translateY(-3px);
   box-shadow: 0 10px 24px -14px rgba(226, 119, 91, 0.35);
@@ -874,6 +1065,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
+  color: var(--color-ink);
 }
 
 .plus-challenge__game-desc {
@@ -1457,7 +1649,10 @@
 /* ── プライバシーパネル ───────────────────────── */
 .privacy-panel {
   padding: 20px;
-  background: var(--color-paper-raised);
+  /* .learning-drill-sidebarと揃えた半透明ガラス風 */
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
   overflow-y: auto;
 }
 

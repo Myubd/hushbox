@@ -8,6 +8,8 @@ interface Props {
 // プラスチャレンジ画面。ゲームを選んでいないときは一覧(メニュー)を表示し、
 // 選ぶとそのゲームのコンポーネントに切り替わる。
 // ゲームの追加は src/games/registry.ts にエントリを1件足すだけでよい。
+// 文字色(--color-ink / --color-ink-soft)は設定ページ(SettingsPage)で選択され、
+// App.tsx側でドキュメントルートに適用される(アプリ全体に共通)。
 export function PlusChallenge({ onBack }: Props) {
   const [activeGameId, setActiveGameId] = useState<string | null>(null);
   const activeGame = GAMES.find((g) => g.id === activeGameId) ?? null;

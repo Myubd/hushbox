@@ -4,11 +4,22 @@ import type { AgeMode } from "../types";
 interface Props {
   onSelect: (mode: AgeMode) => void;
   onPlusChallenge: () => void;
+  onOpenSettings: () => void;
 }
 
-export function AgeGate({ onSelect, onPlusChallenge }: Props) {
+export function AgeGate({ onSelect, onPlusChallenge, onOpenSettings }: Props) {
   return (
     <div className="age-gate">
+      <button
+        type="button"
+        className="age-gate__settings-btn"
+        onClick={onOpenSettings}
+        aria-label="設定を開く"
+        title="設定"
+      >
+        ⚙️
+      </button>
+
       <div className="age-gate__intro">
         <span className="brand-mark" aria-hidden="true">
           <PaperPlaneIcon />
