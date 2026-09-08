@@ -3,6 +3,7 @@ import type { GameScreenProps } from "../types";
 import type { PuzzleDifficulty, PuzzleRegion } from "./types";
 import { PUZZLE_REGIONS, PUZZLE_REGION_LABELS, toBoardPanels } from "./types";
 import { usePuzzleData } from "./usePuzzleData";
+import { combineGroups } from "./layout";
 import { BoardPanel } from "./BoardPanel";
 
 /** 難易度ごとのスナップ判定距離(メートル)。ピースの粒度に合わせて調整。 */
@@ -38,6 +39,14 @@ export function PrefecturePuzzle({ onBack, onCorrect }: GameScreenProps) {
     if (status.status !== "ready") return [];
     return toBoardPanels(status.data);
   }, [status]);
+
+  // 本土・独立盤面(北海道・沖縄県など)・離島インセットを、すべて1つの盤面に
+  // まとめて表示する。全グループが同じ投影中心(グローバルな座標系)を
+  // 使っているため、実際の地理的な位置関係のまま1つの日本地図として表示できる。
+  const combined = useMemo(() => {
+    if (panels.length === 0) return null;
+    return combineGroups(panels.map((p) => ({ key: p.key, label: p.label, pieces: p.pieces })));
+  }, [panels]);
 
   const totalPieces = status.status === "ready" ? status.data.piece_count : 0;
 
@@ -150,36 +159,18 @@ export function PrefecturePuzzle({ onBack, onCorrect }: GameScreenProps) {
               )}
 
               <div className="prefecture-puzzle__panels">
-                {panels
-                  .filter((p) => p.kind === "mainland")
-                  .map((panel) => (
-                    <BoardPanel
-                      key={panel.key}
-                      label={panel.label}
-                      pieces={panel.pieces}
-                      kind={panel.kind}
-                      snapDistanceM={SNAP_DISTANCE_M[selection.difficulty]}
-                      onProgress={handleProgress}
-                    />
-                  ))}
+                {combined && (
+                  <BoardPanel
+                    key="combined-all"
+                    label="日本地図"
+                    pieces={combined.pieces}
+                    kind="combined"
+                    groupLabels={combined.groupLabels}
+                    snapDistanceM={SNAP_DISTANCE_M[selection.difficulty]}
+                    onProgress={handleProgress}
+                  />
+                )}
               </div>
-
-              {panels.some((p) => p.kind !== "mainland") && (
-                <div className="prefecture-puzzle__secondary-panels">
-                  {panels
-                    .filter((p) => p.kind !== "mainland")
-                    .map((panel) => (
-                      <BoardPanel
-                        key={panel.key}
-                        label={panel.label}
-                        pieces={panel.pieces}
-                        kind={panel.kind}
-                        snapDistanceM={SNAP_DISTANCE_M[selection.difficulty]}
-                        onProgress={handleProgress}
-                      />
-                    ))}
-                </div>
-              )}
             </>
           )}
         </>

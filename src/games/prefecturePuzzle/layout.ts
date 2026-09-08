@@ -117,3 +117,95 @@ export function packTray(
 
   return { slots, height: cursorY + rowHeight - startY };
 }
+
+/** リング(座標配列)の符号付き面積(shoelace公式)と重心を計算する。 */
+function ringAreaAndCentroid(ring: [number, number][]): { area: number; cx: number; cy: number } {
+  let area = 0;
+  let cx = 0;
+  let cy = 0;
+  for (let i = 0; i < ring.length; i++) {
+    const [x0, y0] = ring[i];
+    const [x1, y1] = ring[(i + 1) % ring.length];
+    const cross = x0 * y1 - x1 * y0;
+    area += cross;
+    cx += (x0 + x1) * cross;
+    cy += (y0 + y1) * cross;
+  }
+  area = area / 2;
+  if (Math.abs(area) < 1e-9) {
+    // 退化した(面積ほぼ0の)リングは単純平均で代用
+    const avg = ring.reduce((s, [x, y]) => [s[0] + x, s[1] + y], [0, 0]);
+    return { area: 0, cx: avg[0] / ring.length, cy: avg[1] / ring.length };
+  }
+  return { area: Math.abs(area), cx: cx / (6 * area), cy: cy / (6 * area) };
+}
+
+/**
+ * 複数ピースの中から「面積が最大の1つの島(サブポリゴン)」の絶対座標での
+ * 中心点を求める。
+ *
+ * 盤面全体のbbox中心をズームの基準点にすると、実在するが遠く離れた
+ * 複数の陸地を1つのピースが持つ場合(例: 北大東村が北大東島と約150km
+ * 離れた沖大東島を含む、小笠原村が父島諸島と1000km以上離れた南鳥島を
+ * 含む、など)に、どの陸地の上にも乗らない「海上の一点」が基準になって
+ * しまい、ズームしても何も見えない問題が起きる。最も大きい主要な陸地を
+ * 基準にすることで、ズームボタンを押したときに必ず何かが見える状態にする。
+ */
+export function findLargestPartCenter(pieces: PuzzlePiece[]): { x: number; y: number } {
+  let best = { area: -1, x: 0, y: 0 };
+  for (const piece of pieces) {
+    for (const ringSet of piece.polygons) {
+      const ext = ringSet[0];
+      if (!ext || ext.length < 3) continue;
+      const { area, cx, cy } = ringAreaAndCentroid(ext);
+      if (area > best.area) {
+        best = { area, x: cx + piece.correct_position.x, y: cy + piece.correct_position.y };
+      }
+    }
+  }
+  return { x: best.x, y: best.y };
+}
+
+export interface GroupInput {
+  key: string;
+  label: string;
+  pieces: PuzzlePiece[];
+}
+
+export interface GroupLabelMeta {
+  key: string;
+  label: string;
+  x: number;
+  y: number;
+}
+
+/**
+ * 複数のグループ(本土・北海道・沖縄県・小笠原村など)を1つの盤面として
+ * まとめる。全グループが元々同じ投影中心(グローバルな座標系)で生成されて
+ * いるため、座標の平行移動は行わず、実際の地理的な位置関係(本土から見て
+ * どの方角にどれくらい離れているか)をそのまま保持する(普通の日本地図と
+ * 同じ感覚で見える)。
+ *
+ * 各グループの見出しラベルは、そのグループの中で最も面積の大きい陸地の
+ * 中心付近に表示する(ズームボタンの基準点と同じ考え方。
+ * findLargestPartCenterのコメントも参照)。
+ */
+export function combineGroups(groups: GroupInput[]): { pieces: PuzzlePiece[]; groupLabels: GroupLabelMeta[] } {
+  const allPieces: PuzzlePiece[] = [];
+  const groupLabels: GroupLabelMeta[] = [];
+
+  for (const g of groups) {
+    allPieces.push(...g.pieces);
+    const center = findLargestPartCenter(g.pieces);
+    const bounds = computeBoardBounds(g.pieces);
+    groupLabels.push({
+      key: g.key,
+      label: g.label,
+      x: center.x,
+      y: bounds.minY - (bounds.maxY - bounds.minY) * 0.04,
+    });
+  }
+
+  return { pieces: allPieces, groupLabels };
+}
+

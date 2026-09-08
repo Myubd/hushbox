@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
 import type { GameScreenProps } from "../types";
 import { POINTS_PER_CORRECT_ANSWER } from "../../types";
@@ -7,9 +7,11 @@ import {
   DEFAULT_JUNIOR_CODE,
   MAX_BLOCKS,
   MAZE_DIFFICULTIES,
+  compassHint,
   generateMazeLevel,
   parseProgram,
   runProgram,
+  solvePath,
   type Command,
   type CommandKind,
   type MazeDifficulty,
@@ -67,6 +69,7 @@ export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
   const [pathIndex, setPathIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [correct, setCorrect] = useState(0);
+  const [showHint, setShowHint] = useState(false);
   const [total, setTotal] = useState(0);
 
   const isCodeMode = difficulty === "junior";
@@ -79,6 +82,7 @@ export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
     setRunResult(null);
     setPathIndex(0);
     setAnimating(false);
+    setShowHint(false);
   }, []);
 
   const changeDifficulty = useCallback(
@@ -233,6 +237,11 @@ export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
   const gridWidth = level.grid[0]?.length ?? 0;
   const cellRem = cellSizeRem(gridWidth);
 
+  const hintPathSet = useMemo(() => {
+    const path = solvePath(level);
+    return new Set(path.map((p) => `${p.x},${p.y}`));
+  }, [level]);
+
   return (
     <div className="mini-game">
       <div className="plus-challenge__header">
@@ -286,6 +295,9 @@ export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
               } else if (cell === "goal") {
                 content = "🚩";
                 cellClass += " programming-maze__cell--goal";
+              } else if (showHint && hintPathSet.has(`${x},${y}`)) {
+                content = "・";
+                cellClass += " programming-maze__cell--hint";
               }
               if (isAvatar) {
                 cellClass += " programming-maze__cell--avatar";
@@ -299,6 +311,15 @@ export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
             })
           )}
         </div>
+
+        <button
+          className="btn btn--ghost btn--small"
+          onClick={() => setShowHint((v) => !v)}
+          disabled={animating}
+          type="button"
+        >
+          {showHint ? "🙈 みちすじを隠す" : "💡 みちすじを見る"}
+        </button>
 
         <p className="programming-maze__hint">💡 {level.hint}</p>
 
@@ -426,6 +447,11 @@ export function ProgrammingMaze({ onBack, onCorrect }: GameScreenProps) {
           <div className={`learning-drill__feedback${runResult.success ? " is-correct" : " is-wrong"}`}>
             <p className="learning-drill__feedback-title">{runResult.success ? "🎉 せいかい!" : "❌ おしい!"}</p>
             <p className="learning-drill__feedback-body">{runResult.message}</p>
+            {!runResult.success && (
+              <p className="learning-drill__feedback-body">
+                {compassHint(level, runResult.path[runResult.path.length - 1])}
+              </p>
+            )}
             <button className="btn btn--primary" onClick={() => loadNext(difficulty)}>
               つぎの問題へ
             </button>

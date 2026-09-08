@@ -1,5 +1,5 @@
 import { memo, useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
-import type { PointerEvent, RefObject } from "react";
+import type { PointerEvent, MouseEvent, RefObject } from "react";
 import type { PuzzlePiece as PuzzlePieceData } from "./types";
 import { piecePathData } from "./layout";
 
@@ -11,6 +11,8 @@ interface Props {
   snapDistanceM: number;
   strokeWidth: number;
   onSolved: (pieceId: string) => void;
+  /** ホバー中のピース名をツールチップ表示するための通知。 */
+  onHoverChange: (name: string | null, clientX: number, clientY: number) => void;
 }
 
 /**
@@ -27,6 +29,7 @@ export const PuzzlePiece = memo(function PuzzlePiece({
   snapDistanceM,
   strokeWidth,
   onSolved,
+  onHoverChange,
 }: Props) {
   const gRef = useRef<SVGGElement | null>(null);
   const pathData = useMemo(() => piecePathData(piece), [piece]);
@@ -67,6 +70,8 @@ export const PuzzlePiece = memo(function PuzzlePiece({
   const handlePointerDown = useCallback(
     (evt: PointerEvent<SVGGElement>) => {
       if (locked) return;
+      // 盤面の背景ドラッグ(パン操作)と競合しないよう、ここでイベントの伝播を止める。
+      evt.stopPropagation();
       const g = gRef.current;
       if (!g) return;
       // 先に最前面へ付け替え(DOM上の再アタッチ)してから setPointerCapture する。
@@ -83,6 +88,7 @@ export const PuzzlePiece = memo(function PuzzlePiece({
     (evt: PointerEvent<SVGGElement>) => {
       const drag = dragInfo.current;
       if (!drag) return;
+      evt.stopPropagation();
       const cur = toSvgPoint(evt);
       pos.current = {
         x: drag.startPos.x + (cur.x - drag.startPointer.x),
@@ -93,19 +99,39 @@ export const PuzzlePiece = memo(function PuzzlePiece({
     [applyTransform, toSvgPoint]
   );
 
-  const handlePointerUp = useCallback(() => {
-    if (!dragInfo.current) return;
-    dragInfo.current = null;
-    const dx = pos.current.x - piece.correct_position.x;
-    const dy = pos.current.y - piece.correct_position.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist <= snapDistanceM) {
-      pos.current = { x: piece.correct_position.x, y: piece.correct_position.y };
-      applyTransform();
-      setLocked(true);
-      onSolved(piece.id);
-    }
-  }, [applyTransform, onSolved, piece.correct_position.x, piece.correct_position.y, piece.id, snapDistanceM]);
+  const handlePointerUp = useCallback(
+    (evt: PointerEvent<SVGGElement>) => {
+      if (!dragInfo.current) return;
+      evt.stopPropagation();
+      dragInfo.current = null;
+      const dx = pos.current.x - piece.correct_position.x;
+      const dy = pos.current.y - piece.correct_position.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist <= snapDistanceM) {
+        pos.current = { x: piece.correct_position.x, y: piece.correct_position.y };
+        applyTransform();
+        setLocked(true);
+        onSolved(piece.id);
+      }
+    },
+    [applyTransform, onSolved, piece.correct_position.x, piece.correct_position.y, piece.id, snapDistanceM]
+  );
+
+  const handleMouseEnter = useCallback(
+    (evt: MouseEvent<SVGGElement>) => {
+      onHoverChange(piece.name, evt.clientX, evt.clientY);
+    },
+    [onHoverChange, piece.name]
+  );
+  const handleMouseMove = useCallback(
+    (evt: MouseEvent<SVGGElement>) => {
+      onHoverChange(piece.name, evt.clientX, evt.clientY);
+    },
+    [onHoverChange, piece.name]
+  );
+  const handleMouseLeave = useCallback(() => {
+    onHoverChange(null, 0, 0);
+  }, [onHoverChange]);
 
   return (
     <g
@@ -115,19 +141,17 @@ export const PuzzlePiece = memo(function PuzzlePiece({
       // 書き込んだ値)が上書きされて巻き戻ってしまうため。初期位置は
       // 上のuseLayoutEffectで一度だけ設定し、以後はrefで直接更新する。
       className={`prefecture-puzzle__piece${locked ? " is-locked" : ""}`}
+      data-piece-id={piece.id}
       style={{ cursor: locked ? "default" : "grab", touchAction: "none", pointerEvents: locked ? "none" : "auto" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      <path
-        d={pathData}
-        className="prefecture-puzzle__piece-shape"
-        fillRule="evenodd"
-        strokeWidth={strokeWidth}
-      />
-      <title>{piece.name}</title>
+      <path d={pathData} className="prefecture-puzzle__piece-shape" fillRule="evenodd" strokeWidth={strokeWidth} />
     </g>
   );
 });
