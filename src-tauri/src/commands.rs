@@ -8,6 +8,8 @@ use crate::encyclopedia;
 use crate::pii_guard::{self, PiiType};
 use crate::prompts::{self, system_prompt_for};
 use crate::safety_drill::{self, DrillResult, DrillScenario};
+use crate::safety_policy::{self, SafetyLevel};
+use crate::tutor_state::{self, SharedTutorState, TutorSessionInfo, TutorStage};
 
 /// 送信前のPII検出プレビュー(サーバーではなく、この端末内のRustコードが処理)
 #[tauri::command]
@@ -201,6 +203,94 @@ async fn load_model_into_state(
 /// 1往復分のチャット履歴(ロール, 内容)
 pub type HistoryTurn = (String, String);
 
+/// send_messageが実際にLLMへ渡す入力一式(system prompt / history / 匿名化済み本文)。
+///
+/// NOTE(P0-4): モデル推論(`eng.generate_stream`)そのものを含まないため、
+/// モデル未読込のCI環境でも「PIIがこの構造体に含まれる文字列に残っていないか」を
+/// 単体テストできる。send_messageはこの関数が返した値以外をLLMへ渡してはならない、
+/// という契約になっている(この契約はtests moduleのアサーションで固定している)。
+struct PreparedLlmInput {
+    scan_result: pii_guard::ScanResult,
+    system_prompt: String,
+    history: Vec<HistoryTurn>,
+    /// NOTE(P1-9): 推論前の安全ポリシー判定結果。Dangerousの場合、
+    /// send_messageはLLMを呼ばずfixed_responseをそのまま返す。
+    safety: safety_policy::SafetyAssessment,
+}
+
+/// フロントエンドから届いた履歴を、送信直前にもう一度サーバー側でPIIスキャン・匿名化する。
+///
+/// NOTE(P0-4): フロントエンド(useChatEngine.ts)はユーザー発言をhistoryへ積む際に
+/// 既に`scan.redacted`(匿名化済みテキスト)を使っているが、それはあくまで
+/// フロントエンド側の実装上の取り決めであり、Rust側からは「本当に匿名化済みか」を
+/// 保証できない(将来別のUIから同じコマンドを呼ぶ、フロント側にバグが入る、といった
+/// ケースでも生のPIIがLLMに渡らないようにするための多層防御)。
+/// アシスタント発言側も、モデルがユーザー入力の固有名詞をそのまま復唱する可能性が
+/// ゼロではないため、同様に再スキャンする。
+fn redact_history_defense_in_depth(history: Vec<HistoryTurn>) -> Vec<HistoryTurn> {
+    history
+        .into_iter()
+        .map(|(role, content)| {
+            let redacted = pii_guard::scan(&content).redacted;
+            (role, redacted)
+        })
+        .collect()
+}
+
+/// PII検出→匿名化→(簡易RAGの参照情報を注入した)システムプロンプト組み立て、までを行う。
+/// 推論そのものは含まない(モデル未読込でも呼べる/テストできる)。
+fn prepare_llm_input(
+    mode: &str,
+    history: Vec<HistoryTurn>,
+    text: &str,
+    tutor_stage: Option<TutorStage>,
+) -> PreparedLlmInput {
+    let scan_result = pii_guard::scan(text);
+    let redacted_input = scan_result.redacted.clone();
+    let history = redact_history_defense_in_depth(history);
+
+    // ハルシネーション対策(簡易RAG): 質問文が問題バンク(カリキュラム範囲)や
+    // 百科事典(手作業で追加している一般知識)の項目と重なる場合、検証済みの
+    // 内容を「参照情報」としてシステムプロンプトに注入する。
+    // 該当が無い場合は何も注入せず、system_prompt_for()の基本ルール
+    // (「わからないことは正直に言う」)だけに委ねる。
+    const MAX_REFERENCE_SNIPPETS: usize = 3;
+    let mut snippets = learning_drill::search_curriculum_facts(&redacted_input, MAX_REFERENCE_SNIPPETS);
+    if snippets.len() < MAX_REFERENCE_SNIPPETS {
+        let remaining = MAX_REFERENCE_SNIPPETS - snippets.len();
+        snippets.extend(encyclopedia::search(&redacted_input, remaining));
+    }
+
+    let mut system_prompt = system_prompt_for(mode);
+    if let Some(reference_block) = prompts::build_reference_block(&snippets) {
+        system_prompt.push_str(&reference_block);
+    }
+
+    // NOTE(P1-9): 安全ポリシーの一次判定は匿名化前のtextに対して行う
+    // (自傷・暴力等のキーワードはPII検出パターンとは無関係な語彙のため、
+    // 匿名化の有無で判定結果が変わることは想定していないが、念のため
+    // 「ユーザーが実際に書いた文」を評価対象にしている)。
+    let safety = safety_policy::assess(text);
+    if let Some(note) = &safety.extra_system_note {
+        system_prompt.push_str(note);
+    }
+
+    // NOTE(P1-8): Tutor State Machine。フロントエンドが現在の宿題ヒント段階を
+    // 明示的に渡してきた場合のみ、その段階専用の指示をsystem promptに追記する。
+    // 段階の進行自体(次にどのステージへ進むか)はここでは行わない
+    // (start_tutor_session / advance_tutor_session コマンド側の責務)。
+    if let Some(stage) = tutor_stage {
+        system_prompt.push_str(stage.instruction());
+    }
+
+    PreparedLlmInput {
+        scan_result,
+        system_prompt,
+        history,
+        safety,
+    }
+}
+
 /// メッセージ送信。PII検出→匿名化→ローカル推論→ストリーミング応答("chat-chunk"イベント)。
 /// この関数の中に外部ネットワーク呼び出しは一切存在しない。
 #[tauri::command]
@@ -210,9 +300,30 @@ pub async fn send_message(
     mode: String,
     history: Vec<HistoryTurn>,
     text: String,
+    tutor_stage: Option<TutorStage>,
 ) -> Result<pii_guard::ScanResult, String> {
-    let scan_result = pii_guard::scan(&text);
-    let redacted_input = scan_result.redacted.clone();
+    let prepared = prepare_llm_input(&mode, history, &text, tutor_stage);
+
+    // NOTE(P1-9): Dangerousと判定された場合、LLMには一切渡さず
+    // (=推論すら行わず)、あらかじめ用意した安全な固定応答をそのまま返す。
+    // これにより、暴力・自傷・性的内容・危険物等については、
+    // 「1.5B〜7Bモデルがsystem promptの指示をたまたま外す」リスクを
+    // そもそも発生させない設計にしている。
+    if prepared.safety.level == SafetyLevel::Dangerous {
+        let fixed_response = prepared
+            .safety
+            .fixed_response
+            .clone()
+            .unwrap_or_else(|| "ごめんね、その内容にはお答えできないよ。".to_string());
+        let _ = app.emit("chat-chunk", &fixed_response);
+        let _ = app.emit("chat-done", ());
+        return Ok(prepared.scan_result);
+    }
+
+    let redacted_input = prepared.scan_result.redacted.clone();
+    let system_prompt = prepared.system_prompt;
+    let history = prepared.history;
+    let scan_result = prepared.scan_result;
 
     let (tx, mut rx) = mpsc::unbounded_channel::<GenerationChunk>();
     let app_for_stream = app.clone();
@@ -227,23 +338,6 @@ pub async fn send_message(
     });
 
     let engine_arc = engine.inner().clone();
-
-    // ハルシネーション対策(簡易RAG): 質問文が問題バンク(カリキュラム範囲)や
-    // 百科事典(手作業で追加している一般知識)の項目と重なる場合、検証済みの
-    // 内容を「参照情報」としてシステムプロンプトに注入する。
-    // 該当が無い場合は何も注入せず、system_prompt_for()の基本ルール
-    // (「わからないことは正直に言う」)だけに委ねる。
-    const MAX_REFERENCE_SNIPPETS: usize = 3;
-    let mut snippets = learning_drill::search_curriculum_facts(&redacted_input, MAX_REFERENCE_SNIPPETS);
-    if snippets.len() < MAX_REFERENCE_SNIPPETS {
-        let remaining = MAX_REFERENCE_SNIPPETS - snippets.len();
-        snippets.extend(encyclopedia::search(&redacted_input, remaining));
-    }
-
-    let mut system_prompt = system_prompt_for(&mode);
-    if let Some(reference_block) = prompts::build_reference_block(&snippets) {
-        system_prompt.push_str(&reference_block);
-    }
 
     // Candleの推論はCPU/GPUバウンドの同期処理なので、専用スレッドで実行し
     // Tauriの非同期ランタイムをブロックしない
@@ -269,5 +363,164 @@ pub async fn send_message(
         Ok(Ok(())) => Ok(scan_result),
         Ok(Err(e)) => Err(e.to_string()),
         Err(e) => Err(format!("推論タスクが異常終了しました: {e}")),
+    }
+}
+
+/// P1-8 Tutor State Machine: 新しい宿題設問に取り組み始めるときにフロントエンドが呼ぶ。
+/// 生成した(または生成済みの)session_idに対応する段階をUnderstandへ(再)設定して返す。
+#[tauri::command]
+pub async fn start_tutor_session(
+    tutor_state_mgr: State<'_, SharedTutorState>,
+    session_id: String,
+) -> Result<TutorSessionInfo, String> {
+    Ok(tutor_state::start_session(tutor_state_mgr.inner(), session_id).await)
+}
+
+/// P1-8 Tutor State Machine: 生徒の返答を受けて段階を進める。
+/// `user_attempted` は「生徒が自分で答えようとした発言だったか」をフロントエンドが
+/// 明示的に判定して渡す(このコマンド自身は文面から自動判定しない)。
+#[tauri::command]
+pub async fn advance_tutor_session(
+    tutor_state_mgr: State<'_, SharedTutorState>,
+    session_id: String,
+    user_attempted: bool,
+) -> Result<TutorSessionInfo, String> {
+    Ok(tutor_state::advance_session(tutor_state_mgr.inner(), session_id, user_attempted).await)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // ── P0-4: 「PIIがLLM promptに入らない」ことのE2E的な単体テスト ──
+    // 実際のモデル推論は行わず(モデルファイルが無いCI環境でも実行できる)、
+    // send_messageが実際にLLMへ渡す値(PreparedLlmInput)を直接検証する。
+
+    #[test]
+    fn redacted_input_never_contains_raw_phone_number() {
+        let raw = "僕の電話番号は090-1234-5678です。かけてください。";
+        let prepared = prepare_llm_input("elementary", vec![], raw, None);
+        assert!(
+            !prepared.scan_result.redacted.contains("090-1234-5678"),
+            "LLMへ渡す本文に生の電話番号が残っています: {}",
+            prepared.scan_result.redacted
+        );
+        assert!(
+            !prepared.scan_result.matches.is_empty(),
+            "電話番号はPIIとして検出されるはず"
+        );
+    }
+
+    #[test]
+    fn redacted_input_never_contains_raw_self_introduced_name() {
+        let raw = "名前は田中太郎です。よろしくお願いします。";
+        let prepared = prepare_llm_input("elementary", vec![], raw, None);
+        assert!(
+            !prepared.scan_result.redacted.contains("田中太郎"),
+            "LLMへ渡す本文に生の氏名が残っています: {}",
+            prepared.scan_result.redacted
+        );
+    }
+
+    #[test]
+    fn history_is_redacted_server_side_even_if_caller_passes_raw_pii() {
+        // フロントエンドは通常scan.redactedをhistoryに積むが、Rust側からは
+        // それを信用しきらず、渡された生のhistoryも再スキャンして守る
+        // (多層防御。フロントの実装が将来変わっても壊れないようにするテスト)。
+        let raw_history = vec![
+            ("user".to_string(), "私は田中太郎、090-1234-5678です".to_string()),
+            ("assistant".to_string(), "了解しました".to_string()),
+        ];
+        let prepared = prepare_llm_input("elementary", raw_history, "こんにちは", None);
+
+        for (_role, content) in &prepared.history {
+            assert!(
+                !content.contains("田中太郎"),
+                "history内に生の氏名が残っています: {content}"
+            );
+            assert!(
+                !content.contains("090-1234-5678"),
+                "history内に生の電話番号が残っています: {content}"
+            );
+        }
+    }
+
+    #[test]
+    fn system_prompt_and_history_do_not_leak_current_turn_raw_text() {
+        // system_prompt(RAG参照情報を含む)自体にも、今回のユーザー入力の生テキストが
+        // そのまま埋め込まれていないことを確認する(RAGは検索"キーワード"として
+        // redacted_inputを使うだけで、本文をプロンプトに丸ごと転記するわけではない)。
+        let raw = "私は田中太郎です。二次方程式の解き方を教えて。";
+        let prepared = prepare_llm_input("elementary", vec![], raw, None);
+        assert!(
+            !prepared.system_prompt.contains("田中太郎"),
+            "system_promptに生の氏名が含まれています: {}",
+            prepared.system_prompt
+        );
+    }
+
+    // ── P1-9: 安全ポリシーエンジンとの統合 ──
+
+    #[test]
+    fn dangerous_input_produces_fixed_response_via_safety_field() {
+        let prepared = prepare_llm_input("elementary", vec![], "死にたい", None);
+        assert_eq!(prepared.safety.level, crate::safety_policy::SafetyLevel::Dangerous);
+        assert!(prepared.safety.fixed_response.is_some());
+    }
+
+    #[test]
+    fn concerning_input_adds_extra_note_to_system_prompt() {
+        let prepared = prepare_llm_input("elementary", vec![], "クラスでいじめられていて辛い", None);
+        assert_eq!(
+            prepared.safety.level,
+            crate::safety_policy::SafetyLevel::Concerning
+        );
+        assert!(
+            prepared.system_prompt.contains("追加の注意"),
+            "Concerning判定時はsystem_promptに注意書きが追記されるべき"
+        );
+    }
+
+    #[test]
+    fn normal_input_does_not_alter_system_prompt_with_safety_note() {
+        let prepared = prepare_llm_input("elementary", vec![], "二次方程式の解き方を教えて", None);
+        assert_eq!(
+            prepared.safety.level,
+            crate::safety_policy::SafetyLevel::Normal
+        );
+        assert!(!prepared.system_prompt.contains("追加の注意"));
+    }
+
+    // ── P1-8: Tutor State Machineのsystem promptへの反映 ──
+
+    #[test]
+    fn tutor_stage_none_does_not_alter_system_prompt() {
+        let prepared = prepare_llm_input("elementary", vec![], "二次方程式の解き方を教えて", None);
+        assert!(!prepared.system_prompt.contains("今の段階"));
+    }
+
+    #[test]
+    fn tutor_hint_stage_forbids_answer_in_system_prompt() {
+        let prepared = prepare_llm_input(
+            "elementary",
+            vec![],
+            "二次方程式の解き方を教えて",
+            Some(TutorStage::Hint1),
+        );
+        assert!(prepared.system_prompt.contains("ヒント1/3"));
+        assert!(prepared
+            .system_prompt
+            .contains("答えそのものは絶対に言わないでください"));
+    }
+
+    #[test]
+    fn tutor_explanation_stage_allows_answer_in_system_prompt() {
+        let prepared = prepare_llm_input(
+            "elementary",
+            vec![],
+            "二次方程式の解き方を教えて",
+            Some(TutorStage::Explanation),
+        );
+        assert!(prepared.system_prompt.contains("種明かし"));
     }
 }

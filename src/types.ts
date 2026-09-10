@@ -94,7 +94,29 @@ export interface ModelSpec {
   tokenizerFile: string;
   approxSizeMb: number;
   note: string;
+  // Rust側でP0対応として追加したフィールド(pinされていないモデルは undefined/null)。
+  // フロントエンドでは現状表示に使っていないが、将来「このモデルは検証済みか」
+  // といったUI表示に使えるよう型だけ合わせておく。
+  revision?: string;
+  expectedSha256?: string | null;
+  tokenizerExpectedSha256?: string | null;
 }
+
+// Tutor State Machine(P1-8): 宿題ヒントの段階。Rust側 tutor_state::TutorStage と対応。
+// (現時点ではUIの配線は未実装。バックエンドAPIの型のみ用意している)
+export type TutorStage =
+  | "understand"
+  | "hint1"
+  | "hint2"
+  | "hint3"
+  | "explanation"
+  | "check";
+
+export interface TutorSessionInfo {
+  sessionId: string;
+  stage: TutorStage;
+}
+
 
 // 学習ドリル(国語・算数・理科・社会・英語・情報。AI不使用、Rust側で確定的に生成・採点)
 // ("算数(arithmetic)"の自由入力ドリルは、プラスチャレンジ内の「計算れんしゅう」ゲーム

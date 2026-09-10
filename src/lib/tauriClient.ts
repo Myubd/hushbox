@@ -11,6 +11,8 @@ import type {
   ModelSpec,
   PiiType,
   ScanResult,
+  TutorSessionInfo,
+  TutorStage,
 } from "../types";
 
 // このモジュールが唯一、Rustバックエンド(Tauri IPC)と話す場所。
@@ -125,7 +127,8 @@ export async function sendMessage(
   mode: string,
   history: [string, string][],
   text: string,
-  handlers: StreamHandlers
+  handlers: StreamHandlers,
+  tutorStage?: TutorStage
 ): Promise<ScanResult> {
   const unlistenChunk = await listen<string>("chat-chunk", (event) => {
     handlers.onChunk(event.payload);
@@ -139,6 +142,7 @@ export async function sendMessage(
       mode,
       history,
       text,
+      tutorStage: tutorStage ?? null,
     });
     return result;
   } catch (err) {
@@ -148,4 +152,32 @@ export async function sendMessage(
     unlistenChunk();
     unlistenDone();
   }
+}
+
+/**
+ * P1-8 Tutor State Machine: 新しい宿題設問に取り組み始めるときに呼ぶ。
+ * sessionIdは呼び出し側(このアプリの場合はフロントエンド)がUUID等で発行し、
+ * 同じ設問についてのやり取りが続く間、advanceTutorSessionへ渡し続ける。
+ *
+ * NOTE: この関数自体はバックエンドの状態を初期化するだけで、
+ * まだこのアプリのチャットUIには配線されていない(ヒント表示ボタン等の
+ * UI/UXは別途の設計が必要なため、今回のスコープには含めていない)。
+ */
+export async function startTutorSession(sessionId: string): Promise<TutorSessionInfo> {
+  return invoke<TutorSessionInfo>("start_tutor_session", { sessionId });
+}
+
+/**
+ * P1-8 Tutor State Machine: 生徒の返答を受けて段階を進める。
+ * userAttemptedは「生徒が自分で答えようとした発言だったか」の判定を
+ * フロントエンド側で明示的に行い、渡す(自動判定はしない設計)。
+ */
+export async function advanceTutorSession(
+  sessionId: string,
+  userAttempted: boolean
+): Promise<TutorSessionInfo> {
+  return invoke<TutorSessionInfo>("advance_tutor_session", {
+    sessionId,
+    userAttempted,
+  });
 }

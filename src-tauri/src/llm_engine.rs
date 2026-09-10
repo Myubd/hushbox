@@ -65,6 +65,23 @@ pub struct ModelSpec {
     /// このrevisionをmanifestに記録し、次回起動時に一致を検証する。
     #[serde(default = "default_revision")]
     pub revision: String,
+    /// アプリに埋め込む「モデルファイルの期待SHA-256」(pin)。
+    ///
+    /// NOTE(P0-2): これが`Some`の場合、ダウンロード直後 or キャッシュ再利用時の
+    /// いずれでも、実ファイルのSHA-256がこの値と一致しない限りロードを拒否する
+    /// (黙って再ダウンロードして「その時点でHugging Face側にあったファイル」を
+    /// 無条件に信頼することはしない)。これにより、revisionを固定していても
+    /// 万一のリポジトリ改ざん・中間者攻撃・別ファイルへの取り違えを検知できる。
+    ///
+    /// `None`の場合は従来通りmanifestとの一致比較のみで、真正性の担保は
+    /// revision固定の強さに依存する(=`scripts/fetch_model_pins.py`等で実際の
+    /// ハッシュを取得し、ここを埋めるまでは「pinされていない」状態)。
+    #[serde(default)]
+    pub expected_sha256: Option<String>,
+    /// アプリに埋め込む「トークナイザファイルの期待SHA-256」(pin)。
+    /// 意味・検証タイミングは`expected_sha256`と同じ。
+    #[serde(default)]
+    pub tokenizer_expected_sha256: Option<String>,
 }
 
 fn default_revision() -> String {
@@ -124,44 +141,46 @@ async fn sha256_of_file(path: &Path) -> Result<String, EngineError> {
 /// manifest.sha256と一致するかまで確認するようにした。
 /// サイズ比較は「壊れている可能性が高いケースをハッシュ計算(ファイル全体読み込み)
 /// する前に安く弾く」ための事前フィルタとして残している。
+/// 検証に成功した場合、そのmanifestを返す(呼び出し側でpin比較に使うため)。
+/// 失敗した場合はNoneを返し、再ダウンロードを促す。
 async fn verify_cached_file(
     dest_path: &Path,
     repo: &str,
     revision: &str,
     file: &str,
-) -> bool {
+) -> Option<CacheManifest> {
     if !dest_path.exists() {
-        return false;
+        return None;
     }
     let manifest_p = manifest_path(dest_path);
     let manifest_bytes = match tokio::fs::read(&manifest_p).await {
         Ok(b) => b,
         Err(_) => {
             eprintln!("[llm_engine] manifestが見つからないためキャッシュを再検証します: {}", dest_path.display());
-            return false;
+            return None;
         }
     };
     let manifest: CacheManifest = match serde_json::from_slice(&manifest_bytes) {
         Ok(m) => m,
-        Err(_) => return false,
+        Err(_) => return None,
     };
     if manifest.repo != repo || manifest.revision != revision || manifest.file != file {
         eprintln!(
             "[llm_engine] キャッシュのmanifestが期待値と不一致(repo/revision/fileが違う)のため再ダウンロードします: {}",
             dest_path.display()
         );
-        return false;
+        return None;
     }
     let actual_size = match tokio::fs::metadata(dest_path).await {
         Ok(m) => m.len(),
-        Err(_) => return false,
+        Err(_) => return None,
     };
     if actual_size != manifest.size {
         eprintln!(
             "[llm_engine] キャッシュファイルのサイズがmanifestと不一致(壊れている可能性)のため再ダウンロードします: {}",
             dest_path.display()
         );
-        return false;
+        return None;
     }
     // サイズが一致しても中身が差し替えられている可能性は排除できないため、
     // 実ファイルのSHA-256を再計算してmanifestの値と突き合わせる。
@@ -172,7 +191,7 @@ async fn verify_cached_file(
                 "[llm_engine] キャッシュファイルの読み込みに失敗したため再ダウンロードします: {}",
                 dest_path.display()
             );
-            return false;
+            return None;
         }
     };
     if actual_sha256 != manifest.sha256 {
@@ -180,12 +199,22 @@ async fn verify_cached_file(
             "[llm_engine] キャッシュファイルのSHA-256がmanifestと不一致(内容が差し替えられた可能性)のため再ダウンロードします: {}",
             dest_path.display()
         );
-        return false;
+        return None;
     }
-    true
+    Some(manifest)
 }
 
 /// 選択可能なモデルの一覧(表示順)。
+///
+/// NOTE(P0-1/P0-2): `revision`は本来commit SHAに固定し、`expected_sha256`/
+/// `tokenizer_expected_sha256`も実際の値で埋めるべきだが、このリポジトリの
+/// 開発・レビュー環境からはHugging Faceへ到達できず、正しい値をこの場で
+/// 検証しながら埋めることができなかった。誤ったハッシュを書き込むと
+/// 「誰も起動できないアプリ」になってしまうため、値を推測で埋めるのではなく、
+/// ネットワークに到達できる開発者が`scripts/fetch_model_pins.py`を実行して
+/// 正しい値を取得し、ここへ反映する運用にしている(関数末尾のPIN_TODOコメント参照)。
+/// pinを埋めるまでは`expected_sha256: None`のままなので、動作は既存の
+/// 「manifest比較のみ+可変revision警告ログ」から変わらない(後方互換)。
 pub fn available_models() -> Vec<ModelSpec> {
     vec![
         ModelSpec {
@@ -197,7 +226,10 @@ pub fn available_models() -> Vec<ModelSpec> {
             tokenizer_file: TOKENIZER_FILE.to_string(),
             approx_size_mb: 1100,
             note: "どの端末でも快適に動く軽量モデル。回答の精度は控えめ。".to_string(),
+            // PIN_TODO: `python3 scripts/fetch_model_pins.py qwen1_5b` の出力で置き換える。
             revision: default_revision(),
+            expected_sha256: None,
+            tokenizer_expected_sha256: None,
         },
         ModelSpec {
             id: "qwen3b".to_string(),
@@ -208,7 +240,10 @@ pub fn available_models() -> Vec<ModelSpec> {
             tokenizer_file: TOKENIZER_FILE.to_string(),
             approx_size_mb: 2100,
             note: "精度と速度のバランス型。16GB RAM・CPU推論でも実用範囲。".to_string(),
+            // PIN_TODO: `python3 scripts/fetch_model_pins.py qwen3b` の出力で置き換える。
             revision: default_revision(),
+            expected_sha256: None,
+            tokenizer_expected_sha256: None,
         },
         ModelSpec {
             id: "qwen7b".to_string(),
@@ -220,9 +255,23 @@ pub fn available_models() -> Vec<ModelSpec> {
             approx_size_mb: 4700,
             note: "8GB以上のVRAM(NVIDIA/Apple Silicon)推奨。CPUのみだと遅い場合あり。"
                 .to_string(),
+            // PIN_TODO: `python3 scripts/fetch_model_pins.py qwen7b` の出力で置き換える。
             revision: default_revision(),
+            expected_sha256: None,
+            tokenizer_expected_sha256: None,
         },
     ]
+}
+
+/// リリースビルド前に、全モデルがpin(revision固定+SHA-256固定)済みかを
+/// チェックするヘルパー。CIやリリーススクリプトから呼ぶことを想定している。
+/// (④の「配布前に可変revisionが残っていないか」を機械的に確認できるようにする)
+pub fn unpinned_model_ids() -> Vec<String> {
+    available_models()
+        .into_iter()
+        .filter(|m| m.revision == DEFAULT_REVISION || m.expected_sha256.is_none())
+        .map(|m| m.id)
+        .collect()
 }
 
 pub fn default_model_id() -> &'static str {
@@ -297,6 +346,7 @@ async fn download_plain(
     file: &str,
     dest_dir: &Path,
     label: &str,
+    expected_sha256: Option<&str>,
     progress_tx: &mpsc::UnboundedSender<LoadProgress>,
 ) -> Result<PathBuf, EngineError> {
     std::fs::create_dir_all(dest_dir).map_err(|e| EngineError::Download(e.to_string()))?;
@@ -314,9 +364,33 @@ async fn download_plain(
              古いままでも検証を通過してしまいます。可能であればcommit SHAに固定してください。"
         );
     }
+    // NOTE(P0-2): expected_sha256(アプリに埋め込まれたpin)が設定されていない場合、
+    // 真正性の担保はrevision固定の強さのみに依存する。pinが無いビルドだと
+    // わかるよう、こちらも明示的に警告しておく。
+    if expected_sha256.is_none() {
+        eprintln!(
+            "[llm_engine] 警告: {repo}/{file} には期待SHA-256のpinが設定されていません。\
+             scripts/fetch_model_pins.py で取得した値をModelSpecに設定することを推奨します。"
+        );
+    }
 
     // 既にキャッシュ済み「かつ」manifestの内容が今回の期待値と一致する場合のみ再利用する。
-    if verify_cached_file(&dest_path, repo, revision, file).await {
+    if let Some(manifest) = verify_cached_file(&dest_path, repo, revision, file).await {
+        // manifestとの一致だけでなく、アプリに埋め込まれたpin(あれば)とも
+        // 一致するか確認する。ここが不一致なら「ローカルの記録とアプリの
+        // 期待値がずれている」ということなので、黙って信頼せずエラーにする
+        // (再ダウンロードして"今HFにあるファイル"を無条件に信じることもしない)。
+        if let Some(expected) = expected_sha256 {
+            if manifest.sha256 != expected {
+                return Err(EngineError::Download(format!(
+                    "{label}のキャッシュのSHA-256({actual})が、アプリに埋め込まれた期待値({expected})と一致しません。\
+                     キャッシュが古い/差し替えられた可能性があります。手動でキャッシュディレクトリを削除するか、\
+                     アプリの更新をご確認ください: {path}",
+                    actual = manifest.sha256,
+                    path = dest_path.display(),
+                )));
+            }
+        }
         let _ = progress_tx.send(LoadProgress {
             stage: "downloading".into(),
             detail: format!("{label}はキャッシュ済みです(検証OK)"),
@@ -389,6 +463,22 @@ async fn download_plain(
     // 保存する。これにより「ファイルが存在する」ではなく「記録済みのサイズ・由来と一致する」
     // ことをキャッシュ再利用の条件にできる。
     let sha256 = sha256_of_file(&dest_path).await?;
+
+    // NOTE(P0-2): pinが設定されている場合、ダウンロードしたファイルが
+    // アプリの期待するSHA-256と一致するかをここで確認する。不一致のまま
+    // manifestを書いてキャッシュとして残してしまうと、次回起動時に
+    // 「manifestとは一致するがpinとは不一致」の状態が固定化されてしまうため、
+    // 不一致を検出した時点でダウンロード済みファイルごと破棄しエラーにする。
+    if let Some(expected) = expected_sha256 {
+        if sha256 != expected {
+            let _ = tokio::fs::remove_file(&dest_path).await;
+            return Err(EngineError::Download(format!(
+                "{label}のダウンロードしたファイルのSHA-256({sha256})が、アプリに埋め込まれた期待値({expected})と\
+                 一致しません(改ざん・破損・意図しないファイルの可能性)。ダウンロード先: {url}"
+            )));
+        }
+    }
+
     let size = tokio::fs::metadata(&dest_path)
         .await
         .map(|m| m.len())
@@ -432,6 +522,7 @@ impl LlmEngine {
             &spec.file,
             &model_dir,
             "モデルファイル",
+            spec.expected_sha256.as_deref(),
             &progress_tx,
         )
         .await?;
@@ -448,6 +539,7 @@ impl LlmEngine {
             &spec.tokenizer_file,
             &tokenizer_dir,
             "トークナイザ",
+            spec.tokenizer_expected_sha256.as_deref(),
             &progress_tx,
         )
         .await?;
@@ -773,8 +865,8 @@ mod tests {
 
         // manifestを書いていない状態では、ファイルが存在してもキャッシュとして
         // 信頼してはいけない(旧実装の「existsだけで判定」バグの再発防止)。
-        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
-        assert!(!ok);
+        let result = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        assert!(result.is_none());
 
         let _ = tokio::fs::remove_dir_all(&dir).await;
     }
@@ -804,8 +896,8 @@ mod tests {
         .await
         .unwrap();
 
-        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
-        assert!(ok);
+        let result = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        assert!(result.is_some());
 
         let _ = tokio::fs::remove_dir_all(&dir).await;
     }
@@ -844,9 +936,9 @@ mod tests {
         assert_eq!(tampered_content.len(), original_content.len());
         tokio::fs::write(&dest, tampered_content).await.unwrap();
 
-        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        let result = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
         assert!(
-            !ok,
+            result.is_none(),
             "サイズが同じでも中身が差し替えられたキャッシュはSHA-256不一致で拒否すべき"
         );
 
@@ -876,8 +968,8 @@ mod tests {
         .await
         .unwrap();
 
-        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
-        assert!(!ok, "revisionが違うキャッシュは再ダウンロードすべき");
+        let result = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        assert!(result.is_none(), "revisionが違うキャッシュは再ダウンロードすべき");
 
         let _ = tokio::fs::remove_dir_all(&dir).await;
     }
@@ -906,10 +998,109 @@ mod tests {
         .await
         .unwrap();
 
-        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
-        assert!(!ok, "サイズが食い違うキャッシュ(壊れている可能性)は再ダウンロードすべき");
+        let result = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        assert!(
+            result.is_none(),
+            "サイズが食い違うキャッシュ(壊れている可能性)は再ダウンロードすべき"
+        );
 
         let _ = tokio::fs::remove_dir_all(&dir).await;
+    }
+
+    // ── P0-2: アプリ埋め込みpin(expected_sha256)の検証 ──
+    // download_plain全体(実HTTPを伴う)ではなく、pin比較ロジックの本体である
+    // 「manifest.sha256 と expected_sha256 の比較」をverify_cached_fileの
+    // 戻り値(CacheManifest)を使って直接検証する。実ネットワーク不要。
+
+    #[tokio::test]
+    async fn pin_matches_when_expected_sha256_equals_manifest() {
+        let dir = std::env::temp_dir().join(format!("hushbox_test_{}", uuid_like()));
+        tokio::fs::create_dir_all(&dir).await.unwrap();
+        let dest = dir.join("model.gguf");
+        let content = b"dummy-model-bytes";
+        tokio::fs::write(&dest, content).await.unwrap();
+        let real_sha256 = sha256_of_file(&dest).await.unwrap();
+
+        let manifest = CacheManifest {
+            repo: "some/repo".to_string(),
+            revision: "deadbeef".to_string(),
+            file: "model.gguf".to_string(),
+            sha256: real_sha256.clone(),
+            size: content.len() as u64,
+            downloaded_at_unix: 0,
+        };
+        tokio::fs::write(
+            manifest_path(&dest),
+            serde_json::to_vec_pretty(&manifest).unwrap(),
+        )
+        .await
+        .unwrap();
+
+        let result = verify_cached_file(&dest, "some/repo", "deadbeef", "model.gguf").await;
+        let manifest = result.expect("manifestは一致するはず");
+        assert_eq!(
+            manifest.sha256, real_sha256,
+            "pinとmanifest.sha256が一致する場合はそのまま信頼してよい"
+        );
+
+        let _ = tokio::fs::remove_dir_all(&dir).await;
+    }
+
+    #[tokio::test]
+    async fn pin_mismatch_is_detectable_even_when_manifest_itself_is_internally_consistent() {
+        // manifest自体は(repo/revision/file/size/sha256が全部)矛盾なく揃っていても、
+        // アプリに埋め込まれたpin(expected_sha256)と食い違うケースを想定したテスト。
+        // 例: ローカルキャッシュのmanifestは正しく書かれているが、アプリの新バージョンで
+        // 別のモデルにpinし直された(=ユーザーは古いキャッシュを使い続けてしまう)ケース。
+        let dir = std::env::temp_dir().join(format!("hushbox_test_{}", uuid_like()));
+        tokio::fs::create_dir_all(&dir).await.unwrap();
+        let dest = dir.join("model.gguf");
+        let content = b"dummy-model-bytes";
+        tokio::fs::write(&dest, content).await.unwrap();
+        let real_sha256 = sha256_of_file(&dest).await.unwrap();
+
+        let manifest = CacheManifest {
+            repo: "some/repo".to_string(),
+            revision: "deadbeef".to_string(),
+            file: "model.gguf".to_string(),
+            sha256: real_sha256,
+            size: content.len() as u64,
+            downloaded_at_unix: 0,
+        };
+        tokio::fs::write(
+            manifest_path(&dest),
+            serde_json::to_vec_pretty(&manifest).unwrap(),
+        )
+        .await
+        .unwrap();
+
+        let result = verify_cached_file(&dest, "some/repo", "deadbeef", "model.gguf").await;
+        let manifest = result.expect("manifest自体は一致するはず");
+        let expected_by_app = "totally-different-pinned-sha256";
+        assert_ne!(
+            manifest.sha256, expected_by_app,
+            "download_plain はこの不一致をエラーとして扱うべき(P0-2)"
+        );
+
+        let _ = tokio::fs::remove_dir_all(&dir).await;
+    }
+
+    #[test]
+    fn unpinned_models_are_reported_until_pins_are_filled() {
+        // scripts/fetch_model_pins.py で実際の値を埋めるまでは、全モデルが
+        // 「revisionが可変("main") または expected_sha256が未設定」のため
+        // unpinned_model_ids()に列挙され続けるはずのガードテスト。
+        // pinを埋めたら、対応するモデルidがこのリストから消えることを
+        // CI等で確認できる(=埋め忘れたモデルだけが残り続ける)。
+        let unpinned = unpinned_model_ids();
+        let all_ids: Vec<String> = available_models().into_iter().map(|m| m.id).collect();
+        for id in &all_ids {
+            assert!(
+                unpinned.contains(id),
+                "{id} は現時点でpin未設定のはずです。pinを埋めたらこのテストの前提が変わるので、\
+                 テストごと更新してください。"
+            );
+        }
     }
 
     fn uuid_like() -> String {
@@ -936,9 +1127,9 @@ mod tests {
 
         // dest_path自体は存在しない
         assert!(!dest.exists());
-        let ok = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
+        let result = verify_cached_file(&dest, "some/repo", "main", "model.gguf").await;
         assert!(
-            !ok,
+            result.is_none(),
             "本体ファイルが無い(.partしか無い)状態はキャッシュとして信頼してはいけない"
         );
 

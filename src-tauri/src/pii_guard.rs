@@ -110,6 +110,38 @@ static CITY_RESIDENCE_RE: Lazy<Regex> = Lazy::new(|| {
     .unwrap()
 });
 
+// 都道府県名の略称(「東京都」ではなく「東京」等)を居住表現と組み合わせて検出する。
+//
+// 背景(P1「住所検出の精度」): detect_address()はPREFECTURESの正式名称
+// (「東京都」「大阪府」等)しか拾わないため、「東京に住んでいます」のように
+// 会話でよく使う略称だと見逃していた。かといって「東京」等の略称を
+// CITY_RESIDENCE_RE同様の緩い条件(居住を示す語との組み合わせ)無しに
+// 単純出現だけで拾ってしまうと、「京都には金閣寺があります」のような
+// 社会科の質問(このアプリの主要な用途の一つ)まで誤って住所として
+// 検出・匿名化してしまい、実用性を大きく損なう。そのため、こちらも
+// CITY_RESIDENCE_REと同じく「居住を示す語」を伴う場合のみに限定する。
+static PREFECTURE_RESIDENCE_RE: Lazy<Regex> = Lazy::new(|| {
+    let mut names: Vec<String> = PREFECTURES.iter().map(|p| regex::escape(p)).collect();
+    for p in PREFECTURES {
+        // 「北海道」は略称にする意味が薄い(「北海」とは通常言わない)ため除外。
+        // それ以外は末尾の1文字(都/道/府/県、いずれもUTF-8で3バイト)を
+        // 取り除いたものを略称として追加する(例:「神奈川県」→「神奈川」)。
+        if *p == "北海道" {
+            continue;
+        }
+        let abbreviated = &p[..p.len() - "県".len()];
+        names.push(regex::escape(abbreviated));
+    }
+    // 長い名称を先に試すことで、"東京都"のような正式名称が先に消費され、
+    // 意図せず短い略称側にマッチが分割されるのを防ぐ。
+    names.sort_by_key(|n| std::cmp::Reverse(n.len()));
+    let pattern = format!(
+        r"(?:{})(?:に住んで|に住んでいます|に住んでる|在住|出身です|出身だよ)",
+        names.join("|")
+    );
+    Regex::new(&pattern).unwrap()
+});
+
 const PREFECTURES: &[&str] = &[
     "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
     "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
@@ -290,6 +322,7 @@ pub fn scan(text: &str) -> ScanResult {
     all.extend(detect_regex(text, &SCHOOL_RE, PiiType::School));
     all.extend(detect_address(text));
     all.extend(detect_regex(text, &CITY_RESIDENCE_RE, PiiType::Address));
+    all.extend(detect_regex(text, &PREFECTURE_RESIDENCE_RE, PiiType::Address));
     all.extend(detect_name(text));
 
     let ranges = dedupe(all);
@@ -452,6 +485,46 @@ mod tests {
         // 「住んでいる」等の文脈が無い単なる地名の言及は、拾いすぎ(誤検知)を避ける
         let r = scan("松本市はりんごが有名です");
         assert!(!r.matches.iter().any(|m| m.kind == PiiType::Address));
+    }
+
+    // ── P1「住所検出の精度」: 都道府県の略称(「東京都」ではなく「東京」)対応 ──
+
+    #[test]
+    fn detects_abbreviated_prefecture_with_residence_context() {
+        // 従来はPREFECTURESの正式名称("東京都"等)しか拾えず、
+        // 会話でよく使う略称("東京")だけだと見逃していた。
+        let r = scan("東京に住んでいます");
+        assert!(
+            r.matches.iter().any(|m| m.kind == PiiType::Address),
+            "「東京に住んでいます」は住所として検出されるべき"
+        );
+    }
+
+    #[test]
+    fn detects_kanagawa_abbreviated_form() {
+        let r = scan("神奈川出身です");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Address));
+    }
+
+    #[test]
+    fn abbreviated_prefecture_mention_without_residence_context_is_not_flagged() {
+        // 社会科の質問など、居住とは無関係な地名の言及まで住所扱いにしないことを確認する
+        // (このアプリの主要な用途である学習質問を壊さないための回帰テスト)。
+        let r = scan("京都には金閣寺があります");
+        assert!(
+            !r.matches.iter().any(|m| m.kind == PiiType::Address),
+            "居住を示す語が無い単なる地名の言及は住所として検出すべきではない"
+        );
+        let r2 = scan("東京について教えて");
+        assert!(!r2.matches.iter().any(|m| m.kind == PiiType::Address));
+    }
+
+    #[test]
+    fn full_prefecture_name_still_detected_as_before() {
+        // 略称対応の追加によって、既存の正式名称ベースの検出(住所全体を拾う挙動)が
+        // 壊れていないことを確認する回帰テスト。
+        let r = scan("東京都渋谷区に住んでいます");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::Address));
     }
 
     #[test]
