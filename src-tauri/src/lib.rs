@@ -7,6 +7,8 @@ mod llm_engine;
 mod pii_benchmark;
 mod pii_guard;
 mod prompts;
+#[cfg(test)]
+mod rag_benchmark;
 mod safety_drill;
 mod safety_policy;
 mod tutor_state;

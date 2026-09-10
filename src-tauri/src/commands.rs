@@ -523,4 +523,27 @@ mod tests {
         );
         assert!(prepared.system_prompt.contains("種明かし"));
     }
+
+    // ── P1-10: RAG(簡易参照情報の注入)の統合テスト ──
+    // prepare_llm_input は commands.rs 内でのみ呼べる(private)ため、
+    // 検索ロジック自体の網羅性は rag_benchmark.rs で計測し、
+    // ここでは「system_promptへちゃんと注入されるか/されないか」の配線を確認する。
+
+    #[test]
+    fn relevant_query_injects_reference_block_into_system_prompt() {
+        let prepared = prepare_llm_input("elementary", vec![], "警察官の仕事について教えて", None);
+        assert!(
+            prepared.system_prompt.contains("[参考情報]"),
+            "カリキュラム内の語句を含む質問には参考情報が注入されるべき"
+        );
+    }
+
+    #[test]
+    fn unrelated_query_does_not_inject_reference_block() {
+        let prepared = prepare_llm_input("elementary", vec![], "テストの点数が心配です", None);
+        assert!(
+            !prepared.system_prompt.contains("[参考情報]"),
+            "無関係な雑談文には参考情報を注入すべきではない"
+        );
+    }
 }
