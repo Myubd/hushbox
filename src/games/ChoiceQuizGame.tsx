@@ -30,6 +30,8 @@ interface Props<T extends ChoiceQuizItem> {
   emptyMessage?: string;
   /** ヘッダー直下に常時表示する注記(「準備中」など、問題データが不十分なゲームで使う想定)。 */
   notice?: ReactNode;
+  /** ヘッダーの直後、noticeの前に差し込む追加UI(カテゴリ切り替えボタン等)。 */
+  headerExtra?: ReactNode;
   /**
    * 正解1問あたりのポイント。このゲーム形式には難易度の概念がないため、
    * 呼び出し側が固定値を渡す想定(未指定時は「ふつう」相当の2p)。
@@ -55,6 +57,7 @@ export function ChoiceQuizGame<T extends ChoiceQuizItem>({
   onBack,
   emptyMessage,
   notice,
+  headerExtra,
   pointsPerCorrect = 2,
   onCorrect,
 }: Props<T>) {
@@ -112,6 +115,8 @@ export function ChoiceQuizGame<T extends ChoiceQuizItem>({
           </span>
         </div>
       </div>
+
+      {headerExtra}
 
       {notice && <p className="plus-challenge__notice">{notice}</p>}
 

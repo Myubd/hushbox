@@ -2227,3 +2227,64 @@
   color: var(--color-coral);
   font-weight: 600;
 }
+
+/* ── メイク10 ── */
+
+.make10__digits {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-indigo);
+  margin: 0;
+  text-align: center;
+}
+
+.make10__rule {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  margin: 0;
+  text-align: center;
+}
+
+.make10__hint-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.make10__hint-text {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+/* 数式は数字だけの答えより長くなるため、learning-drill__input の固定120pxでは狭すぎる */
+.make10__input {
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* ── 倉頡パズル ── */
+
+.cangjie__selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.cangjie__prompt {
+  text-align: center;
+}
+
+.cangjie__parts {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-indigo);
+  margin: 4px 0 0;
+  letter-spacing: 0.04em;
+}

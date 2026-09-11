@@ -4,6 +4,8 @@ import { KanjiSquare } from "./kanjiSquare/KanjiSquare";
 import { ArithmeticPractice } from "./arithmeticPractice/ArithmeticPractice";
 import { PrefecturePuzzle } from "./prefecturePuzzle/PrefecturePuzzle";
 import { ProgrammingMaze } from "./programmingMaze/ProgrammingMaze";
+import { Make10 } from "./make10/Make10";
+import { CangjieQuiz } from "./cangjie/CangjieQuiz";
 import type { GameEntry } from "./types";
 
 /**
@@ -60,5 +62,19 @@ export const GAMES: GameEntry[] = [
     icon: "🤖",
     description: "命令ブロック(じゅんじょ・くりかえし・もし)を組み合わせてキャラクターをゴールまで導こう",
     Component: ProgrammingMaze,
+  },
+  {
+    id: "make10",
+    label: "メイク10",
+    icon: "🔟",
+    description: "与えられた数字を1回ずつ使い、+ - × ÷ とカッコで答えが10になる式を作ろう(4〜7桁)",
+    Component: Make10,
+  },
+  {
+    id: "cangjie",
+    label: "倉頡パズル",
+    icon: "🈴",
+    description: "漢字を構成パーツに分解した並びから、元の漢字・熟語を当てよう(4択あり/なしを選べる)",
+    Component: CangjieQuiz,
   },
 ];
