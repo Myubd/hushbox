@@ -681,6 +681,152 @@
   cursor: not-allowed;
 }
 
+/* 複数選択クイズ: 採点前に選んでいる選択肢を強調(トグル式) */
+.learning-drill__choice.is-selected:not(:disabled) {
+  border-color: var(--color-indigo);
+  background: rgba(234, 240, 244, 0.75);
+}
+
+/* ヒントゲーム: 設定・カテゴリ表示・ヒント一覧・目隠し画面 */
+.hint-game__setup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.hint-game__setup-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hint-game__setup-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.hint-game__category {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.hint-game__role-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-indigo);
+}
+
+.hint-game__limit-note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.hint-game__hints {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.hint-game__hint {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-align: center;
+}
+
+.hint-game__cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.hint-game__cover-icon {
+  margin: 0;
+  font-size: 40px;
+}
+
+.hint-game__cover-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.hint-game__cover-body {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  max-width: 320px;
+}
+
+.hint-game__result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* 一致クイズ: 段階的に増えていく問題文の表示 */
+.consensus-quiz__question {
+  max-width: 340px;
+  line-height: 1.7;
+}
+
+.consensus-quiz__display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  width: 100%;
+}
+
+.consensus-quiz__placeholder {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
+.consensus-quiz__caret {
+  display: inline-block;
+  margin-left: 1px;
+  color: var(--color-indigo);
+  animation: consensus-quiz-blink 0.8s step-start infinite;
+}
+
+@keyframes consensus-quiz-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.consensus-quiz__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* 採点後: 選ばれなかった選択肢は薄く(ただし文字が読めなくなるほどではない濃さに) */
 .learning-drill__choice:disabled.is-neutral {
   opacity: 0.55;

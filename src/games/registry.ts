@@ -6,6 +6,10 @@ import { PrefecturePuzzle } from "./prefecturePuzzle/PrefecturePuzzle";
 import { ProgrammingMaze } from "./programmingMaze/ProgrammingMaze";
 import { Make10 } from "./make10/Make10";
 import { CangjieQuiz } from "./cangjie/CangjieQuiz";
+import { NumberQuiz } from "./numberQuiz/NumberQuiz";
+import { ColorQuiz } from "./colorQuiz/ColorQuiz";
+import { HintGame } from "./hintGame/HintGame";
+import { ConsensusQuiz } from "./consensusQuiz/ConsensusQuiz";
 import type { GameEntry } from "./types";
 
 /**
@@ -76,5 +80,35 @@ export const GAMES: GameEntry[] = [
     icon: "🈴",
     description: "漢字を構成パーツに分解した並びから、元の漢字・熟語を当てよう(4択あり/なしを選べる)",
     Component: CangjieQuiz,
+  },
+  {
+    id: "number-quiz",
+    label: "数字クイズ",
+    icon: "🔢",
+    description: "選択肢の数字を足し算して、答えの数になる組み合わせをすべて選ぼう(かんたん/ふつう/むずかしい)",
+    Component: NumberQuiz,
+  },
+  {
+    id: "color-quiz",
+    label: "色クイズ",
+    icon: "🎨",
+    description: "国旗などのお題を見て、実際に使われている色を選択肢の中からすべて選ぼう(かんたん/ふつう/むずかしい)",
+    Component: ColorQuiz,
+  },
+  {
+    id: "hint-game",
+    label: "ヒントゲーム",
+    icon: "💡",
+    description:
+      "4〜6人でわいわい遊ぶパスアンドプレイ・パーティーゲーム。3〜5人が自分で考えたヒントを1つずつ入力し、最後の1人がお題を当てよう(難易度でヒントの文字数制限が変わる、カテゴリ絞り込みあり)",
+    Component: HintGame,
+  },
+  {
+    id: "consensus-quiz",
+    label: "バトンタッチクイズ",
+    icon: "🎽",
+    description:
+      "4人で遊ぶパスアンドプレイ・パーティーゲーム。1人ずつスタート/ストップで問題文を1文字ずつ表示させて答えを入力、次の人はその続きから見られる(バトンタッチ形式)。4人の答えがぴったり一致すれば成功(難易度・教科の絞り込みあり)",
+    Component: ConsensusQuiz,
   },
 ];
