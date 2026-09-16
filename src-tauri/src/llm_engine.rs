@@ -78,6 +78,13 @@ pub struct ModelSpec {
     /// ハッシュを取得し、ここを埋めるまでは「pinされていない」状態)。
     #[serde(default)]
     pub expected_sha256: Option<String>,
+    /// トークナイザ側リポジトリ(`tokenizer_repo`)のrevision。
+    /// モデルとトークナイザは別リポジトリであることが多く、commit SHAは
+    /// リポジトリごとに異なるため、`revision`(モデル側)とは別に持つ。
+    /// これを分けずに`revision`を使い回すと、pinを埋めた瞬間にトークナイザの
+    /// ダウンロードURLが不正な revision を指してしまい、404で失敗する。
+    #[serde(default = "default_revision")]
+    pub tokenizer_revision: String,
     /// アプリに埋め込む「トークナイザファイルの期待SHA-256」(pin)。
     /// 意味・検証タイミングは`expected_sha256`と同じ。
     #[serde(default)]
@@ -206,15 +213,14 @@ async fn verify_cached_file(
 
 /// 選択可能なモデルの一覧(表示順)。
 ///
-/// NOTE(P0-1/P0-2): `revision`は本来commit SHAに固定し、`expected_sha256`/
-/// `tokenizer_expected_sha256`も実際の値で埋めるべきだが、このリポジトリの
-/// 開発・レビュー環境からはHugging Faceへ到達できず、正しい値をこの場で
-/// 検証しながら埋めることができなかった。誤ったハッシュを書き込むと
-/// 「誰も起動できないアプリ」になってしまうため、値を推測で埋めるのではなく、
-/// ネットワークに到達できる開発者が`scripts/fetch_model_pins.py`を実行して
-/// 正しい値を取得し、ここへ反映する運用にしている(関数末尾のPIN_TODOコメント参照)。
-/// pinを埋めるまでは`expected_sha256: None`のままなので、動作は既存の
-/// 「manifest比較のみ+可変revision警告ログ」から変わらない(後方互換)。
+/// NOTE(P0-1/P0-2 解消済み): `revision`/`tokenizer_revision`をcommit SHAに固定し、
+/// `expected_sha256`/`tokenizer_expected_sha256`も`scripts/fetch_model_pins.py`の
+/// 出力で実際の値を埋めてある。モデルrepoとtokenizer repoは別リポジトリで
+/// commit SHAが一致しないため、revisionを2つのフィールドに分けている
+/// (`ModelSpec::tokenizer_revision`のドキュメント参照)。
+/// 新しいモデルを追加する場合は、`scripts/fetch_model_pins.py`にそのモデルの
+/// エントリを足してから実行し、出力をそのままここに貼り付けること。
+/// (`all_models_are_pinned`テストが埋め忘れを検知する)
 pub fn available_models() -> Vec<ModelSpec> {
     vec![
         ModelSpec {
@@ -226,10 +232,15 @@ pub fn available_models() -> Vec<ModelSpec> {
             tokenizer_file: TOKENIZER_FILE.to_string(),
             approx_size_mb: 1100,
             note: "どの端末でも快適に動く軽量モデル。回答の精度は控えめ。".to_string(),
-            // PIN_TODO: `python3 scripts/fetch_model_pins.py qwen1_5b` の出力で置き換える。
-            revision: default_revision(),
-            expected_sha256: None,
-            tokenizer_expected_sha256: None,
+            // fetch_model_pins.py qwen1_5b の出力で埋め済み。
+            revision: "91cad51170dc346986eccefdc2dd33a9da36ead9".to_string(),
+            expected_sha256: Some(
+                "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e".to_string(),
+            ),
+            tokenizer_revision: "989aa7980e4cf806f80c7fef2b1adb7bc71aa306".to_string(),
+            tokenizer_expected_sha256: Some(
+                "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539".to_string(),
+            ),
         },
         ModelSpec {
             id: "qwen3b".to_string(),
@@ -240,10 +251,15 @@ pub fn available_models() -> Vec<ModelSpec> {
             tokenizer_file: TOKENIZER_FILE.to_string(),
             approx_size_mb: 2100,
             note: "精度と速度のバランス型。16GB RAM・CPU推論でも実用範囲。".to_string(),
-            // PIN_TODO: `python3 scripts/fetch_model_pins.py qwen3b` の出力で置き換える。
-            revision: default_revision(),
-            expected_sha256: None,
-            tokenizer_expected_sha256: None,
+            // fetch_model_pins.py qwen3b の出力で埋め済み。
+            revision: "7dabda4d13d513e3e842b20f0d435c732f172cbe".to_string(),
+            expected_sha256: Some(
+                "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d".to_string(),
+            ),
+            tokenizer_revision: "aa8e72537993ba99e69dfaafa59ed015b17504d1".to_string(),
+            tokenizer_expected_sha256: Some(
+                "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539".to_string(),
+            ),
         },
         ModelSpec {
             id: "qwen7b".to_string(),
@@ -255,10 +271,15 @@ pub fn available_models() -> Vec<ModelSpec> {
             approx_size_mb: 4700,
             note: "8GB以上のVRAM(NVIDIA/Apple Silicon)推奨。CPUのみだと遅い場合あり。"
                 .to_string(),
-            // PIN_TODO: `python3 scripts/fetch_model_pins.py qwen7b` の出力で置き換える。
-            revision: default_revision(),
-            expected_sha256: None,
-            tokenizer_expected_sha256: None,
+            // fetch_model_pins.py qwen7b の出力で埋め済み。
+            revision: "8911e8a47f92bac19d6f5c64a2e2095bd2f7d031".to_string(),
+            expected_sha256: Some(
+                "65b8fcd92af6b4fefa935c625d1ac27ea29dcb6ee14589c55a8f115ceaaa1423".to_string(),
+            ),
+            tokenizer_revision: "a09a35458c702b33eeacc393d103063234e8bc28".to_string(),
+            tokenizer_expected_sha256: Some(
+                "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539".to_string(),
+            ),
         },
     ]
 }
@@ -269,7 +290,12 @@ pub fn available_models() -> Vec<ModelSpec> {
 pub fn unpinned_model_ids() -> Vec<String> {
     available_models()
         .into_iter()
-        .filter(|m| m.revision == DEFAULT_REVISION || m.expected_sha256.is_none())
+        .filter(|m| {
+            m.revision == DEFAULT_REVISION
+                || m.tokenizer_revision == DEFAULT_REVISION
+                || m.expected_sha256.is_none()
+                || m.tokenizer_expected_sha256.is_none()
+        })
         .map(|m| m.id)
         .collect()
 }
@@ -535,7 +561,7 @@ impl LlmEngine {
         let tokenizer_dir = cache_dir().join(spec.tokenizer_repo.replace('/', "--"));
         let tokenizer_path = download_plain(
             &spec.tokenizer_repo,
-            &spec.revision,
+            &spec.tokenizer_revision,
             &spec.tokenizer_file,
             &tokenizer_dir,
             "トークナイザ",
@@ -1086,19 +1112,31 @@ mod tests {
     }
 
     #[test]
-    fn unpinned_models_are_reported_until_pins_are_filled() {
-        // scripts/fetch_model_pins.py で実際の値を埋めるまでは、全モデルが
-        // 「revisionが可変("main") または expected_sha256が未設定」のため
-        // unpinned_model_ids()に列挙され続けるはずのガードテスト。
-        // pinを埋めたら、対応するモデルidがこのリストから消えることを
-        // CI等で確認できる(=埋め忘れたモデルだけが残り続ける)。
+    fn all_models_are_pinned() {
+        // fetch_model_pins.py で全モデルのrevision/expected_sha256/tokenizer_revision/
+        // tokenizer_expected_sha256を埋め終えたので、unpinned_model_ids()は空である
+        // べき、というガードテスト。今後モデルを追加してpinを埋め忘れると、
+        // ここが失敗して気付ける。
         let unpinned = unpinned_model_ids();
-        let all_ids: Vec<String> = available_models().into_iter().map(|m| m.id).collect();
-        for id in &all_ids {
-            assert!(
-                unpinned.contains(id),
-                "{id} は現時点でpin未設定のはずです。pinを埋めたらこのテストの前提が変わるので、\
-                 テストごと更新してください。"
+        assert!(
+            unpinned.is_empty(),
+            "pin未設定のモデルが残っています: {unpinned:?}。\
+             scripts/fetch_model_pins.py <model_id> の出力で埋めてください。"
+        );
+    }
+
+    #[test]
+    fn tokenizer_revision_differs_from_model_revision_is_supported() {
+        // モデルrepoとtokenizer repoは別リポジトリのため、commit SHAが一致しないのが
+        // 通常。revisionを使い回すとtokenizerのダウンロードURLが不正になるバグを
+        // 再発させないための回帰テスト。
+        for spec in available_models() {
+            assert_ne!(
+                spec.revision, spec.tokenizer_revision,
+                "{}: revisionとtokenizer_revisionが同じ値になっています。\
+                 別リポジトリのはずなので、fetch_model_pins.pyの出力を再確認してください\
+                 (同じでも技術的にありえなくはないですが、まず疑うべきです)。",
+                spec.id
             );
         }
     }
