@@ -293,7 +293,7 @@ pub fn generate_math(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAn
 
 /// 1問分の定義。`choices`のうち`correct_index`が正解。
 /// 表示順はgenerate_from_bank内でシャッフルするので、ここでの並び順は気にしなくてよい。
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 struct ChoiceQuestion {
     question: &'static str,
     choices: [&'static str; 4],
@@ -893,7 +893,7 @@ pub fn generate_english(mode: &str, unit: Option<&str>) -> (DrillProblem, Pendin
 // ---- 情報 ----
 // 単元: basic_operation(きほん操作) / internet_safety(インターネットの安全) / programming(プログラミング)
 // このアプリ自体のテーマ(AI・SNSリテラシー)とも相性が良い科目。
-const INFO_BANK: &[ChoiceQuestion] = &[
+const INFO_BANK_CORE: &[ChoiceQuestion] = &[
     ChoiceQuestion {
         question: "文字を打ちこむための道具はどれ?",
         choices: ["マウス", "キーボード", "スピーカー", "プリンター"],
@@ -1022,8 +1022,28 @@ const INFO_BANK: &[ChoiceQuestion] = &[
     },
 ];
 
+/// 情報科の問題バンク全体。理科・社会と同じ方式で、ハードコードされた元の少数の問題
+/// (`INFO_BANK_CORE`)に加えて、学年ごとのJSONファイル(`info_data/`以下)を
+/// 起動時に1回だけ読み込んで結合する。
+///
+/// info_data/*.json (g3〜g6, j1〜j3) には合計557問が用意されているが、
+/// 以前はこのバンクに接続されておらず、`INFO_BANK_CORE`の9問しか
+/// 出題されていなかった。他科目(science/social/math/english/kanji)と
+/// 同じ読み込みパターンに揃えて接続する。
+static INFO_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
+    let mut all: Vec<ChoiceQuestion> = INFO_BANK_CORE.to_vec();
+    all.extend(load_choice_questions_json(include_str!("info_data/g3.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/g4.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/g5.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/g6.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/j1.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/j2.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/j3.json")));
+    all
+});
+
 pub fn generate_info(mode: &str, unit: Option<&str>) -> (DrillProblem, PendingAnswer) {
-    generate_from_bank("info", INFO_BANK, mode, unit)
+    generate_from_bank("info", &INFO_BANK[..], mode, unit)
 }
 
 pub fn check(given: &str, pending: &PendingAnswer) -> DrillCheckResult {
@@ -1060,7 +1080,7 @@ pub fn search_curriculum_facts(query: &str, limit: usize) -> Vec<crate::knowledg
 
     let mut out: Vec<KnowledgeSnippet> = Vec::new();
 
-    for bank in [&SCIENCE_BANK[..], &SOCIAL_BANK[..], &MATH_BANK[..], &ENGLISH_BANK[..], INFO_BANK] {
+    for bank in [&SCIENCE_BANK[..], &SOCIAL_BANK[..], &MATH_BANK[..], &ENGLISH_BANK[..], &INFO_BANK[..]] {
         for q in bank {
             let correct = q.choices[q.correct_index];
             // 1文字の用語や、数字だけの答え(算数の計算結果など)は無関係な文への
@@ -1202,6 +1222,57 @@ mod tests {
                     q.correct_index
                 );
                 seen.push(c);
+            }
+        }
+    }
+
+    /// INFO_BANK全件(info_data/*.jsonの557問+コア問題)を対象に、
+    /// 4択の重複・correct_indexの範囲・空文字が無いことを検査する。
+    /// 情報科は以前JSONデータが接続されておらずコアの9問しか使われていなかったため、
+    /// 接続後に大量データが一括で壊れていないかをここで機械的に保証する。
+    #[test]
+    fn info_bank_all_questions_are_well_formed() {
+        assert!(
+            INFO_BANK.len() > 500,
+            "INFO_BANKにinfo_data/*.jsonが接続されていない可能性があります(件数={})",
+            INFO_BANK.len()
+        );
+
+        let known_units = ["basic_operation", "internet_safety", "programming"];
+
+        for q in INFO_BANK.iter() {
+            assert!(!q.question.trim().is_empty(), "questionが空です: {q:?}");
+            assert!(!q.explanation.trim().is_empty(), "explanationが空です: question=\"{}\"", q.question);
+            assert!(
+                q.correct_index < q.choices.len(),
+                "correct_indexが範囲外です: question=\"{}\" correct_index={} choices={:?}",
+                q.question,
+                q.correct_index,
+                q.choices
+            );
+            assert!(
+                known_units.contains(&q.unit),
+                "未知のunitです: question=\"{}\" unit={}",
+                q.question,
+                q.unit
+            );
+
+            let mut seen: Vec<&str> = Vec::new();
+            for (i, c) in q.choices.iter().enumerate() {
+                assert!(!c.trim().is_empty(), "choiceが空です: question=\"{}\"", q.question);
+                assert!(
+                    !seen.contains(c),
+                    "選択肢が重複しています: question=\"{}\" choices={:?}",
+                    q.question,
+                    q.choices
+                );
+                seen.push(c);
+                assert!(
+                    !q.notes[i].trim().is_empty(),
+                    "notesが空です: question=\"{}\" choice_index={}",
+                    q.question,
+                    i
+                );
             }
         }
     }

@@ -1235,6 +1235,29 @@
   max-width: 480px;
 }
 
+/* ── PIIハンター ───────────────────────── */
+.pii-hunter__post {
+  background: var(--color-paper);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.pii-hunter__post-label {
+  margin: 0 0 6px;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+}
+
+.pii-hunter__post-text {
+  margin: 0 0 10px;
+  font-style: italic;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+
 /* ── 歴史のタイムスタンプ ───────────────────────── */
 .history-timestamp__date-wrap {
   text-align: center;
@@ -1764,6 +1787,12 @@
   cursor: not-allowed;
 }
 
+/* 宿題ヒントモード: 「わからない、もう一度ヒントをください」ボタン */
+.tutor-stuck-btn {
+  margin-top: 10px;
+  width: 100%;
+}
+
 .pii-alert {
   background: var(--color-coral-soft);
   border: 1.5px solid var(--color-coral);
@@ -2157,7 +2186,7 @@
   fill-opacity: 0.92;
 }
 
-/* ── ポイントバッジ(ヘッダー/AgeGate。壁紙ショップへの入口を兼ねる) ───── */
+/* ── ポイントバッジ(ヘッダー/GradeModeSelect。壁紙ショップへの入口を兼ねる) ───── */
 .points-badge {
   display: inline-flex;
   align-items: center;

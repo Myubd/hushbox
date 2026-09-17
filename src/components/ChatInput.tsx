@@ -1,15 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import type { AgeMode, PiiMatch } from "../types";
-import { PII_LABELS } from "../types";
+import type { AgeMode, PiiMatch, TutorStage } from "../types";
+import { PII_LABELS, isTutorHintStage } from "../types";
 
 interface Props {
   mode: AgeMode;
   disabled: boolean;
   previewPii: (text: string) => Promise<{ matches: PiiMatch[]; redacted: string }>;
   onSend: (text: string) => void;
+  /** 宿題ヒントモードが有効な間の現在の段階。通常チャット中はundefined。 */
+  tutorStage?: TutorStage;
+  /** 「わからない、もう一度ヒントがほしい」ボタンの送信先。 */
+  onSendStuck?: () => void;
 }
 
-export function ChatInput({ mode, disabled, previewPii, onSend }: Props) {
+export function ChatInput({ mode, disabled, previewPii, onSend, tutorStage, onSendStuck }: Props) {
   const [text, setText] = useState("");
   const [matches, setMatches] = useState<PiiMatch[]>([]);
   const [confirmed, setConfirmed] = useState(false);
@@ -93,6 +97,16 @@ export function ChatInput({ mode, disabled, previewPii, onSend }: Props) {
           送る
         </button>
       </div>
+      {tutorStage && isTutorHintStage(tutorStage) && onSendStuck && (
+        <button
+          type="button"
+          className="btn btn--ghost btn--small tutor-stuck-btn"
+          disabled={disabled}
+          onClick={onSendStuck}
+        >
+          🤔 わからない、もう一度ヒントをください
+        </button>
+      )}
     </form>
   );
 }

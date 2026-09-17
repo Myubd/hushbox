@@ -103,7 +103,6 @@ export interface ModelSpec {
 }
 
 // Tutor State Machine(P1-8): 宿題ヒントの段階。Rust側 tutor_state::TutorStage と対応。
-// (現時点ではUIの配線は未実装。バックエンドAPIの型のみ用意している)
 export type TutorStage =
   | "understand"
   | "hint1"
@@ -115,6 +114,21 @@ export type TutorStage =
 export interface TutorSessionInfo {
   sessionId: string;
   stage: TutorStage;
+}
+
+// チャットUI(宿題ヒントモードのバッジ表示)用のラベル。
+export const TUTOR_STAGE_LABELS: Record<TutorStage, string> = {
+  understand: "問題を確認中",
+  hint1: "ヒント 1/3",
+  hint2: "ヒント 2/3",
+  hint3: "ヒント 3/3",
+  explanation: "答え合わせ",
+  check: "理解度チェック",
+};
+
+/** このステージで「わからない、もう一度ヒントがほしい」ボタンを出してよいか。 */
+export function isTutorHintStage(stage: TutorStage): boolean {
+  return stage === "hint1" || stage === "hint2" || stage === "hint3";
 }
 
 

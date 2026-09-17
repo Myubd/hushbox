@@ -1,6 +1,11 @@
 import { useCallback, useRef, useState } from "react";
-import { scanPii, sendMessage as sendMessageIpc } from "../lib/tauriClient";
-import type { AgeMode, ChatMessage, PiiType, PrivacySessionStats } from "../types";
+import {
+  advanceTutorSession,
+  scanPii,
+  sendMessage as sendMessageIpc,
+  startTutorSession,
+} from "../lib/tauriClient";
+import type { AgeMode, ChatMessage, PiiType, PrivacySessionStats, TutorSessionInfo } from "../types";
 import { useModelManager } from "./useModelManager";
 import { useDrillEngine } from "./useDrillEngine";
 
@@ -45,6 +50,10 @@ export function useChatEngine(mode: AgeMode) {
   const modelManager = useModelManager();
   const drillEngine = useDrillEngine(mode);
 
+  // P1-8 Tutor State Machine: 宿題ヒントモードが有効な間、現在のsession_id/段階を保持する。
+  // null = 通常のチャット(段階制御なし)。
+  const [tutorSession, setTutorSession] = useState<TutorSessionInfo | null>(null);
+
   // Rustへ渡す会話履歴。ユーザー発話は常にredact済みテキストを保持する
   const historyRef = useRef<[string, string][]>([]);
 
@@ -52,6 +61,7 @@ export function useChatEngine(mode: AgeMode) {
     setMessages([]);
     historyRef.current = [];
     drillEngine.resetDrill();
+    setTutorSession(null);
   }, [drillEngine.resetDrill]);
 
   const switchModel = useCallback(
@@ -64,8 +74,34 @@ export function useChatEngine(mode: AgeMode) {
     return scanPii(text);
   }, []);
 
+  /**
+   * P1-8 Tutor State Machine: 宿題ヒントモードを開始する。
+   * 段階(Understand)はRust側の状態機械が管理し、システムプロンプトへの
+   * 指示文の追加(答えを言わない縛り等)もRust側(prepare_llm_input)が行う。
+   * ここではセッションを開始し、案内メッセージをチャットに1件追加するだけ。
+   */
+  const startTutorMode = useCallback(async () => {
+    const sessionId = newId();
+    const info = await startTutorSession(sessionId);
+    setTutorSession(info);
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: newId(),
+        role: "system-notice",
+        content:
+          "📚 宿題ヒントモードを始めるよ。どんな問題か教えてね。答えはすぐに言わずに、少しずつヒントを出すよ。",
+        timestamp: Date.now(),
+      },
+    ]);
+  }, []);
+
+  const stopTutorMode = useCallback(() => {
+    setTutorSession(null);
+  }, []);
+
   const sendMessage = useCallback(
-    async (rawText: string) => {
+    async (rawText: string, userAttempted: boolean = true) => {
       if (isGenerating || !rawText.trim()) return;
 
       // 訓練シナリオへの返答として扱うケース(通常のLLM送信は行わない)
@@ -120,50 +156,84 @@ export function useChatEngine(mode: AgeMode) {
       ]);
       setIsGenerating(true);
 
+      // 宿題ヒントモード中は、開始時にRust側で発行された現在の段階を
+      // system promptへ追加してもらう(答えを言ってよい範囲をRust側で縛るため)。
+      const activeTutorSession = tutorSession;
+
       let acc = "";
       try {
-        await sendMessageIpc(mode, historyRef.current, rawText, {
-          onChunk: (token) => {
-            acc += token;
-            setMessages((prev) =>
-              prev.map((m) => (m.id === assistantId ? { ...m, content: acc } : m))
-            );
+        await sendMessageIpc(
+          mode,
+          historyRef.current,
+          rawText,
+          {
+            onChunk: (token) => {
+              acc += token;
+              setMessages((prev) =>
+                prev.map((m) => (m.id === assistantId ? { ...m, content: acc } : m))
+              );
+            },
+            onDone: () => {
+              historyRef.current = [
+                ...historyRef.current,
+                ["user", scan.redacted],
+                ["assistant", acc],
+              ];
+              // 宿題ヒントモード中は、生徒の発言を受けて段階を1つ進める(または
+              // 「試みなかった」場合は同じヒント段階に留まる)。次のsendMessage呼び出しで
+              // この新しい段階がsystem promptに反映される。
+              if (activeTutorSession) {
+                void advanceTutorSession(activeTutorSession.sessionId, userAttempted).then(
+                  setTutorSession
+                );
+              }
+              void drillEngine.maybeTriggerDrill().then((scenario) => {
+                if (!scenario) return;
+                setMessages((prev) => [
+                  ...prev,
+                  {
+                    id: newId(),
+                    role: "assistant",
+                    content: scenario.aiMessage,
+                    timestamp: Date.now(),
+                  },
+                ]);
+              });
+            },
+            onError: (message) => {
+              setMessages((prev) =>
+                prev.map((m) =>
+                  m.id === assistantId
+                    ? { ...m, content: `(エラーが発生しました: ${message})` }
+                    : m
+                )
+              );
+            },
           },
-          onDone: () => {
-            historyRef.current = [
-              ...historyRef.current,
-              ["user", scan.redacted],
-              ["assistant", acc],
-            ];
-            void drillEngine.maybeTriggerDrill().then((scenario) => {
-              if (!scenario) return;
-              setMessages((prev) => [
-                ...prev,
-                {
-                  id: newId(),
-                  role: "assistant",
-                  content: scenario.aiMessage,
-                  timestamp: Date.now(),
-                },
-              ]);
-            });
-          },
-          onError: (message) => {
-            setMessages((prev) =>
-              prev.map((m) =>
-                m.id === assistantId
-                  ? { ...m, content: `(エラーが発生しました: ${message})` }
-                  : m
-              )
-            );
-          },
-        });
+          activeTutorSession?.stage
+        );
       } finally {
         setIsGenerating(false);
       }
     },
-    [mode, isGenerating, drillEngine.consumePendingDrill, drillEngine.evaluateDrillReply, drillEngine.maybeTriggerDrill]
+    [
+      mode,
+      isGenerating,
+      tutorSession,
+      drillEngine.consumePendingDrill,
+      drillEngine.evaluateDrillReply,
+      drillEngine.maybeTriggerDrill,
+    ]
   );
+
+  /**
+   * 宿題ヒントモードの「わからない、もう一度ヒントがほしい」用ショートカット。
+   * userAttempted=falseで送るため、ヒント段階は進まず同じ段階に留まる
+   * (tutor_state.rsのnext()仕様どおり)。
+   */
+  const sendTutorStuck = useCallback(() => {
+    void sendMessage("わからないので、もう一度ヒントをください。", false);
+  }, [sendMessage]);
 
   const clearSession = useCallback(() => {
     resetConversationState();
@@ -183,5 +253,9 @@ export function useChatEngine(mode: AgeMode) {
     previewPii,
     sendMessage,
     clearSession,
+    tutorSession,
+    startTutorMode,
+    stopTutorMode,
+    sendTutorStuck,
   };
 }

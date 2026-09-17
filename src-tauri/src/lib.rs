@@ -24,8 +24,10 @@ pub fn run() {
     // NOTE(P0-1/P0-2): モデルのpin(revision固定+SHA-256固定)が未設定のまま
     // 配布してしまうリグレッションを防ぐため、起動時に一度だけチェックし、
     // 未設定のモデルがあれば警告ログを出す(起動自体は妨げない)。
-    // scripts/fetch_model_pins.py で実際の値を取得し、
-    // llm_engine::available_models() のPIN_TODO箇所を埋めればこの警告は消える。
+    // 現在はすべてのモデルにpinを埋め込み済みなので、通常はこの警告は出ない。
+    // 新しいモデルを追加した際にpinを埋め忘れると、ここで検知できる
+    // (scripts/fetch_model_pins.py で値を取得し、llm_engine::available_models()
+    // に埋め込むこと。all_models_are_pinnedテストでも機械的に検知される)。
     let unpinned = llm_engine::unpinned_model_ids();
     if !unpinned.is_empty() {
         eprintln!(

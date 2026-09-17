@@ -10,6 +10,7 @@ import { NumberQuiz } from "./numberQuiz/NumberQuiz";
 import { ColorQuiz } from "./colorQuiz/ColorQuiz";
 import { HintGame } from "./hintGame/HintGame";
 import { ConsensusQuiz } from "./consensusQuiz/ConsensusQuiz";
+import { PiiHunter } from "./piiHunter/PiiHunter";
 import type { GameEntry } from "./types";
 
 /**
@@ -110,5 +111,13 @@ export const GAMES: GameEntry[] = [
     description:
       "4人で遊ぶパスアンドプレイ・パーティーゲーム。1人ずつスタート/ストップで問題文を1文字ずつ表示させて答えを入力、次の人はその続きから見られる(バトンタッチ形式)。4人の答えがぴったり一致すれば成功(難易度・教科の絞り込みあり)",
     Component: ConsensusQuiz,
+  },
+  {
+    id: "pii-hunter",
+    label: "PIIハンター",
+    icon: "🕵️",
+    description:
+      "SNSに投稿しようとしている架空の文章の中から、個人情報になりそうな部分をぜんぶタップして選ぼう(かんたん/ふつう/むずかしい)。このアプリのPII検出機能を「見抜く力」として体験できる",
+    Component: PiiHunter,
   },
 ];

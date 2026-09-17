@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AgeGate } from "./components/AgeGate";
+import { GradeModeSelect } from "./components/GradeModeSelect";
 import { ModelLoader } from "./components/ModelLoader";
 import { ChatBubble } from "./components/ChatBubble";
 import { ChatInput } from "./components/ChatInput";
@@ -17,6 +17,7 @@ import {
   DRILL_SUBJECTS,
   EMPTY_DRILL_SCORES,
   POINTS_PER_CORRECT_ANSWER,
+  TUTOR_STAGE_LABELS,
   type AgeMode,
   type DrillSubject,
 } from "./types";
@@ -116,7 +117,7 @@ export default function App() {
 
   return mode === null ? (
     <div className="app-shell">
-      <AgeGate
+      <GradeModeSelect
         onSelect={setMode}
         onPlusChallenge={() => setShowPlusChallenge(true)}
         onOpenSettings={() => setShowSettings(true)}
@@ -158,6 +159,10 @@ function ChatApp({
     previewPii,
     sendMessage,
     clearSession,
+    tutorSession,
+    startTutorMode,
+    stopTutorMode,
+    sendTutorStuck,
   } = useChatEngine(mode);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -197,6 +202,24 @@ function ChatApp({
           >
             🌟 {wallet.totalPoints}
           </button>
+          {tutorSession ? (
+            <button
+              className="btn btn--ghost"
+              onClick={stopTutorMode}
+              title="宿題ヒントモードを終わる"
+            >
+              📚 {TUTOR_STAGE_LABELS[tutorSession.stage]}・終わる
+            </button>
+          ) : (
+            <button
+              className="btn btn--ghost"
+              onClick={() => void startTutorMode()}
+              disabled={isGenerating || tab !== "chat"}
+              title="AIが答えをすぐに教えず、少しずつヒントを出すモード"
+            >
+              📚 宿題ヒントモード
+            </button>
+          )}
           <button
             className="btn btn--ghost"
             onClick={() => setShowModelSettings((v) => !v)}
@@ -260,6 +283,8 @@ function ChatApp({
                     disabled={isGenerating}
                     previewPii={previewPii}
                     onSend={sendMessage}
+                    tutorStage={tutorSession?.stage}
+                    onSendStuck={sendTutorStuck}
                   />
                 </>
               )}
