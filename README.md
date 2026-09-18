@@ -117,6 +117,7 @@ Windows環境で実機ビルドしたときに、以下の問題に当たって�
    - `src-tauri/tests/log_safety_test.rs`を追加。`network_boundary_test.rs`と同じ発想で、ログ出力マクロ(`eprintln!`等)のフォーマット文字列に会話内容らしき変数名(`message`/`content`/`text`等)が含まれていないかを`cargo test`のたびに静的スキャンする。
    - IPCコマンド(`scan_pii`/`send_message`/`evaluate_drill_response`)に8,000文字の入力上限を追加(`commands.rs`の`MAX_INPUT_CHARS`)。フロントエンド側(`ChatInput.tsx`)でも同じ上限を送信前チェック・文字数表示に反映。
    - CI(`.github/workflows/ci.yml`)に`cargo audit`と`npm audit --audit-level=high`を追加し、依存関係の既知脆弱性を自動検出するようにした。
+9. **プラスチャレンジのバンドルサイズ最適化**: `vite build`が「500kB超のチャンクがある」と警告していた原因は、15種類以上あるゲームの問題データ・コンポーネントがすべて起動時の1つのJSファイルにまとめられていたことだった(倉頡パズルの問題データだけで約900KB)。`src/games/registry.ts`の各`Component`を`React.lazy`+動的`import()`に変更し(`PlusChallenge.tsx`側に`<Suspense>`を追加)、実際にそのゲームを選んだときだけ該当コードを読み込む方式にした。結果、初回に読み込まれるメインバンドルは2.2MB→233KB(gzip後450KB→74KB)まで縮小した。倉頡パズル・メイク10のように依然500KB超のゲームもあるが、それらは実際に選んだときだけ遅延読み込みされるチャンクになっているため、アプリ起動時の体感速度には影響しない。
 
 ## セットアップ
 

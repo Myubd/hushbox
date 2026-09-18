@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { GAMES } from "../games/registry";
 
 interface Props {
@@ -20,7 +20,9 @@ export function PlusChallenge({ onBack, onCorrect }: Props) {
     const { Component } = activeGame;
     return (
       <div className="plus-challenge">
-        <Component onBack={() => setActiveGameId(null)} onCorrect={onCorrect} />
+        <Suspense fallback={<p className="learning-drill__loading">よみこみちゅう…</p>}>
+          <Component onBack={() => setActiveGameId(null)} onCorrect={onCorrect} />
+        </Suspense>
       </div>
     );
   }
