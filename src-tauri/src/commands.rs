@@ -11,16 +11,9 @@ use crate::safety_drill::{self, DrillResult, DrillScenario};
 use crate::safety_policy::{self, SafetyLevel};
 use crate::tutor_state::{self, SharedTutorState, TutorSessionInfo, TutorStage};
 
-/// IPC経由で受け付ける自由入力テキスト(チャット入力・PIIスキャン対象等)の
-/// 文字数上限。この値は「モデルに渡せる最大トークン数」とは別の、もっと手前の
-/// 防御線として設けている。値そのものはLLMの実用的な入力量として十分に大きい
-/// (数千字規模の作文でも収まる)一方、次のような素朴なリスクを避けられる:
-/// - 生徒が誤って巨大なテキストを貼り付けた場合のメモリ圧迫
-/// - `pii_guard::scan`はテキスト長に対して概ね線形〜準線形のregexスキャンを
-///   何本も走らせる設計なので、極端に長い入力ほどスキャン時間が伸びる
-/// 文字数は(バイト数ではなく)Unicodeスカラ値の数で数える。日本語主体の
-/// アプリなので、バイト数で制限すると同じ「体感の長さ」でも言語によって
-/// 上限に達するタイミングがぶれてしまうため。
+/// IPC経由で受け付ける自由入力テキストの文字数上限(手前側の防御線)。
+/// メモリ圧迫や`pii_guard::scan`の処理時間増加を避けるため。
+/// バイト数ではなくUnicodeスカラ値の数で数える。
 const MAX_INPUT_CHARS: usize = 8000;
 
 fn reject_if_too_long(text: &str) -> Result<(), String> {

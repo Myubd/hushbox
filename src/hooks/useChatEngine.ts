@@ -106,9 +106,7 @@ export function useChatEngine(mode: AgeMode) {
     async (rawText: string, userAttempted: boolean = true) => {
       if (isGenerating || !rawText.trim()) return;
 
-      // Rust側(commands.rs::MAX_INPUT_CHARS)の最終防衛線に達する前に、
-      // フロントエンド側でも気づけるようにする。ここで弾いた場合はIPCすら
-      // 呼ばず、わかりやすいシステム通知だけをチャットに追加する。
+      // Rust側の上限に達する前にフロントエンドでも気づけるようにする。
       if (rawText.length > MAX_INPUT_CHARS) {
         const noticeMsg: ChatMessage = {
           id: newId(),

@@ -426,17 +426,9 @@ async fn download_plain(
 
     let url = resolve_url(repo, revision, file);
     eprintln!("[llm_engine] {label}のダウンロードを開始: {url}");
-    // モデルダウンロード中のハング(過去にhf-xetのXet転送方式で発生した既知の問題)に
-    // 対する耐性強化。「接続はできたがその後ずっと応答が無い」状態が永遠に続かないよう、
-    // 接続確立とチャンク受信それぞれにタイムアウトを設定する。
-    // また、リダイレクト先をHugging Faceの正規ドメインに限定することで、
-    // 万が一レスポンスに悪意あるリダイレクトが含まれていても他ドメインへ
-    // 誘導されないようにする(ダウンロード先の検証はnetwork_boundary_test.rs側の
-    // 静的スキャンを補完する、実行時側の防御)。
-    // NOTE: モデルファイルは1〜5GB程度あり得るため、reqwestの`.timeout()`
-    // (リクエスト全体のタイムアウト。ボディ受信も含む)は設定しない。
-    // 代わりに接続確立にはconnect_timeoutを、受信中のハング検出には
-    // 後述のストリームループ側でチャンクごとのアイドルタイムアウトを使う。
+    // 接続確立にタイムアウトを設定し、リダイレクト先はHugging Faceの正規ドメインに限定する。
+    // 全体タイムアウトは設定しない(1〜5GBのファイルがあり得るため)。受信中のハング検出は
+    // 後述のストリームループでチャンクごとのアイドルタイムアウトを使う。
     let http = reqwest::Client::builder()
         .user_agent("privacy-buddy-desktop")
         .connect_timeout(std::time::Duration::from_secs(15))
@@ -478,10 +470,7 @@ async fn download_plain(
     let mut stream = response.bytes_stream();
     let mut downloaded: u64 = 0;
     let mut last_reported_mb: u64 = 0;
-    // チャンクとチャンクの間が一定時間以上空いたら「ハングしている」とみなして
-    // 打ち切る。ファイル全体のダウンロード時間には上限を設けない(回線が遅くても
-    // データが流れ続けている限りは待つ)一方、過去に実際に遭遇した
-    // 「接続はできるがその後ネットワーク使用量が0のまま無応答」を防ぐ。
+    // チャンク間が一定時間以上空いたらハングとみなして打ち切る(全体の時間には上限を設けない)。
     const IDLE_CHUNK_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(60);
 
     loop {

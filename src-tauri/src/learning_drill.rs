@@ -1023,19 +1023,11 @@ const INFO_BANK_CORE: &[ChoiceQuestion] = &[
     },
 ];
 
-/// 情報科の問題バンク全体。理科・社会と同じ方式で、ハードコードされた元の少数の問題
-/// (`INFO_BANK_CORE`)に加えて、学年ごとのJSONファイル(`info_data/`以下)を
-/// 起動時に1回だけ読み込んで結合する。
+/// 情報科の問題バンク。`INFO_BANK_CORE`に加え、学年ごとのJSONファイル
+/// (`info_data/`以下)を起動時に結合する。他科目と同じ読み込みパターン。
 ///
-/// info_data/*.json (g3〜g6, j1〜j3) には合計557問が用意されているが、
-/// 以前はこのバンクに接続されておらず、`INFO_BANK_CORE`の9問しか
-/// 出題されていなかった。他科目(science/social/math/english/kanji)と
-/// 同じ読み込みパターンに揃えて接続する。
-///
-/// `ai_literacy.json`(30問, low/mid/junior各10問)は、複数の外部レビューで
-/// 共通して「生成AI時代のリテラシー教育が欠けている」と指摘されたことを受けて
-/// 追加した単元。ハルシネーション(AIのもっともらしい誤り)・AI生成物の見分け方・
-/// ディープフェイク・AIへの個人情報入力の是非・AI依存への注意を扱う。
+/// `ai_literacy.json`(30問)はハルシネーション・AI生成物の見分け方・
+/// ディープフェイク・AIへの個人情報入力・AI依存を扱う単元。
 static INFO_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
     let mut all: Vec<ChoiceQuestion> = INFO_BANK_CORE.to_vec();
     all.extend(load_choice_questions_json(include_str!("info_data/g3.json")));

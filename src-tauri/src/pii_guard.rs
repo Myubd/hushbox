@@ -88,15 +88,10 @@ static EMAIL_RE: Lazy<Regex> =
 static SCHOOL_RE: Lazy<Regex> = Lazy::new(|| {
     Regex::new(r"[一-龠ぁ-んァ-ヶー]{2,10}(立)?(小学校|中学校|高等学校|高校)").unwrap()
 });
-// SNS ID / アカウント名: 「LINEのIDは○○だよ」「インスタのユーザーネームは○○」等。
-// SNSサービス名(LINE/Instagram/Twitter(X)/Discord/TikTok、および日本語での
-// カナ表記ゆれ)と「ID/アカウント/ユーザー名」という語が一緒に出た場合のみ
-// マッチさせることで、単なる「IDは何番ですか」のような無関係な文脈を
-// 誤検知しにくくしている(住所検出等と同じ「文脈語との組み合わせ」方針)。
-// 値の文字クラスはあえて英数字・記号のみに絞っている(実際のSNS IDの大半は
-// 半角英数字のため)。日本語の仮名/漢字を含めると、regexクレートは
-// lookaroundに対応していないため「はなこ123です」のように後続の語尾
-// (「です」「だよ」等)まで値として飲み込んでしまい、文字境界を切り出せない。
+// SNS ID/アカウント名: サービス名(LINE/Instagram/Twitter/Discord/TikTok等)と
+// 「ID/アカウント/ユーザー名」が共起する場合のみマッチさせ誤検知を抑える。
+// 値は半角英数字のみ対象(regexにlookaroundが無く、日本語の語尾との境界を
+// 切り出せないため)。
 static SOCIAL_ID_RE: Lazy<Regex> = Lazy::new(|| {
     Regex::new(
         r"(?i)(?:LINE|ライン|Instagram|インスタグラム|インスタ|Twitter|ツイッター|Discord|ディスコード|TikTok|ティックトック|YouTube|ユーチューブ)\s*(?:の)?\s*(?:ID|アカウント名?|ユーザー名|ユーザーネーム)\s*(?:は|:|：)\s*([A-Za-z0-9_@.\-]{2,30})",
@@ -227,8 +222,7 @@ fn detect_address(text: &str) -> Vec<RangeMatch> {
     out
 }
 
-/// SNS ID/アカウント名: マッチしたID値部分(キャプチャグループ1)のみを対象にする。
-/// 「LINEのIDは」のようなサービス名部分自体はPIIではないため、置換範囲に含めない。
+/// SNS ID/アカウント名: キャプチャグループ1(値部分)のみを対象にする。
 fn detect_social_id(text: &str) -> Vec<RangeMatch> {
     SOCIAL_ID_RE
         .captures_iter(text)
@@ -568,15 +562,10 @@ mod tests {
         assert!(r.matches.iter().any(|m| m.kind == PiiType::Name));
     }
 
-    /// 既知の残存ギャップ(今回はスコープ外として意図的に対応していない)。
-    /// - ランドマーク経由の間接的な位置情報(例:「○○公園の近くに住んでる」)は
-    ///   自然言語理解が必要でregexベースでは非現実的なため対象外
-    ///   (PiiHunterゲームの「むずかしい」レベルで人間の判断力として練習する設計)。
-    /// - 電話番号を仮名/漢数字で書く(「ゼロキュウゼロの…」)ようなケースも対象外。
-    /// - SNS IDが日本語の仮名/漢字ニックネーム(「はなこ」等)の場合は対象外。
-    ///   regexクレートがlookaroundに対応していないため、値の終わりと後続の
-    ///   日本語の語尾(「です」「だよ」)との境界を区切れない。半角英数字の
-    ///   ID(実際のSNS IDの大半)のみを対象にしている。
+    /// 既知の残存ギャップ(スコープ外として意図的に未対応)。
+    /// - ランドマーク経由の間接的な位置情報(regexでは非現実的、PiiHunter「むずかしい」で練習)
+    /// - 仮名/漢数字の電話番号
+    /// - 日本語の仮名/漢字ニックネームのSNS ID(regexにlookaroundが無く語尾と境界を切れない)
     #[test]
     fn known_limitation_kana_phone_number_not_detected_documented() {
         let r = scan("電話はゼロキュウゼロのイチニサンヨンだよ");

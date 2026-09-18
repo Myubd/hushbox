@@ -97,7 +97,7 @@ Rust側には、この機能専用のIPCコマンドは存在しません(当初
 
 ### 既知の課題(今後直したい点)
 
-- **PII検出は依然として完全ではない**: `pii_guard.rs`は正規表現・辞書ベースのヒューリスティックであり、「教育的デモンストレーション」として意図的に完全性より見逃しの少なさを優先している。都道府県名・市区町村名を伴わない住所(「都道府県も市区町村名も出さずに、公園の名前など目印だけで場所を伝える」ケース)は依然として検出対象外(詳細は`pii_guard.rs`のコード内コメントを参照)。なお、LINE/Instagram/Twitter(X)/Discord/TikTok等のSNS ID・アカウント名は検出対象に追加済み(半角英数字のIDのみが対象。日本語の仮名/漢字ニックネームは、regexクレートがlookaroundに対応していないため文の語尾との境界を切り出せず、引き続き対象外)。
+- **PII検出は依然として完全ではない**: `pii_guard.rs`は正規表現・辞書ベースのヒューリスティックであり、完全性より見逃しの少なさを優先している。目印表現だけの住所は対象外(詳細は`pii_guard.rs`参照)。SNS ID・アカウント名(LINE/Instagram/Twitter/Discord/TikTok等)は検出対象に追加済み(半角英数字のIDのみ)。
 - **MSIインストーラーのビルドが失敗する(調査中)**: `npm run tauri build`で実行ファイル(`.exe`)自体は問題なく生成されるが、WiXによるMSIパッケージ化の工程でエラーになることがある。`productName`は既に英数字(`"HushBox"`)に修正済みだが、`Cargo.toml`の`description`フィールドは依然として日本語のままで、これがWiXのバンドルメタデータ(Description)に渡ると同様の問題を起こす可能性があるため、`tauri.conf.json`の`bundle.shortDescription`/`bundle.longDescription`に英語の説明を明示するよう変更した。これでも失敗する場合は、`bundle.targets`を`nsis`のみに絞る対応が次の候補(Windows実機でのMSIビルド再検証が必要)。
 
 
@@ -112,12 +112,12 @@ Windows環境で実機ビルドしたときに、以下の問題に当たって�
 5. **推論がめちゃくちゃ遅い(1往復5分近く)**: `npm run tauri dev`のデバッグビルドで動かしていたのが主因。さらに`Cargo.toml`に**Tauri標準の`custom-protocol`フィーチャー定義自体が欠落**しており、`cargo build --release`を直接叩いても本番用アセットが埋め込まれず`ERR_CONNECTION_REFUSED`になっていた。`[features] default = ["custom-protocol"]` を追加し、`npm run tauri build`で正しくリリースビルドし、さらに`opt-level`を`"s"`(サイズ優先)から`3`(速度優先)に変更したところ、体感5分→15秒程度まで改善。
 6. **Plus Challenge(歴史クイズ・漢字スクエア・世界地図)をRust IPC経由からフロントエンド完結方式に統一**: 当初`src-tauri/src/plus_challenge.rs`に、学習ドリルと同じRust側でルールベース生成する設計のスケルトンを用意したが、問題データを作る段階で「ゲームごとに正解判定の形が違う(選択式/入力式)」「静的データはそもそもRust側に置く必要がない」ことが分かり、結局`src/games/`配下のフロントエンド静的データ+決定論的ロジックのみで3ゲームとも実装した。その結果Rust側のスケルトン(`categories()`が空配列、`generate()`が常に`None`を返すだけの未使用コード)が残ってしまっていたため、`plus_challenge.rs`本体とIPCコマンド(`list_plus_challenge_categories` / `next_plus_challenge_problem`)、フロントエンド側の対応する呼び出し口を撤去し、実装を1系統に統一した。
 7. **`shell:allow-open`権限が実は未使用だった**: `capabilities/default.json`に`shell:allow-open`権限、`Cargo.toml`に`tauri-plugin-shell`、`package.json`に`@tauri-apps/plugin-shell`がそれぞれ入っていたが、フロントエンドのどこからも`open()`を呼んでおらず(外部URLを開く機能自体が実装されていない)、完全に未使用だった。HushBoxの「必要最小限の権限しか持たない」という方針と矛盾するため、権限・プラグイン登録・依存関係のすべてを削除した。今後、利用規約ページなど外部リンクを開く機能を作る場合は、その時点で改めて権限を追加すること。
-8. **複数のAIによるコードレビューを踏まえたセキュリティ強化**: 外部評価(claude/GPT/deepseek/kimi)で共通して指摘された、低コストかつ効果の高い項目を実装した。
-   - モデルダウンロード(`llm_engine.rs`の`download_plain`)に接続タイムアウト・チャンク受信のアイドルタイムアウト(60秒)・許可ドメイン(huggingface.co系)限定のリダイレクトポリシーを追加。過去に遭遇した「ネットワーク使用量0のまま無限にハングする」問題への実行時側の防御。
-   - `src-tauri/tests/log_safety_test.rs`を追加。`network_boundary_test.rs`と同じ発想で、ログ出力マクロ(`eprintln!`等)のフォーマット文字列に会話内容らしき変数名(`message`/`content`/`text`等)が含まれていないかを`cargo test`のたびに静的スキャンする。
-   - IPCコマンド(`scan_pii`/`send_message`/`evaluate_drill_response`)に8,000文字の入力上限を追加(`commands.rs`の`MAX_INPUT_CHARS`)。フロントエンド側(`ChatInput.tsx`)でも同じ上限を送信前チェック・文字数表示に反映。
-   - CI(`.github/workflows/ci.yml`)に`cargo audit`と`npm audit --audit-level=high`を追加し、依存関係の既知脆弱性を自動検出するようにした。
-9. **プラスチャレンジのバンドルサイズ最適化**: `vite build`が「500kB超のチャンクがある」と警告していた原因は、15種類以上あるゲームの問題データ・コンポーネントがすべて起動時の1つのJSファイルにまとめられていたことだった(倉頡パズルの問題データだけで約900KB)。`src/games/registry.ts`の各`Component`を`React.lazy`+動的`import()`に変更し(`PlusChallenge.tsx`側に`<Suspense>`を追加)、実際にそのゲームを選んだときだけ該当コードを読み込む方式にした。結果、初回に読み込まれるメインバンドルは2.2MB→233KB(gzip後450KB→74KB)まで縮小した。倉頡パズル・メイク10のように依然500KB超のゲームもあるが、それらは実際に選んだときだけ遅延読み込みされるチャンクになっているため、アプリ起動時の体感速度には影響しない。
+8. **セキュリティレビューで発見した課題を実装・検証した**:
+   - モデルダウンロード(`llm_engine.rs`)に接続タイムアウト・アイドルタイムアウト・許可ドメイン限定のリダイレクトポリシーを追加
+   - `log_safety_test.rs`を追加し、ログに会話内容が混入しないかをCIで検証
+   - IPCの入力に8,000文字の上限を追加(`commands.rs`の`MAX_INPUT_CHARS`)
+   - CIに`cargo audit`と`npm audit`を追加
+9. **プラスチャレンジのバンドルサイズ最適化**: 全ゲームが起動時の1つのJSにまとまっていた(倉頡パズルだけで約900KB)。`registry.ts`の各`Component`を`React.lazy`化し、選んだゲームだけ読み込むようにした。初回バンドルは2.2MB→233KBに縮小。
 
 ## セットアップ
 
