@@ -138,6 +138,7 @@ pub fn units_for_subject(subject: &str) -> Vec<UnitInfo> {
             u("basic_operation", "きほん操作"),
             u("internet_safety", "インターネットの安全"),
             u("programming", "プログラミング"),
+            u("ai_literacy", "AIとのつきあいかた"),
         ],
         "kanji" => vec![
             mixed_unit(),
@@ -1030,6 +1031,11 @@ const INFO_BANK_CORE: &[ChoiceQuestion] = &[
 /// 以前はこのバンクに接続されておらず、`INFO_BANK_CORE`の9問しか
 /// 出題されていなかった。他科目(science/social/math/english/kanji)と
 /// 同じ読み込みパターンに揃えて接続する。
+///
+/// `ai_literacy.json`(30問, low/mid/junior各10問)は、複数の外部レビューで
+/// 共通して「生成AI時代のリテラシー教育が欠けている」と指摘されたことを受けて
+/// 追加した単元。ハルシネーション(AIのもっともらしい誤り)・AI生成物の見分け方・
+/// ディープフェイク・AIへの個人情報入力の是非・AI依存への注意を扱う。
 static INFO_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
     let mut all: Vec<ChoiceQuestion> = INFO_BANK_CORE.to_vec();
     all.extend(load_choice_questions_json(include_str!("info_data/g3.json")));
@@ -1039,6 +1045,7 @@ static INFO_BANK: Lazy<Vec<ChoiceQuestion>> = Lazy::new(|| {
     all.extend(load_choice_questions_json(include_str!("info_data/j1.json")));
     all.extend(load_choice_questions_json(include_str!("info_data/j2.json")));
     all.extend(load_choice_questions_json(include_str!("info_data/j3.json")));
+    all.extend(load_choice_questions_json(include_str!("info_data/ai_literacy.json")));
     all
 });
 
@@ -1226,7 +1233,7 @@ mod tests {
         }
     }
 
-    /// INFO_BANK全件(info_data/*.jsonの557問+コア問題)を対象に、
+    /// INFO_BANK全件(info_data/*.jsonの587問+コア問題)を対象に、
     /// 4択の重複・correct_indexの範囲・空文字が無いことを検査する。
     /// 情報科は以前JSONデータが接続されておらずコアの9問しか使われていなかったため、
     /// 接続後に大量データが一括で壊れていないかをここで機械的に保証する。
@@ -1238,7 +1245,12 @@ mod tests {
             INFO_BANK.len()
         );
 
-        let known_units = ["basic_operation", "internet_safety", "programming"];
+        let known_units = [
+            "basic_operation",
+            "internet_safety",
+            "programming",
+            "ai_literacy",
+        ];
 
         for q in INFO_BANK.iter() {
             assert!(!q.question.trim().is_empty(), "questionが空です: {q:?}");

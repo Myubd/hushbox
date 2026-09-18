@@ -11,6 +11,7 @@ import { ColorQuiz } from "./colorQuiz/ColorQuiz";
 import { HintGame } from "./hintGame/HintGame";
 import { ConsensusQuiz } from "./consensusQuiz/ConsensusQuiz";
 import { PiiHunter } from "./piiHunter/PiiHunter";
+import { PhishingSimulator } from "./phishingSimulator/PhishingSimulator";
 import type { GameEntry } from "./types";
 
 /**
@@ -119,5 +120,13 @@ export const GAMES: GameEntry[] = [
     description:
       "SNSに投稿しようとしている架空の文章の中から、個人情報になりそうな部分をぜんぶタップして選ぼう(かんたん/ふつう/むずかしい)。このアプリのPII検出機能を「見抜く力」として体験できる",
     Component: PiiHunter,
+  },
+  {
+    id: "phishing-simulator",
+    label: "フィッシングシミュレーター",
+    icon: "📩",
+    description:
+      "届いたことにする架空のメール/メッセージの中から、「あやしい」と気づくべき部分をぜんぶタップして選ぼう(かんたん/ふつう/むずかしい)。パスワードや個人情報をだまし取ろうとする手口を、安全な模擬体験として学べる",
+    Component: PhishingSimulator,
   },
 ];

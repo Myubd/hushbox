@@ -426,8 +426,32 @@ async fn download_plain(
 
     let url = resolve_url(repo, revision, file);
     eprintln!("[llm_engine] {label}のダウンロードを開始: {url}");
+    // モデルダウンロード中のハング(過去にhf-xetのXet転送方式で発生した既知の問題)に
+    // 対する耐性強化。「接続はできたがその後ずっと応答が無い」状態が永遠に続かないよう、
+    // 接続確立とチャンク受信それぞれにタイムアウトを設定する。
+    // また、リダイレクト先をHugging Faceの正規ドメインに限定することで、
+    // 万が一レスポンスに悪意あるリダイレクトが含まれていても他ドメインへ
+    // 誘導されないようにする(ダウンロード先の検証はnetwork_boundary_test.rs側の
+    // 静的スキャンを補完する、実行時側の防御)。
+    // NOTE: モデルファイルは1〜5GB程度あり得るため、reqwestの`.timeout()`
+    // (リクエスト全体のタイムアウト。ボディ受信も含む)は設定しない。
+    // 代わりに接続確立にはconnect_timeoutを、受信中のハング検出には
+    // 後述のストリームループ側でチャンクごとのアイドルタイムアウトを使う。
     let http = reqwest::Client::builder()
         .user_agent("privacy-buddy-desktop")
+        .connect_timeout(std::time::Duration::from_secs(15))
+        .redirect(reqwest::redirect::Policy::custom(|attempt| {
+            let is_allowed_host = attempt
+                .url()
+                .host_str()
+                .map(|h| h == "huggingface.co" || h.ends_with(".huggingface.co") || h.ends_with(".hf.co"))
+                .unwrap_or(false);
+            if is_allowed_host && attempt.previous().len() < 10 {
+                attempt.follow()
+            } else {
+                attempt.stop()
+            }
+        }))
         .build()
         .map_err(|e| EngineError::Download(e.to_string()))?;
     eprintln!("[llm_engine] HTTPクライアント作成OK。GETリクエストを送信します…");
@@ -436,7 +460,7 @@ async fn download_plain(
         .get(&url)
         .send()
         .await
-        .map_err(|e| EngineError::Download(format!("{label}への接続に失敗: {e}")))?
+        .map_err(|e| EngineError::Download(format!("{label}への接続に失敗(タイムアウトまたはリダイレクト制限による可能性があります): {e}")))?
         .error_for_status()
         .map_err(|e| EngineError::Download(format!("{label}のダウンロードでエラー応答: {e}")))?;
     eprintln!(
@@ -454,8 +478,24 @@ async fn download_plain(
     let mut stream = response.bytes_stream();
     let mut downloaded: u64 = 0;
     let mut last_reported_mb: u64 = 0;
+    // チャンクとチャンクの間が一定時間以上空いたら「ハングしている」とみなして
+    // 打ち切る。ファイル全体のダウンロード時間には上限を設けない(回線が遅くても
+    // データが流れ続けている限りは待つ)一方、過去に実際に遭遇した
+    // 「接続はできるがその後ネットワーク使用量が0のまま無応答」を防ぐ。
+    const IDLE_CHUNK_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(60);
 
-    while let Some(chunk) = stream.next().await {
+    loop {
+        let next = match tokio::time::timeout(IDLE_CHUNK_TIMEOUT, stream.next()).await {
+            Ok(next) => next,
+            Err(_) => {
+                let _ = tokio::fs::remove_file(&tmp_path).await;
+                return Err(EngineError::Download(format!(
+                    "{label}のダウンロードが{}秒以上応答なしで停止しました(ネットワークがハングしている可能性があります)。もう一度お試しください。",
+                    IDLE_CHUNK_TIMEOUT.as_secs()
+                )));
+            }
+        };
+        let Some(chunk) = next else { break };
         let chunk = chunk.map_err(|e| EngineError::Download(format!("{label}の受信中にエラー: {e}")))?;
         out.write_all(&chunk)
             .await

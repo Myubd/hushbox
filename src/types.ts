@@ -38,8 +38,13 @@ export interface ChatMessage {
   piiFlags?: PiiMatch[];
 }
 
+// Rust側(commands.rs::MAX_INPUT_CHARS)と合わせた、IPCで送る自由入力の文字数上限。
+// フロントエンド側では「送信前に気づいてもらう」ための表示・早期リターン用に、
+// Rust側は「最終防衛線」として、両方でこの値を使う。
+export const MAX_INPUT_CHARS = 8000;
+
 // PII検出結果(Rust側のpii_guard::PiiMatchとシリアライズ形式を揃えている)
-export type PiiType = "name" | "address" | "phone" | "email" | "school" | "postal";
+export type PiiType = "name" | "address" | "phone" | "email" | "school" | "postal" | "social_id";
 
 export interface PiiMatch {
   type: PiiType;
@@ -58,6 +63,7 @@ export const PII_LABELS: Record<PiiType, string> = {
   email: "メールアドレス",
   school: "学校名",
   postal: "郵便番号",
+  social_id: "SNSアカウント",
 };
 
 // SNS/AIリテラシー訓練(Rust側 safety_drill.rs と対応)

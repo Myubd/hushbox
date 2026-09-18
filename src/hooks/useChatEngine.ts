@@ -6,6 +6,7 @@ import {
   startTutorSession,
 } from "../lib/tauriClient";
 import type { AgeMode, ChatMessage, PiiType, PrivacySessionStats, TutorSessionInfo } from "../types";
+import { MAX_INPUT_CHARS } from "../types";
 import { useModelManager } from "./useModelManager";
 import { useDrillEngine } from "./useDrillEngine";
 
@@ -18,6 +19,7 @@ const EMPTY_PII_COUNTS: Record<PiiType, number> = {
   email: 0,
   school: 0,
   postal: 0,
+  social_id: 0,
 };
 
 function newId(): string {
@@ -103,6 +105,20 @@ export function useChatEngine(mode: AgeMode) {
   const sendMessage = useCallback(
     async (rawText: string, userAttempted: boolean = true) => {
       if (isGenerating || !rawText.trim()) return;
+
+      // Rust側(commands.rs::MAX_INPUT_CHARS)の最終防衛線に達する前に、
+      // フロントエンド側でも気づけるようにする。ここで弾いた場合はIPCすら
+      // 呼ばず、わかりやすいシステム通知だけをチャットに追加する。
+      if (rawText.length > MAX_INPUT_CHARS) {
+        const noticeMsg: ChatMessage = {
+          id: newId(),
+          role: "system-notice",
+          content: `メッセージが長すぎます(${rawText.length}文字)。${MAX_INPUT_CHARS}文字以内にしてから、もう一度送ってください。`,
+          timestamp: Date.now(),
+        };
+        setMessages((prev) => [...prev, noticeMsg]);
+        return;
+      }
 
       // 訓練シナリオへの返答として扱うケース(通常のLLM送信は行わない)
       const activeDrill = drillEngine.consumePendingDrill();

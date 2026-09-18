@@ -18,6 +18,7 @@ pub enum PiiType {
     Email,
     School,
     Postal,
+    SocialId,
 }
 
 impl PiiType {
@@ -29,6 +30,7 @@ impl PiiType {
             PiiType::Email => "メールアドレス",
             PiiType::School => "学校名",
             PiiType::Postal => "郵便番号",
+            PiiType::SocialId => "SNSアカウント",
         }
     }
 
@@ -40,6 +42,7 @@ impl PiiType {
             PiiType::Email => "[メール]",
             PiiType::School => "[学校名]",
             PiiType::Postal => "[郵便番号]",
+            PiiType::SocialId => "[SNSアカウント]",
         }
     }
 }
@@ -85,6 +88,22 @@ static EMAIL_RE: Lazy<Regex> =
 static SCHOOL_RE: Lazy<Regex> = Lazy::new(|| {
     Regex::new(r"[一-龠ぁ-んァ-ヶー]{2,10}(立)?(小学校|中学校|高等学校|高校)").unwrap()
 });
+// SNS ID / アカウント名: 「LINEのIDは○○だよ」「インスタのユーザーネームは○○」等。
+// SNSサービス名(LINE/Instagram/Twitter(X)/Discord/TikTok、および日本語での
+// カナ表記ゆれ)と「ID/アカウント/ユーザー名」という語が一緒に出た場合のみ
+// マッチさせることで、単なる「IDは何番ですか」のような無関係な文脈を
+// 誤検知しにくくしている(住所検出等と同じ「文脈語との組み合わせ」方針)。
+// 値の文字クラスはあえて英数字・記号のみに絞っている(実際のSNS IDの大半は
+// 半角英数字のため)。日本語の仮名/漢字を含めると、regexクレートは
+// lookaroundに対応していないため「はなこ123です」のように後続の語尾
+// (「です」「だよ」等)まで値として飲み込んでしまい、文字境界を切り出せない。
+static SOCIAL_ID_RE: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(
+        r"(?i)(?:LINE|ライン|Instagram|インスタグラム|インスタ|Twitter|ツイッター|Discord|ディスコード|TikTok|ティックトック|YouTube|ユーチューブ)\s*(?:の)?\s*(?:ID|アカウント名?|ユーザー名|ユーザーネーム)\s*(?:は|:|：)\s*([A-Za-z0-9_@.\-]{2,30})",
+    )
+    .unwrap()
+});
+
 // 自己紹介パターン: 「私は/僕はXXです」に加え、
 // 「僕の名前はXXです」「私はXXって言います」のような、間に語が挟まる/末尾が
 // 「って(言います|いいます)」になる自然な言い回しも拾う。
@@ -208,6 +227,20 @@ fn detect_address(text: &str) -> Vec<RangeMatch> {
     out
 }
 
+/// SNS ID/アカウント名: マッチしたID値部分(キャプチャグループ1)のみを対象にする。
+/// 「LINEのIDは」のようなサービス名部分自体はPIIではないため、置換範囲に含めない。
+fn detect_social_id(text: &str) -> Vec<RangeMatch> {
+    SOCIAL_ID_RE
+        .captures_iter(text)
+        .filter_map(|caps| caps.get(1))
+        .map(|id| RangeMatch {
+            kind: PiiType::SocialId,
+            start: id.start(),
+            end: id.end(),
+        })
+        .collect()
+}
+
 /// 氏名: 自己紹介パターン(pronoun付き/pronoun省略の「名前は」型) + 一般的な姓+名パターン
 fn detect_name(text: &str) -> Vec<RangeMatch> {
     let mut out = Vec::new();
@@ -320,6 +353,7 @@ pub fn scan(text: &str) -> ScanResult {
     all.extend(detect_regex(text, &PHONE_RE, PiiType::Phone));
     all.extend(detect_regex(text, &EMAIL_RE, PiiType::Email));
     all.extend(detect_regex(text, &SCHOOL_RE, PiiType::School));
+    all.extend(detect_social_id(text));
     all.extend(detect_address(text));
     all.extend(detect_regex(text, &CITY_RESIDENCE_RE, PiiType::Address));
     all.extend(detect_regex(text, &PREFECTURE_RESIDENCE_RE, PiiType::Address));
@@ -535,17 +569,63 @@ mod tests {
     }
 
     /// 既知の残存ギャップ(今回はスコープ外として意図的に対応していない)。
-    /// - LINE ID/InstagramなどのSNS ID(「IDは○○だよ」)はPII検出の対象にしていない
-    ///   (safety_drill.rs側の訓練シナリオでは扱っているが、pii_guardの正規表現的な
-    ///   検出には馴染まないため)。
     /// - ランドマーク経由の間接的な位置情報(例:「○○公園の近くに住んでる」)は
-    ///   自然言語理解が必要でregexベースでは非現実的なため対象外。
+    ///   自然言語理解が必要でregexベースでは非現実的なため対象外
+    ///   (PiiHunterゲームの「むずかしい」レベルで人間の判断力として練習する設計)。
     /// - 電話番号を仮名/漢数字で書く(「ゼロキュウゼロの…」)ようなケースも対象外。
+    /// - SNS IDが日本語の仮名/漢字ニックネーム(「はなこ」等)の場合は対象外。
+    ///   regexクレートがlookaroundに対応していないため、値の終わりと後続の
+    ///   日本語の語尾(「です」「だよ」)との境界を区切れない。半角英数字の
+    ///   ID(実際のSNS IDの大半)のみを対象にしている。
     #[test]
-    fn known_limitation_sns_id_not_detected_documented() {
+    fn known_limitation_kana_phone_number_not_detected_documented() {
+        let r = scan("電話はゼロキュウゼロのイチニサンヨンだよ");
+        assert!(!r.matches.iter().any(|m| m.kind == PiiType::Phone));
+    }
+
+    #[test]
+    fn known_limitation_kana_sns_nickname_not_detected_documented() {
+        let r = scan("LINEのIDははなこだよ");
+        assert!(!r.matches.iter().any(|m| m.kind == PiiType::SocialId));
+    }
+
+    // ── SNS ID/アカウント名の検出 ──
+
+    #[test]
+    fn detects_line_id() {
         let r = scan("LINEのIDはtaro_1234だよ");
-        // これは「検出されるべき」ではなく、「現状は検出されない」ことを明示するテスト。
-        // 将来この挙動を変える場合は、このテストごと更新すること。
-        assert!(!r.matches.iter().any(|m| m.kind == PiiType::Name));
+        let m = r.matches.iter().find(|m| m.kind == PiiType::SocialId);
+        assert!(m.is_some());
+        assert_eq!(m.unwrap().text, "taro_1234");
+        assert!(r.redacted.contains("[SNSアカウント]"));
+        assert!(!r.redacted.contains("taro_1234"));
+    }
+
+    #[test]
+    fn detects_instagram_username_with_numbers() {
+        let r = scan("インスタのユーザーネームはhanako_123です");
+        let m = r.matches.iter().find(|m| m.kind == PiiType::SocialId);
+        assert!(m.is_some());
+        assert_eq!(m.unwrap().text, "hanako_123");
+    }
+
+    #[test]
+    fn detects_discord_account_with_colon() {
+        let r = scan("Discordアカウント: game_master99");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::SocialId));
+    }
+
+    #[test]
+    fn detects_twitter_id_kana_service_name() {
+        let r = scan("ツイッターのIDはkenta_sky");
+        assert!(r.matches.iter().any(|m| m.kind == PiiType::SocialId));
+    }
+
+    #[test]
+    fn generic_id_mention_without_sns_service_name_is_not_flagged() {
+        // 「IDは何番ですか」のような、SNSサービス名を伴わない無関係な文脈まで
+        // 誤って拾わないことを確認する(誤検知を抑える回帰テスト)。
+        let r = scan("会員IDは何番ですか?");
+        assert!(!r.matches.iter().any(|m| m.kind == PiiType::SocialId));
     }
 }

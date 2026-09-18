@@ -1793,6 +1793,13 @@
   width: 100%;
 }
 
+.chat-input__too-long {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #a4442c;
+  font-weight: 600;
+}
+
 .pii-alert {
   background: var(--color-coral-soft);
   border: 1.5px solid var(--color-coral);

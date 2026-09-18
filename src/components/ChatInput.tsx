@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { AgeMode, PiiMatch, TutorStage } from "../types";
-import { PII_LABELS, isTutorHintStage } from "../types";
+import { MAX_INPUT_CHARS, PII_LABELS, isTutorHintStage } from "../types";
 
 interface Props {
   mode: AgeMode;
@@ -28,14 +28,21 @@ export function ChatInput({ mode, disabled, previewPii, onSend, tutorStage, onSe
       return;
     }
     const timer = setTimeout(() => {
-      previewPii(text).then((res) => {
-        if (requestId.current === id) setMatches(res.matches);
-      });
+      previewPii(text)
+        .then((res) => {
+          if (requestId.current === id) setMatches(res.matches);
+        })
+        .catch(() => {
+          // Rust側の文字数上限(MAX_INPUT_CHARS)を超えた場合などはエラーになるが、
+          // これはあくまでライブプレビューなので、静かに諦めて既存の表示を保つ。
+          // 実際の送信時(onSend)には別途エラーがユーザーに見える形で伝わる。
+        });
     }, 120);
     return () => clearTimeout(timer);
   }, [text, previewPii]);
 
   const hasPii = matches.length > 0;
+  const isTooLong = text.length > MAX_INPUT_CHARS;
 
   const placeholder =
     mode === "low"
@@ -46,7 +53,7 @@ export function ChatInput({ mode, disabled, previewPii, onSend, tutorStage, onSe
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!text.trim() || disabled) return;
+    if (!text.trim() || disabled || isTooLong) return;
     if (hasPii && !confirmed) return;
     onSend(text);
     setText("");
@@ -92,11 +99,16 @@ export function ChatInput({ mode, disabled, previewPii, onSend, tutorStage, onSe
         <button
           type="submit"
           className="btn btn--send"
-          disabled={disabled || !text.trim() || (hasPii && !confirmed)}
+          disabled={disabled || !text.trim() || isTooLong || (hasPii && !confirmed)}
         >
           送る
         </button>
       </div>
+      {isTooLong && (
+        <p className="chat-input__too-long">
+          長すぎます({text.length}/{MAX_INPUT_CHARS}文字)。短くしてから送ってね。
+        </p>
+      )}
       {tutorStage && isTutorHintStage(tutorStage) && onSendStuck && (
         <button
           type="button"

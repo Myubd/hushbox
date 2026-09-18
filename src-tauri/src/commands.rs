@@ -11,10 +11,33 @@ use crate::safety_drill::{self, DrillResult, DrillScenario};
 use crate::safety_policy::{self, SafetyLevel};
 use crate::tutor_state::{self, SharedTutorState, TutorSessionInfo, TutorStage};
 
+/// IPC経由で受け付ける自由入力テキスト(チャット入力・PIIスキャン対象等)の
+/// 文字数上限。この値は「モデルに渡せる最大トークン数」とは別の、もっと手前の
+/// 防御線として設けている。値そのものはLLMの実用的な入力量として十分に大きい
+/// (数千字規模の作文でも収まる)一方、次のような素朴なリスクを避けられる:
+/// - 生徒が誤って巨大なテキストを貼り付けた場合のメモリ圧迫
+/// - `pii_guard::scan`はテキスト長に対して概ね線形〜準線形のregexスキャンを
+///   何本も走らせる設計なので、極端に長い入力ほどスキャン時間が伸びる
+/// 文字数は(バイト数ではなく)Unicodeスカラ値の数で数える。日本語主体の
+/// アプリなので、バイト数で制限すると同じ「体感の長さ」でも言語によって
+/// 上限に達するタイミングがぶれてしまうため。
+const MAX_INPUT_CHARS: usize = 8000;
+
+fn reject_if_too_long(text: &str) -> Result<(), String> {
+    let len = text.chars().count();
+    if len > MAX_INPUT_CHARS {
+        return Err(format!(
+            "入力が長すぎます({len}文字)。{MAX_INPUT_CHARS}文字以内で送ってください。"
+        ));
+    }
+    Ok(())
+}
+
 /// 送信前のPII検出プレビュー(サーバーではなく、この端末内のRustコードが処理)
 #[tauri::command]
-pub fn scan_pii(text: String) -> pii_guard::ScanResult {
-    pii_guard::scan(&text)
+pub fn scan_pii(text: String) -> Result<pii_guard::ScanResult, String> {
+    reject_if_too_long(&text)?;
+    Ok(pii_guard::scan(&text))
 }
 
 /// SNS/AIリテラシー訓練: 学年モードに応じたシナリオを1つランダムに返す。
@@ -27,8 +50,9 @@ pub fn get_drill_scenario(mode: String) -> Option<DrillScenario> {
 
 /// 訓練シナリオへの生徒の返答を評価し、フィードバック文を返す。
 #[tauri::command]
-pub fn evaluate_drill_response(category: PiiType, reply: String) -> DrillResult {
-    safety_drill::evaluate(category, &reply)
+pub fn evaluate_drill_response(category: PiiType, reply: String) -> Result<DrillResult, String> {
+    reject_if_too_long(&reply)?;
+    Ok(safety_drill::evaluate(category, &reply))
 }
 
 /// 学習ドリル(国語・算数・理科・社会・英語・情報)の新しい問題を1問生成する。
@@ -302,6 +326,8 @@ pub async fn send_message(
     text: String,
     tutor_stage: Option<TutorStage>,
 ) -> Result<pii_guard::ScanResult, String> {
+    reject_if_too_long(&text)?;
+
     let prepared = prepare_llm_input(&mode, history, &text, tutor_stage);
 
     // NOTE(P1-9): Dangerousと判定された場合、LLMには一切渡さず

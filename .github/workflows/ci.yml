@@ -9,9 +9,14 @@ on:
     branches: [main]
   pull_request:
 
+# トークンの最小化: このワークフローはコードの読み取り以外を必要としない
+# (リリース作成やパッケージ公開等は別ワークフローの想定)。
+permissions:
+  contents: read
+
 jobs:
   frontend:
-    name: Frontend (lint / data validation / build)
+    name: Frontend (lint / data validation / build / audit)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,8 +41,13 @@ jobs:
       - name: Type-check + build (production, excludes test files)
         run: npm run build
 
+      # 既知の脆弱性を持つnpm依存関係が紛れ込んでいないかをCIで機械的に検証する。
+      # low/moderateは判断が割れることが多いため、high以上のみを失敗条件にする。
+      - name: npm audit (high severity and above)
+        run: npm audit --audit-level=high
+
   backend:
-    name: Backend (cargo test)
+    name: Backend (cargo test / audit)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -70,6 +80,18 @@ jobs:
         with:
           workspaces: src-tauri
 
+      # --lockedにより、Cargo.lockを無視した意図しない依存関係の混入(バージョンの
+      # 勝手な繰り上がり)をCIで検知する。
       - name: cargo test
         working-directory: src-tauri
         run: cargo test --locked
+
+      # Cargo.lockに記録された依存クレートに、RustSecアドバイザリDB上の
+      # 既知の脆弱性が無いかを検証する。Cargo.lockをコミット済みなので
+      # 即座に効果がある(README「つまずいたポイント」の設計方針=
+      # 「主張をコードで検証する」の延長)。
+      - name: cargo audit
+        working-directory: src-tauri
+        run: |
+          cargo install cargo-audit --locked
+          cargo audit
